@@ -45,7 +45,7 @@
 
                     <TextBlock FontSize="46"
                            FontWeight="Light"
-                           Text="Sign up"
+                           Text="Login"
                            Foreground="#ffffff"
                            TextAlignment="Center" />
 
@@ -195,13 +195,6 @@
                                     Margin="75 0">
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="John.Doe_am"
-                                     materialDesign:HintAssist.Hint="Username"
-                                     materialDesign:HintAssist.FloatingOffset="0, -20"
-                                     BorderBrush="#c5c8cc"
-                                     BorderThickness="0 0 0 1.5" />
-
-                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text="JohnDoe@gmail.com"
                                      materialDesign:HintAssist.Hint="Email"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
@@ -216,23 +209,14 @@
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
-                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
-                                     materialDesign:HintAssist.Hint="Repeat Password"
-                                     materialDesign:HintAssist.FloatingOffset="0, -18"
-                                     BorderBrush="#c5c8cc"
-                                     Margin="0 27 0 0"
-                                     BorderThickness="0 0 0 1.5" />
-
                     <CheckBox Margin="0 40 0 20" FontSize="13">
                         <TextBlock>
-                                    <Run Foreground="#b6b6b6">By Signing I agree with</Run>
-                                    <Run Foreground="#799EFB">terms and conditions</Run>
+                                    <Run Foreground="#b6b6b6">Remember me</Run>
                         </TextBlock>
                     </CheckBox>
 
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Sign up"
+                        <Button Content="Login"
                                         Background="#1B59F8"
                                         Foreground="#ffffff"
                                         FontSize="18"
@@ -240,7 +224,7 @@
                                         Height="45"
                                         materialDesign:ButtonAssist.CornerRadius="22"/>
 
-                        <Button Content="or Login"
+                        <Button Content="or Sign Up"
                                         FontSize="18"
                                         Width="120"
                                         Height="45"
