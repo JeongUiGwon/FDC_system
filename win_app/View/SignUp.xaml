@@ -191,14 +191,16 @@
                                     Margin="75 0">
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="John.Doe_am"
+                                     Text=""
+                             Name="tb_userName"
                                      materialDesign:HintAssist.Hint="Username"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="JohnDoe@gmail.com"
+                                     Text=""
+                             Name="tb_Email"
                                      materialDesign:HintAssist.Hint="Email"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
                                      BorderBrush="#c5c8cc"
@@ -206,14 +208,15 @@
                                      BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
+                                     Password=""
+                                 Name="pwdBox_pwd"
                                      materialDesign:HintAssist.Hint="Password"
                                      materialDesign:HintAssist.FloatingOffset="0, -18"
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
+                                     Password=""
                                      materialDesign:HintAssist.Hint="Repeat Password"
                                      materialDesign:HintAssist.FloatingOffset="0, -18"
                                      BorderBrush="#c5c8cc"
@@ -229,12 +232,14 @@
 
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Sign up"
-                                        Background="#1B59F8"
-                                        Foreground="#ffffff"
-                                        FontSize="18"
-                                        Width="120"
-                                        Height="45"
-                                        materialDesign:ButtonAssist.CornerRadius="22"/>
+                                Name="btn_signUp"
+                                Background="#1B59F8"
+                                Foreground="#ffffff"
+                                FontSize="18"
+                                Width="120"
+                                Height="45"
+                                materialDesign:ButtonAssist.CornerRadius="22"
+                                Click="Btn_SignUp_Click"/>
 
                         <Button Content="or Login"
                                 FontSize="18"
