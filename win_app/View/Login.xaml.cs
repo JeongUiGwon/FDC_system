@@ -16,18 +16,18 @@ using System.Windows.Shapes;
 namespace SOM.View
 {
     /// <summary>
-    /// SignUp.xaml에 대한 상호 작용 논리
+    /// Login.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SignUp : Page
+    public partial class Login : Page
     {
-        public SignUp()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void Btn_Login_Click(object sender, RoutedEventArgs e)
+        private void Btn_SignUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/SignUp.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)

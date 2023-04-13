@@ -25,3 +25,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\MainWindow.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\MainWindow.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUp.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUp.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login.g.cs
