@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using SOM;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +16,23 @@ namespace WpfApp1
     /// </summary>
     public partial class App : Application
     {
+        private readonly IHost _host;
+        public App()
+        {
+            _host = Host
+                .CreateDefaultBuilder()
+                .ConfigureServices((context, service) =>
+                {
+                    service.AddSingleton(() => new MainWindow());
+                })
+                .Build();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+
+
+            base.OnStartup(e);
+        }
     }
 }
