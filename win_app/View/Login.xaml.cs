@@ -48,6 +48,9 @@ namespace SOM.View
             FirebaseAuth firebaseAuth = new FirebaseAuth();
             var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
 
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+
             var window = Window.GetWindow(this);
             window.Close();
         }

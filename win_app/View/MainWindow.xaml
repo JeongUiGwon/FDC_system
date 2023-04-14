@@ -7,15 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="645" 
-        Width="875" 
-        WindowStartupLocation="CenterScreen" 
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent"
-        ResizeMode="NoResize"
-        FontSize="18"
-        FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid Margin="20">
-        <Frame NavigationUIVisibility="Hidden" Source="/View/Login.xaml" MouseDown="Frame_MouseDown"/>
+        Width="875">
+    <Grid>
+        
     </Grid>
 </Window>

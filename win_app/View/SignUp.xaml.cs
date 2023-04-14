@@ -47,7 +47,7 @@ namespace SOM.View
 
             FirebaseAuth firebaseAuth = new FirebaseAuth();
             var userCredential = await firebaseAuth.client.CreateUserWithEmailAndPasswordAsync(email, password, userName);
-
+            
             NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
         }
     }
