@@ -208,3 +208,4 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\FontAwesome.Sharp.dll
