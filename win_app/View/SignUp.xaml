@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="605" d:DesignWidth="875"
       Title="SignUp">
 
     <Grid>
@@ -191,14 +191,16 @@
                                     Margin="75 0">
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="John.Doe_am"
+                                     Text=""
+                             Name="tb_userName"
                                      materialDesign:HintAssist.Hint="Username"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="JohnDoe@gmail.com"
+                                     Text=""
+                             Name="tb_Email"
                                      materialDesign:HintAssist.Hint="Email"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
                                      BorderBrush="#c5c8cc"
@@ -206,14 +208,15 @@
                                      BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
+                                     Password=""
+                                 Name="pwdBox_pwd"
                                      materialDesign:HintAssist.Hint="Password"
                                      materialDesign:HintAssist.FloatingOffset="0, -18"
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
+                                     Password=""
                                      materialDesign:HintAssist.Hint="Repeat Password"
                                      materialDesign:HintAssist.FloatingOffset="0, -18"
                                      BorderBrush="#c5c8cc"
@@ -227,25 +230,25 @@
                         </TextBlock>
                     </CheckBox>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Sign up"
-                                        Background="#1B59F8"
-                                        Foreground="#ffffff"
-                                        FontSize="18"
-                                        Width="120"
-                                        Height="45"
-                                        materialDesign:ButtonAssist.CornerRadius="22"/>
-
-                        <Button Content="or Login"
+                    <Button Content="Sign up"
+                                Name="btn_signUp"
+                                Background="#1B59F8"
+                                Foreground="#ffffff"
                                 FontSize="18"
-                                Width="120"
+                                Width="280"
                                 Height="45"
-                                Margin="5 0 0 0"
+                                materialDesign:ButtonAssist.CornerRadius="22"
+                                Click="Btn_SignUp_Click"/>
+
+                    <Button Content="Login Now"
+                                FontSize="18"
+                                Width="280"
+                                Height="45"
+                                Margin="0 5 0 0"
                                 Foreground="#1B59F8"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:ButtonAssist.CornerRadius="22"
                                 Click="Btn_Login_Click"/>
-                    </StackPanel>
                 </StackPanel>
             </Grid>
 

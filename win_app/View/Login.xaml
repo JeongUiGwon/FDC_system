@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="605" d:DesignWidth="875"
       Title="Login">
 
     <Grid>
@@ -192,19 +192,25 @@
                                     Margin="75 0">
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="JohnDoe@gmail.com"
-                                     materialDesign:HintAssist.Hint="Email"
-                                     materialDesign:HintAssist.FloatingOffset="0, -20"
-                                     BorderBrush="#c5c8cc"
-                                     Margin="0 27"
-                                     BorderThickness="0 0 0 1.5" />
+                             Text=""
+                             Name="tb_email"
+                             materialDesign:HintAssist.Hint="Email"
+                             materialDesign:HintAssist.FloatingOffset="0, -20"
+                             BorderBrush="#c5c8cc"
+                             Margin="0 27"
+                             BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password="123456789"
-                                     materialDesign:HintAssist.Hint="Password"
-                                     materialDesign:HintAssist.FloatingOffset="0, -18"
-                                     BorderBrush="#c5c8cc"
-                                     BorderThickness="0 0 0 1.5" />
+                                 Password=""
+                                 Name="pwdBox_pwd"
+                                 materialDesign:HintAssist.Hint="Password"
+                                 materialDesign:HintAssist.FloatingOffset="0, -18"
+                                 BorderBrush="#c5c8cc"
+                                 BorderThickness="0 0 0 1.5" />
+
+                    <TextBlock HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <Hyperlink NavigateUri="/View/ForgotPassword.xaml">Forgot Password?</Hyperlink>
+                    </TextBlock>
 
                     <CheckBox Margin="0 40 0 20" FontSize="13">
                         <TextBlock>
@@ -212,25 +218,26 @@
                         </TextBlock>
                     </CheckBox>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Login"
-                                        Background="#1B59F8"
-                                        Foreground="#ffffff"
-                                        FontSize="18"
-                                        Width="120"
-                                        Height="45"
-                                        materialDesign:ButtonAssist.CornerRadius="22"/>
-
-                        <Button Content="or Sign Up"
+                    <Button Content="Login"
+                                Name="btn_login"
+                                Background="#1B59F8"
+                                Foreground="#ffffff"
                                 FontSize="18"
-                                Width="120"
+                                Width="280"
                                 Height="45"
-                                Margin="5 0 0 0"
+                                materialDesign:ButtonAssist.CornerRadius="22"
+                                Click="Btn_Login_Click"/>
+
+                    <Button Content="Sign Up"
+                                FontSize="18"
+                                Width="280"
+                                Height="45"
+                                Margin="0 5 0 0"
                                 Foreground="#1B59F8"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:ButtonAssist.CornerRadius="22"
                                 Click="Btn_SignUp_Click"/>
-                    </StackPanel>
+
                 </StackPanel>
             </Grid>
 

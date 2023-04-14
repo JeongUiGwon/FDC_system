@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,20 @@ namespace SOM.View
         {
             var window = Window.GetWindow(this);
             window.Close();
+        }
+
+        private async void Btn_SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = tb_userName.Text;
+            string email = tb_Email.Text;
+            string password = pwdBox_pwd.Password;
+
+            btn_signUp.IsEnabled = false;
+
+            FirebaseAuth firebaseAuth = new FirebaseAuth();
+            var userCredential = await firebaseAuth.client.CreateUserWithEmailAndPasswordAsync(email, password, userName);
+            
+            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
         }
     }
 }
