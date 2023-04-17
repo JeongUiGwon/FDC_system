@@ -209,3 +209,15 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\InfoCard.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\InfoCard.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM_MarkupCompile.lref
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Order.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Order.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.dll
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.pdb
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.xml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.xml
