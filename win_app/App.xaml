@@ -21,7 +21,7 @@
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#ffffff" />
-                <Setter Property="Margin" Value="0 0 0 5"/>
+                <Setter Property="Margin" Value="10 10 10 10"/>
                 <Setter Property="Height" Value="45" />
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="Tag" Value="#ffffff" />
@@ -38,20 +38,19 @@
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Foreground" Value="#ffffff" />
-                        <Setter Property="FontWeight" Value="Bold" />
                         <Setter Property="Tag" Value="#ffffff"/>
                         <Setter Property="Background">
                             <Setter.Value>
                                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                    <GradientStop Color="#ffffff" Offset="0"/>
-                                    <GradientStop Color="#ffffff" Offset="3"/>
+                                    <GradientStop Color="#323237" Offset="0"/>
+                                    <GradientStop Color="#323237" Offset="3"/>
                                 </LinearGradientBrush>
                             </Setter.Value>
                         </Setter>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}" BorderThickness="4 0 0 0" BorderBrush="#7071f0">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                                     </Border>
                                 </ControlTemplate>
@@ -137,7 +136,7 @@
             </Style>
 
             <Style x:Key="titleText" TargetType="TextBlock">
-                <Setter Property="Foreground" Value="#ffffff"/>
+                <Setter Property="Foreground" Value="#3a4767"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="FontWeight" Value="SemiBold" />
                 <Setter Property="Margin" Value="10 0 0 0" />
@@ -148,7 +147,7 @@
                 <Setter Property="Width" Value="18"/>
                 <Setter Property="Height" Value="18"/>
                 <Setter Property="Margin" Value="0 3 0 0" />
-                <Setter Property="Foreground" Value="#7b82ea"/>
+                <Setter Property="Foreground" Value="#3a4767"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

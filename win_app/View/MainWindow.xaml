@@ -12,10 +12,10 @@
         Height="740" 
         Width="1280"
         WindowStartupLocation="CenterScreen"
-        Background="#ffffff">
+        Background="#f0f2f5">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
     
@@ -115,8 +115,8 @@
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
             <Border.Background>
                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                    <GradientStop Color="#ffffff" Offset="0"/>
-                    <GradientStop Color="#ffffff" Offset="1"/>
+                    <GradientStop Color="#f0f2f5" Offset="0"/>
+                    <GradientStop Color="#f0f2f5" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -157,7 +157,11 @@
                     </Grid.ColumnDefinitions>
                     
                     <!--Chart Section-->
-                    <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+                    <Border CornerRadius="20" Padding="30 25" Background="#ffffff" Margin="10 0 10 15">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="-50" Opacity="0.195"/>
+                        </Border.Effect>
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -165,8 +169,7 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
-                                <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
-                                <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
+                                <TextBlock Text="Interlock" Style="{StaticResource titleText}"/>
                             </StackPanel>
 
                             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
@@ -199,8 +202,8 @@
                             <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
                                 <lvc:CartesianChart.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#26376f" Offset="0"/>
-                                        <GradientStop Color="#6a6ae4" Offset="1.5"/>
+                                        <GradientStop Color="#ffffff" Offset="0"/>
+                                        <GradientStop Color="#ffffff" Offset="1.5"/>
                                     </LinearGradientBrush>
                                 </lvc:CartesianChart.Background>
 
@@ -228,7 +231,7 @@
                                     <lvc:LineSeries Stroke="#ada4fd" StrokeThickness="2" PointGeometrySize="0" Values="20000,17000,30000,15000,50000,30000,20000">
                                         <lvc:LineSeries.Fill>
                                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                                <GradientStop Color="#b397e2" Offset="0.4"/>
+                                                <GradientStop Color="#fad6e2" Offset="0.4"/>
                                                 <GradientStop Color="#6a6ae4" Offset="1.2"/>
                                             </LinearGradientBrush>
                                         </lvc:LineSeries.Fill>
@@ -239,16 +242,20 @@
                     </Border>
 
                     <!--Orders Section-->
-                    <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+                    <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#ffffff" Margin="15 0 10 15">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="-50" Opacity="0.195"/>
+                        </Border.Effect>
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <StackPanel Orientation="Horizontal" Margin="20 0 0 15">
-                                <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
-                                <TextBlock Text="Last Orders" Style="{StaticResource titleText}"/>
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 15">
+                                <!--<fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>-->
+                                <TextBlock Text="Notifications" Style="{StaticResource titleText}"/>
                             </StackPanel>
                             
                             <!--Order Row-->
