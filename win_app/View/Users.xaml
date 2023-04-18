@@ -39,7 +39,7 @@
             <!--Users Datagrid-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
                 <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
@@ -100,7 +100,7 @@
                     <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
 
                     <Button Style="{StaticResource pagingButton}" Content="1" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#7950f2" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#e02b6b" Foreground="#ffffff"/>
                     <Button Style="{StaticResource pagingButton}" Content="3" />
 
                     <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />

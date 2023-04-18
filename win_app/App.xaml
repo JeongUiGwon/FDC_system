@@ -199,7 +199,7 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#7950f2"/>
+                        <Setter Property="Background" Value="#e02b6b"/>
                         <Setter Property="Foreground" Value="#ffffff"/>
                     </Trigger>
                 </Style.Triggers>
@@ -215,6 +215,8 @@
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
                 <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Height" Value="50"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="Template">
@@ -229,25 +231,29 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#673ab7"/>
+                        <Setter Property="Background" Value="#e6eaef"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
 
             <Style x:Key="gridRemoveButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
-                <Setter Property="Background" Value="#d32f2f"/>
-                <Setter Property="Foreground" Value="#b71c1c"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#f44336"/>
+                        <Setter Property="Background" Value="#e6eaef"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
 
             <Style x:Key="gridButtonIcon" TargetType="Icon:PackIconMaterial">
-                <Setter Property="Width" Value="12"/>
-                <Setter Property="Height" Value="12"/>
+                <Setter Property="Width" Value="20"/>
+                <Setter Property="Height" Value="20"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
     
@@ -258,12 +264,12 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#e6eaef"/>
+                        <Setter Property="Background" Value="White"/>
                         <Setter Property="Foreground" Value="Black"/>
                     </Trigger>
 
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="#e6eaef"/>
+                        <Setter Property="Background" Value="White"/>
                         <Setter Property="Foreground" Value="Black"/>
                     </Trigger>
 
@@ -272,7 +278,7 @@
                             <Condition Property="IsSelected" Value="true"/>
                             <Condition Property="Selector.IsSelectionActive" Value="false"/>
                         </MultiTrigger.Conditions>
-                        <Setter Property="Background" Value="#dfdfdf"/>
+                        <Setter Property="Background" Value="White"/>
                     </MultiTrigger>
                 </Style.Triggers>
             </Style>
@@ -288,7 +294,16 @@
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter Property="Margin" Value="15 10"/>
+                <Setter Property="IsSelected" Value="False"/>
+                <Setter Property="Margin" Value="15 0"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
                     
             <!--end region-->        
