@@ -30,7 +30,7 @@
 
             <StackPanel>
                 <!--UserName-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0" Width="180">
                     <Border CornerRadius="10" Width="40" Height="40">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
@@ -39,13 +39,13 @@
                             </LinearGradientBrush>
                         </Border.Background>
 
-                        <TextBlock Text="JP" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
+                        <TextBlock Text="UG" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
                                    TextAlignment="Center" VerticalAlignment="Center" Margin="3 0 0 2"/>
                     </Border>
 
                     <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="Jonathan Perman" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
-                        <TextBlock Text="Beta 1.3" FontSize="11" Foreground="#ffffff"/>
+                        <TextBlock Text="Jeong UiGwon" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
+                        <TextBlock Text="Admin" FontSize="11" Foreground="#ffffff"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -61,49 +61,49 @@
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="FileSignature" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Listing" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Equipments" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="EnvelopeOpenText" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Message" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="ShoppingCart" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Orders" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="ChartArea" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Statistics" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Datas" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Coins" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Revenue" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="FlagCheckered" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Promote" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Users" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}"/>
+                        <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Logout" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
@@ -135,19 +135,19 @@
                 </StackPanel>
                 
                 <!--Title-->
-                <TextBlock Text="Good Afternoon, Perman" FontSize="26" HorizontalAlignment="Left" Margin="50 35 0 20"/>
+                <TextBlock Text="Dashboard" FontSize="26" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 35 0 20"/>
                 
                 <!--Info Card-->
-                <Grid Grid.Row="1" Margin="50 20 15 40">
+                <Grid Grid.Row="1" Margin="10 20 15 40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <view:InfoCard Grid.Column="0" Title="Total Views" Number="654,947" Icon="Eye" Background1="#827bff" Background2="#d9b5ff" EllipseBackground1="#b298fd" EllipseBackground2="#e4bbff"/>
-                    <view:InfoCard Grid.Column="1" Title="Total Views" Number="654,947" Icon="ShoppingCart" Background1="#fd8a87" Background2="#f3ab92" EllipseBackground1="#fbd5a8" EllipseBackground2="#fdb89b"/>
-                    <view:InfoCard Grid.Column="2" Title="Total Views" Number="654,947" Icon="Coins" Background1="#fc84cb" Background2="#fc8fae" EllipseBackground1="#fc8fae" EllipseBackground2="#ffabe6"/>
+                    <view:InfoCard Grid.Column="0" Title="Total Equipments" Number="654,947" Icon="Building" Background1="#827bff" Background2="#d9b5ff" EllipseBackground1="#b298fd" EllipseBackground2="#e4bbff"/>
+                    <view:InfoCard Grid.Column="1" Title="Total Params" Number="654,947" Icon="Folder" Background1="#fd8a87" Background2="#f3ab92" EllipseBackground1="#fbd5a8" EllipseBackground2="#fdb89b"/>
+                    <view:InfoCard Grid.Column="2" Title="Total Recipe" Number="654,947" Icon="Receipt" Background1="#fc84cb" Background2="#fc8fae" EllipseBackground1="#fc8fae" EllipseBackground2="#ffabe6"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -260,7 +260,7 @@
                             
                             <!--Order Row-->
                             <StackPanel Grid.Row="1">
-                                <view:Order TitleOrder="T-shirt Embrace" Desc="John Doe - 10:30" Icon="Tshirt" />
+                                <view:Order TitleOrder="T-shirt Embrace" Desc="John Doe - 10:30" Icon="Bell" />
                                 <view:Order TitleOrder="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoePrints"/>
                                 <view:Order TitleOrder="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="Socks"/>
                             </StackPanel>
