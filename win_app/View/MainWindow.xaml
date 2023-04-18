@@ -52,49 +52,49 @@
                 <Separator Height="0.8" Margin="20 30" Background="#ffffff"/>
                 
                 <!--Menu Buttons-->
-                <Button Style="{StaticResource menuButtonActive}">
+                <Button Name="Btn_Dashboard" Style="{StaticResource menuButtonActive}" Click="Btn_Dashboard_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Equipments" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Equipments" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Params" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Datas" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Datas" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Users" Style="{StaticResource menuButtonText}"/>
@@ -113,7 +113,7 @@
         
         <!--Main Section-->
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
-            <Frame NavigationUIVisibility="Hidden" Source="/View/Dashboard.xaml"/>
+            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Dashboard.xaml"/>
         </Border>        
     </Grid>
 </Window>

@@ -1,7 +1,9 @@
 ﻿using SOM.Model;
 using SOM.View;
+using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace SOM
 {
@@ -21,6 +23,33 @@ namespace SOM
             {
                 this.DragMove();
             }
+        }
+
+        private void Btn_Dashboard_Click(object sender, RoutedEventArgs e)
+        {
+            this.Btn_Dashboard.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+
+            this.frame.Navigate(new Uri("/View/Dashboard.xaml", UriKind.Relative));
+
+        }
+
+        private void Btn_Users_Click(object sender, RoutedEventArgs e)
+        {
+            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
+
+            this.frame.Navigate(new Uri("/View/Users.xaml", UriKind.Relative));
         }
 
         private void Btn_Logout_Click(object sender, RoutedEventArgs e)
