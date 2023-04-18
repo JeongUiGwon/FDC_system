@@ -26,7 +26,10 @@ namespace SOM.View
 
         private void Frame_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }
