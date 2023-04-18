@@ -101,7 +101,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Click="Btn_Logout_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Logout" Style="{StaticResource menuButtonText}"/>
