@@ -38,37 +38,17 @@
 
             <!--Users Datagrid-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                <DataGrid x:Name="EquipmentsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+                    
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
-
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-
-                        <DataGridTemplateColumn Header="Users" IsReadOnly="True" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1" Text="{Binding Character}"/>
-                                        </Border>
-
-                                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <DataGridTextColumn Header="Position" IsReadOnly="True" Width="*" Binding="{Binding Position}"/>
-                        <DataGridTextColumn Header="Email Address" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
-                        <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding Phone}"/>
+                        <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="State" Width="*" Binding="{Binding State}"/>
+                        <DataGridTextColumn Header="Interlock ID" Width="*" Binding="{Binding Interlock_ID}"/>
+                        <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding Creator}"/>
+                        <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding Modifier}"/>
 
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>

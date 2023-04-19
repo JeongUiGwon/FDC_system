@@ -334,8 +334,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Firebase.cs" />
-    <Compile Include="Model\Users.cs" />
+    <Compile Include="Model\EquipmentsModel.cs" />
+    <Compile Include="Model\FirebaseAuthModel.cs" />
+    <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>

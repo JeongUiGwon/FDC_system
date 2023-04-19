@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SOM.Model
 {
-    public class FirebaseAuth
+    public class FirebaseAuthModel
     {
         private static FirebaseAuthConfig config = new FirebaseAuthConfig
         {

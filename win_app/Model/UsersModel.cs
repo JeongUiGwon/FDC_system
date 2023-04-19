@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace SOM.Model
 {
-    public class Users
+    public class UsersModel
     {
         public string Character { get; set; }
         public string Number { get; set; }

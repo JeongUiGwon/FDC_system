@@ -67,7 +67,7 @@ namespace SOM
 
         private void Btn_Logout_Click(object sender, RoutedEventArgs e)
         {
-            FirebaseAuth firebaseAuth = new FirebaseAuth();
+            FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             firebaseAuth.client.SignOut();
 
             var loginWindow  = new LoginWindow();
