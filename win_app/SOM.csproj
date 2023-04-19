@@ -336,6 +336,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAuthModel.cs" />
+    <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -357,6 +358,9 @@
     </Compile>
     <Compile Include="View\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ParamsPage.xaml.cs">
+      <DependentUpon>ParamsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -401,6 +405,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ParamsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

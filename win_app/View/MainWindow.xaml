@@ -66,7 +66,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Params" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
