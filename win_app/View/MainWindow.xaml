@@ -59,7 +59,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Equipments" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Equipments" Style="{StaticResource menuButton}" Click="Btn_Equipments_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Equipments" Style="{StaticResource menuButtonText}"/>

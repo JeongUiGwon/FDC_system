@@ -564,3 +564,5 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\GeneratedInternalTypeHe
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM_MarkupCompile.lref
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.baml
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.baml
