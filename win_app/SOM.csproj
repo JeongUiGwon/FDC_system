@@ -336,7 +336,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAuthModel.cs" />
+    <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
+    <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -350,6 +352,9 @@
     <Compile Include="View\InfoCard.xaml.cs">
       <DependentUpon>InfoCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InterlockPage.xaml.cs">
+      <DependentUpon>InterlockPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -361,6 +366,9 @@
     </Compile>
     <Compile Include="View\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecipePage.xaml.cs">
+      <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -381,6 +389,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InfoCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -409,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ParamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

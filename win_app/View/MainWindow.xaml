@@ -73,7 +73,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
