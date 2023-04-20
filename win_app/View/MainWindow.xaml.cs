@@ -79,6 +79,19 @@ namespace SOM
             this.frame.Navigate(new Uri("/View/RecipePage.xaml", UriKind.Relative));
         }
 
+        private void Btn_Data_Click(object sender, RoutedEventArgs e)
+        {
+            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+
+            this.frame.Navigate(new Uri("/View/DataPage.xaml", UriKind.Relative));
+        }
+
         private void Btn_Interlock_Click(object sender, RoutedEventArgs e)
         {
             this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;

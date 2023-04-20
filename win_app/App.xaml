@@ -43,8 +43,8 @@
                         <Setter Property="Background">
                             <Setter.Value>
                                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                    <GradientStop Color="#323237" Offset="0"/>
-                                    <GradientStop Color="#323237" Offset="3"/>
+                                    <GradientStop Color="#192b80" Offset="0"/>
+                                    <GradientStop Color="#192b80" Offset="3"/>
                                 </LinearGradientBrush>
                             </Setter.Value>
                         </Setter>
@@ -78,12 +78,12 @@
                 <Setter Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                            <GradientStop Color="#31407b" Offset="0"/>
+                            <GradientStop Color="#495385" Offset="0"/>
                             <GradientStop Color="#495385" Offset="3"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
-                <Setter Property="Background" Value="#e4316f"/>
+                <Setter Property="Background" Value="#192b80"/>
                 <Setter Property="Foreground" Value="#ffffff" />
                 <Setter Property="Margin" Value="10 10 10 10"/>
                 <Setter Property="Height" Value="45" />
@@ -199,7 +199,7 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#e02b6b"/>
+                        <Setter Property="Background" Value="#2f49cf"/>
                         <Setter Property="Foreground" Value="#ffffff"/>
                     </Trigger>
                 </Style.Triggers>

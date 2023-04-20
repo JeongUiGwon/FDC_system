@@ -334,6 +334,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAuthModel.cs" />
     <Compile Include="Model\InterlockModel.cs" />
@@ -342,6 +343,9 @@
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataPage.xaml.cs">
+      <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Equipments.xaml.cs">
       <DependentUpon>Equipments.xaml</DependentUpon>
@@ -377,6 +381,10 @@
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
