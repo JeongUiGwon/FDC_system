@@ -28,6 +28,8 @@ namespace SOM.Model
         {
             this.Equipment_ID = Equipment_ID;
             this.Equipment_Name = Equipment_Name;
+            this.Interlock_ID = Interlock_ID;
+            this.Interlock_Name = Interlock_Name;
             this.Param_ID = Param_ID;
             this.Recipe_ID = Recipe_ID;
             this.LOT_ID = LOT_ID;

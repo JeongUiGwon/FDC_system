@@ -87,7 +87,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>

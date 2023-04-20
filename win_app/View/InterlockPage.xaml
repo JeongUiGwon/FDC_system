@@ -27,27 +27,66 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Left Section-->
             <!--Title-->
-            <Border Background="#e02b6b" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
+            <Border Background="#e02b6b" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
+                <TextBlock Text="Filter" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+
+            <!--Filter-->
+            <Border Grid.Row="1" Grid.Column="0" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+                <StackPanel>
+                    <TextBlock Text="Equipments" FontWeight="DemiBold" FontSize="15" Margin="20 40 0 10"/>
+                    
+                    <Border CornerRadius="20 20 20 20" Background="#f8f9fa" Height="300" Margin="10">
+
+                    </Border>
+                    
+                    <TextBlock Text="Date Time" FontWeight="DemiBold" FontSize="15" Margin="20 0 0 10"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <ComboBox Width="110" />
+                        <ComboBox Margin="20 0 0 0" Width="110" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <ComboBox Width="110" />
+                        <ComboBox Margin="20 0 0 0" Width="110" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+
+            <!--Right Section-->
+            <!--Title-->
+            <Border Background="#e02b6b" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="1" Panel.ZIndex="1">
                 <TextBlock Text="Interlock" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
             <!--Interlock Datagrid-->
-            <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+            <Border Grid.Row="1" Grid.Column="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
                 <DataGrid x:Name="InterlockDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Created_at}"/>
-                        <DataGridTextColumn Header="Equip ID" Width="*" Binding="{Binding Interlock_ID}"/>
-                        <DataGridTextColumn Header="Equip Name" Width="*" Binding="{Binding Interlock_Name}"/>
-                        <DataGridTextColumn Header="Cause Equip ID" Width="*" Binding="{Binding Equipment_ID}"/>
-                        <DataGridTextColumn Header="Cause Equip Name" Width="*" Binding="{Binding Equipment_Name}"/>
-                        <DataGridTextColumn Header="Param ID" Width="*" Binding="{Binding Param_ID}"/>
-                        <DataGridTextColumn Header="Recipe ID" Width="*" Binding="{Binding Recipe_ID}"/>
-                        <DataGridTextColumn Header="LOT ID" Width="*" Binding="{Binding LOT_ID}"/>
-                        <DataGridTextColumn Header="Type" IsReadOnly="True" Width="*" Binding="{Binding Type}"/>
+                        <DataGridTextColumn Header="Equip ID" Width="auto" Binding="{Binding Interlock_ID}"/>
+                        <DataGridTextColumn Header="Equip Name" Width="auto" Binding="{Binding Interlock_Name}"/>
+                        <DataGridTextColumn Header="Cause Equip ID" Width="auto" Binding="{Binding Equipment_ID}"/>
+                        <DataGridTextColumn Header="Cause Equip Name" Width="auto" Binding="{Binding Equipment_Name}"/>
+                        <DataGridTextColumn Header="Param ID" Width="auto" Binding="{Binding Param_ID}"/>
+                        <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding Recipe_ID}"/>
+                        <DataGridTextColumn Header="LOT ID" Width="auto" Binding="{Binding LOT_ID}"/>
+                        <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding Type}"/>
+                        <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding LSL}"/>
+                        <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding USL}"/>
+                        <DataGridTextColumn Header="Value" Width="auto" Binding="{Binding Data_Value}"/>
 
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
@@ -68,7 +107,7 @@
             </Border>
 
             <!--Ragination Section-->
-            <Border Grid.Row="4" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+            <Border Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
                     CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
                 <StackPanel Orientation="Horizontal">
 
