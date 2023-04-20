@@ -45,14 +45,26 @@ namespace SOM.View
 
             btn_login.IsEnabled = false;
 
-            FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
-            var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
+            try
+            {
+                // Firebase 연결
+                FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
+                var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
 
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
+                // 메인 화면 열기
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
 
-            var window = Window.GetWindow(this);
-            window.Close();
+                // 로그인 창 닫기
+                var window = Window.GetWindow(this);
+                window.Close();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+                Tb_ErrorMsg.Text = error.Message;
+                btn_login.IsEnabled = true;
+            }
         }
     }
 }
