@@ -23,8 +23,8 @@
         <Border Margin="10" CornerRadius="15 15 15 15">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,5" EndPoint="0,5">
-                    <GradientStop Color="#252527" Offset="0"/>
-                    <GradientStop Color="#252527" Offset="1"/>
+                    <GradientStop Color="#2f49cf" Offset="0"/>
+                    <GradientStop Color="#2f49cf" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -66,28 +66,28 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Params" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Datas" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Datas" Style="{StaticResource menuButton}" Click="Btn_Data_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Datas" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>

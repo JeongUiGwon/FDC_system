@@ -11,10 +11,6 @@
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="Equipments">
 
-    <Page.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-    </Page.Resources>
-
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -32,60 +28,56 @@
             </Grid.RowDefinitions>
 
             <!--Title-->
-            <Border Background="#e02b6b" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
+            <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
                 <TextBlock Text="Equipments" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
-            <!--Users Datagrid-->
+            <!--Contents-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True"
+
+                <StackPanel Margin="0 35 0 0">
+                    
+                    <!--Add Button-->
+                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10">
+                        <Border CornerRadius="10 10 10 10" >
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                <TextBlock Text="Add Equipments" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
+                    
+                    <!--Equipments Datagrid-->
+                    <DataGrid x:Name="EquipmentsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="State" Width="*" Binding="{Binding State}"/>
+                            <DataGridTextColumn Header="Interlock ID" Width="*" Binding="{Binding Interlock_ID}"/>
+                            <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding Creator}"/>
+                            <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding Modifier}"/>
 
-                        <DataGridTemplateColumn Header="Users" IsReadOnly="True" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1" Text="{Binding Character}"/>
-                                        </Border>
+                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Style="{StaticResource gridEditButton}">
+                                                <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            </Button>
+                                            <Button Style="{StaticResource gridRemoveButton}">
+                                                <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
 
-                                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <DataGridTextColumn Header="Position" IsReadOnly="True" Width="*" Binding="{Binding Position}"/>
-                        <DataGridTextColumn Header="Email Address" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
-                        <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding Phone}"/>
-
-                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}">
-                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                        <Button Style="{StaticResource gridRemoveButton}">
-                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
             </Border>
 
             <!--Ragination Section-->
@@ -100,7 +92,7 @@
                     <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
 
                     <Button Style="{StaticResource pagingButton}" Content="1" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#e02b6b" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#2f49cf" Foreground="#ffffff"/>
                     <Button Style="{StaticResource pagingButton}" Content="3" />
 
                     <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />

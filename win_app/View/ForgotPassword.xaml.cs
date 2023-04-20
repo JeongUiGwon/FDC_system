@@ -32,7 +32,7 @@ namespace SOM.View
 
             btn_send_email.IsEnabled = false;
 
-            FirebaseAuth firebaseAuth = new FirebaseAuth();
+            FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             await firebaseAuth.client.ResetEmailPasswordAsync(email);
 
             NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));

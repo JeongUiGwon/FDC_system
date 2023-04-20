@@ -334,10 +334,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Firebase.cs" />
-    <Compile Include="Model\Users.cs" />
+    <Compile Include="Model\EquipmentsDataModel.cs" />
+    <Compile Include="Model\EquipmentsModel.cs" />
+    <Compile Include="Model\FirebaseAuthModel.cs" />
+    <Compile Include="Model\InterlockModel.cs" />
+    <Compile Include="Model\ParamsModel.cs" />
+    <Compile Include="Model\RecipeModel.cs" />
+    <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataPage.xaml.cs">
+      <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Equipments.xaml.cs">
       <DependentUpon>Equipments.xaml</DependentUpon>
@@ -348,6 +356,9 @@
     <Compile Include="View\InfoCard.xaml.cs">
       <DependentUpon>InfoCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InterlockPage.xaml.cs">
+      <DependentUpon>InterlockPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -357,6 +368,12 @@
     <Compile Include="View\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ParamsPage.xaml.cs">
+      <DependentUpon>ParamsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecipePage.xaml.cs">
+      <DependentUpon>RecipePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
@@ -364,6 +381,10 @@
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -376,6 +397,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InfoCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,6 +425,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ParamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

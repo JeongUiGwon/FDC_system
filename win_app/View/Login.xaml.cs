@@ -45,7 +45,7 @@ namespace SOM.View
 
             btn_login.IsEnabled = false;
 
-            FirebaseAuth firebaseAuth = new FirebaseAuth();
+            FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
 
             var mainWindow = new MainWindow();
