@@ -47,6 +47,14 @@ namespace SOM.View
 
             FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             var userCredential = await firebaseAuth.client.CreateUserWithEmailAndPasswordAsync(email, password, userName);
+
+            var customClaims = new Dictionary<string, object>()
+            {
+                { "Authority", "GUEST" }
+            };
+
+            SOM.Model.FirebaseAdminAuth firebase =  new SOM.Model.FirebaseAdminAuth();
+            await firebase.auth.SetCustomUserClaimsAsync(userCredential.User.Uid, customClaims);
             
             NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
         }

@@ -212,7 +212,7 @@
                         <Hyperlink NavigateUri="/View/ForgotPassword.xaml">Forgot Password?</Hyperlink>
                     </TextBlock>
 
-                    <TextBlock x:Name="Tb_ErrorMsg" FontSize="15" Foreground="Red" Margin="0 5 0 0"/>
+                    <TextBlock x:Name="Tb_ErrorMsg" FontSize="13" Foreground="Red" Margin="0 5 0 0"/>
 
                     <CheckBox Margin="0 40 0 20" FontSize="13">
                         <TextBlock>
