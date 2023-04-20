@@ -3,7 +3,7 @@ from django.db import models
 class Equipment(models.Model):
     equipment_id = models.CharField(max_length=100, primary_key=True)
     equipment_name = models.CharField(max_length=100)
-    equipment_state = models.IntegerField(default=1)
+    equipment_state = models.CharField(max_length=10)
     creater_name = models.CharField(max_length=100)
     created_at = models.DateTimeField()
     modifier_name = models.CharField(max_length=100)
