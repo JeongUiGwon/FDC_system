@@ -29,6 +29,10 @@ namespace SOM.View
         public Login()
         {
             InitializeComponent();
+
+            tb_email.Text = Properties.Settings.Default.Email;
+            pwdBox_pwd.Password = Properties.Settings.Default.Password;
+            chk_Remember.IsChecked = Properties.Settings.Default.IsRememberLogin;
         }
 
         private void Btn_SignUp_Click(object sender, RoutedEventArgs e)
@@ -61,6 +65,22 @@ namespace SOM.View
                 Dictionary<string, object> claims = user.CustomClaims as Dictionary<string, object>;
                 var authority = claims["Authority"];
 
+                // 이메일, 비밀번호 정보 저장
+                if (chk_Remember.IsChecked == true)
+                {
+                    Properties.Settings.Default.Email = tb_email.Text;
+                    Properties.Settings.Default.Password = pwdBox_pwd.Password.ToString();
+                    Properties.Settings.Default.IsRememberLogin = true;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.Email = "";
+                    Properties.Settings.Default.Password = "";
+                    Properties.Settings.Default.IsRememberLogin = false;
+                    Properties.Settings.Default.Save();
+                }
+
                 // 권한 접근
                 if (authority.ToString() == "Guest") 
                 {
@@ -79,7 +99,7 @@ namespace SOM.View
             }
             catch (FirebaseAuthHttpException ex)
             {
-                // Firebase Exception
+                // Firebase 예외처리
                 Tb_ErrorMsg.Text = ex.Reason.ToString();
             }
             finally { 
