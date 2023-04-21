@@ -343,8 +343,6 @@ C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll
@@ -626,3 +624,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Auth.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Core.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Core.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Collections.Immutable.xml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.baml

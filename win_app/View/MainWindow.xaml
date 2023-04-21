@@ -12,7 +12,8 @@
         Height="740" 
         Width="1280"
         WindowStartupLocation="CenterScreen"
-        Background="#f0f2f5">
+        Background="#f0f2f5"
+        WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>

@@ -368,6 +368,7 @@
     <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
+    <Compile Include="Model\RoleModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -405,8 +406,8 @@
     <Compile Include="View\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Users.xaml.cs">
-      <DependentUpon>Users.xaml</DependentUpon>
+    <Compile Include="View\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Dashboard.xaml">
       <SubType>Designer</SubType>
@@ -468,7 +469,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Users.xaml">
+    <Page Include="View\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
