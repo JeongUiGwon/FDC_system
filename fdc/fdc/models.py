@@ -50,6 +50,7 @@ def random_id_generate(table_name, length):
 
     return id
 
+is_manage = True
 class Equipment(models.Model):
     equipment_id = models.CharField(max_length=100, primary_key=True)
     equipment_name = models.CharField(max_length=100)
