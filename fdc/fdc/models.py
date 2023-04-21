@@ -1,5 +1,6 @@
 from django.db import models
 
+is_manage = True
 class Equipment(models.Model):
     equipment_id = models.CharField(max_length=100, primary_key=True)
     equipment_name = models.CharField(max_length=100)
@@ -47,9 +48,7 @@ class Recipe(models.Model):
         db_table = 'recipe'
 
 class LotLog(models.Model):
-    data_id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=100)
-    version = models.CharField(max_length=20)
+    log_id = models.AutoField(primary_key=True)
     factory_id = models.IntegerField()
     equipment_id = models.IntegerField()
     created_at = models.DateTimeField()
@@ -58,12 +57,10 @@ class LotLog(models.Model):
 
     class Meta:
         db_table = 'lot_log'
-
+        managed = is_manage
 
 class EquipmentState(models.Model):
-    lot_no = models.IntegerField(primary_key=True)
-    msg_name = models.CharField(max_length=100)
-    msg_version = models.CharField(max_length=20)
+    id = models.IntegerField(primary_key=True)
     factory_id = models.IntegerField()
     equipment_id = models.IntegerField()
     created_at = models.DateTimeField()
@@ -73,10 +70,9 @@ class EquipmentState(models.Model):
     class Meta:
         db_table = 'equipment_state'
 
+
 class ParamLog(models.Model):
-    lot_no = models.IntegerField(primary_key=True)
-    msg_name = models.CharField(max_length=100)
-    msg_version = models.CharField(max_length=20)
+    log_id = models.AutoField(primary_key=True)
     factory_id = models.IntegerField()
     equipment_id = models.IntegerField()
     recipe_id = models.IntegerField()
@@ -86,12 +82,14 @@ class ParamLog(models.Model):
 
     class Meta:
         db_table = 'param_log'
-
+        managed = is_manage
 class InterlockLog(models.Model):
-    lot_no = models.IntegerField(primary_key=True)
-    msg_name = models.CharField(max_length=100)
-    msg_version = models.CharField(max_length=20)
-    factory_id = models.IntegerField()
+    log_id = models.AutoField(primary_key=True)
+    factory_id = models.CharField(max_length=20)
+    equipment_id = models.CharField(max_length=100, default='')
+    equipment_name = models.CharField(max_length=100, default='')
+    cause_equip_id = models.CharField(max_length=100, default='')
+    cause_equip_name = models.CharField(max_length=100, default='')
     param_id = models.CharField(max_length=100)
     recipe_id = models.CharField(max_length=100)
     lot_id = models.IntegerField()
@@ -101,13 +99,14 @@ class InterlockLog(models.Model):
     lower_limit = models.IntegerField(null=True)
     upper_limit = models.IntegerField(null=True)
     data_value = models.IntegerField(null=True)
-    cctv_video = models.CharField(max_length=100, null=True)
+    cctv_video_url = models.CharField(max_length=100, null=True)
 
     class Meta:
         db_table = 'interlock_log'
+        managed = is_manage
 
 class ParamHistory(models.Model):
-    log_id = models.IntegerField(primary_key=True)
+    log_id = models.AutoField(primary_key=True)
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField()
     param_id = models.DateTimeField()
@@ -117,9 +116,10 @@ class ParamHistory(models.Model):
 
     class Meta:
         db_table = 'param_history'
+        managed = is_manage
 
 class RecipeHistory(models.Model):
-    log_id = models.IntegerField(primary_key=True)
+    log_id = models.AutoField(primary_key=True)
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField()
     recipe_id = models.CharField(max_length=100)
@@ -129,3 +129,4 @@ class RecipeHistory(models.Model):
 
     class Meta:
         db_table = 'recipe_history'
+        managed = is_manage
