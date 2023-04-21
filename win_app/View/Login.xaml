@@ -192,7 +192,7 @@
                                     Margin="75 0">
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Text=""
+                             FontSize="15"
                              Name="tb_email"
                              materialDesign:HintAssist.Hint="Email"
                              materialDesign:HintAssist.FloatingOffset="0, -20"
@@ -201,7 +201,7 @@
                              BorderThickness="0 0 0 1.5" />
 
                     <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                 Password=""
+                                 FontSize="15"
                                  Name="pwdBox_pwd"
                                  materialDesign:HintAssist.Hint="Password"
                                  materialDesign:HintAssist.FloatingOffset="0, -18"
@@ -212,7 +212,9 @@
                         <Hyperlink NavigateUri="/View/ForgotPassword.xaml">Forgot Password?</Hyperlink>
                     </TextBlock>
 
-                    <CheckBox Margin="0 40 0 20" FontSize="13">
+                    <TextBlock x:Name="Tb_ErrorMsg" FontSize="13" Foreground="Red" Margin="0 5 0 0"/>
+
+                    <CheckBox x:Name="chk_Remember" Margin="0 40 0 20" FontSize="13">
                         <TextBlock>
                                     <Run Foreground="#b6b6b6">Remember me</Run>
                         </TextBlock>
