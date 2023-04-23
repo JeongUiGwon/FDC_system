@@ -95,9 +95,16 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
+                <Button Name="Btn_Profile" Style="{StaticResource menuButton}" Click="Btn_Profile_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Profile" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Users" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>

@@ -35,6 +35,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/Dashboard.xaml", UriKind.Relative));
@@ -49,6 +50,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/Equipments.xaml", UriKind.Relative));
@@ -63,6 +65,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/ParamsPage.xaml", UriKind.Relative));
@@ -76,6 +79,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButtonActive"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/RecipePage.xaml", UriKind.Relative));
@@ -89,6 +93,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/DataPage.xaml", UriKind.Relative));
@@ -102,6 +107,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             this.frame.Navigate(new Uri("/View/InterlockPage.xaml", UriKind.Relative));
@@ -115,6 +121,7 @@ namespace SOM
             this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
 
             this.frame.Navigate(new Uri("/View/UsersPage.xaml", UriKind.Relative));
