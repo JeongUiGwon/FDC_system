@@ -64,7 +64,8 @@ namespace SOM.View
                 var user = await firebaseAdminAuth.auth.GetUserAsync(userCredential.User.Uid);
                 Dictionary<string, object> claims = user.CustomClaims as Dictionary<string, object>;
                 var authority = claims["Authority"].ToString();
-                var phoneNumber = claims["PhoneNumber"].ToString();
+                var phoneNumber = "";
+                if (claims["PhoneNumber"] != null) phoneNumber = claims["PhoneNumber"].ToString();
 
                 // 이메일, 비밀번호 정보 저장
                 if (chk_Remember.IsChecked == true)
@@ -90,7 +91,7 @@ namespace SOM.View
                 else
                 {
                     // 현재 로그인 유저 정보 저장
-                    UsersModel.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, phoneNumber);
+                    App.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, phoneNumber);
 
                     // 메인 화면 열기
                     var mainWindow = new MainWindow();

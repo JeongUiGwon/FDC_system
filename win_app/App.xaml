@@ -256,7 +256,19 @@
                 <Setter Property="Height" Value="20"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
-    
+
+            <Style x:Key="ProfileTextBox" TargetType="TextBox">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="MinHeight" Value="30"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="#908d8e" BorderThickness="1"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
             <!--#region Datagrid Style-->
                     
             <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">

@@ -16,7 +16,7 @@ namespace SOM
         {
             InitializeComponent();
 
-            DataContext = UsersModel.CurrentUser;
+            DataContext = App.CurrentUser;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -29,102 +29,116 @@ namespace SOM
 
         private void Btn_Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/Dashboard.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/Dashboard.xaml", UriKind.Relative));
 
         }
 
         private void Btn_Equipments_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/Equipments.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/Equipments.xaml", UriKind.Relative));
         }
 
 
         private void Btn_Params_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/ParamsPage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/ParamsPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Recipe_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/RecipePage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/RecipePage.xaml", UriKind.Relative));
         }
 
         private void Btn_Data_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/DataPage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/DataPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Interlock_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButtonActive"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            this.frame.Navigate(new Uri("/View/InterlockPage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/InterlockPage.xaml", UriKind.Relative));
+        }
+
+        private void Btn_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+
+            frame.Navigate(new Uri("/View/ProfilePage.xaml", UriKind.Relative));
         }
 
         private void Btn_Users_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
-            this.Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
 
-            this.frame.Navigate(new Uri("/View/UsersPage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/UsersPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Logout_Click(object sender, RoutedEventArgs e)
