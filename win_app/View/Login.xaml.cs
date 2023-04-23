@@ -63,7 +63,8 @@ namespace SOM.View
                 FirebaseAdminAuth firebaseAdminAuth = new FirebaseAdminAuth();
                 var user = await firebaseAdminAuth.auth.GetUserAsync(userCredential.User.Uid);
                 Dictionary<string, object> claims = user.CustomClaims as Dictionary<string, object>;
-                var authority = claims["Authority"];
+                var authority = claims["Authority"].ToString();
+                var phoneNumber = claims["PhoneNumber"].ToString();
 
                 // 이메일, 비밀번호 정보 저장
                 if (chk_Remember.IsChecked == true)
@@ -82,12 +83,15 @@ namespace SOM.View
                 }
 
                 // 권한 접근
-                if (authority.ToString() == "Guest") 
+                if (authority == "Guest") 
                 {
                     Tb_ErrorMsg.Text = "Authoriztion Error";
                 }
                 else
                 {
+                    // 현재 로그인 유저 정보 저장
+                    UsersModel.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, phoneNumber);
+
                     // 메인 화면 열기
                     var mainWindow = new MainWindow();
                     mainWindow.Show();

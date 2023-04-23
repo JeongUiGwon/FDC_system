@@ -15,6 +15,8 @@ namespace SOM
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = UsersModel.CurrentUser;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

@@ -9,9 +9,14 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:local="clr-namespace:SOM.View"
+      xmlns:viewmodels="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="Users">
-    
+
+    <Page.DataContext>
+        <viewmodels:UsersViewModel />
+    </Page.DataContext>
+
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -37,13 +42,14 @@
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
                 <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17"
-                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                      RowEditEnding="DG_UsersDatagrid_RowEditEnding" ItemsSource="{Binding UsersList}">
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Name" Width="auto" IsReadOnly="True" Binding="{Binding UserName}"/>
                         <DataGridTextColumn Header="Email" Width="auto" IsReadOnly="True" Binding="{Binding Email}"/>
 
-                        <DataGridComboBoxColumn Header="Role" Width="auto" SelectedItemBinding="{Binding Role}" >
+                        <DataGridComboBoxColumn Header="Role" Width="auto" SelectedValueBinding="{Binding Role}" >
                             <DataGridComboBoxColumn.ItemsSource>
                                 <x:Array Type="{x:Type sys:String}">
                                     <sys:String>Guest</sys:String>
@@ -53,15 +59,7 @@
                             </DataGridComboBoxColumn.ItemsSource>
                         </DataGridComboBoxColumn>
 
-                        <DataGridTemplateColumn Header="" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource gridRemoveButton}">
-                                        <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Phone Number" Width="auto" IsReadOnly="True" Binding="{Binding PhoneNumber}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>      

@@ -1,5 +1,6 @@
 ﻿using Firebase.Auth;
 using FirebaseAdmin.Auth;
+using Google.Apis.Auth.OAuth2;
 using SOM.Model;
 using System;
 using System.Collections.Generic;
@@ -27,18 +28,27 @@ namespace SOM.View
         public UsersPage()
         {
             InitializeComponent();
-
-            SetUsersList();
         }
 
-        private static ObservableCollection<UsersModel> users;
-
-        private async void SetUsersList()
+        private async void DG_UsersDatagrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            FirebaseAdminAuth firebaseAdminAuth = new FirebaseAdminAuth();
+            var editedItem = e.Row.Item as UsersModel;
+            var customClaims = new Dictionary<string, object>()
+            {
+                { "Authority", editedItem.Role },
+                { "PhoneNumber", editedItem.PhoneNumber }
+            };
 
-            users = await firebaseAdminAuth.GetUserList();
-            UsersDatagrid.ItemsSource = users;
+            FirebaseAdminAuth firebase = new FirebaseAdminAuth();
+            await firebase.auth.SetCustomUserClaimsAsync(editedItem.UID, customClaims);
+
+            customClaims = new Dictionary<string, object>()
+            {
+                { "Authority", editedItem.Role },
+                { "PhoneNumber", editedItem.PhoneNumber }
+            };
+
+            await firebase.auth.SetCustomUserClaimsAsync(editedItem.UID, customClaims);
         }
     }
 }

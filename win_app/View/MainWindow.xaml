@@ -7,6 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="SOM(Sight Over Manufactoring)" 
         Height="740" 
@@ -35,18 +36,17 @@
                     <Border CornerRadius="10" Width="40" Height="40">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
-                                <GradientStop Color="#7f7cf1" Offset="0"/>
-                                <GradientStop Color="#d3b7ff" Offset="1"/>
+                                <GradientStop Color="#799EFB" Offset="0"/>
+                                <GradientStop Color="#799EFB" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
 
-                        <TextBlock Text="UG" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
-                                   TextAlignment="Center" VerticalAlignment="Center" Margin="3 0 0 2"/>
+                        <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff" Width="30" Height="30"/>
                     </Border>
 
                     <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="Jeong UiGwon" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
-                        <TextBlock Text="Admin" FontSize="11" Foreground="#ffffff"/>
+                        <TextBlock Text="{Binding UserName}" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
+                        <TextBlock Text="{Binding Role}" FontSize="11" Foreground="#ffffff"/>
                     </StackPanel>
                 </StackPanel>
 
