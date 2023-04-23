@@ -214,7 +214,7 @@
 
                     <TextBlock x:Name="Tb_ErrorMsg" FontSize="13" Foreground="Red" Margin="0 5 0 0"/>
 
-                    <CheckBox x:Name="chk_Remember" Margin="0 40 0 20" FontSize="13">
+                    <CheckBox x:Name="chk_Remember" Margin="0 40 0 20" FontSize="15">
                         <TextBlock>
                                     <Run Foreground="#b6b6b6">Remember me</Run>
                         </TextBlock>

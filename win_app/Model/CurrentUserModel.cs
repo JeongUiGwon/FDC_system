@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace SOM.Model
 {
-    public class UsersModel
+    public class CurrentUserModel
     {
         public string Email { get; set; }
         public string UID { get; set; }
@@ -16,7 +14,7 @@ namespace SOM.Model
         public string Role { get; set; }
         public string PhoneNumber { get; set; }
 
-        public UsersModel(string Email, string UID, string UserName, string Role, string PhoneNumber = null)
+        public CurrentUserModel(string Email, string UID, string UserName, string Role, string PhoneNumber = null)
         {
             this.Email = Email;
             this.UID = UID;
@@ -24,7 +22,5 @@ namespace SOM.Model
             this.Role = Role;
             this.PhoneNumber = PhoneNumber;
         }
-
-        public static UsersModel CurrentUser { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace SOM
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = UsersModel.CurrentUser;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -115,7 +117,7 @@ namespace SOM
             this.Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
             this.Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
 
-            this.frame.Navigate(new Uri("/View/Users.xaml", UriKind.Relative));
+            this.frame.Navigate(new Uri("/View/UsersPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Logout_Click(object sender, RoutedEventArgs e)

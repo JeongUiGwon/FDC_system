@@ -50,10 +50,11 @@ namespace SOM.View
 
             var customClaims = new Dictionary<string, object>()
             {
-                { "Authority", "GUEST" }
+                { "Authority", "Guest" },
+                { "PhoneNumber", "" }
             };
 
-            SOM.Model.FirebaseAdminAuth firebase =  new SOM.Model.FirebaseAdminAuth();
+            FirebaseAdminAuth firebase =  new FirebaseAdminAuth();
             await firebase.auth.SetCustomUserClaimsAsync(userCredential.User.Uid, customClaims);
             
             NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
