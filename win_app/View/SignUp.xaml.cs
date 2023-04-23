@@ -50,7 +50,7 @@ namespace SOM.View
 
             var customClaims = new Dictionary<string, object>()
             {
-                { "Authority", "Admin" },
+                { "Authority", "Guest" },
                 { "PhoneNumber", "" }
             };
 
