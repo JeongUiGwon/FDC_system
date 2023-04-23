@@ -557,11 +557,9 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.g.c
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\InfoCard.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginWindow.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Order.g.cs
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM_MarkupCompile.lref
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.baml
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ParamsPage.g.cs
@@ -626,3 +624,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Core.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Collections.Immutable.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\UsersPage.baml

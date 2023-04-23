@@ -29,12 +29,9 @@ namespace SOM.View
             InitializeComponent();
 
             SetUsersList();
-
-            DataContext = new RoleModel();
         }
 
         private static ObservableCollection<UsersModel> users;
-        public enum RoleList { Guest, Maintainer, Admin };
 
         private async void SetUsersList()
         {

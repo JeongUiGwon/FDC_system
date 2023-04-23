@@ -368,7 +368,6 @@
     <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
-    <Compile Include="Model\RoleModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
