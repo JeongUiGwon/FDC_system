@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SOM.Services
 {
-    public class GetEquipmentClass
+    public class GetEquipment
     {
         public static async Task<ObservableCollection<EquipmentsModel>> GetEquipmentAsync()
         {

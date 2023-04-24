@@ -19,9 +19,20 @@ namespace SOM.View
 
         private async void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<EquipmentsModel> response = await GetEquipmentClass.GetEquipmentAsync();
+            ObservableCollection<EquipmentsModel> response = await GetEquipment.GetEquipmentAsync();
 
             EquipmentsDatagrid.ItemsSource = response;
+        }
+
+        private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
+            string equip_id = equipment.equipment_id;
+
+            await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
+
+            NavigationService.Refresh();
         }
     }
 }

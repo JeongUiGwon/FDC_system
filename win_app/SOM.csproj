@@ -378,7 +378,8 @@
     <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
-    <Compile Include="Services\GetEquipmentClass.cs" />
+    <Compile Include="Services\DeleteEquipmentID.cs" />
+    <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />

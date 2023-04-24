@@ -31,7 +31,7 @@ namespace SOM.ViewModel
 
         private async void SetEquipments()
         {
-            ObservableCollection<EquipmentsModel> response = await GetEquipmentClass.GetEquipmentAsync();
+            ObservableCollection<EquipmentsModel> response = await GetEquipment.GetEquipmentAsync();
             Equipments = new ObservableCollection<EquipmentsModel>(response);
         }
 

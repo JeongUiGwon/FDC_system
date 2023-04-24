@@ -36,7 +36,7 @@
             <!--Contents-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
 
-                <StackPanel Margin="0 35 0 0">
+                <StackPanel Margin="10 35 10 10">
                     
                     <!--Add Button-->
                     <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" 
@@ -56,11 +56,11 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding equipment_id}"/>
-                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding equipment_name}"/>
-                            <DataGridTextColumn Header="State" Width="*" Binding="{Binding equipment_state}"/>
-                            <DataGridTextColumn Header="Interlock ID" Width="*" Binding="{Binding interlock_id}"/>
-                            <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding creater_name}"/>
-                            <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding modifier_name}"/>
+                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding equipment_name}"/>
+                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding equipment_state}"/>
+                            <DataGridTextColumn Header="Interlock ID" Width="auto" Binding="{Binding interlock_id}"/>
+                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creater_name}"/>
+                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
                             <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -69,7 +69,8 @@
                                             <Button Style="{StaticResource gridEditButton}">
                                                 <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
-                                            <Button Style="{StaticResource gridRemoveButton}">
+                                            <Button Style="{StaticResource gridRemoveButton}"
+                                                    Click="Btn_Delete_Click">
                                                 <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                         </StackPanel>
