@@ -58,5 +58,17 @@ namespace SOM.Properties {
                 this["IsRememberLogin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://k8a201.p.ssafy.io:8000")]
+        public string BackendAPIaddress {
+            get {
+                return ((string)(this["BackendAPIaddress"]));
+            }
+            set {
+                this["BackendAPIaddress"] = value;
+            }
+        }
     }
 }

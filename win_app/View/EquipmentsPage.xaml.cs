@@ -1,6 +1,8 @@
 ﻿using SOM.Model;
+using SOM.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SOM.View
@@ -13,14 +15,13 @@ namespace SOM.View
         public EquipmentsPage()
         {
             InitializeComponent();
+        }
 
-            ObservableCollection<EquipmentsModel> equipments = new ObservableCollection<EquipmentsModel>();
+        private async void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<EquipmentsModel> response = await GetEquipmentClass.GetEquipmentAsync();
 
-            equipments.Add(new EquipmentsModel("abcd", "Equip1", 1, "abcd", "정의권", DateTime.Now, "정의권", DateTime.Now));
-            equipments.Add(new EquipmentsModel("efgh", "Equip2", 1, "efgh", "채민기", DateTime.Now, "채민기", DateTime.Now));
-            equipments.Add(new EquipmentsModel("higk", "Equip2", 1, "higk", "김지선", DateTime.Now, "김지선", DateTime.Now));
-
-            EquipmentsDatagrid.ItemsSource = equipments;
+            EquipmentsDatagrid.ItemsSource = response;
         }
     }
 }
