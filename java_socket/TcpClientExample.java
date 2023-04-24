@@ -22,7 +22,7 @@ public class TcpClientExample {
           DataOutputStream dos = new DataOutputStream(os);
 
           // send bytes
-          message = "This is Minki 나는 민기다 123";
+          message = "This is Sangbin 나는 상빈이다 123";
           bytes = message.getBytes("UTF-8");
 
           dos.writeInt(bytes.length);
