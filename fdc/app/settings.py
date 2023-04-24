@@ -26,7 +26,7 @@ SECRET_KEY = my_setting.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['43.200.152.249', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['k8a201.p.ssafy.io','localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fdc'
+    'fdc',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
