@@ -24,9 +24,9 @@ namespace SOM.View
     /// <summary>
     /// Login.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Login : Page
+    public partial class LoginPage : Page
     {
-        public Login()
+        public LoginPage()
         {
             InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace SOM.View
 
         private void Btn_SignUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/SignUp.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/SignUpPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
@@ -51,6 +51,7 @@ namespace SOM.View
             string email = tb_email.Text;
             string password = pwdBox_pwd.Password;
 
+            // Login 버튼 비활성화
             btn_login.IsEnabled = false;
 
             try
@@ -58,14 +59,15 @@ namespace SOM.View
                 // Firebase 연결
                 FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
                 var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
-
+                
                 // User 권한 조회
                 FirebaseAdminAuth firebaseAdminAuth = new FirebaseAdminAuth();
                 var user = await firebaseAdminAuth.auth.GetUserAsync(userCredential.User.Uid);
                 Dictionary<string, object> claims = user.CustomClaims as Dictionary<string, object>;
                 var authority = claims["Authority"].ToString();
-                var phoneNumber = claims["PhoneNumber"].ToString();
-
+                var phoneNumber = "";
+                if (claims["PhoneNumber"] != null) phoneNumber = claims["PhoneNumber"].ToString();
+                
                 // 이메일, 비밀번호 정보 저장
                 if (chk_Remember.IsChecked == true)
                 {
@@ -90,7 +92,7 @@ namespace SOM.View
                 else
                 {
                     // 현재 로그인 유저 정보 저장
-                    UsersModel.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, phoneNumber);
+                    App.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, phoneNumber);
 
                     // 메인 화면 열기
                     var mainWindow = new MainWindow();
@@ -106,7 +108,9 @@ namespace SOM.View
                 // Firebase 예외처리
                 Tb_ErrorMsg.Text = ex.Reason.ToString();
             }
-            finally { 
+            finally 
+            { 
+                // Email 입력란 포커스 및 Login 버튼 활성화
                 tb_email.Focus();
                 btn_login.IsEnabled = true;
             }

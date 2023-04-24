@@ -19,16 +19,16 @@ namespace SOM.View
     /// <summary>
     /// SignUp.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SignUp : Page
+    public partial class SignUpPage : Page
     {
-        public SignUp()
+        public SignUpPage()
         {
             InitializeComponent();
         }
 
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace SOM.View
             FirebaseAdminAuth firebase =  new FirebaseAdminAuth();
             await firebase.auth.SetCustomUserClaimsAsync(userCredential.User.Uid, customClaims);
             
-            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
         }
     }
 }

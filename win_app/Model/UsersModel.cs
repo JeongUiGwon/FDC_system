@@ -24,7 +24,5 @@ namespace SOM.Model
             this.Role = Role;
             this.PhoneNumber = PhoneNumber;
         }
-
-        public static UsersModel CurrentUser { get; set; }
     }
 }

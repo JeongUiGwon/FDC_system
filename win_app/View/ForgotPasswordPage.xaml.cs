@@ -19,9 +19,9 @@ namespace SOM.View
     /// <summary>
     /// ForgotPassword.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class ForgotPassword : Page
+    public partial class ForgotPasswordPage : Page
     {
-        public ForgotPassword()
+        public ForgotPasswordPage()
         {
             InitializeComponent();
         }
@@ -35,12 +35,12 @@ namespace SOM.View
             FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             await firebaseAuth.client.ResetEmailPasswordAsync(email);
 
-            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
         }
 
         private void Btn_LoginNow_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Login.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
