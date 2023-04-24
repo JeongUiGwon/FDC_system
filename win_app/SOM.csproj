@@ -361,7 +361,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\CurrentUserModel.cs" />
     <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAdminAuth.cs" />
@@ -371,17 +370,20 @@
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
-    <Compile Include="View\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
+    <Compile Include="View\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DataPage.xaml.cs">
       <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Equipments.xaml.cs">
-      <DependentUpon>Equipments.xaml</DependentUpon>
+    <Compile Include="View\EquipmentsPage.xaml.cs">
+      <DependentUpon>EquipmentsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ForgotPassword.xaml.cs">
-      <DependentUpon>ForgotPassword.xaml</DependentUpon>
+    <Compile Include="View\ForgotPasswordPage.xaml.cs">
+      <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InfoCard.xaml.cs">
       <DependentUpon>InfoCard.xaml</DependentUpon>
@@ -389,8 +391,8 @@
     <Compile Include="View\InterlockPage.xaml.cs">
       <DependentUpon>InterlockPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -407,13 +409,17 @@
     <Compile Include="View\RecipePage.xaml.cs">
       <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SignUp.xaml.cs">
-      <DependentUpon>SignUp.xaml</DependentUpon>
+    <Compile Include="View\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Dashboard.xaml">
+    <Page Include="View\ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -421,11 +427,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Equipments.xaml">
+    <Page Include="View\EquipmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ForgotPassword.xaml">
+    <Page Include="View\ForgotPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -437,7 +443,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Login.xaml">
+    <Page Include="View\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -473,7 +479,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SignUp.xaml">
+    <Page Include="View\SignUpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

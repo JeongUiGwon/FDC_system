@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\
 SOM
 none
 false
 DEBUG;TRACE
-C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\App.xaml
-152105950893
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\App.xaml
+16-1145014313
 
-291079091414
-205-437874692
-View\Dashboard.xaml;View\DataPage.xaml;View\Equipments.xaml;View\ForgotPassword.xaml;View\InfoCard.xaml;View\InterlockPage.xaml;View\Login.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Order.xaml;View\ParamsPage.xaml;View\ProfilePage.xaml;View\RecipePage.xaml;View\SignUp.xaml;View\UsersPage.xaml;
+29-1298599978
+205-1015154666
+View\ChangePasswordPage.xaml;View\DashboardPage.xaml;View\DataPage.xaml;View\EquipmentsPage.xaml;View\ForgotPasswordPage.xaml;View\InfoCard.xaml;View\InterlockPage.xaml;View\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Order.xaml;View\ParamsPage.xaml;View\ProfilePage.xaml;View\RecipePage.xaml;View\SignUpPage.xaml;View\UsersPage.xaml;
 
 False
 

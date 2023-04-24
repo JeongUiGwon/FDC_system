@@ -15,10 +15,6 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.CoreCompileI
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.CopyComplete
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\MainWindow.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\MainWindow.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUp.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUp.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
@@ -206,8 +202,6 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.g.resources
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.Properties.Resources.resources
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.pdb
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPassword.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\InfoCard.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\InfoCard.g.cs
@@ -341,8 +335,6 @@ C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.csproj.CoreCom
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.csproj.CopyComplete
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\SOM.pdb
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll
@@ -560,8 +552,6 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Order.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM_MarkupCompile.lref
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Dashboard.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Equipments.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ParamsPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ParamsPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\RecipePage.g.cs
@@ -762,3 +752,17 @@ C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\RecipePage.ba
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\UsersPage.baml
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\ProfilePage.g.cs
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\ProfilePage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ProfilePage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ProfilePage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ChangePasswordPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ChangePasswordPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\EquipmentsPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPasswordPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUpPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\DashboardPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\EquipmentsPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPasswordPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUpPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\DashboardPage.baml

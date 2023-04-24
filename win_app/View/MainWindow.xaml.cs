@@ -38,7 +38,7 @@ namespace SOM
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            frame.Navigate(new Uri("/View/Dashboard.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/DashboardPage.xaml", UriKind.Relative));
 
         }
 
@@ -53,7 +53,7 @@ namespace SOM
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            frame.Navigate(new Uri("/View/Equipments.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/EquipmentsPage.xaml", UriKind.Relative));
         }
 
 
