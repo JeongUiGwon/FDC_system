@@ -46,7 +46,7 @@ public class TcpServerExample {
                   OutputStream os = this.socket.getOutputStream();
                   DataOutputStream dos = new DataOutputStream(os);
                   // 저장을 위한 출력스트림
-                  OutputStream fos = new FileOutputStream("C:/Users/SSAFY/Desktop/gitlab/자율/outputTest.txt");
+                  BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:/Users/SSAFY/Desktop/gitlab/자율/outputTest.txt", true), "UTF-8"));
 
                   // Socket에서 가져온 입력스트림
                   InputStream is = this.socket.getInputStream();
@@ -61,13 +61,12 @@ public class TcpServerExample {
                   String receiveMessage = new String(receiveByte, "utf-8");
                   System.out.println("receiveMessage : " + receiveMessage);
                   System.out.println("[ Data Receive Success ]\n");
-                  // 파일로 저장이왜안되지?????????????????????????????????????????????????????????
-                  byte[] by = receiveMessage.getBytes();
-                  fos.write(by);
-                  fos.close();
+                  // 한글깨짐 어디서?
+                  bw.write("\n"+receiveMessage);
+                  bw.close();
 
                   // send bytes
-                  String sendMessage = "I am Sangbin 나는 상빈이다 123";
+                  String sendMessage = "I am Server 나는 서버다 456";
                   byte[] sendBytes = sendMessage.getBytes("UTF-8");
                   int sendLength = sendBytes.length;
                   dos.writeInt(sendLength);
