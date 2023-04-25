@@ -7,12 +7,14 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="SOM(Sight Over Manufactoring)" 
         Height="740" 
         Width="1280"
         WindowStartupLocation="CenterScreen"
-        Background="#f0f2f5">
+        Background="#f0f2f5"
+        WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -23,8 +25,8 @@
         <Border Margin="10" CornerRadius="15 15 15 15">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,5" EndPoint="0,5">
-                    <GradientStop Color="#252527" Offset="0"/>
-                    <GradientStop Color="#252527" Offset="1"/>
+                    <GradientStop Color="#2f49cf" Offset="0"/>
+                    <GradientStop Color="#2f49cf" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -34,18 +36,17 @@
                     <Border CornerRadius="10" Width="40" Height="40">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
-                                <GradientStop Color="#7f7cf1" Offset="0"/>
-                                <GradientStop Color="#d3b7ff" Offset="1"/>
+                                <GradientStop Color="#799EFB" Offset="0"/>
+                                <GradientStop Color="#799EFB" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
 
-                        <TextBlock Text="UG" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
-                                   TextAlignment="Center" VerticalAlignment="Center" Margin="3 0 0 2"/>
+                        <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff" Width="30" Height="30"/>
                     </Border>
 
                     <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="Jeong UiGwon" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
-                        <TextBlock Text="Admin" FontSize="11" Foreground="#ffffff"/>
+                        <TextBlock Text="{Binding UserName}" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
+                        <TextBlock Text="{Binding Role}" FontSize="11" Foreground="#ffffff"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -66,37 +67,44 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Params" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Datas" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Datas" Style="{StaticResource menuButton}" Click="Btn_Data_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Datas" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}">
+                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
+                <Button Name="Btn_Profile" Style="{StaticResource menuButton}" Click="Btn_Profile_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Profile" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Users" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
@@ -113,7 +121,7 @@
         
         <!--Main Section-->
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
-            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Dashboard.xaml"/>
+            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/DashboardPage.xaml"/>
         </Border>        
     </Grid>
 </Window>

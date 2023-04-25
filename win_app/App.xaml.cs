@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SOM;
+using SOM.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,5 +20,6 @@ namespace SOM
     /// </summary>
     public partial class App : Application
     {
+        public static UsersModel CurrentUser { get; set; }
     }
 }

@@ -1,0 +1,97 @@
+﻿<Page x:Class="SOM.View.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:SOM.View"
+      xmlns:viewmodels="clr-namespace:SOM.ViewModel"
+      mc:Ignorable="d" MinHeight="500" MinWidth="700"
+      Title="Users">
+
+    <Page.DataContext>
+        <viewmodels:UsersViewModel />
+    </Page.DataContext>
+
+    <!--Main Section-->
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <GradientStop Color="#f0f2f5" Offset="0"/>
+                <GradientStop Color="#f0f2f5" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Title-->
+            <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
+                <TextBlock Text="Users" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+
+            <!--Users Datagrid-->
+            <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+                <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17"
+                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                      RowEditEnding="DG_UsersDatagrid_RowEditEnding" ItemsSource="{Binding UsersList}">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Name" Width="auto" IsReadOnly="True" Binding="{Binding UserName}"/>
+                        <DataGridTextColumn Header="Email" Width="auto" IsReadOnly="True" Binding="{Binding Email}"/>
+
+                        <DataGridComboBoxColumn Header="Role" Width="auto" SelectedValueBinding="{Binding Role}" >
+                            <DataGridComboBoxColumn.ItemsSource>
+                                <x:Array Type="{x:Type sys:String}">
+                                    <sys:String>Guest</sys:String>
+                                    <sys:String>User</sys:String>
+                                    <sys:String>Admin</sys:String>
+                                </x:Array>
+                            </DataGridComboBoxColumn.ItemsSource>
+                        </DataGridComboBoxColumn>
+
+                        <DataGridTextColumn Header="Phone Number" Width="auto" IsReadOnly="True" Binding="{Binding PhoneNumber}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>      
+            
+            <!--Ragination Section-->
+            <Border Grid.Row="4" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Style="{StaticResource pagingButton}">
+                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#2f49cf" Foreground="#ffffff" />
+                    <Button Style="{StaticResource pagingButton}" Content="2" />
+                    <Button Style="{StaticResource pagingButton}" Content="3" />
+
+                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
+
+                    <Button Style="{StaticResource pagingButton}" Content="7" />
+                    <Button Style="{StaticResource pagingButton}" Content="8" />
+                    <Button Style="{StaticResource pagingButton}" Content="9" />
+                    
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+                    
+                    <Button Style="{StaticResource pagingButton}">
+                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Page>
