@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:SOM.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddEquipmentWindow" Height="510" Width="500"
+        Title="AddEquipmentWindow" Height="540" Width="500"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Border Background="#ffffff" CornerRadius="20" BorderBrush="#757A89" BorderThickness="0.5" MouseDown="Border_MouseDown">
-        <StackPanel>
+        <StackPanel >
             <!--Close Button-->
             <Button VerticalAlignment="Top" Width="50" Height="40" HorizontalAlignment="Right" Margin="0 13 14 0" Content="{materialDesign:PackIcon Kind=Close}" 
                     Background="Transparent" Foreground="Gray" BorderBrush="Transparent" Cursor="Hand" Click="Btn_Close_Click"/>
@@ -42,7 +42,8 @@
                 <!--Equipment ID Box-->
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="Equipment ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
-                    <TextBox materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                    <TextBox Name="Tb_EquipID"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>
                 </StackPanel>
@@ -50,7 +51,8 @@
                 <!--Equipment Name Box-->
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Text="Equipment Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
-                    <TextBox materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                    <TextBox Name="Tb_EquipName"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
                 </StackPanel>
@@ -58,7 +60,7 @@
                 <!--Equipment State Box-->
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Text="Equipment State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox FontSize="13" Margin="0 0 5 0">
+                    <ComboBox Name="Cb_EquipState" FontSize="13" Margin="0 0 5 0">
                         <ComboBoxItem>RUN</ComboBoxItem>
                         <ComboBoxItem>DOWN</ComboBoxItem>
                     </ComboBox>
@@ -67,7 +69,8 @@
                 <!--Interlock ID Box-->
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBlock Text="Interlock ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <TextBox materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                    <TextBox Name="Tb_InterlockID"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
                 </StackPanel>
@@ -75,13 +78,22 @@
                 <!--Interlock ID Box-->
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="Creator Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                    <TextBox Name="Tb_CreatorName" 
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>
                 </StackPanel>
             </Grid>
 
-            <Button Content="Register" HorizontalAlignment="Right" Margin="0 20 30 0" Background="#2f49cf"/>
+            <Border Name="Bdr_ErrorBox" Margin="30 10" Background="#ecc8c5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Error" Width="25" Height="25" VerticalAlignment="Center" Foreground="#ff4200" Margin="10 0 0 0"/>
+                    <TextBlock Text="Error :" FontWeight="DemiBold" Foreground="#ff4200" Margin="10 10 5 10" />
+                    <TextBlock Name="Tb_ErrorMsg" Text="error message" Foreground="#ff4200" Margin="0 10"/>
+                </StackPanel>
+            </Border>
+            
+            <Button Name="Btn_Register" Content="Register" HorizontalAlignment="Right" Margin="0 0 30 20" Background="#2f49cf" Click="Btn_Register_Click"/>
         </StackPanel>
     </Border>
 </Window>

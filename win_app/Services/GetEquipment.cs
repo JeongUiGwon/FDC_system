@@ -23,6 +23,7 @@ namespace SOM.Services
             };
 
             HttpResponseMessage response = await client.GetAsync("/equipment");
+
             if (response.IsSuccessStatusCode)
             {
                 contents = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();

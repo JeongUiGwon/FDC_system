@@ -59,7 +59,7 @@
                             <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding equipment_name}"/>
                             <DataGridTextColumn Header="State" Width="auto" Binding="{Binding equipment_state}"/>
                             <DataGridTextColumn Header="Interlock ID" Width="auto" Binding="{Binding interlock_id}"/>
-                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creater_name}"/>
+                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
                             <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">

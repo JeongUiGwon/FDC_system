@@ -21,6 +21,8 @@ namespace SOM.View
         {
             var addModal = new AddEquipmentModal();
             addModal.ShowDialog();
+
+            NavigationService.Refresh();
         }
 
         private async void Btn_Delete_Click(object sender, RoutedEventArgs e)

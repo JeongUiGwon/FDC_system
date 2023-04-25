@@ -381,6 +381,7 @@
     <Compile Include="Services\DeleteEquipmentID.cs" />
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
+    <Compile Include="Services\PostEquipment.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\AddEquipmentModal.xaml.cs">
