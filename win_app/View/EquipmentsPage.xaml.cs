@@ -1,6 +1,9 @@
 ﻿using SOM.Model;
+using SOM.Services;
+using SOM.View.Modal;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SOM.View
@@ -13,14 +16,39 @@ namespace SOM.View
         public EquipmentsPage()
         {
             InitializeComponent();
+        }
 
-            ObservableCollection<EquipmentsModel> equipments = new ObservableCollection<EquipmentsModel>();
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            var addModal = new AddEquipmentModal();
+            addModal.ShowDialog();
+            NavigationService.Refresh();
+        }
 
-            equipments.Add(new EquipmentsModel("abcd", "Equip1", 1, "abcd", "정의권", DateTime.Now, "정의권", DateTime.Now));
-            equipments.Add(new EquipmentsModel("efgh", "Equip2", 1, "efgh", "채민기", DateTime.Now, "채민기", DateTime.Now));
-            equipments.Add(new EquipmentsModel("higk", "Equip2", 1, "higk", "김지선", DateTime.Now, "김지선", DateTime.Now));
+        private void Btn_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
+            var editModal = new EditEquipmentModal();
 
-            EquipmentsDatagrid.ItemsSource = equipments;
+            editModal.DataContext = equipment;
+            editModal.ShowDialog();
+            NavigationService.Refresh();
+        }
+
+        private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
+            string equip_id = equipment.equipment_id;
+
+            var result = MessageBox.Show("Are you sure you want to remove this equipment information?", "Remove Equipment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
+                NavigationService.Refresh();
+            }
         }
     }
 }
