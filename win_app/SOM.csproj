@@ -430,6 +430,9 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modal\AddParamModal.xaml.cs">
+      <DependentUpon>AddParamModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Modal\EditEquipmentModal.xaml.cs">
       <DependentUpon>EditEquipmentModal.xaml</DependentUpon>
     </Compile>
@@ -496,6 +499,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Modal\AddParamModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Modal\EditEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

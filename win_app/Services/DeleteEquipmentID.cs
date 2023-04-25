@@ -7,22 +7,26 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace SOM.Services
 {
     public class DeleteEquipmentID
     {
-        public static async Task DeleteEquipmentIDAsync(string equip_id)
+        public static async Task<HttpResponseMessage> DeleteEquipmentIDAsync(string equip_id)
         {
             HttpClient client = HttpClientSingleton.client;
-            ObservableCollection<EquipmentsModel> contents = new ObservableCollection<EquipmentsModel>();
 
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
-
-            HttpResponseMessage response = await client.DeleteAsync("/equipment/" + equip_id);
+                HttpResponseMessage response = await client.DeleteAsync("/equipment/" + equip_id);
+                return response;
+            }
+            catch(HttpRequestException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

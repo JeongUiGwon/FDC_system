@@ -40,7 +40,7 @@ namespace SOM.Services
 
                 return response;
             }
-            catch (HttpResponseException ex)
+            catch (HttpRequestException ex)
             {
                 Console.WriteLine(ex);
                 return null;
