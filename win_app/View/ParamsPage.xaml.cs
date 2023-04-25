@@ -25,15 +25,6 @@ namespace SOM.View
         public ParamsPage()
         {
             InitializeComponent();
-
-            ObservableCollection<ParamsModel> paramsModel = new ObservableCollection<ParamsModel>();
-
-            paramsModel.Add(new ParamsModel("abcd", "abcd", "param1", "S", 1, 0, "정의권", DateTime.Now, "정의권", DateTime.Now));
-            paramsModel.Add(new ParamsModel("efgh", "efgh", "param2", "S", 1, 0, "채민기", DateTime.Now, "채민기", DateTime.Now));
-            paramsModel.Add(new ParamsModel("ijkl", "ijkl", "param3", "S", 1, 0, "김지선", DateTime.Now, "김지선", DateTime.Now));
-            paramsModel.Add(new ParamsModel("zxcv", "zxcv", "param4", "S", 1, 0, "임상빈", DateTime.Now, "임상빈", DateTime.Now));
-
-            ParamsDatagrid.ItemsSource = paramsModel;
         }
     }
 }

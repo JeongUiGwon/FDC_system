@@ -8,9 +8,14 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewmodel="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="ParamsPage">
 
+    <Page.DataContext>
+        <viewmodel:ParamsViewModel />
+    </Page.DataContext>
+    
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -49,18 +54,18 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding Equipment_ID}"/>
-                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Type" Width="*" Binding="{Binding Type}"/>
-                            <DataGridTextColumn Header="State" Width="*" Binding="{Binding State}"/>
-                            <DataGridTextColumn Header="Out Count" Width="*" Binding="{Binding Out_Count}"/>
-                            <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding Creator}"/>
-                            <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding Modifier}"/>
+                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
+                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding param_name}"/>
+                            <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding param_type}"/>
+                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding param_state}"/>
+                            <DataGridTextColumn Header="Out Count" Width="auto" Binding="{Binding out_count}"/>
+                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
                             <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>

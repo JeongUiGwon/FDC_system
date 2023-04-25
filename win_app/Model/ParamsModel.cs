@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace SOM.Model
 {
-    internal class ParamsModel
+    public class ParamsModel
     {
-        public string ID { get; set; }
-        public string Equipment_ID { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public int State { get; set; }
-        public int Out_Count { get; set; }
-        public string Creator { get; set; }
-        public DateTime Created_at { get; set; }
-        public string Modifier { get; set; }
-        public DateTime Updated_at { get; set; }
+        public string param_id { get; set; }
+        public string equipment { get; set; }
+        public string param_name { get; set; }
+        public string param_type { get; set; }
+        public int param_state { get; set; }
+        public int out_count { get; set; }
+        public string creator_name { get; set; }
+        public DateTime created_at { get; set; }
+        public string modifier_name { get; set; }
+        public DateTime updated_at { get; set; }
 
-        public ParamsModel(string ID, string Equipment_ID, string Name, string Type, int State, int Out_Count, string Creator, DateTime Created_at, string Modifier, DateTime Updated_at)
+        public ParamsModel(string param_id, string equipment, string param_name, string param_type, int param_state, int out_count, string creator_name, DateTime created_at, string modifier_name, DateTime updated_at)
         {
-            this.ID = ID;
-            this.Equipment_ID = Equipment_ID;
-            this.Name = Name;
-            this.Type = Type;
-            this.State = State;
-            this.Out_Count = Out_Count;
-            this.Creator = Creator;
-            this.Created_at = Created_at;
-            this.Modifier = Modifier;
-            this.Updated_at = Updated_at;
+            this.param_id = param_id;
+            this.equipment = equipment;
+            this.param_name = param_name;
+            this.param_type = param_type;
+            this.param_state = param_state;
+            this.out_count = out_count;
+            this.creator_name = creator_name;
+            this.created_at = created_at;
+            this.modifier_name = modifier_name;
+            this.updated_at = updated_at;
         }
     }
 }
