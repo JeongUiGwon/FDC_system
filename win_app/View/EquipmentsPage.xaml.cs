@@ -17,11 +17,10 @@ namespace SOM.View
             InitializeComponent();
         }
 
-        private async void Btn_Add_Click(object sender, RoutedEventArgs e)
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<EquipmentsModel> response = await GetEquipment.GetEquipmentAsync();
-
-            EquipmentsDatagrid.ItemsSource = response;
+            var addModal = new AddEquipmentModal();
+            addModal.ShowDialog();
         }
 
         private async void Btn_Delete_Click(object sender, RoutedEventArgs e)

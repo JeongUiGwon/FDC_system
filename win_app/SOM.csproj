@@ -383,6 +383,9 @@
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\AddEquipmentModal.xaml.cs">
+      <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
@@ -422,6 +425,10 @@
     <Compile Include="View\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddEquipmentModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

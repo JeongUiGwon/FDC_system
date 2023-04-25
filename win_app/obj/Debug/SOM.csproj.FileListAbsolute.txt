@@ -768,3 +768,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.WebHost
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.WebHost.xml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AddEquipmentModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AddEquipmentModal.baml
