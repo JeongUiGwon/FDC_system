@@ -765,8 +765,11 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\DashboardPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.WebHost.dll
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Web.Http.WebHost.xml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AddEquipmentModal.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AddEquipmentModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddEquipmentModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddEquipmentModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditEquipmentModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditEquipmentModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\System.Net.Http.Primitives.dll

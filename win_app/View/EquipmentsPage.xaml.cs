@@ -1,5 +1,6 @@
 ﻿using SOM.Model;
 using SOM.Services;
+using SOM.View.Modal;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -21,7 +22,17 @@ namespace SOM.View
         {
             var addModal = new AddEquipmentModal();
             addModal.ShowDialog();
+            NavigationService.Refresh();
+        }
 
+        private void Btn_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
+            var editModal = new EditEquipmentModal();
+
+            editModal.DataContext = equipment;
+            editModal.ShowDialog();
             NavigationService.Refresh();
         }
 
@@ -31,9 +42,13 @@ namespace SOM.View
             EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
             string equip_id = equipment.equipment_id;
 
-            await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
+            var result = MessageBox.Show("Are you sure you want to remove this equipment information?", "Remove Equipment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-            NavigationService.Refresh();
+            if (result == MessageBoxResult.Yes)
+            {
+                await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
+                NavigationService.Refresh();
+            }
         }
     }
 }
