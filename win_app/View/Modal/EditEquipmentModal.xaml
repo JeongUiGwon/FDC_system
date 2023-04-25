@@ -85,7 +85,7 @@
                 </StackPanel>
             </Grid>
 
-            <Border Name="Bdr_ErrorBox" Margin="30 10" Background="#ecc8c5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
+            <Border Name="Bdr_ErrorBox" Margin="30 10" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="Error" Width="25" Height="25" VerticalAlignment="Center" Foreground="#ff4200" Margin="10 0 0 0"/>
                     <TextBlock Text="Error :" FontWeight="DemiBold" Foreground="#ff4200" Margin="10 10 5 10" />

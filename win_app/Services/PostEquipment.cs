@@ -35,10 +35,6 @@ namespace SOM.Services
                 Console.WriteLine(ex.Message);
                 return null;
             }
-            finally
-            {
-                Console.WriteLine("PostEquipmentAsync Done");
-            }
         }
     }
 }
