@@ -15,7 +15,7 @@ namespace SOM.Services
 
             try
             {
-                HttpResponseMessage response = await client.DeleteAsync($"/param/{recipeID}/");
+                HttpResponseMessage response = await client.DeleteAsync($"/recipe/{recipeID}/");
                 return response;
             }
             catch (HttpRequestException ex)

@@ -77,7 +77,8 @@
                                             <Button Style="{StaticResource gridEditButton}">
                                                 <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
-                                            <Button Style="{StaticResource gridRemoveButton}">
+                                            <Button Style="{StaticResource gridRemoveButton}"
+                                                    Click="Btn_Delete_Click">
                                                 <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                         </StackPanel>

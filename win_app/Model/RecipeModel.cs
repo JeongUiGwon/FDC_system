@@ -16,13 +16,13 @@ namespace SOM.Model
         public string usl_action { get; set; }
         public string recipe_state { get; set; }
         public string creator_name { get; set; }
-        public DateTime created_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
         public string modifier_name { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string equipment { get; set; }
         public string param { get; set; }
 
-        public RecipeModel(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_state, string creator_name, DateTime created_at, string modifier_name, DateTime updated_at, string equipment, string param)
+        public RecipeModel(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_state, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at, string equipment, string param)
         {
             this.recipe_id = recipe_id;
             this.recipe_name = recipe_name;

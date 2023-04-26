@@ -35,9 +35,9 @@ namespace SOM.ViewModel
             HttpResponseMessage response = await GetRecipe.GetRecipeAsync();
             ObservableCollection<RecipeModel> content = new ObservableCollection<RecipeModel>();
 
-            if (response != null)
+            if (response != null && response.Content != null)
             {
-                content = await response.Content.ReadAsAsync<ObservableCollection<RecipeModel>>();
+                content = await response.Content.ReadAsAsync<ObservableCollection<RecipeModel>>(); ;
                 Recipes = new ObservableCollection<RecipeModel>(content);
             }
         }

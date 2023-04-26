@@ -1,9 +1,11 @@
 ﻿using SOM.Model;
+using SOM.Services;
 using SOM.View.Modal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,6 +36,25 @@ namespace SOM.View
             addModal.ShowDialog();
 
             NavigationService.Refresh();
+        }
+
+        private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
+            string recipe_id = dataContext.recipe_id;
+
+            // 삭제 확인 다이얼로그 실행
+            var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Delete Param/param_id API 호출
+                HttpResponseMessage response = await DeleteRecipeID.DeleteRecipeIDAsync(recipe_id);
+
+                // Parmas page 새로고침
+                NavigationService.Refresh();
+            }
         }
     }
 }

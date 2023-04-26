@@ -81,9 +81,9 @@
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="LSL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
                     <ComboBox Name="Cb_LslAction" FontSize="13" Margin="0 0 5 0">
-                        <ComboBoxItem>Interlock</ComboBoxItem>
-                        <ComboBoxItem>Warning</ComboBoxItem>
-                        <ComboBoxItem>Mail</ComboBoxItem>
+                        <ComboBoxItem>INTERLOCK</ComboBoxItem>
+                        <ComboBoxItem>WARNING</ComboBoxItem>
+                        <ComboBoxItem>MAIL</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 
@@ -91,9 +91,9 @@
                 <StackPanel Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="USL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
                     <ComboBox Name="Cb_UslAction" FontSize="13" Margin="5 0 0 0">
-                        <ComboBoxItem>Interlock</ComboBoxItem>
-                        <ComboBoxItem>Warning</ComboBoxItem>
-                        <ComboBoxItem>Mail</ComboBoxItem>
+                        <ComboBoxItem>INTERLOCK</ComboBoxItem>
+                        <ComboBoxItem>WARNING</ComboBoxItem>
+                        <ComboBoxItem>MAIL</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 
