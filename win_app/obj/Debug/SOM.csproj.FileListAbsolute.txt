@@ -792,3 +792,11 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeMod
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeModal.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditRecipeModal.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditRecipeModal.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddParamModal.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeModal.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditRecipeModal.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddParamModal.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeModal.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditRecipeModal.baml

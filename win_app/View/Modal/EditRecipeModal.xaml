@@ -43,7 +43,7 @@
                 <!--Recipe ID Box-->
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="Recipe ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
-                    <TextBox Name="Tb_RecipeID"
+                    <TextBox Name="Tb_RecipeID" Text="{Binding recipe_id}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>
@@ -52,7 +52,7 @@
                 <!--Recipe Name Box-->
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Text="Recipe Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
-                    <TextBox Name="Tb_RecipeName"
+                    <TextBox Name="Tb_RecipeName" Text="{Binding recipe_name}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
@@ -61,7 +61,7 @@
                 <!--LSL Box-->
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Text="LSL" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox Name="Tb_Lsl"
+                    <TextBox Name="Tb_Lsl" Text="{Binding lsl}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>
@@ -70,7 +70,7 @@
                 <!--USL Box-->
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBlock Text="USL" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <TextBox Name="Tb_Usl"
+                    <TextBox Name="Tb_Usl" Text="{Binding usl}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
@@ -79,7 +79,7 @@
                 <!--LSL Action Box-->
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="LSL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_LslAction" FontSize="13" Margin="0 0 5 0">
+                    <ComboBox Name="Cb_LslAction" FontSize="13" Margin="0 0 5 0" Text="{Binding lsl_action}">
                         <ComboBoxItem>INTERLOCK</ComboBoxItem>
                         <ComboBoxItem>WARNING</ComboBoxItem>
                         <ComboBoxItem>MAIL</ComboBoxItem>
@@ -89,7 +89,7 @@
                 <!--USL Action Box-->
                 <StackPanel Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="USL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <ComboBox Name="Cb_UslAction" FontSize="13" Margin="5 0 0 0">
+                    <ComboBox Name="Cb_UslAction" FontSize="13" Margin="5 0 0 0" Text="{Binding usl_action}">
                         <ComboBoxItem>INTERLOCK</ComboBoxItem>
                         <ComboBoxItem>WARNING</ComboBoxItem>
                         <ComboBoxItem>MAIL</ComboBoxItem>
@@ -99,7 +99,7 @@
                 <!--Recipe Staten Box-->
                 <StackPanel Grid.Row="3" Grid.Column="0">
                     <TextBlock Text="Recipe State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_RecipeState" FontSize="13" Margin="0 0 5 0">
+                    <ComboBox Name="Cb_RecipeState" FontSize="13" Margin="0 0 5 0" Text="{Binding recipe_state}">
                         <ComboBoxItem>RUN</ComboBoxItem>
                         <ComboBoxItem>DOWN</ComboBoxItem>
                     </ComboBox>
@@ -108,7 +108,7 @@
                 <!--Equipment UI Box-->
                 <StackPanel Grid.Row="3" Grid.Column="1">
                     <TextBlock Text="Equipment ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <TextBox Name="Tb_EquipID"
+                    <TextBox Name="Tb_EquipID" Text="{Binding equipment}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
@@ -117,7 +117,7 @@
                 <!--Recipe Staten Box-->
                 <StackPanel Grid.Row="4" Grid.Column="0">
                     <TextBlock Text="Param ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox Name="Tb_ParamID"
+                    <TextBox Name="Tb_ParamID" Text="{Binding param}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>

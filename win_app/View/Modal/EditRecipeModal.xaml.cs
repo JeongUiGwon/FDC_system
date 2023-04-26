@@ -50,7 +50,7 @@ namespace SOM.View.Modal
             string lsl_action = Cb_LslAction.Text;
             string usl_action = Cb_UslAction.Text;
             string recipe_state = Cb_RecipeState.Text;
-            string creator_name = App.CurrentUser.UserName;
+            string modifier_name = App.CurrentUser.UserName;
             string equip_id = Tb_EquipID.Text;
             string param_id = Tb_ParamID.Text;
             int lsl;
@@ -72,7 +72,7 @@ namespace SOM.View.Modal
                 return;
             }
 
-            HttpResponseMessage response = await PostRecipe.PostRecipeAsync(recipe_id, recipe_name, lsl, usl, lsl_action, usl_action, recipe_state, creator_name, equip_id, param_id);
+            HttpResponseMessage response = await PatchRecipeID.PatchRecipeIDAsync(recipe_id, recipe_name, lsl, usl, lsl_action, usl_action, recipe_state, modifier_name, equip_id, param_id);
 
             if (response.IsSuccessStatusCode)
             {
