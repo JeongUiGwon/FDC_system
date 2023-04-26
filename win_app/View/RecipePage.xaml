@@ -8,8 +8,13 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewmodel="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="RecipePage">
+
+    <Page.DataContext>
+        <viewmodel:RecipeViewModel/>
+    </Page.DataContext>
 
     <!--Main Section-->
     <Border>
@@ -49,21 +54,21 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="RecipeDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Recipes}"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding Equipment_ID}"/>
-                            <DataGridTextColumn Header="Param ID" Width="auto" Binding="{Binding Param_ID}"/>
-                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="LSL" Width="*" Binding="{Binding LSL}"/>
-                            <DataGridTextColumn Header="USL" Width="*" Binding="{Binding USL}"/>
-                            <DataGridTextColumn Header="LSL Action" Width="*" Binding="{Binding LSL_Action}"/>
-                            <DataGridTextColumn Header="USL Action" Width="*" Binding="{Binding USL_Action}"/>
-                            <DataGridTextColumn Header="State" Width="*" Binding="{Binding State}"/>
-                            <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding Creator}"/>
-                            <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding Modifier}"/>
+                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding recipe_id}"/>
+                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="Param ID" Width="auto" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding recipe_name}"/>
+                            <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lsl}"/>
+                            <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding usl}"/>
+                            <DataGridTextColumn Header="LSL Action" Width="auto" Binding="{Binding lsl_action}"/>
+                            <DataGridTextColumn Header="USL Action" Width="auto" Binding="{Binding usl_action}"/>
+                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding recipe_state}"/>
+                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
                             <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>

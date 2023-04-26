@@ -398,6 +398,7 @@
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\GetParams.cs" />
+    <Compile Include="Services\GetRecipe.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
     <Compile Include="Services\PatchParamID.cs" />
@@ -405,6 +406,7 @@
     <Compile Include="Services\PostParam.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
+    <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
