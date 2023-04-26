@@ -450,6 +450,9 @@
     <Compile Include="View\Modal\EditParamModal.xaml.cs">
       <DependentUpon>EditParamModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modal\EditRecipeModal.xaml.cs">
+      <DependentUpon>EditRecipeModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
     </Compile>
@@ -526,6 +529,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modal\EditParamModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\EditRecipeModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

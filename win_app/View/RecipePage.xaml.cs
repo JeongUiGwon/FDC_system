@@ -38,6 +38,17 @@ namespace SOM.View
             NavigationService.Refresh();
         }
 
+        private void Btn_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
+            var editModal = new EditRecipeModal();
+
+            editModal.DataContext = dataContext;
+            editModal.ShowDialog();
+            NavigationService.Refresh();
+        }
+
         private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
