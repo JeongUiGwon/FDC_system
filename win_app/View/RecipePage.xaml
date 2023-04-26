@@ -43,7 +43,7 @@
                 <StackPanel Margin="0 35 0 0">
 
                     <!--Add Button-->
-                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10">
+                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10" Click="Btn_Add_Click">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>

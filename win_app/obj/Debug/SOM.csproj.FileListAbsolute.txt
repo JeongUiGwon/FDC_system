@@ -788,3 +788,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddRecipeModal.baml

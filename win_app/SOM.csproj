@@ -404,6 +404,7 @@
     <Compile Include="Services\PatchParamID.cs" />
     <Compile Include="Services\PostEquipment.cs" />
     <Compile Include="Services\PostParam.cs" />
+    <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\RecipeViewModel.cs" />
@@ -437,6 +438,9 @@
     </Compile>
     <Compile Include="View\Modal\AddParamModal.xaml.cs">
       <DependentUpon>AddParamModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\AddRecipeModal.xaml.cs">
+      <DependentUpon>AddRecipeModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Modal\EditEquipmentModal.xaml.cs">
       <DependentUpon>EditEquipmentModal.xaml</DependentUpon>
@@ -508,6 +512,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Modal\AddParamModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\AddRecipeModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
 ﻿using SOM.Model;
+using SOM.View.Modal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,14 @@ namespace SOM.View
         public RecipePage()
         {
             InitializeComponent();
+        }
+
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            var addModal = new AddRecipeModal();
+            addModal.ShowDialog();
+
+            NavigationService.Refresh();
         }
     }
 }
