@@ -13,12 +13,12 @@ namespace SOM.Model
         public string param_level { get; set; }
         public string param_state { get; set; }
         public string creator_name { get; set; }
-        public DateTime created_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
         public string modifier_name { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string equipment { get; set; }
 
-        public ParamsModel(string param_id, string equipment, string param_name, string param_level, string param_state, string creator_name, DateTime created_at, string modifier_name, DateTime updated_at)
+        public ParamsModel(string param_id, string equipment, string param_name, string param_level, string param_state, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at)
         {
             this.param_id = param_id;
             this.equipment = equipment;

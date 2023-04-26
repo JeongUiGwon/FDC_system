@@ -1,8 +1,11 @@
 ﻿using SOM.Model;
+using SOM.Services;
+using SOM.View.Modal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,16 +28,44 @@ namespace SOM.View
         public RecipePage()
         {
             InitializeComponent();
+        }
 
-            ObservableCollection<RecipeModel> recipes = new ObservableCollection<RecipeModel>();
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            var addModal = new AddRecipeModal();
+            addModal.ShowDialog();
 
-            recipes.Add(new RecipeModel("abcd", "abcd", "abcd", "Recipe1", 100, 200, "Action1", "Action2", 1, "정의권", DateTime.Now, "정의권", DateTime.Now));
-            recipes.Add(new RecipeModel("dfad", "dfad", "dfad", "Recipe2", 200, 300, "Action3", "Action4", 1, "채민기", DateTime.Now, "채민기", DateTime.Now));
-            recipes.Add(new RecipeModel("asdfb", "asdfb", "asdfb", "Recipe3", 150, 200, "Action5", "Action6", 1, "김지선", DateTime.Now, "김지선", DateTime.Now));
-            recipes.Add(new RecipeModel("asbdw", "asbdw", "asbdw", "Recipe4", 10, 200, "Action7", "Action8", 1, "임상빈", DateTime.Now, "임상빈", DateTime.Now));
-            recipes.Add(new RecipeModel("herd", "herd", "herd", "Recipe5", 10, 250, "Action9", "Action10", 1, "조성환", DateTime.Now, "조성환", DateTime.Now));
+            NavigationService.Refresh();
+        }
 
-            RecipeDatagrid.ItemsSource = recipes;
+        private void Btn_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
+            var editModal = new EditRecipeModal();
+
+            editModal.DataContext = dataContext;
+            editModal.ShowDialog();
+            NavigationService.Refresh();
+        }
+
+        private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
+            string recipe_id = dataContext.recipe_id;
+
+            // 삭제 확인 다이얼로그 실행
+            var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Delete Param/param_id API 호출
+                HttpResponseMessage response = await DeleteRecipeID.DeleteRecipeIDAsync(recipe_id);
+
+                // Parmas page 새로고침
+                NavigationService.Refresh();
+            }
         }
     }
 }
