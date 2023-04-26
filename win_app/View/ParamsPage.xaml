@@ -8,9 +8,14 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewmodel="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="ParamsPage">
 
+    <Page.DataContext>
+        <viewmodel:ParamsViewModel />
+    </Page.DataContext>
+    
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -38,7 +43,8 @@
                 <StackPanel Margin="0 35 0 0">
 
                     <!--Add Button-->
-                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10">
+                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" 
+                            Margin="10" Click="Btn_Add_Click">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -49,27 +55,26 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding Equipment_ID}"/>
-                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Type" Width="*" Binding="{Binding Type}"/>
-                            <DataGridTextColumn Header="State" Width="*" Binding="{Binding State}"/>
-                            <DataGridTextColumn Header="Out Count" Width="*" Binding="{Binding Out_Count}"/>
-                            <DataGridTextColumn Header="Creator" Width="*" Binding="{Binding Creator}"/>
-                            <DataGridTextColumn Header="Modifier" Width="*" Binding="{Binding Modifier}"/>
+                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
+                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding param_name}"/>
+                            <DataGridTextColumn Header="Level" Width="auto" Binding="{Binding param_level}"/>
+                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding param_state}"/>
+                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource gridEditButton}">
+                                            <Button Style="{StaticResource gridEditButton}" Click="Btn_Edit_Click">
                                                 <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
-                                            <Button Style="{StaticResource gridRemoveButton}">
+                                            <Button Style="{StaticResource gridRemoveButton}" Click="Btn_Delete_Click">
                                                 <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                         </StackPanel>

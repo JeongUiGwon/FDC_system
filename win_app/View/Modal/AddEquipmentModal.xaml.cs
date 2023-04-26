@@ -1,4 +1,5 @@
-﻿using SOM.Services;
+﻿using SOM.Properties;
+using SOM.Services;
 using SOM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace SOM.View
             string equip_name = Tb_EquipName.Text;
             string equip_state = Cb_EquipState.Text;
             string interlock_id = Tb_InterlockID.Text;
-            string creator_name = Tb_CreatorName.Text;
+            string creator_name = App.CurrentUser.UserName;
 
             // Post Equipment 실행
             HttpResponseMessage response = await PostEquipment.PostEquipmentAsync(equip_id, equip_name, equip_state, creator_name, interlock_id);

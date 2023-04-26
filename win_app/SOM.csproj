@@ -395,11 +395,16 @@
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Services\DeleteEquipmentID.cs" />
+    <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\GetEquipment.cs" />
+    <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
+    <Compile Include="Services\PatchParamID.cs" />
     <Compile Include="Services\PostEquipment.cs" />
+    <Compile Include="Services\PostParam.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
+    <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
@@ -428,8 +433,14 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modal\AddParamModal.xaml.cs">
+      <DependentUpon>AddParamModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Modal\EditEquipmentModal.xaml.cs">
       <DependentUpon>EditEquipmentModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\EditParamModal.xaml.cs">
+      <DependentUpon>EditParamModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
@@ -494,7 +505,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Modal\AddParamModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Modal\EditEquipmentModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\EditParamModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

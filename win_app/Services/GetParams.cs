@@ -7,22 +7,21 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Web.Http;
 
 namespace SOM.Services
 {
-    public class GetEquipment
+    public class GetParams
     {
-        public static async Task<HttpResponseMessage> GetEquipmentAsync()
+        public static async Task<HttpResponseMessage> GetParamsAsync()
         {
             HttpClient client = HttpClientSingleton.client;
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync("/equipment/");
+                HttpResponseMessage response = await client.GetAsync("/param/");
                 return response;
             }
-            catch(HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

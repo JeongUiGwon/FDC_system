@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,8 +32,12 @@ namespace SOM.ViewModel
 
         private async void SetEquipments()
         {
-            ObservableCollection<EquipmentsModel> response = await GetEquipment.GetEquipmentAsync();
-            Equipments = new ObservableCollection<EquipmentsModel>(response);
+            HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
+            ObservableCollection<EquipmentsModel> content = new ObservableCollection<EquipmentsModel>();
+
+            content = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();
+
+            Equipments = new ObservableCollection<EquipmentsModel>(content);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -19,15 +19,6 @@ namespace SOM.Services
                 StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync("/equipment/", content);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("Success Response");
-                }
-                else
-                {
-                    Console.WriteLine("Fail Response");
-                }
-
                 return response;
             }
             catch (HttpRequestException ex)

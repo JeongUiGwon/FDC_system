@@ -42,6 +42,7 @@ namespace SOM.View
             EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
             string equip_id = equipment.equipment_id;
 
+            // 삭제 확인 다이얼로그 실행
             var result = MessageBox.Show("Are you sure you want to remove this equipment information?", "Remove Equipment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)

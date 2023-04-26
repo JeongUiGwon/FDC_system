@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace SOM.View.Modal
 {
     /// <summary>
-    /// EditEquipmentModal.xaml에 대한 상호 작용 논리
+    /// EditParamModal.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class EditEquipmentModal : Window
+    public partial class EditParamModal : Window
     {
-        public EditEquipmentModal()
+        public EditParamModal()
         {
             InitializeComponent();
 
@@ -43,27 +43,24 @@ namespace SOM.View.Modal
 
         private async void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            string equip_id = Tb_EquipID.Text;
-            string equip_name = Tb_EquipName.Text;
-            string equip_state = Cb_EquipState.Text;
-            string interlock_id = Tb_InterlockID.Text;
+            string param_id = Tb_ParamID.Text;
+            string param_name = Tb_ParamName.Text;
+            string param_level = Cb_ParamLevel.Text;
+            string param_state = Cb_ParamState.Text;
+            string equipment = Tb_EquipID.Text;
             string modifier_name = App.CurrentUser.UserName;
-            
-            // Patch Equipment 실행
-            HttpResponseMessage response = await PatchEquipmentID.PatchEquipmentIDAsync(equip_id, equip_name, equip_state, modifier_name, interlock_id);
 
-            // API 응답 성공 여부 체크
+            // Patch Param API 호출
+            HttpResponseMessage response = await PatchParamID.PatchParamIDAsync(param_id, param_name, param_level, param_state, modifier_name, equipment);
+
             if (response.IsSuccessStatusCode)
             {
-                // 에러 메시지 숨기기
-                Bdr_ErrorBox.Visibility = Visibility.Collapsed;
                 this.Close();
             }
             else
             {
-                // 에러 메세지 보이기
-                Bdr_ErrorBox.Visibility = Visibility.Visible;
                 Tb_ErrorMsg.Text = response.ReasonPhrase;
+                Bdr_ErrorBox.Visibility = Visibility.Visible;
             }
         }
     }
