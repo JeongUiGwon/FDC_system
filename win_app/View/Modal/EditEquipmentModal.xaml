@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SOM.View.Modal"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EditEquipmentModal" Height="540" Width="500"
+        Title="EditEquipmentModal" Height="500" Width="500"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
         FontFamily="{DynamicResource MaterialDesignFont}">
@@ -29,7 +29,6 @@
             <!--Contents-->
             <Grid Margin="30 50 30 0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -74,18 +73,9 @@
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="5 0 0 0"/>
                 </StackPanel>
-
-                <!--Interlock ID Box-->
-                <StackPanel Grid.Row="2" Grid.Column="0">
-                    <TextBlock Text="Modifier Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox Name="Tb_ModifierName" Text="{Binding modifier_name}"
-                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
-                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
-                         FontSize="13" Margin="0 0 5 0"/>
-                </StackPanel>
             </Grid>
 
-            <Border Name="Bdr_ErrorBox" Margin="30 10" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
+            <Border Name="Bdr_ErrorBox" Margin="30 20 30 0" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="Error" Width="25" Height="25" VerticalAlignment="Center" Foreground="#ff4200" Margin="10 0 0 0"/>
                     <TextBlock Text="Error :" FontWeight="DemiBold" Foreground="#ff4200" Margin="10 10 5 10" />
@@ -93,7 +83,7 @@
                 </StackPanel>
             </Border>
 
-            <Button Name="Btn_Save" Content="Save" HorizontalAlignment="Right" Margin="0 0 30 20" Background="#2f49cf" Click="Btn_Save_Click"/>
+            <Button Name="Btn_Save" Content="Save" HorizontalAlignment="Right" Margin="0 20 30 20" Background="#2f49cf" Click="Btn_Save_Click"/>
         </StackPanel>
     </Border>
 </Window>

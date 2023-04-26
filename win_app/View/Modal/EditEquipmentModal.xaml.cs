@@ -47,7 +47,7 @@ namespace SOM.View.Modal
             string equip_name = Tb_EquipName.Text;
             string equip_state = Cb_EquipState.Text;
             string interlock_id = Tb_InterlockID.Text;
-            string modifier_name = Tb_ModifierName.Text;
+            string modifier_name = App.CurrentUser.UserName;
             
             // Patch Equipment 실행
             HttpResponseMessage response = await PatchEquipmentID.PatchEquipmentIDAsync(equip_id, equip_name, equip_state, modifier_name, interlock_id);

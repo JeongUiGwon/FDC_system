@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SOM.View.Modal"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddParamModal" Height="540" Width="500"
+        Title="AddParamModal" Height="560" Width="500"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
         FontFamily="{DynamicResource MaterialDesignFont}">
@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Equipment ID Box-->
+                <!--Param ID Box-->
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="Param ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
                     <TextBox Name="Tb_ParamID"
@@ -47,7 +47,7 @@
                          FontSize="13" Margin="0 0 5 0"/>
                 </StackPanel>
 
-                <!--Equipment Name Box-->
+                <!--Param Name Box-->
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Text="Param Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
                     <TextBox Name="Tb_ParamName"
@@ -56,35 +56,36 @@
                          FontSize="13" Margin="5 0 0 0"/>
                 </StackPanel>
 
-                <!--Equipment State Box-->
+                <!--Param Level Box-->
                 <StackPanel Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="Equipment State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_EquipState" FontSize="13" Margin="0 0 5 0">
+                    <TextBlock Text="Param Level" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="0 0 5 0">
+                        <ComboBoxItem>S</ComboBoxItem>
+                        <ComboBoxItem>A</ComboBoxItem>
+                        <ComboBoxItem>B</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+                <!--Param State Box-->
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="Param State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
+                    <ComboBox Name="Cb_ParamState" FontSize="13" Margin="0 0 5 0">
                         <ComboBoxItem>RUN</ComboBoxItem>
                         <ComboBoxItem>DOWN</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 
-                <!--Interlock ID Box-->
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <TextBlock Text="Interlock ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <TextBox Name="Tb_InterlockID"
-                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
-                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
-                         FontSize="13" Margin="5 0 0 0"/>
-                </StackPanel>
-
-                <!--Interlock ID Box-->
+                <!--Equipment ID Box-->
                 <StackPanel Grid.Row="2" Grid.Column="0">
-                    <TextBlock Text="Creator Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox Name="Tb_CreatorName" 
+                    <TextBlock Text="Equipment ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <TextBox Name="Tb_EquipID" 
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>
                 </StackPanel>
             </Grid>
 
-            <Border Name="Bdr_ErrorBox" Margin="30 10" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
+            <Border Name="Bdr_ErrorBox" Margin="30 20 30 0" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="Error" Width="25" Height="25" VerticalAlignment="Center" Foreground="#ff4200" Margin="10 0 0 0"/>
                     <TextBlock Text="Error :" FontWeight="DemiBold" Foreground="#ff4200" Margin="10 10 5 10" />
@@ -92,7 +93,7 @@
                 </StackPanel>
             </Border>
 
-            <Button Name="Btn_Register" Content="Register" HorizontalAlignment="Right" Margin="0 0 30 20" Background="#2f49cf" Click="Btn_Register_Click"/>
+            <Button Name="Btn_Register" Content="Register" HorizontalAlignment="Right" Margin="0 20 30 20" Background="#2f49cf" Click="Btn_Register_Click"/>
         </StackPanel>
     </Border>
 </Window>
