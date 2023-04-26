@@ -35,8 +35,11 @@ namespace SOM.ViewModel
             HttpResponseMessage response = await GetParams.GetParamsAsync();
             ObservableCollection<ParamsModel> content = new ObservableCollection<ParamsModel>();
 
-            content = await response.Content.ReadAsAsync<ObservableCollection<ParamsModel>>();
-            Params = new ObservableCollection<ParamsModel>(content);
+            if (response != null)
+            {
+                content = await response.Content.ReadAsAsync<ObservableCollection<ParamsModel>>();
+                Params = new ObservableCollection<ParamsModel>(content);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

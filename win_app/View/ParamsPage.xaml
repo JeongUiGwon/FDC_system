@@ -62,17 +62,16 @@
                             <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
                             <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
                             <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding param_name}"/>
-                            <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding param_type}"/>
+                            <DataGridTextColumn Header="Level" Width="auto" Binding="{Binding param_level}"/>
                             <DataGridTextColumn Header="State" Width="auto" Binding="{Binding param_state}"/>
-                            <DataGridTextColumn Header="Out Count" Width="auto" Binding="{Binding out_count}"/>
                             <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource gridEditButton}">
+                                            <Button Style="{StaticResource gridEditButton}" Click="Btn_Edit_Click">
                                                 <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                             <Button Style="{StaticResource gridRemoveButton}" Click="Btn_Delete_Click">

@@ -41,28 +41,34 @@ namespace SOM.View
             NavigationService.Refresh();
         }
 
+        private void Btn_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            ParamsModel dataContext = clickedButton.DataContext as ParamsModel;
+            var editModal = new EditParamModal();
+
+            editModal.DataContext = dataContext;
+            editModal.ShowDialog();
+            NavigationService.Refresh();
+        }
+
         private async void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             ParamsModel dataContext = clickedButton.DataContext as ParamsModel;
             string param_id = dataContext.param_id;
-            
-            // Delete Param/param_id API 호출
-            HttpResponseMessage response = await DeleteParamID.DeleteParamIDAsync(param_id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                // API 성공시
-                Console.WriteLine("Success Delete Param");
-            }
-            else
-            {
-                // API 실패시
-                Console.WriteLine(response.ReasonPhrase);
-            }
+            // 삭제 확인 다이얼로그 실행
+            var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-            // Parmas 페이지 새로고침
-            NavigationService.Refresh();
+            if (result == MessageBoxResult.Yes)
+            {
+                // Delete Param/param_id API 호출
+                HttpResponseMessage response = await DeleteParamID.DeleteParamIDAsync(param_id);
+
+                // Parmas page 새로고침
+                NavigationService.Refresh();
+            }
         }
     }
 }

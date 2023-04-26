@@ -62,7 +62,7 @@
                             <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

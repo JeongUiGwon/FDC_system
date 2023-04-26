@@ -400,8 +400,9 @@
     <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
+    <Compile Include="Services\PatchParamID.cs" />
     <Compile Include="Services\PostEquipment.cs" />
-    <Compile Include="Services\PostParams.cs" />
+    <Compile Include="Services\PostParam.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
@@ -437,6 +438,9 @@
     </Compile>
     <Compile Include="View\Modal\EditEquipmentModal.xaml.cs">
       <DependentUpon>EditEquipmentModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\EditParamModal.xaml.cs">
+      <DependentUpon>EditParamModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
@@ -506,6 +510,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modal\EditEquipmentModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\EditParamModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -786,3 +786,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.CoreCompileI
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.CopyComplete
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.pdb
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamModal.baml
