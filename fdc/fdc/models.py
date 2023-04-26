@@ -35,7 +35,7 @@ def get_model(table_name):
 
 def get_pk(model_class):
     for field in model_class._meta.get_fields():
-        if field.primary_key:
+        if not isinstance(field, models.ManyToOneRel) and field.primary_key:
             return field.name
 
     raise ValueError(f"pk of '{model_class}' not found.")
@@ -51,7 +51,7 @@ def random_id_generate(table_name, length):
     return id
 
 class Equipment(models.Model):
-    equipment_id = models.CharField(max_length=100, primary_key=True, default=partial)
+    equipment_id = models.CharField(max_length=100, primary_key=True)
     equipment_name = models.CharField(max_length=100)
     equipment_state = models.CharField(max_length=10)
     creator_name = models.CharField(max_length=100)
@@ -61,6 +61,12 @@ class Equipment(models.Model):
 
     interlock_id = models.CharField(max_length=100)
 
+    def save(self, *args, **kwargs):
+        if not self.equipment_id:
+            self.equipment_id = random_id_generate('equipment', 8)
+        if not self.interlock_id:
+            self.interlock_id = self.equipment_id
+        super().save(*args, **kwargs)
     class Meta:
         db_table = 'equipment'
 
@@ -68,9 +74,8 @@ class Param(models.Model):
     param_id = models.CharField(max_length=100, primary_key=True)
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     param_name = models.CharField(max_length=100)
-    param_type = models.CharField(max_length=2)
-    param_state = models.IntegerField(default=1)
-    out_count = models.IntegerField()
+    param_level = models.CharField(max_length=2)
+    param_state = models.CharField(max_length=10)
     creator_name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=100, null=True)
