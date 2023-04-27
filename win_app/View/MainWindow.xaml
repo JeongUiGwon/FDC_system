@@ -56,63 +56,70 @@
                 <Button Name="Btn_Dashboard" Style="{StaticResource menuButtonActive}" Click="Btn_Dashboard_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="대쉬보드" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Equipments" Style="{StaticResource menuButton}" Click="Btn_Equipments_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Equipments" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="설비" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="Btn_EquipmentState" Style="{StaticResource menuButton}" Click="Btn_EquipmentState_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="설비 상태" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Params" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="항목" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Recipe" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="레시피" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Datas" Style="{StaticResource menuButton}" Click="Btn_Data_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Datas" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="데이터" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Interlock" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="인터락" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Profile" Style="{StaticResource menuButton}" Click="Btn_Profile_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Profile" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="프로필" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Users" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="유저 관리" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource menuButton}" Click="Btn_Logout_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Logout" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="로그아웃" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
@@ -121,7 +128,7 @@
         
         <!--Main Section-->
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
-            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/DashboardPage.xaml"/>
+            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Pages/DashboardPage.xaml"/>
         </Border>        
     </Grid>
 </Window>

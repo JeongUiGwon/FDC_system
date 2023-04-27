@@ -1,12 +1,20 @@
 ﻿
 
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\ChangePasswordPage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\DashboardPage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\DataPage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\InterlockPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\AddEquipmentModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\ChangePasswordPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\DashboardPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\DataPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\EquipmentsPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\InterlockPage.xaml;;
 FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\MainWindow.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\ParamsPage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\ProfilePage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\RecipePage.xaml;;
-FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\UsersPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\AddParamModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\AddRecipeModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\EditEquipmentModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\EditParamModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Modal\EditRecipeModal.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\EquipmentStatePage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\ParamsPage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\ProfilePage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\RecipePage.xaml;;
+FC:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\View\Pages\UsersPage.xaml;;
 

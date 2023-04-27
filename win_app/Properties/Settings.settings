@@ -11,5 +11,8 @@
     <Setting Name="IsRememberLogin" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="BackendAPIaddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://k8a201.p.ssafy.io:8000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

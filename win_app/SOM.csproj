@@ -14,6 +14,9 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>게시\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,11 +29,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -298,6 +298,26 @@
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -342,13 +362,18 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -369,26 +394,42 @@
     <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="Services\DeleteEquipmentID.cs" />
+    <Compile Include="Services\DeleteParamID.cs" />
+    <Compile Include="Services\DeleteRecipeID.cs" />
+    <Compile Include="Services\GetEquipment.cs" />
+    <Compile Include="Services\GetParams.cs" />
+    <Compile Include="Services\GetRecipe.cs" />
+    <Compile Include="Services\HttpClientSingleton.cs" />
+    <Compile Include="Services\PatchEquipmentID.cs" />
+    <Compile Include="Services\PatchParamID.cs" />
+    <Compile Include="Services\PatchRecipeID.cs" />
+    <Compile Include="Services\PostEquipment.cs" />
+    <Compile Include="Services\PostParam.cs" />
+    <Compile Include="Services\PostRecipe.cs" />
+    <Compile Include="ViewModel\EquipmentsViewModel.cs" />
+    <Compile Include="ViewModel\ParamsViewModel.cs" />
+    <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
-    <Compile Include="View\ChangePasswordPage.xaml.cs">
+    <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
+      <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DashboardPage.xaml.cs">
+    <Compile Include="View\Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DataPage.xaml.cs">
+    <Compile Include="View\Pages\DataPage.xaml.cs">
       <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EquipmentsPage.xaml.cs">
+    <Compile Include="View\Pages\EquipmentsPage.xaml.cs">
       <DependentUpon>EquipmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ForgotPasswordPage.xaml.cs">
       <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\InfoCard.xaml.cs">
-      <DependentUpon>InfoCard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\InterlockPage.xaml.cs">
+    <Compile Include="View\Pages\InterlockPage.xaml.cs">
       <DependentUpon>InterlockPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginPage.xaml.cs">
@@ -397,37 +438,56 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Order.xaml.cs">
-      <DependentUpon>Order.xaml</DependentUpon>
+    <Compile Include="View\Modal\AddParamModal.xaml.cs">
+      <DependentUpon>AddParamModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ParamsPage.xaml.cs">
+    <Compile Include="View\Modal\AddRecipeModal.xaml.cs">
+      <DependentUpon>AddRecipeModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\EditEquipmentModal.xaml.cs">
+      <DependentUpon>EditEquipmentModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\EditParamModal.xaml.cs">
+      <DependentUpon>EditParamModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\EditRecipeModal.xaml.cs">
+      <DependentUpon>EditRecipeModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\EquipmentStatePage.xaml.cs">
+      <DependentUpon>EquipmentStatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProfilePage.xaml.cs">
+    <Compile Include="View\Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RecipePage.xaml.cs">
+    <Compile Include="View\Pages\RecipePage.xaml.cs">
       <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersPage.xaml.cs">
+    <Compile Include="View\Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\ChangePasswordPage.xaml">
+    <Page Include="View\Modal\AddEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DashboardPage.xaml">
+    <Page Include="View\Pages\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DataPage.xaml">
+    <Page Include="View\Pages\DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EquipmentsPage.xaml">
+    <Page Include="View\Pages\DataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\EquipmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -435,11 +495,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\InfoCard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\InterlockPage.xaml">
+    <Page Include="View\Pages\InterlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -463,19 +519,39 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Order.xaml">
+    <Page Include="View\Modal\AddParamModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ParamsPage.xaml">
+    <Page Include="View\Modal\AddRecipeModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ProfilePage.xaml">
+    <Page Include="View\Modal\EditEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RecipePage.xaml">
+    <Page Include="View\Modal\EditParamModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\EditRecipeModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\EquipmentStatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ParamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\RecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -483,7 +559,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UsersPage.xaml">
+    <Page Include="View\Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
