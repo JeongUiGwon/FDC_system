@@ -28,6 +28,7 @@ namespace SOM.View.Pages
         private void Btn_list_Click(object sender, RoutedEventArgs e)
         {
             // 항목 리스트 페이지로 이동
+            // test
             NavigationService.Navigate(new Uri("/View/Pages/ParamsPage.xaml", UriKind.Relative));
         }
     }
