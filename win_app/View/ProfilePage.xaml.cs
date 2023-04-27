@@ -35,6 +35,7 @@ namespace SOM.View
             string email = App.CurrentUser.Email;
             string role = App.CurrentUser.Role;
             string displayName = Tb_Name.Text;
+            string department = Tb_Department.Text;
             string phoneNumber = Tb_PhoneNumber.Text;
 
             Btn_Save_Change.IsEnabled = false;
@@ -49,7 +50,8 @@ namespace SOM.View
             var customClaims = new Dictionary<string, object>()
             {
                 { "Authority", role },
-                { "PhoneNumber", phoneNumber }
+                { "PhoneNumber", phoneNumber },
+                { "Department", department }
             };
 
             UserRecord userRecord = await FirebaseAuth.DefaultInstance.UpdateUserAsync(args);

@@ -29,7 +29,7 @@ namespace SOM.Model
             while (await enumerator.MoveNextAsync())
             {
                 ExportedUserRecord user = enumerator.Current;
-                users.Add(new UsersModel(user.Email, user.Uid, user.DisplayName, user.CustomClaims["Authority"].ToString(), user.CustomClaims["PhoneNumber"].ToString()));
+                users.Add(new UsersModel(user.Email, user.Uid, user.DisplayName, user.CustomClaims["Authority"].ToString(), user.CustomClaims["Department"].ToString() ,user.CustomClaims["PhoneNumber"].ToString()));
             }
 
             return users;

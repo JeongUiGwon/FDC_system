@@ -88,6 +88,11 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0 30 0 0" >
+                            <TextBlock Text="Department" FontSize="20" FontWeight="DemiBold" Foreground="#908d8e" Width="200"/>
+                            <TextBox x:Name="Tb_Department" Text="{Binding Department}" BorderBrush="#908d8e" FontSize="20" Width="200" Foreground="#908d8e"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="0 30 0 0" >
                             <TextBlock Text="Phone Number" FontSize="20" FontWeight="DemiBold" Foreground="#908d8e" Width="200"/>
                             <TextBox x:Name="Tb_PhoneNumber" Text="{Binding PhoneNumber}" BorderBrush="#908d8e" FontSize="20" Width="200" Foreground="#908d8e"/>
                         </StackPanel>

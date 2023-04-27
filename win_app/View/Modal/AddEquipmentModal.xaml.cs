@@ -47,12 +47,12 @@ namespace SOM.View
         {
             string equip_id = Tb_EquipID.Text;
             string equip_name = Tb_EquipName.Text;
-            string equip_state = Cb_EquipState.Text;
+            string equip_use = Cb_EquipUse.Text;
             string interlock_id = Tb_InterlockID.Text;
             string creator_name = App.CurrentUser.UserName;
 
             // Post Equipment 실행
-            HttpResponseMessage response = await PostEquipment.PostEquipmentAsync(equip_id, equip_name, equip_state, creator_name, interlock_id);
+            HttpResponseMessage response = await PostEquipment.PostEquipmentAsync(equip_id, equip_name, equip_use, creator_name, interlock_id);
 
             // API 응답 성공 여부 체크
             if (response.IsSuccessStatusCode)

@@ -36,6 +36,7 @@ namespace SOM.View
             var customClaims = new Dictionary<string, object>()
             {
                 { "Authority", editedItem.Role },
+                { "Department", editedItem.Department },
                 { "PhoneNumber", editedItem.PhoneNumber }
             };
 
@@ -45,6 +46,7 @@ namespace SOM.View
             customClaims = new Dictionary<string, object>()
             {
                 { "Authority", editedItem.Role },
+                { "Department", editedItem.Department },
                 { "PhoneNumber", editedItem.PhoneNumber }
             };
 

@@ -17,6 +17,24 @@ namespace SOM
             InitializeComponent();
 
             DataContext = App.CurrentUser;
+
+            // 유저 권한별 UI 세팅
+            if (App.CurrentUser.Role == "User")
+            {
+                Btn_Users.Visibility = Visibility.Collapsed;
+            }
+            else if (App.CurrentUser.Role == "SuperUser")
+            {
+                Btn_Users.Visibility = Visibility.Collapsed;
+            }
+            else if (App.CurrentUser.Role == "Developer")
+            {
+                Btn_Users.Visibility = Visibility.Visible;
+            }
+            else if (App.CurrentUser.Role == "Admin")
+            {
+                Btn_Users.Visibility = Visibility.Visible;
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -31,6 +49,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -38,7 +57,7 @@ namespace SOM
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
-            frame.Navigate(new Uri("/View/DashboardPage.xaml", UriKind.Relative));
+            frame.Navigate(new Uri("/View/Pages/DashboardPage.xaml", UriKind.Relative));
 
         }
 
@@ -46,6 +65,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -56,11 +76,26 @@ namespace SOM
             frame.Navigate(new Uri("/View/EquipmentsPage.xaml", UriKind.Relative));
         }
 
+        private void Btn_EquipmentState_Click(object sender, RoutedEventArgs e)
+        {
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+
+            frame.Navigate(new Uri("/View/Pages/EquipmentStatePage.xaml", UriKind.Relative));
+        }
 
         private void Btn_Params_Click(object sender, RoutedEventArgs e)
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -75,6 +110,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -89,6 +125,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
@@ -103,6 +140,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -117,6 +155,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
@@ -131,6 +170,7 @@ namespace SOM
         {
             Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;

@@ -43,7 +43,7 @@
                 <StackPanel Margin="0 35 0 0">
 
                     <!--Add Button-->
-                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10" Click="Btn_Add_Click">
+                    <Button x:Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10" Click="Btn_Add_Click">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -58,19 +58,19 @@
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding recipe_id}"/>
-                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
-                            <DataGridTextColumn Header="Param ID" Width="auto" Binding="{Binding param}"/>
-                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding recipe_name}"/>
+                            <DataGridTextColumn Header="레시피 ID" Width="auto" Binding="{Binding recipe_id}"/>
+                            <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="레시피명" Width="auto" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lsl}"/>
                             <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding usl}"/>
                             <DataGridTextColumn Header="LSL Action" Width="auto" Binding="{Binding lsl_action}"/>
                             <DataGridTextColumn Header="USL Action" Width="auto" Binding="{Binding usl_action}"/>
-                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding recipe_state}"/>
-                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
-                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
+                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding recipe_state}"/>
+                            <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn x:Name="Dg_Action" Header="Operations" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

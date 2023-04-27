@@ -58,10 +58,10 @@
 
                 <!--Equipment State Box-->
                 <StackPanel Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="Equipment State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_EquipState" FontSize="13" Margin="0 0 5 0" Text="{Binding equipment_state}">
-                        <ComboBoxItem>RUN</ComboBoxItem>
-                        <ComboBoxItem>DOWN</ComboBoxItem>
+                    <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <ComboBox Name="Cb_EquipUse" FontSize="13" Margin="0 0 5 0" Text="{Binding equipment_use}">
+                        <ComboBoxItem>사용</ComboBoxItem>
+                        <ComboBoxItem>미사용</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 

@@ -34,7 +34,7 @@
 
             <!--Title-->
             <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
-                <TextBlock Text="Params" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                <TextBlock Text="항목 리스트" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
             <!--Contents-->
@@ -43,7 +43,7 @@
                 <StackPanel Margin="0 35 0 0">
 
                     <!--Add Button-->
-                    <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" 
+                    <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" 
                             Margin="10" Click="Btn_Add_Click">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
@@ -60,14 +60,14 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
-                            <DataGridTextColumn Header="Equipment ID" Width="auto" Binding="{Binding equipment}"/>
-                            <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding param_name}"/>
-                            <DataGridTextColumn Header="Level" Width="auto" Binding="{Binding param_level}"/>
-                            <DataGridTextColumn Header="State" Width="auto" Binding="{Binding param_state}"/>
-                            <DataGridTextColumn Header="Creator" Width="auto" Binding="{Binding creator_name}"/>
-                            <DataGridTextColumn Header="Modifier" Width="auto" Binding="{Binding modifier_name}"/>
+                            <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="항목명" Width="auto" Binding="{Binding param_name}"/>
+                            <DataGridTextColumn Header="항목등급" Width="auto" Binding="{Binding param_level}"/>
+                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding param_state}"/>
+                            <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn x:Name="Dg_Action" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

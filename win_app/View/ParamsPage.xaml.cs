@@ -28,6 +28,28 @@ namespace SOM.View
         public ParamsPage()
         {
             InitializeComponent();
+
+            // 유저 권한별 UI 세팅
+            if (App.CurrentUser.Role == "User")
+            {
+                Btn_Add.IsEnabled = false;
+                Dg_Action.Visibility = Visibility.Collapsed;
+            }
+            else if (App.CurrentUser.Role == "SuperUser")
+            {
+                Btn_Add.IsEnabled = true;
+                Dg_Action.Visibility = Visibility.Visible;
+            }
+            else if (App.CurrentUser.Role == "Developer")
+            {
+                Btn_Add.IsEnabled = true;
+                Dg_Action.Visibility = Visibility.Visible;
+            }
+            else if (App.CurrentUser.Role == "Admin")
+            {
+                Btn_Add.IsEnabled = true;
+                Dg_Action.Visibility = Visibility.Visible;
+            }
         }
 
 

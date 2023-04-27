@@ -52,13 +52,15 @@
                         <DataGridComboBoxColumn Header="Role" Width="auto" SelectedValueBinding="{Binding Role}" >
                             <DataGridComboBoxColumn.ItemsSource>
                                 <x:Array Type="{x:Type sys:String}">
-                                    <sys:String>Guest</sys:String>
                                     <sys:String>User</sys:String>
+                                    <sys:String>SuperUser</sys:String>
+                                    <sys:String>Developer</sys:String>
                                     <sys:String>Admin</sys:String>
                                 </x:Array>
                             </DataGridComboBoxColumn.ItemsSource>
                         </DataGridComboBoxColumn>
 
+                        <DataGridTextColumn Header="Department" Width="auto" IsReadOnly="True" Binding="{Binding Department}"/>
                         <DataGridTextColumn Header="Phone Number" Width="auto" IsReadOnly="True" Binding="{Binding PhoneNumber}"/>
                     </DataGrid.Columns>
                 </DataGrid>

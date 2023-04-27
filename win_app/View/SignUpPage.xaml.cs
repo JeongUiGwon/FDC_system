@@ -42,6 +42,8 @@ namespace SOM.View
             string userName = tb_userName.Text;
             string email = tb_Email.Text;
             string password = pwdBox_pwd.Password;
+            string department = tb_Department.Text;
+            string phoneNumber = tb_PhoneNumber.Text;
 
             btn_signUp.IsEnabled = false;
 
@@ -50,8 +52,9 @@ namespace SOM.View
 
             var customClaims = new Dictionary<string, object>()
             {
-                { "Authority", "Guest" },
-                { "PhoneNumber", "" }
+                { "Authority", "User" },
+                { "Department", department },
+                { "PhoneNumber", phoneNumber }
             };
 
             FirebaseAdminAuth firebase =  new FirebaseAdminAuth();
