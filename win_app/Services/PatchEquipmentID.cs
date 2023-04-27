@@ -12,10 +12,10 @@ namespace SOM.Services
 {
     public class PatchEquipmentID
     {
-        public async static Task<HttpResponseMessage> PatchEquipmentIDAsync(string equipment_id, string equipment_name, string equipment_state, string modifier_name, string interlock_id)
+        public async static Task<HttpResponseMessage> PatchEquipmentIDAsync(string equipment_id, string equipment_name, string equipment_use, string modifier_name, string interlock_id)
         {
             HttpClient client = HttpClientSingleton.client;
-            string jsonData = "{" + $"\"equipment_id\": \"{equipment_id}\", \"equipment_name\": \"{equipment_name}\", \"equipment_state\": \"{equipment_state}\", " +
+            string jsonData = "{" + $"\"equipment_id\": \"{equipment_id}\", \"equipment_name\": \"{equipment_name}\", \"equipment_use\": \"{equipment_use}\", " +
                 $"\"modifier_name\": \"{modifier_name}\", \"interlock_id\": \"{interlock_id}\"" + "}";
             try
             {

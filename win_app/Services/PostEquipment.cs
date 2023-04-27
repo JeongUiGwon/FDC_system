@@ -8,10 +8,10 @@ namespace SOM.Services
 {
     public class PostEquipment
     {
-        public static async Task<HttpResponseMessage> PostEquipmentAsync(string equipment_id, string equipment_name, string equipment_state, string creator_name, string interlock_id)
+        public static async Task<HttpResponseMessage> PostEquipmentAsync(string equipment_id, string equipment_name, string equipment_use, string creator_name, string interlock_id)
         {
             HttpClient client = HttpClientSingleton.client;
-            string jsonData = "{" + $"\"equipment_id\": \"{equipment_id}\", \"equipment_name\": \"{equipment_name}\", \"equipment_state\": \"{equipment_state}\", " +
+            string jsonData = "{" + $"\"equipment_id\": \"{equipment_id}\", \"equipment_name\": \"{equipment_name}\", \"equipment_use\": \"{equipment_use}\", " +
                 $"\"creator_name\": \"{creator_name}\", \"interlock_id\": \"{interlock_id}\""  + "}";
 
             try

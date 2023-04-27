@@ -223,6 +223,24 @@
                                      Margin="0 27 0 0"
                                      BorderThickness="0 0 0 1.5" />
 
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text=""
+                                     Name="tb_Department"
+                                     materialDesign:HintAssist.Hint="Department"
+                                     materialDesign:HintAssist.FloatingOffset="0, -20"
+                                     BorderBrush="#c5c8cc"
+                                     Margin="0 27 0 0"
+                                     BorderThickness="0 0 0 1.5" />
+
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text=""
+                                     Name="tb_PhoneNumber"
+                                     materialDesign:HintAssist.Hint="PhoneNumber"
+                                     materialDesign:HintAssist.FloatingOffset="0, -20"
+                                     BorderBrush="#c5c8cc"
+                                     Margin="0 27 0 0"
+                                     BorderThickness="0 0 0 1.5" />
+
                     <Button Content="Sign up"
                             Name="btn_signUp"
                             Background="#1B59F8"
