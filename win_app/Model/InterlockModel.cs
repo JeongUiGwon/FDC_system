@@ -17,14 +17,14 @@ namespace SOM.Model
         public string LOT_ID { get; set; }
         public int Type { get; set; }
         public int Out_Count { get; set; }
-        public int LSL { get; set; }
-        public int USL { get; set; }
-        public string LSL_Action { get; set; }
-        public string USL_Action { get; set; }
+        public int lsl { get; set; }
+        public int usl { get; set; }
+        public string lsl_interlock_action { get; set; }
+        public string usl_interlock_action { get; set; }
         public int Data_Value { get; set; }
         public DateTime Created_at { get; set; }
 
-        public InterlockModel(string Equipment_ID, string Equipment_Name, string Interlock_ID, string Interlock_Name, string Param_ID, string Recipe_ID, string LOT_ID, int Type, int Out_Count, int LSL, int USL, string LSL_Action, string USL_Action, int Data_Value, DateTime Created_at)
+        public InterlockModel(string Equipment_ID, string Equipment_Name, string Interlock_ID, string Interlock_Name, string Param_ID, string Recipe_ID, string LOT_ID, int Type, int Out_Count, int lsl, int usl, string lsl_interlock_action, string usl_interlock_action, int Data_Value, DateTime Created_at)
         {
             this.Equipment_ID = Equipment_ID;
             this.Equipment_Name = Equipment_Name;
@@ -35,10 +35,10 @@ namespace SOM.Model
             this.LOT_ID = LOT_ID;
             this.Type = Type;
             this.Out_Count = Out_Count;
-            this.LSL = LSL;
-            this.USL = USL;
-            this.LSL_Action = LSL_Action;
-            this.USL_Action = USL_Action;
+            this.lsl = lsl;
+            this.usl = usl;
+            this.lsl_interlock_action = lsl_interlock_action;
+            this.usl_interlock_action = usl_interlock_action;
             this.Data_Value = Data_Value;
             this.Created_at = Created_at;
         }

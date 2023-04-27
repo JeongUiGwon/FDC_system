@@ -1,4 +1,6 @@
-﻿using SOM.Services;
+﻿using Newtonsoft.Json;
+using SOM.Model;
+using SOM.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SOM.View.Modal
 {
@@ -55,18 +51,44 @@ namespace SOM.View.Modal
             // Post Params API 요청
             HttpResponseMessage response = await PostParam.PostParamAsync(param_id, param_name, param_level, param_state, creator_name, equipment);
 
-            if (response.IsSuccessStatusCode)
+            // Post Params API 요청 실패
+            if (!response.IsSuccessStatusCode)
             {
-                // API 요청 성공
-                this.Close();
-            }
-            else
-            {
-                // API 요청 실패
-                Btn_Register.IsEnabled=true;
+                Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
                 Tb_ErrorMsg.Text = response.ReasonPhrase;
+                return;
             }
+
+            // Get Params API 요청
+            HttpResponseMessage responseGet = await GetParamID.GetParamIDAsync(param_id);
+
+            // Get Params API 요청 실패
+            if (!responseGet.IsSuccessStatusCode)
+            {
+                Btn_Register.IsEnabled = true;
+                Bdr_ErrorBox.Visibility = Visibility.Visible;
+                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                return;
+            }
+
+            // 입력한 데이터 JSON화
+            ParamsModel new_content = await responseGet.Content.ReadAsAsync<ParamsModel>();
+            string jsonNewData = JsonConvert.SerializeObject(new_content);
+
+            // Post param_history API 요청
+            HttpResponseMessage responseHistory = await PostParamHistory.PostParamHistoryAsync("생성", param_id, new_value: jsonNewData);
+
+            // Post param_history API 요청 실패
+            if (!responseHistory.IsSuccessStatusCode)
+            {
+                Btn_Register.IsEnabled = true;
+                Bdr_ErrorBox.Visibility = Visibility.Visible;
+                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                return;
+            }
+
+            this.Close();
         }
     }
 }

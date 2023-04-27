@@ -35,9 +35,11 @@ namespace SOM.ViewModel
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
             ObservableCollection<EquipmentsModel> content = new ObservableCollection<EquipmentsModel>();
 
-            content = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();
-
-            Equipments = new ObservableCollection<EquipmentsModel>(content);
+            if (response != null)
+            {
+                content = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();
+                Equipments = new ObservableCollection<EquipmentsModel>(content);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

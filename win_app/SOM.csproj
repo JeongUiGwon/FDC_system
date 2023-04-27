@@ -398,6 +398,8 @@
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\DeleteRecipeID.cs" />
     <Compile Include="Services\GetEquipment.cs" />
+    <Compile Include="Services\GetParamHistory.cs" />
+    <Compile Include="Services\GetParamID.cs" />
     <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\GetRecipe.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
@@ -406,6 +408,7 @@
     <Compile Include="Services\PatchRecipeID.cs" />
     <Compile Include="Services\PostEquipment.cs" />
     <Compile Include="Services\PostParam.cs" />
+    <Compile Include="Services\PostParamHistory.cs" />
     <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
@@ -455,6 +458,9 @@
     </Compile>
     <Compile Include="View\Pages\EquipmentStatePage.xaml.cs">
       <DependentUpon>EquipmentStatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ParamHistoryPage.xaml.cs">
+      <DependentUpon>ParamHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
@@ -540,6 +546,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\EquipmentStatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ParamHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
