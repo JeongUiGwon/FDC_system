@@ -13,8 +13,7 @@ def binder(client_socket, addr):
             msg = data.decode();	
             if (length > 0):
                 print(addr, ' 에서', msg,' 를 보냈습니다.'); 
-                data = json.loads(data); 
-                data["equipment_Id"] = int(data["equipment_Id"]); 
+                data = json.loads(data);  
                 storage.append(data); 
                 
             msg = "서버에서 " + msg + " 의 내용을 받았습니다.";	
@@ -38,12 +37,12 @@ def saveFile():
                             db='minki',
                             charset='utf8'); 
 
-    sql = "INSERT INTO socketTest (equipment_id, equiptment_Name, equipment_State) VALUES (%s, %s, %s)"; 
+    sql = "INSERT INTO param_log_test (datetime, param_value, equipment_id, param_id, recipe_id) VALUES (%s, %s, %s, %s, %s)"; 
 
     with conn:
             with conn.cursor() as cur:
                     for i in range(len(storage)):
-                            cur.execute(sql, (storage[i]['equipment_Id'],storage[i]['equiptment_Name'],storage[i]['equipment_State'])); 
+                            cur.execute(sql, (storage[i]['datetime'],storage[i]['param_value'],storage[i]['equipment_id'],storage[i]['param_id'],storage[i]['recipe_id'])); 
                     conn.commit(); 
     
     storage = []; 
@@ -54,7 +53,6 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1); 
 server_socket.bind(('172.26.6.41', 8888));	
 server_socket.listen();	
-storage = []; 	
 
 
 try:		
