@@ -64,7 +64,7 @@ namespace SOM.View
 
         private void Btn_ChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/ChangePasswordPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Pages/ChangePasswordPage.xaml", UriKind.Relative));
         }
 
         private async void Btn_Delete_Account_Click(object sender, RoutedEventArgs e)

@@ -32,7 +32,7 @@ namespace SOM.View
 
         private void Btn_ChangeProfile_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/ProfilePage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Pages/ProfilePage.xaml", UriKind.Relative));
         }
 
         private async void Btn_UpdatePassword_Click(object sender, RoutedEventArgs e)

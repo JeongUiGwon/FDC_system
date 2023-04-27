@@ -414,22 +414,22 @@
     <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangePasswordPage.xaml.cs">
+    <Compile Include="View\Pages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DataPage.xaml.cs">
+    <Compile Include="View\Pages\DataPage.xaml.cs">
       <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EquipmentsPage.xaml.cs">
+    <Compile Include="View\Pages\EquipmentsPage.xaml.cs">
       <DependentUpon>EquipmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ForgotPasswordPage.xaml.cs">
       <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\InterlockPage.xaml.cs">
+    <Compile Include="View\Pages\InterlockPage.xaml.cs">
       <DependentUpon>InterlockPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginPage.xaml.cs">
@@ -456,26 +456,26 @@
     <Compile Include="View\Pages\EquipmentStatePage.xaml.cs">
       <DependentUpon>EquipmentStatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ParamsPage.xaml.cs">
+    <Compile Include="View\Pages\ParamsPage.xaml.cs">
       <DependentUpon>ParamsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProfilePage.xaml.cs">
+    <Compile Include="View\Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RecipePage.xaml.cs">
+    <Compile Include="View\Pages\RecipePage.xaml.cs">
       <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersPage.xaml.cs">
+    <Compile Include="View\Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Modal\AddEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChangePasswordPage.xaml">
+    <Page Include="View\Pages\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -483,11 +483,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DataPage.xaml">
+    <Page Include="View\Pages\DataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EquipmentsPage.xaml">
+    <Page Include="View\Pages\EquipmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -495,7 +495,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\InterlockPage.xaml">
+    <Page Include="View\Pages\InterlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -543,15 +543,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ParamsPage.xaml">
+    <Page Include="View\Pages\ParamsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ProfilePage.xaml">
+    <Page Include="View\Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RecipePage.xaml">
+    <Page Include="View\Pages\RecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -559,7 +559,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UsersPage.xaml">
+    <Page Include="View\Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
