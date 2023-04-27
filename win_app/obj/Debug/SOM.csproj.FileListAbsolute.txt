@@ -804,3 +804,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ParamsPage.g
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ParamsPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ParamHistoryPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ParamHistoryPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipeHistoryPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipeHistoryPage.baml

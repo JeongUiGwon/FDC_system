@@ -60,6 +60,12 @@ namespace SOM.View
             NavigationService.Refresh();
         }
 
+        private void Btn_History_Click(object sender, RoutedEventArgs e)
+        {
+            // 설비 이력 조회 페이지 이동
+            NavigationService.Navigate(new Uri("/View/Pages/RecipeHistoryPage.xaml", UriKind.Relative));
+        }
+
         private void Btn_Edit_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
