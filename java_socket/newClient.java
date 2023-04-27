@@ -11,7 +11,7 @@ public class newClient {
     // 소켓을 선언한다.
     try (Socket client = new Socket()) {
       // 소켓에 접속하기 위한 접속 정보를 선언한다.
-      InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8888);
+      InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8889);
       // 소켓 접속!
       client.connect(ipep);
       // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
@@ -25,13 +25,15 @@ public class newClient {
         // String recipe_id = SQK24INRJSP2FDFQ322K;
 
         // 변수화하기 (함수 호출 시 param으로 전달)
+        LocalDateTime datetime = LocalDateTime.now();
+
+        String created_at = datetime.toString();
         double param_value = Double.parseDouble(args[0]);
         String equipment_id = args[1];
         String param_id = args[2]; // DOWN
-        String created_at = args[3];
         String recipe_id = args[3];
 
-        String msg = String.format("{\"param_value\": %d, \"equipment_id\": \"%s\", \"param_id\": \"%s\", \"created_at\": \"%s\", \"recipe_id\": \"%s\"}", param_value, equipment_id, param_id, created_at, recipe_id);
+        String msg = String.format("{\"created_at\": \"%s\", \"param_value\": %f, \"equipment_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\"}", created_at, param_value, equipment_id, param_id, recipe_id);
         // String msg = "{\"equipment_Id\": 1, \"equiptment_Name\": \"권취\", \"equipment_State\": \"RUN\"}";
         
         // string을 byte배열 형식으로 변환한다.
