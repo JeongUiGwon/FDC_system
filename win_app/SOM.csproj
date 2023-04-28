@@ -600,6 +600,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="bin\Debug\firebase-adminsdk.json" />
+    <None Include="bin\Release\firebase-adminsdk.json" />
     <None Include="firebase-adminsdk.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

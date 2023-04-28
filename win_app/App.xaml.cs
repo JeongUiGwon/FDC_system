@@ -21,5 +21,13 @@ namespace SOM
     public partial class App : Application
     {
         public static UsersModel CurrentUser { get; set; }
+
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            Console.WriteLine(e.Exception.ToString());
+            MessageBox.Show(e.Exception.ToString(), "Error Message", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            e.Handled = true;
+        }
     }
 }
