@@ -42,7 +42,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <!--History Button-->
                         <Button Name="Btn_list" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" 
-                            Margin="0 10" Click="Btn_list_Click">
+                            Margin="0 10 10 0" Click="Btn_list_Click">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ListStatus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -54,23 +54,86 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding ParamHistory}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding ParamHistory}" Margin="10"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
                             <DataGridTextColumn Header="액션" Width="auto" Binding="{Binding action}"/>
-                            <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param_id}"/>
-                            <DataGridTextColumn Header="이전 값" Width="auto" MaxWidth="300" Binding="{Binding str_old_value}"/>
-                            <DataGridTextColumn Header="현재 값" Width="auto" MaxWidth="300" Binding="{Binding str_new_value}"/>
+                            <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="항목 이름" Width="auto" Binding="{Binding parma_name}"/>
+                            <DataGridTextColumn Header="변경 전" Width="auto" MaxWidth="300" Binding="{Binding str_old_value}"/>
+                            <DataGridTextColumn Header="변경 후" Width="auto" MaxWidth="300" Binding="{Binding str_new_value}"/>
                         </DataGrid.Columns>
 
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="10">
-                                    <TextBlock Text="{Binding str_old_value}" />
-                                    <TextBlock Text="{Binding str_new_value}" />
-                                </StackPanel>
+                                <Grid Background="#D0D5DE">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="변경 전 항목 내역" Margin="5"/>
+
+                                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="#757A89" BorderThickness="0.5" Margin="5">
+                                        <StackPanel Margin="5">
+                                            
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목등급" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_level}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_state}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="변경 후 항목 내역" />
+
+                                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="#757A89" BorderThickness="0.5" Margin="5">
+                                        <StackPanel Margin="5">
+                                            
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목등급" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_level}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_state}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+                                            
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
                     </DataGrid>
@@ -89,8 +152,8 @@
 
                     <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
 
-                    <Button Style="{StaticResource pagingButton}" Content="1" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#2f49cf" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#2f49cf" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="2" />
                     <Button Style="{StaticResource pagingButton}" Content="3" />
 
                     <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />

@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\som_bm.ico</ApplicationIcon>
+    <ApplicationIcon>preferences_options_settings_setting_icon_250764.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Firebase.Auth, Version=4.0.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -387,6 +387,7 @@
     <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamHistoryModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
+    <Compile Include="Model\RecipeHistoryModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Services\DeleteEquipmentID.cs" />
@@ -397,6 +398,7 @@
     <Compile Include="Services\GetParamID.cs" />
     <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\GetRecipe.cs" />
+    <Compile Include="Services\GetRecipeHistory.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
     <Compile Include="Services\PatchParamID.cs" />
@@ -408,6 +410,7 @@
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
+    <Compile Include="ViewModel\RecipeHistoryViewModel.cs" />
     <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
@@ -619,7 +622,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="preferences_options_settings_setting_icon_250764.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\som_bm.ico" />
   </ItemGroup>

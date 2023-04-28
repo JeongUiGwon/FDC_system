@@ -11,7 +11,7 @@ namespace SOM.Services
         {
             HttpClient client = HttpClientSingleton.client;
 
-            string jsonData = $"{{ \"action\": \"{action}\", \"param_id\": \"{param_id}\", \"old_value\": {old_value}, \"new_value\": \"{new_value}\"}}";
+            string jsonData = $"{{ \"action\": \"{action}\", \"param_id\": \"{param_id}\", \"old_value\": {old_value}, \"new_value\": {new_value}}}";
             if (new_value == null && old_value != null) jsonData = $"{{ \"action\": \"{action}\", \"param_id\": \"{param_id}\", \"old_value\": {old_value}}}";
             if (new_value != null && old_value == null) jsonData = $"{{ \"action\": \"{action}\", \"param_id\": \"{param_id}\", \"new_value\": {new_value}}}";
 

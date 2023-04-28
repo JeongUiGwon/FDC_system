@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("som_bm.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("preferences_options_settings_setting_icon_250764.ico")]
 
 

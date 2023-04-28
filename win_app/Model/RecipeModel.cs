@@ -10,8 +10,8 @@ namespace SOM.Model
     {
         public string recipe_id { get; set; }
         public string recipe_name { get; set; }
-        public int lsl { get; set; }
-        public int usl { get; set; }
+        public float lsl { get; set; }
+        public float usl { get; set; }
         public string lsl_interlock_action { get; set; }
         public string usl_interlock_action { get; set; }
         public string recipe_use { get; set; }
@@ -22,7 +22,7 @@ namespace SOM.Model
         public string equipment { get; set; }
         public string param { get; set; }
 
-        public RecipeModel(string recipe_id, string recipe_name, int lsl, int usl, string lsl_interlock_action, string usl_interlock_action, string recipe_use, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at, string equipment, string param)
+        public RecipeModel(string recipe_id, string recipe_name, float lsl, float usl, string lsl_interlock_action, string usl_interlock_action, string recipe_use, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at, string equipment, string param)
         {
             this.recipe_id = recipe_id;
             this.recipe_name = recipe_name;

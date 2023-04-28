@@ -40,7 +40,6 @@ namespace SOM.ViewModel
             {
                 string str_content = await response.Content.ReadAsStringAsync();
                 content = JsonConvert.DeserializeObject<ObservableCollection<RecipeModel>>(str_content);
-                //content = await response.Content.ReadAsAsync<ObservableCollection<RecipeModel>>(); ;
                 Recipes = new ObservableCollection<RecipeModel>(content);
             }
         }
