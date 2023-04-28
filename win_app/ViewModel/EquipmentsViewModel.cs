@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
 using SOM.Services;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,8 @@ namespace SOM.ViewModel
 
             if (response != null)
             {
-                content = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();
+                string str_content = await response.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<EquipmentsModel>>(str_content);
                 Equipments = new ObservableCollection<EquipmentsModel>(content);
             }
         }

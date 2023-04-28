@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FirebaseAdmin;
 using FirebaseAdmin.Auth;
-using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 
 namespace SOM.Model

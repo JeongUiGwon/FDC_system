@@ -4,6 +4,26 @@
         <name>Google.Api.Gax</name>
     </assembly>
     <members>
+        <member name="T:Google.Api.Gax.ApiTransports">
+            <summary>
+            The transports that can be used to make calls to an API.
+            </summary>
+        </member>
+        <member name="F:Google.Api.Gax.ApiTransports.None">
+            <summary>
+            No transports specified.
+            </summary>
+        </member>
+        <member name="F:Google.Api.Gax.ApiTransports.Grpc">
+            <summary>
+            Native gRPC support via binary protobuf serialization.
+            </summary>
+        </member>
+        <member name="F:Google.Api.Gax.ApiTransports.Rest">
+            <summary>
+            "REST"-like support via JSON.
+            </summary>
+        </member>
         <member name="T:Google.Api.Gax.BatchingSettings">
             <summary>
             Batching settings used to specify the conditions under which a batch of data
@@ -1476,6 +1496,16 @@
             </summary>
             <returns>Execution platform information.</returns>
         </member>
+        <member name="M:Google.Api.Gax.Platform.GetEffectiveMetadataHost">
+            <summary>
+            Determine the metadata host to use. In order of priority, this will use:
+            - GCE_METADATA_HOST environment variable, if set and non-empty
+            - METADATA_EMULATOR_HOST environment variable, if set and non-empty.
+              This is the undocumented but the de-facto mechanism for using an emulator.
+            - The hard-coded IP address of "169.254.169.254". We use the IP address rather
+              than the IP name to avoid a DNS lookup, which can cause intermittent failures.
+            </summary>
+        </member>
         <member name="M:Google.Api.Gax.Platform.#ctor">
             <summary>
             Construct with no details.
@@ -2801,6 +2831,17 @@
         <member name="M:Google.Api.Gax.VersionHeaderBuilder.AppendDotNetEnvironment">
             <summary>
             Appends the .NET environment information to the list.
+            </summary>
+        </member>
+        <member name="M:Google.Api.Gax.VersionHeaderBuilder.IsHeaderNameValueValid(System.String)">
+            <summary>
+            Whether the name or value that are supposed to be included in a header are valid
+            </summary>
+        </member>
+        <member name="M:Google.Api.Gax.VersionHeaderBuilder.FormatInformationalVersion(System.String)">
+            <summary>
+            Formats an AssemblyInformationalVersionAttribute value to avoid losing useful information,
+            but also avoid including unnecessary hex that is appended automatically.
             </summary>
         </member>
         <member name="M:Google.Api.Gax.VersionHeaderBuilder.ToString">

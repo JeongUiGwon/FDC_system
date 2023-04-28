@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FirebaseAdmin.Auth.Multitenancy;
+using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
 using System;
@@ -73,7 +74,8 @@ namespace SOM.View.Modal
             }
 
             // 입력한 데이터 JSON화
-            ParamsModel new_content = await responseGet.Content.ReadAsAsync<ParamsModel>();
+            string str_content = await responseGet.Content.ReadAsStringAsync();
+            ParamsModel new_content = JsonConvert.DeserializeObject<ParamsModel>(str_content);
             string jsonNewData = JsonConvert.SerializeObject(new_content);
 
             // Post param_history API 요청

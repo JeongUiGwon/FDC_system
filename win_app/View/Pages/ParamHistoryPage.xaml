@@ -9,6 +9,10 @@
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="ParamHistoryPage">
 
+    <Page.DataContext>
+        <viewmodel:ParamHistoryViewModel />
+    </Page.DataContext>
+
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -50,19 +54,25 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding ParamHistory}"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
-                            <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
-                            <DataGridTextColumn Header="항목명" Width="auto" Binding="{Binding param_name}"/>
-                            <DataGridTextColumn Header="항목등급" Width="auto" Binding="{Binding param_level}"/>
-                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding param_state}"/>
-                            <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
-                            <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
-
+                            <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
+                            <DataGridTextColumn Header="액션" Width="auto" Binding="{Binding action}"/>
+                            <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param_id}"/>
+                            <DataGridTextColumn Header="이전 값" Width="auto" MaxWidth="300" Binding="{Binding str_old_value}"/>
+                            <DataGridTextColumn Header="현재 값" Width="auto" MaxWidth="300" Binding="{Binding str_new_value}"/>
                         </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="{Binding str_old_value}" />
+                                    <TextBlock Text="{Binding str_new_value}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
                     </DataGrid>
                 </StackPanel>
 

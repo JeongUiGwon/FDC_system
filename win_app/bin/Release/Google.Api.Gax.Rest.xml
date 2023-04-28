@@ -39,6 +39,15 @@
             scoping must be applied by the calling code.
             </summary>
         </member>
+        <member name="P:Google.Api.Gax.Rest.ClientBuilderBase`1.GoogleCredential">
+            <summary>
+            The credentials to use as a <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.GoogleCredential"/>, or null if credentials are being provided in
+            a different way. Note that unlike <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.Credential"/>, settings for <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.QuotaProject"/>, and scopes
+            will be applied to this credential (creating a new one), in the same way as for
+            application default credentials and credentials specified using
+            <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.CredentialsPath"/> or <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.JsonCredentials"/>.
+            </summary>
+        </member>
         <member name="P:Google.Api.Gax.Rest.ClientBuilderBase`1.ApiKey">
             <summary>
             An API key to use instead of a regular credential. If this is non-null and no other credentials are supplied,
@@ -51,6 +60,42 @@
             The GCP project ID that should be used for quota and billing purposes.
             May be null.
             </summary>
+        </member>
+        <member name="P:Google.Api.Gax.Rest.ClientBuilderBase`1.HttpClientFactory">
+            <summary>
+            An <see cref="T:Google.Apis.Http.IHttpClientFactory"/> that will be used to obtain
+            <see cref="T:Google.Apis.Http.ConfigurableHttpClient"/> for making API Http calls.
+            May be null, in which case an <see cref="T:Google.Apis.Http.HttpClientFactory"/>
+            will be used.
+            </summary>
+            <remarks>
+            If you want to use custom HTTP clients, for instance, if you need to set a proxy,
+            you may do so by either
+            <list type="bullet">
+            <item>
+            Extending <see cref="T:Google.Apis.Http.HttpClientFactory"/>. Refer to
+            <see cref="T:Google.Apis.Http.HttpClientFactory" /> documentation for more information.
+            </item>
+            <item>
+            On .NET Core 2.1 and above, using <see cref="T:Google.Apis.Http.HttpClientFromMessageHandlerFactory"/>
+            in combination with <code>System.Net.Http.IHttpClientFactory</code>. Refer to
+            <see cref="T:Google.Apis.Http.HttpClientFromMessageHandlerFactory"/> documentation and
+            https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+            for more information.
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Api.Gax.Rest.ClientBuilderBase`1.UseJwtAccessWithScopes">
+            <summary>
+            Returns whether or not self-signed JWTs will be used over OAuth tokens when OAuth scopes are explicitly set.        
+            </summary>
+            <remarks>
+            In the base implementation, this defaults to <c>false</c> for maximum compatibility.
+            Subclasses which provide clients for services which support self-signed JWTs with scopes
+            may change this property value on construction, effectively changing the default to <c>true</c>
+            from the perspective of user code.
+            </remarks>
         </member>
         <member name="M:Google.Api.Gax.Rest.ClientBuilderBase`1.#ctor">
             <summary>
@@ -115,6 +160,26 @@
             <summary>
             Builds the resulting client asynchronously.
             </summary>
+        </member>
+        <member name="M:Google.Api.Gax.Rest.ClientBuilderBase`1.Configure(System.IServiceProvider)">
+            <summary>
+            Populates properties based on those set via dependency injection.
+            </summary>
+            <remarks>
+            <para>
+            Credentials are only requested from dependency injection if they are not already set
+            via any of <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.CredentialsPath"/>,
+            <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.JsonCredentials"/>, <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.Credential"/> or <see cref="P:Google.Api.Gax.Rest.ClientBuilderBase`1.GoogleCredential"/>.
+            </para>
+            <para>
+            If credentials are requested, they are tried in the following order:
+            </para>
+            <list type="bullet">
+            <item>ICredential</item>
+            <item>GoogleCredential</item>
+            </list>
+            </remarks>
+            <param name="provider">The service provider to request dependencies from.</param>
         </member>
         <member name="T:Google.Api.Gax.Rest.ClientBuilderBase`1.ExtraHeadersInitializer">
             <summary>
@@ -244,9 +309,18 @@
             and you can't refer to an instance field within an instance field initializer.
             </summary>
         </member>
+        <member name="M:Google.Api.Gax.Rest.ScopedCredentialProvider.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Creates a channel pool which will apply the specified scopes to the credentials if they require any.
+            </summary>
+            <param name="scopes">The scopes to apply. Must not be null, and must not contain null references. May be empty.</param>
+            <param name="useJwtWithScopes">A flag preferring use of self-signed JWTs over OAuth tokens when OAuth scopes are explicitly set.</param>
+        </member>
         <member name="M:Google.Api.Gax.Rest.ScopedCredentialProvider.#ctor(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Creates a channel pool which will apply the specified scopes to the credentials if they require any.
+            A provider created with this overload is equivalent to calling <see cref="M:Google.Api.Gax.Rest.ScopedCredentialProvider.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Boolean)"/>
+            with a second argument of <c>false</c>.
             </summary>
             <param name="scopes">The scopes to apply. Must not be null, and must not contain null references. May be empty.</param>
         </member>
@@ -268,6 +342,12 @@
             <param name="cancellationToken">A cancellation token for the operation.</param>
             <returns>A task representing the asynchronous operation. The result of the task
             is the scoped credentials.</returns>
+        </member>
+        <member name="M:Google.Api.Gax.Rest.ScopedCredentialProvider.ApplyScopes(Google.Apis.Auth.OAuth2.GoogleCredential)">
+            <summary>
+            Applies scopes when they're available, and potentially specifies a preference for
+            using self-signed JWTs.
+            </summary>
         </member>
         <member name="M:Google.Api.Gax.Rest.ScopedCredentialProvider.WithCancellationToken``1(System.Threading.Tasks.Task{``0},System.Threading.CancellationToken)">
             <summary>

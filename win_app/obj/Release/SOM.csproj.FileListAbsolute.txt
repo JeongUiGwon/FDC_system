@@ -216,9 +216,6 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\Google.Apis.Core.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\Google.Apis.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\Google.Apis.PlatformServices.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Collections.Immutable.dll
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Net.Http.Extensions.dll
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Net.Http.Formatting.dll
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Net.Http.Primitives.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Web.Http.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\System.Web.Http.WebHost.dll
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Release\FirebaseAdmin.xml
