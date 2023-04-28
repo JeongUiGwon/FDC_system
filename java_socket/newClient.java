@@ -7,6 +7,21 @@ import java.nio.ByteOrder;
 import java.time.LocalDateTime;
  
 public class newClient {
+
+  // lot 관리를 위해 선언하는 글로벌변수
+  static int lot_id = 1;
+  static int lot_cnt = 0;
+
+  public void lotStart() {
+    lot_cnt = lot_cnt + 1;
+    System.out.println("lot_cnt: "+ lot_cnt);
+    System.out.println("lot_id: "+ lot_id);
+    if(lot_cnt > 3){
+      lot_id = lot_id + 1;
+      lot_cnt = 0;
+    }
+  }
+
   public static void main(String... args) {
     // 소켓을 선언한다.
     try (Socket client = new Socket()) {
@@ -31,7 +46,7 @@ public class newClient {
         double data_value = Double.parseDouble(args[0]);
         String equipment_id = args[1];
         // String equipment_name = args[2];
-        int lot_id = Integer.parseInt("1");
+        // int lot_id = Integer.parseInt("1");
         String param_id = args[2]; // DOWN
         String recipe_id = args[3];
         // String equipment_mode = args[5];
