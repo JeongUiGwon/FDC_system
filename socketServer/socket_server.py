@@ -13,7 +13,7 @@ def binder(client_socket, addr):
             msg = data.decode();	
             if (length > 0):
                 print(addr, ' 에서', msg,' 를 보냈습니다.'); 
-                data = json.loads(data);  
+                data = json.loads(data); 
                 storage.append(data); 
                 
             msg = "서버에서 " + msg + " 의 내용을 받았습니다.";	
@@ -37,12 +37,12 @@ def saveFile():
                             db='minki',
                             charset='utf8'); 
 
-    sql = "INSERT INTO param_log_test (datetime, param_value, equipment_id, param_id, recipe_id) VALUES (%s, %s, %s, %s, %s)"; 
+    param_sql = "INSERT INTO param_log_test (created_at, data_value, equipment_id, param_id, recipe_id, lot_id) VALUES (%s, %s, %s, %s, %s, %s)"; 
 
     with conn:
             with conn.cursor() as cur:
                     for i in range(len(storage)):
-                            cur.execute(sql, (storage[i]['datetime'],storage[i]['param_value'],storage[i]['equipment_id'],storage[i]['param_id'],storage[i]['recipe_id'])); 
+                            cur.execute(param_sql, (storage[i]['created_at'], storage[i]['data_value'],storage[i]['equipment_id'],storage[i]['param_id'],storage[i]['recipe_id'],storage[i]['lot_id'])); 
                     conn.commit(); 
     
     storage = []; 
@@ -66,3 +66,5 @@ except:
     print("server");	
 finally:	
     server_socket.close(); 
+
+# 쓰레드 추가 말고 그냥 바로 binder 함수에서 인터락인지 아닌지 실시간 검사, 검사 결과에 따라 바로 DB에 저장
