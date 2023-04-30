@@ -57,7 +57,7 @@ namespace SOM.View.Modal
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "[POST]/Param/ " + response.ReasonPhrase;
                 return;
             }
 
@@ -69,7 +69,7 @@ namespace SOM.View.Modal
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "[GET]/param/parm_id/ " + response.ReasonPhrase;
                 return;
             }
 
@@ -86,11 +86,20 @@ namespace SOM.View.Modal
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "[POST]/param_history/ " + response.ReasonPhrase;
                 return;
             }
 
             this.Close();
+        }
+
+        private void Btn_SearchEquipment_Click(object sender, EventArgs e)
+        {
+            var Modal = new SearchEquipmentIDModal();
+            Modal.ShowDialog();
+
+            string equip_id = Modal.Result;
+            Tb_EquipID.Text = equip_id;
         }
     }
 }

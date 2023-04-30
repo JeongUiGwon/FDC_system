@@ -78,10 +78,21 @@
                 <!--Equipment ID Box-->
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="설비 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <TextBox Name="Tb_EquipID" 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBox Name="Tb_EquipID" Grid.Column="0"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
-                         FontSize="13" Margin="0 0 5 0"/>
+                         FontSize="13" Margin="0 0 5 0" />
+
+                        <Button Background="#ffffff" Grid.Column="1" BorderBrush="#799EFB" Click="Btn_SearchEquipment_Click">
+                            <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
+                        </Button>
+                    </Grid>
                 </StackPanel>
             </Grid>
 

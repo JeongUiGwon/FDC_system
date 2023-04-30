@@ -416,6 +416,9 @@
     <Compile Include="View\Modal\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modal\SearchEquipmentIDModal.xaml.cs">
+      <DependentUpon>SearchEquipmentIDModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
@@ -480,6 +483,10 @@
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Modal\AddEquipmentModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\SearchEquipmentIDModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
