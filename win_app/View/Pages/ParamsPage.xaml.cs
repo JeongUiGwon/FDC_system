@@ -96,9 +96,6 @@ namespace SOM.View
                 // Delete Param/param_id API 호출
                 HttpResponseMessage resDelete = await DeleteParamID.DeleteParamIDAsync(param_id);
 
-                // 항목 변경 이력 남기기
-                HttpResponseMessage resPost = await PostParamHistory.PostParamHistoryAsync("삭제", param_id, jsonData);
-
                 // Parmas page 새로고침
                 NavigationService.Refresh();
             }

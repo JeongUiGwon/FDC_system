@@ -31,6 +31,30 @@ namespace SOM.ViewModel
             }
         }
 
+        private ObservableCollection<EquipmentsModel> _filteredEquipments;
+        public ObservableCollection<EquipmentsModel> FilteredEquipments
+        {
+            get { return _filteredEquipments; }
+            set
+            {
+                _filteredEquipments = value;
+                OnPropertyChanged(nameof(FilteredEquipments));
+            }
+        }
+
+        private string _searchTerm;
+        public string SearchTerm
+        {
+            get { return _searchTerm; }
+            set
+            {
+                _searchTerm = value;
+                OnPropertyChanged(nameof(SearchTerm));
+                Console.WriteLine("hello");
+                FilterEquipments();
+            }
+        }
+
         private async void SetEquipments()
         {
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
@@ -41,6 +65,19 @@ namespace SOM.ViewModel
                 string str_content = await response.Content.ReadAsStringAsync();
                 content = JsonConvert.DeserializeObject<ObservableCollection<EquipmentsModel>>(str_content);
                 Equipments = new ObservableCollection<EquipmentsModel>(content);
+                FilterEquipments();
+            }
+        }
+
+        private void FilterEquipments()
+        {
+            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            {
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) || e.equipment_name.Contains(SearchTerm)));
+            }
+            else
+            {
+                FilteredEquipments = Equipments;
             }
         }
 

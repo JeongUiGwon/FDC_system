@@ -28,8 +28,8 @@ namespace SOM.Model
             this.created_at = created_at;
             this.old_value = old_value;
             this.new_value = new_value;
-            this.str_old_value = JsonConvert.SerializeObject(str_old_value);
-            this.str_new_value = JsonConvert.SerializeObject(str_new_value);
+            this.str_old_value = JsonConvert.SerializeObject(old_value);
+            this.str_new_value = JsonConvert.SerializeObject(new_value);
         }
     }
 }

@@ -61,7 +61,7 @@
                             <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
                             <DataGridTextColumn Header="액션" Width="auto" Binding="{Binding action}"/>
                             <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
-                            <DataGridTextColumn Header="항목 이름" Width="auto" Binding="{Binding parma_name}"/>
+                            <DataGridTextColumn Header="항목 이름" Width="auto" Binding="{Binding param_name}"/>
                             <DataGridTextColumn Header="변경 전" Width="auto" MaxWidth="300" Binding="{Binding str_old_value}"/>
                             <DataGridTextColumn Header="변경 후" Width="auto" MaxWidth="300" Binding="{Binding str_new_value}"/>
                         </DataGrid.Columns>

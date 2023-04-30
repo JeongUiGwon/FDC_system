@@ -315,7 +315,7 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                     </Trigger>

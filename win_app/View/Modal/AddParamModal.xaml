@@ -59,7 +59,7 @@
                 <!--Param Level Box-->
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Text="항목등급" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="0 0 5 0">
+                    <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="0 0 5 0" Text="S">
                         <ComboBoxItem>S</ComboBoxItem>
                         <ComboBoxItem>A</ComboBoxItem>
                         <ComboBoxItem>B</ComboBoxItem>
@@ -69,7 +69,7 @@
                 <!--Param State Box-->
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <ComboBox Name="Cb_ParamState" FontSize="13" Margin="0 0 5 0">
+                    <ComboBox Name="Cb_ParamState" FontSize="13" Margin="0 0 5 0" Text="사용">
                         <ComboBoxItem>사용</ComboBoxItem>
                         <ComboBoxItem>미사용</ComboBoxItem>
                     </ComboBox>

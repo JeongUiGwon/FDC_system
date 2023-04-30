@@ -42,13 +42,13 @@
                 <!--Search Bar-->
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                     <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="20" Height="20"/>
-                    <TextBox materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                             BorderBrush="#757A89" Margin="5 0 0 0" Width="150" />
+                    <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="150" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
 
                 <!--Equipments Datagrid-->
-                <DataGrid x:Name="DataGrid_Equipment" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" Grid.Row="1" Margin="0 10 0 10"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" ItemsSource="{Binding Equipments}"  GridLinesVisibility="None"
+                <DataGrid x:Name="dg_Equipment" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" Grid.Row="1" Margin="0 10 0 10"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" ItemsSource="{Binding FilteredEquipments}"  GridLinesVisibility="None"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
                           MouseDoubleClick="DataGrid_Equipment_MouseDoubleClick">
 
