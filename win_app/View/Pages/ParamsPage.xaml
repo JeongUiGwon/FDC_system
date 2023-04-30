@@ -42,20 +42,36 @@
 
                 <StackPanel Margin="0 35 0 0">
 
-                    <!--Add Button-->
-                    <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" 
-                            Margin="10" Click="Btn_Add_Click">
-                        <Border CornerRadius="10 10 10 10" >
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                <TextBlock Text="Add Params" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                            </StackPanel>
-                        </Border>
-                    </Button>
+                    <Grid>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <!--History Button-->
+                            <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_history_Click">
+                                <Border CornerRadius="10 10 10 10" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                        <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                            <!--Add Button-->
+                            <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
+                                <Border CornerRadius="10 10 10 10" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                        <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+                    </Grid>                    
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}" Margin="10 0"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>

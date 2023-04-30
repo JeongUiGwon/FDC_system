@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
 using SOM.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -32,7 +33,8 @@ namespace SOM.ViewModel
 
             if (response != null)
             {
-                content = await response.Content.ReadAsAsync<ObservableCollection<ParamsModel>>();
+                string str_content = await response.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<ParamsModel>>(str_content);
                 Params = new ObservableCollection<ParamsModel>(content);
             }
         }

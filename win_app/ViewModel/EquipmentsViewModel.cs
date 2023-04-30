@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
 using SOM.Services;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,54 @@ namespace SOM.ViewModel
             }
         }
 
+        private ObservableCollection<EquipmentsModel> _filteredEquipments;
+        public ObservableCollection<EquipmentsModel> FilteredEquipments
+        {
+            get { return _filteredEquipments; }
+            set
+            {
+                _filteredEquipments = value;
+                OnPropertyChanged(nameof(FilteredEquipments));
+            }
+        }
+
+        private string _searchTerm;
+        public string SearchTerm
+        {
+            get { return _searchTerm; }
+            set
+            {
+                _searchTerm = value;
+                OnPropertyChanged(nameof(SearchTerm));
+                Console.WriteLine("hello");
+                FilterEquipments();
+            }
+        }
+
         private async void SetEquipments()
         {
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
             ObservableCollection<EquipmentsModel> content = new ObservableCollection<EquipmentsModel>();
 
-            content = await response.Content.ReadAsAsync<ObservableCollection<EquipmentsModel>>();
+            if (response != null)
+            {
+                string str_content = await response.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<EquipmentsModel>>(str_content);
+                Equipments = new ObservableCollection<EquipmentsModel>(content);
+                FilterEquipments();
+            }
+        }
 
-            Equipments = new ObservableCollection<EquipmentsModel>(content);
+        private void FilterEquipments()
+        {
+            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            {
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) || e.equipment_name.Contains(SearchTerm)));
+            }
+            else
+            {
+                FilteredEquipments = Equipments;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

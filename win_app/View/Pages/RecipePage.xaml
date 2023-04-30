@@ -42,15 +42,29 @@
 
                 <StackPanel Margin="0 35 0 0">
 
-                    <!--Add Button-->
-                    <Button x:Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="10" Click="Btn_Add_Click">
-                        <Border CornerRadius="10 10 10 10" >
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                <TextBlock Text="Add Recipe" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                            </StackPanel>
-                        </Border>
-                    </Button>
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                        
+                        <!--Add Button-->
+                        <Button x:Name="Btn_History" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                        
+                        <!--Add Button-->
+                        <Button x:Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="10 0 0 0" Click="Btn_Add_Click">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+                    
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="RecipeDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
@@ -64,9 +78,9 @@
                             <DataGridTextColumn Header="레시피명" Width="auto" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lsl}"/>
                             <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding usl}"/>
-                            <DataGridTextColumn Header="LSL Action" Width="auto" Binding="{Binding lsl_action}"/>
-                            <DataGridTextColumn Header="USL Action" Width="auto" Binding="{Binding usl_action}"/>
-                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding recipe_state}"/>
+                            <DataGridTextColumn Header="LSL Action" Width="auto" Binding="{Binding lsl_interlock_action}"/>
+                            <DataGridTextColumn Header="USL Action" Width="auto" Binding="{Binding usl_interlock_action}"/>
+                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding recipe_use}"/>
                             <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
 

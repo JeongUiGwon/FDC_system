@@ -4,7 +4,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="/View/LoginWindow.xaml">
+             StartupUri="/View/LoginWindow.xaml" DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -19,6 +19,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <!--전역 FontFamily 설정-->
+            <Style TargetType="Control">
+                <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
+            </Style>
+            
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#ffffff" />
@@ -277,12 +282,12 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Background" Value="#eff4fc"/>
                         <Setter Property="Foreground" Value="Black"/>
                     </Trigger>
 
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Background" Value="#eff4fc"/>
                         <Setter Property="Foreground" Value="Black"/>
                     </Trigger>
 
@@ -315,7 +320,7 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                     </Trigger>

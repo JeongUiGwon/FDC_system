@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
 using SOM.Services;
 using SOM.View.Modal;
 using System;
@@ -63,6 +64,12 @@ namespace SOM.View
             NavigationService.Refresh();
         }
 
+        private void Btn_history_Click(object sender, RoutedEventArgs e)
+        {
+            // 설비 이력 조회 페이지 이동
+            NavigationService.Navigate(new Uri("/View/Pages/ParamHistoryPage.xaml", UriKind.Relative));
+        }
+
         private void Btn_Edit_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -79,6 +86,7 @@ namespace SOM.View
             Button clickedButton = sender as Button;
             ParamsModel dataContext = clickedButton.DataContext as ParamsModel;
             string param_id = dataContext.param_id;
+            string jsonData = JsonConvert.SerializeObject(dataContext);
 
             // 삭제 확인 다이얼로그 실행
             var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -86,7 +94,7 @@ namespace SOM.View
             if (result == MessageBoxResult.Yes)
             {
                 // Delete Param/param_id API 호출
-                HttpResponseMessage response = await DeleteParamID.DeleteParamIDAsync(param_id);
+                HttpResponseMessage resDelete = await DeleteParamID.DeleteParamIDAsync(param_id);
 
                 // Parmas page 새로고침
                 NavigationService.Refresh();
