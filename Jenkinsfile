@@ -10,5 +10,14 @@ pipeline{
                 ''' 
             }
         }
+
+        stage('Setup env Activate') {
+            steps {
+                sh '''
+                chomod venvActivate.sh
+                ./venvActibate.sh
+                '''
+            }
+        }
     }
 }
