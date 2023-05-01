@@ -170,6 +170,14 @@ class ParamLog(models.Model):
         # partition_type = PostgresPartitionedModel.RANGE
         # partition_subtype = PostgresPartitionedModel.YEAR
 
+    class PartitioningMeta:
+        method = PostgresPartitioningMethod.RANGE
+        key = ["created_at"]
+        #
+        # partition_key = "created_at"
+        # partition_type = PostgresPartitionedModel.RANGE
+        # partition_subtype = PostgresPartitionedModel.YEAR
+
 class InterlockLog(models.Model):
     # class PartitioningMeta:
     #     method = PostgresPartitionedModel.RANGE
