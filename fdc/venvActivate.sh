@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source env/bin/activate
+source .env/bin/activate
 
 cd /var/lib/jenkins/workspace/A201_FDC_Server/fdc
 
