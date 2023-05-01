@@ -11,6 +11,6 @@ echo "Migrations done"
 
 echo $PWD
 
-source runserver
+source python manage.py runserver 0.0.0.0:8000
 
 echo "runserver done"
