@@ -1,13 +1,17 @@
 # ./Dockerfile
 FROM python:3.8
-WORKDIR /app
+
+RUN mkdir /fdc_server
+ADD . /fdc_server
+WORKDIR /fdc_server
 
 ## Install package
-COPY requirement.txt ./
-RUN pip install -r requirement.txt
+COPY requirements.txt ./
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # Run the application on the port 8080
-EXPOSE 8000
+EXPOSE 8000 5432
 
 # 배포 명령어
-RUN ["runserver"]
+CMD ["python3", "manage.py",  "runserver", "0.0.0.0:8000"]
