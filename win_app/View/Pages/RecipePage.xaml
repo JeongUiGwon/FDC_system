@@ -39,32 +39,35 @@
 
             <!--Contents-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-
                 <StackPanel Margin="0 35 0 0">
+                    <Grid>
+                        <!--Left Section-->
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <!--History Button-->
+                            <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click">
+                                <Border CornerRadius="10 10 10 10" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                        <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
-                        
-                        <!--Add Button-->
-                        <Button x:Name="Btn_History" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click">
-                            <Border CornerRadius="10 10 10 10" >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                                </StackPanel>
-                            </Border>
-                        </Button>
-                        
-                        <!--Add Button-->
-                        <Button x:Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="10 0 0 0" Click="Btn_Add_Click">
-                            <Border CornerRadius="10 10 10 10" >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                                </StackPanel>
-                            </Border>
-                        </Button>
-                    </StackPanel>
-                    
+                        <!--Right Section-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                            <!--Add Button-->
+                            <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
+                                <Border CornerRadius="10 10 10 10" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                        <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="RecipeDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"

@@ -825,3 +825,5 @@ C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\Pages\RecipeP
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\Pages\UsersPage.baml
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\Modal\SearchEquipmentIDModal.g.cs
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\Modal\SearchEquipmentIDModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\SearchEquipmentIDModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\SearchEquipmentIDModal.baml

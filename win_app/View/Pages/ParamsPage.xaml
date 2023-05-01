@@ -42,8 +42,8 @@
 
                 <StackPanel Margin="0 35 0 0">
 
-                    <Grid>
-
+                    <Grid>                        
+                        <!--Left Section-->
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <!--History Button-->
                             <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_history_Click">
@@ -56,6 +56,7 @@
                             </Button>
                         </StackPanel>
 
+                        <!--Right Section-->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                             <!--Add Button-->
                             <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
