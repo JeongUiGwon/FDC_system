@@ -112,12 +112,12 @@ class Recipe(models.Model):
     class Meta:
         db_table = 'recipe'
 
-class LotLog(models.Model):
+class LotLog(PostgresPartitionedModel):
     lot_id = models.CharField(max_length=15, primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     start_time = models.DateTimeField(default=random_past_datetime)
-    end_time = models.DateTimeField(default=random_future_datetime_from_past())
+    end_time = models.DateTimeField(default=random_future_datetime_from_past)
     recipe_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     lot_state = models.CharField(max_length=10, null=True)
     created_at = models.DateTimeField(default=random_past_datetime)
@@ -128,8 +128,14 @@ class LotLog(models.Model):
         super().save(*args, **kwargs)
     class Meta:
         db_table = 'lot_log'
-        managed = is_manage
+        managed = True
 
+    class PartitioningMeta:
+        method = PostgresPartitioningMethod.RANGE
+        key = ["created_at"]
+
+    # class PartitioningMeta:
+    #     key = ('created_at',)
 class EquipmentState(models.Model):
     id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
@@ -154,7 +160,7 @@ class ParamLog(models.Model):
 
     class Meta:
         db_table = 'param_log'
-        managed = is_manage
+        managed = False
 
     class PartitioningMeta:
         method = PostgresPartitioningMethod.RANGE
@@ -194,7 +200,7 @@ class InterlockLog(models.Model):
         super(InterlockLog, self).save(*args, **kwargs)
     class Meta:
         db_table = 'interlock_log'
-        managed = is_manage
+        managed = False
 
 class ParamHistory(models.Model): # TODO GET 할 때 param_name join해서 보여주기
     log_id = models.AutoField(primary_key=True)
