@@ -2,19 +2,20 @@ from django.db import models
 from datetime import datetime, timedelta
 import random, string
 from django.apps import apps
-from django_mysql.models import JSONField
+from psqlextra.models import PostgresPartitionedModel
+from psqlextra.types import PostgresPartitioningMethod
 
 is_manage = True
 
 def random_past_datetime():
-    return datetime.now() - timedelta(days=random.randint(0, 365),
+    return datetime.now() - timedelta(days=random.randint(0, 365*2),
                                       hours=random.randint(0, 23),
                                       minutes=random.randint(0, 59),
                                       seconds=random.randint(0, 59))
 
 def random_future_datetime_from_past():
     past_time = random_past_datetime()
-    return past_time + timedelta(days=random.randint(0, 365),
+    return past_time + timedelta(days=random.randint(0, 365*2),
                                  hours=random.randint(0, 23),
                                  minutes=random.randint(0, 59),
                                  seconds=random.randint(0, 59))
@@ -73,7 +74,7 @@ class Equipment(models.Model):
 
 class Param(models.Model):
     param_id = models.CharField(max_length=50, primary_key=True)
-    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
+    equipment = models.ForeignKey(Equipment, on_delete=models.PROTECT)
     param_name = models.CharField(max_length=50)
     param_level = models.CharField(max_length=2)
     param_state = models.CharField(max_length=10)
@@ -94,8 +95,8 @@ class Recipe(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     param = models.ForeignKey(Param, on_delete=models.CASCADE)
     recipe_name = models.CharField(max_length=50)
-    lsl = models.IntegerField(null=True)
-    usl = models.IntegerField(null=True)
+    lsl = models.FloatField(null=True)
+    usl = models.FloatField(null=True)
     lsl_interlock_action = models.CharField(max_length=50, null=True)
     usl_interlock_action = models.CharField(max_length=50, null=True)
     recipe_use = models.CharField(max_length=10)
@@ -119,6 +120,7 @@ class LotLog(models.Model):
     end_time = models.DateTimeField(default=random_future_datetime_from_past())
     recipe_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     lot_state = models.CharField(max_length=10, null=True)
+    created_at = models.DateTimeField(default=random_past_datetime)
 
     def save(self, *args, **kwargs):
         if not self.lot_id:
@@ -139,7 +141,6 @@ class EquipmentState(models.Model):
     class Meta:
         db_table = 'equipment_state'
 
-
 class ParamLog(models.Model):
     log_id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
@@ -150,11 +151,23 @@ class ParamLog(models.Model):
     # data_list = models.CharField(max_length=200, null=True)
     param_value = models.FloatField(null=True)
 
+
     class Meta:
         db_table = 'param_log'
         managed = is_manage
 
+    class PartitioningMeta:
+        method = PostgresPartitioningMethod.RANGE
+        key = ["created_at"]
+        #
+        # partition_key = "created_at"
+        # partition_type = PostgresPartitionedModel.RANGE
+        # partition_subtype = PostgresPartitionedModel.YEAR
+
 class InterlockLog(models.Model):
+    # class PartitioningMeta:
+    #     method = PostgresPartitionedModel.RANGE
+
     log_id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
@@ -165,17 +178,17 @@ class InterlockLog(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     lot = models.ForeignKey(LotLog, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=random_past_datetime)
-    interlock_type = models.IntegerField() # TODO 확인
+    interlock_type = models.CharField(max_length=15)
     out_count = models.IntegerField()
-    lower_limit = models.IntegerField(null=True)
-    upper_limit = models.IntegerField(null=True)
+    lower_limit = models.FloatField(null=True)
+    upper_limit = models.FloatField(null=True)
     data_value = models.IntegerField(null=True)
     cctv_video_url = models.CharField(max_length=50, null=True)
 
     def save(self, *args, **kwargs):
-        if self.equipment_id:
-            self.equipment_name = self.equipment_id.equipment_name
-            self.cause_equip_id = self.equipment_id
+        if self.equipment:
+            self.equipment_name = self.equipment.equipment_name
+            self.cause_equip_id = self.equipment
             self.cause_equip_name = self.equipment_name
 
         super(InterlockLog, self).save(*args, **kwargs)
@@ -187,9 +200,14 @@ class ParamHistory(models.Model): # TODO GET 할 때 param_name join해서 보�
     log_id = models.AutoField(primary_key=True)
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField(default=random_past_datetime)
-    param_id = models.CharField(max_length=20)
+    param = models.ForeignKey(Param, on_delete=models.CASCADE)
+    param_name = models.CharField(max_length=50)
     old_value = models.JSONField(null=True)
     new_value = models.JSONField(null=True)
+
+    def save(self, *args, **kwargs):
+        self.param_name = self.param.param_name
+        super().save(*args, **kwargs)
     class Meta:
         db_table = 'param_history'
         managed = is_manage
@@ -198,9 +216,9 @@ class RecipeHistory(models.Model):
     log_id = models.AutoField(primary_key=True)
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField(default=random_past_datetime)
-    recipe_id = models.CharField(max_length=50)
-    old_value = models.CharField(max_length=50, null=True)
-    new_value = models.CharField(max_length=50, null=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    old_value = models.JSONField(null=True)
+    new_value = models.JSONField(null=True)
 
     class Meta:
         db_table = 'recipe_history'
