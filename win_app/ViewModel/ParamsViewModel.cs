@@ -1,0 +1,49 @@
+﻿using Newtonsoft.Json;
+using SOM.Model;
+using SOM.Services;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Net.Http;
+
+namespace SOM.ViewModel
+{
+    public class ParamsViewModel : INotifyPropertyChanged
+    {
+        private ObservableCollection<ParamsModel> _params;
+
+        public ParamsViewModel()
+        {
+            SetParams();
+        }
+
+        public ObservableCollection<ParamsModel> Params
+        {
+            get { return _params; }
+            set
+            {
+                _params = value;
+                OnPropertyChanged(nameof(Params));
+            }
+        }
+
+        private async void SetParams()
+        {
+            HttpResponseMessage response = await GetParams.GetParamsAsync();
+            ObservableCollection<ParamsModel> content = new ObservableCollection<ParamsModel>();
+
+            if (response != null)
+            {
+                string str_content = await response.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<ParamsModel>>(str_content);
+                Params = new ObservableCollection<ParamsModel>(content);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}

@@ -8,35 +8,35 @@ namespace SOM.Model
 {
     public class RecipeModel
     {
-        public string ID { get; set; }
-        public string Equipment_ID { get; set; }
-        public string Param_ID { get; set; }
-        public string Name { get; set; }
-        public int LSL { get; set; }
-        public int USL { get; set; }
-        public string LSL_Action { get; set; }
-        public string USL_Action { get; set; }
-        public int State { get; set; }
-        public string Creator { get; set; }
-        public DateTime Created_at { get; set; }
-        public string Modifier { get; set; }
-        public DateTime Updated_at { get; set; }
+        public string recipe_id { get; set; }
+        public string recipe_name { get; set; }
+        public float lsl { get; set; }
+        public float usl { get; set; }
+        public string lsl_interlock_action { get; set; }
+        public string usl_interlock_action { get; set; }
+        public string recipe_use { get; set; }
+        public string creator_name { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public string modifier_name { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
+        public string equipment { get; set; }
+        public string param { get; set; }
 
-        public RecipeModel(string ID, string Equipment_ID, string Param_ID, string Name, int LSL, int USL, string LSL_Action, string USL_Action, int State, string Creator, DateTime Created_at, string Modifier, DateTime Updated_at)
+        public RecipeModel(string recipe_id, string recipe_name, float lsl, float usl, string lsl_interlock_action, string usl_interlock_action, string recipe_use, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at, string equipment, string param)
         {
-            this.ID = ID;
-            this.Equipment_ID = Equipment_ID;
-            this.Param_ID = Param_ID;
-            this.Name = Name;
-            this.LSL = LSL;
-            this.USL = USL;
-            this.LSL_Action = LSL_Action;
-            this.USL_Action = USL_Action;
-            this.State = State;
-            this.Creator = Creator;
-            this.Created_at = Created_at;
-            this.Modifier = Modifier;
-            this.Updated_at = Updated_at;
+            this.recipe_id = recipe_id;
+            this.recipe_name = recipe_name;
+            this.lsl = lsl;
+            this.usl = usl;
+            this.lsl_interlock_action = lsl_interlock_action;
+            this.usl_interlock_action = usl_interlock_action;
+            this.recipe_use = recipe_use;
+            this.creator_name = creator_name;
+            this.created_at = created_at;
+            this.modifier_name = modifier_name;
+            this.updated_at = updated_at;
+            this.equipment = equipment;
+            this.param = param;
         }
     }
 }

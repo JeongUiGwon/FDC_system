@@ -2,7 +2,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # 사용할 DB의 종류
         'NAME': 'fdc',    # DB 이름
-        'USER': 'tyms0503',       # DB 계정 이름
+        'USER': 'cms',       # DB 계정 이름
         'PASSWORD': '11111111', # DB 계정의 패스워드
         'HOST': 'localhost',    # IP
         'PORT': '3306',         # 포트 번호
