@@ -14,7 +14,7 @@ pipeline{
         stage('Setup env Activate') {
             steps {
                 sh '''
-                chmod venvActivate.sh
+                chmod +x venvActivate.sh
                 ./venvActibate.sh
                 '''
             }
