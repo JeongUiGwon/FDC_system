@@ -1,11 +1,13 @@
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # 사용할 DB의 종류
+        # 'ENGINE': 'django.db.backends.postgresql', # 사용할 DB의 종류
+        'ENGINE': 'psqlextra.backend',
+
         'NAME': 'fdc',    # DB 이름
         'USER': 'cms',       # DB 계정 이름
-        'PASSWORD': '11111111', # DB 계정의 패스워드
+        'PASSWORD': '1234', # DB 계정의 패스워드
         'HOST': 'localhost',    # IP
-        'PORT': '3306',         # 포트 번호
+        'PORT': '5432',         # 포트 번호
     }
 }
 
