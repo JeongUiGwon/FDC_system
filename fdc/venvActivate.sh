@@ -9,6 +9,8 @@ python3 manage.py migrate
 
 echo "Migrations done"
 
+echo $PWD
+
 source runserver
 
 echo "runserver done"
