@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="ubuntu@k8a201.p.ssafy.io:22 key" confirmBeforeUploading="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="ec2" confirmBeforeUploading="false" showNewOnSourceInSync="false" showNewOnTargetInSync="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="ubuntu@k8a201.p.ssafy.io:22 key">
+      <paths name="ec2">
         <serverdata>
           <mappings>
             <mapping deploy="/home/ubuntu/fdc" local="$PROJECT_DIR$" />
