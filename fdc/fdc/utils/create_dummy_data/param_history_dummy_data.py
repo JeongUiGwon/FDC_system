@@ -3,7 +3,7 @@ import mysql.connector
 import random
 from datetime import datetime, timedelta
 
-def generate_dummy_data_for_param_history():
+def generate_dummy_data_param_history():
     param_history_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
     param_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
     equipment_id = 'A' + ''.join(random.choices(string.digits, k=7))
