@@ -6,7 +6,7 @@ DATABASES = {
         'NAME': 'fdc',    # DB 이름
         'USER': 'cms',       # DB 계정 이름
         'PASSWORD': '1234', # DB 계정의 패스워드
-        'HOST': 'localhost',    # IP
+        'HOST': 'k8a201.p.ssafy.io',    # IP
         'PORT': '5432',         # 포트 번호
     }
 }
