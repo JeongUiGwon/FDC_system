@@ -23,21 +23,7 @@ SSAFY 8기 2학기 삼성 SDI 연계 프로젝트 - 배터리 제조 기술 설�
 
 ## 🚩 주요 기능
 
-1. JSON Data의 자료형 추출
-
-   - DFS를 통해 자료형을 재귀적으로 추출
-
-2. 전체/즐겨찾는 API에 대한 Response의 Pass/Fail Trend 시각화
-
-   - 일/주/월 단위의 모니터링 결과를 Chart.js를 활용하여 시각화
-
-3. 개별 API에 대한 상세정보 보기
-
-   - 모니터링 하고 있는 API Request 정보와 Raw JSON Data Response 및 Response의 Schema 확인 가능
-
-4. 서로 다른 두 시점의 API 응답 내용 비교 (diff)
-
-   - 두 Raw JSON Response 비교 시 달라진 부분을 스크롤 바 옆에 색깔로 표시
+1. 실시간 설비 데이터 모니터링
 
 
 ## 🚩 시스템 아키텍처
