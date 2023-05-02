@@ -7,8 +7,8 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-      mc:Ignorable="d" 
-      Title="Dashboard">
+      mc:Ignorable="d" MinHeight="500" MinWidth="700"
+      Title="Dashboard" FontFamily="{DynamicResource MaterialDesignFont}">
 
     <!--Main Section-->
     <Border>
@@ -22,29 +22,105 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!--Title-->
-            <TextBlock Text="Dashboard" FontSize="26" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 35 0 20"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <!--Info Card-->
-            <Grid Grid.Row="1" Margin="10 20 15 40">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <!--Title-->
+            <Border Background="#2f49cf" Height="74" Margin="10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Panel.ZIndex="1">
+                <TextBlock Text="대쉬보드" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+
+                <!--Icon Section-->
+                <Border Background="#e63773" Panel.ZIndex="1" Height="50" Width="50" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="25 10">
+                    <materialDesign:PackIcon Kind="Factory" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff"/>
+                </Border>
+                
+                <!--Content Section-->
+                <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                    <StackPanel Margin="20 40 10 10">
+                        <TextBlock Text="등록된 설비" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="10" FontSize="15" Foreground="#757A89" Margin="5 10"/>
+                    </StackPanel>
+                </Border>
+                    
             </Grid>
 
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="300"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
 
-                
+                <!--Icon Section-->
+                <Border Background="#5cb360" Panel.ZIndex="1" Height="50" Width="50" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="25 10">
+                    <materialDesign:PackIcon Kind="Inbox" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff"/>
+                </Border>
+
+                <!--Content Section-->
+                <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                    <StackPanel Margin="20 40 10 10">
+                        <TextBlock Text="등록된 항목" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="230" FontSize="15" Foreground="#757A89" Margin="5 10"/>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="2">
+
+                <!--Icon Section-->
+                <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" Width="50" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="25 10">
+                    <materialDesign:PackIcon Kind="ListBox" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff"/>
+                </Border>
+
+                <!--Content Section-->
+                <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                    <StackPanel Margin="20 40 10 10">
+                        <TextBlock Text="등록된 레시피" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="782" FontSize="15" Foreground="#757A89" Margin="5 10"/>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="3">
+
+                <!--Subtitle Section-->
+                <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
+                        Margin="25 10">
+                    <TextBlock Text="Interlock / Warning 알림" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                </Border>
+
+                <!--Content Section-->
+                <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                    <StackPanel Margin="20 40 10 10">
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+
+                <!--Subtitle Section-->
+                <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
+                        Margin="25 10">
+                    <TextBlock Text="Interlock / Warning 발생 현황" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                </Border>
+
+                <!--Content Section-->
+                <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                    <StackPanel Margin="20 40 10 10">
+                    </StackPanel>
+                </Border>
+
             </Grid>
         </Grid>
     </Border>

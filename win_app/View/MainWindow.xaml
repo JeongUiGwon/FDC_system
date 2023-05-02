@@ -50,7 +50,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Separator Height="0.8" Margin="20 30" Background="#ffffff"/>
+                <Separator Height="0.8" Margin="20 20" Background="#ffffff"/>
                 
                 <!--Menu Buttons-->
                 <Button Name="Btn_Dashboard" Style="{StaticResource menuButtonActive}" Click="Btn_Dashboard_Click">
