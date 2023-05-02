@@ -30,7 +30,7 @@ pipeline{
         stage('Docker Run') {
             steps {
                 sh '''
-                sudo docker run --name a201_fdc -p -d 8000:8000 jeonguigwon/a201_fdc
+                sudo docker run --name a201_fdc -d -p 8000:8000 jeonguigwon/a201_fdc
                 '''
             }
         }
