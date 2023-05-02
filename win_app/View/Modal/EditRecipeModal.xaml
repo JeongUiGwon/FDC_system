@@ -9,7 +9,7 @@
         Title="EditRecipeModal" Height="700" Width="500"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource MaterialDesignFont}" Loaded="window_Loaded">
     <Border Background="#ffffff" CornerRadius="20" BorderBrush="#757A89" BorderThickness="0.5" MouseDown="Border_MouseDown">
         <StackPanel >
             <!--Close Button-->
@@ -20,10 +20,10 @@
             <materialDesign:PackIcon Kind="ListBox" Width="80" Height="80" Foreground="#799EFB" Margin="30 0 0 0"/>
 
             <!--Title-->
-            <TextBlock Text="Edit Recipe" FontWeight="DemiBold" FontSize="20" Margin="30 20 0 0" Foreground="#444C66"/>
+            <TextBlock Text="레시피 편집" FontWeight="DemiBold" FontSize="20" Margin="30 20 0 0" Foreground="#444C66"/>
 
             <!--Details-->
-            <TextBlock Text="Details about Recipe." FontSize="13" Foreground="#757A89" Margin="30 10 0 0"/>
+            <TextBlock Text="변경할 레시피 정보를 입력하세요." FontSize="13" Foreground="#757A89" Margin="30 10 0 0"/>
 
             <!--Contents-->
             <Grid Margin="30 50 30 0">
@@ -42,7 +42,7 @@
 
                 <!--Recipe ID Box-->
                 <StackPanel Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="Recipe ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
+                    <TextBlock Text="레시피 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
                     <TextBox Name="Tb_RecipeID" Text="{Binding recipe_id}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
@@ -51,7 +51,7 @@
 
                 <!--Recipe Name Box-->
                 <StackPanel Grid.Row="0" Grid.Column="1">
-                    <TextBlock Text="Recipe Name" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
+                    <TextBlock Text="레시피명" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
                     <TextBox Name="Tb_RecipeName" Text="{Binding recipe_name}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
@@ -79,7 +79,7 @@
                 <!--LSL Action Box-->
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="LSL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_LslAction" FontSize="13" Margin="0 0 5 0" Text="{Binding lsl_action}">
+                    <ComboBox Name="Cb_LslAction" FontSize="13" Margin="0 0 5 0" Text="{Binding lsl_interlock_action}">
                         <ComboBoxItem>INTERLOCK</ComboBoxItem>
                         <ComboBoxItem>WARNING</ComboBoxItem>
                         <ComboBoxItem>MAIL</ComboBoxItem>
@@ -89,7 +89,7 @@
                 <!--USL Action Box-->
                 <StackPanel Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="USL Action" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <ComboBox Name="Cb_UslAction" FontSize="13" Margin="5 0 0 0" Text="{Binding usl_action}">
+                    <ComboBox Name="Cb_UslAction" FontSize="13" Margin="5 0 0 0" Text="{Binding usl_interlock_action}">
                         <ComboBoxItem>INTERLOCK</ComboBoxItem>
                         <ComboBoxItem>WARNING</ComboBoxItem>
                         <ComboBoxItem>MAIL</ComboBoxItem>
@@ -98,25 +98,36 @@
 
                 <!--Recipe Staten Box-->
                 <StackPanel Grid.Row="3" Grid.Column="0">
-                    <TextBlock Text="Recipe State" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
-                    <ComboBox Name="Cb_RecipeState" FontSize="13" Margin="0 0 5 0" Text="{Binding recipe_state}">
-                        <ComboBoxItem>RUN</ComboBoxItem>
-                        <ComboBoxItem>DOWN</ComboBoxItem>
+                    <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <ComboBox Name="Cb_RecipeState" FontSize="13" Margin="0 0 5 0" Text="{Binding recipe_use}">
+                        <ComboBoxItem>사용</ComboBoxItem>
+                        <ComboBoxItem>미사용</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 
                 <!--Equipment UI Box-->
                 <StackPanel Grid.Row="3" Grid.Column="1">
-                    <TextBlock Text="Equipment ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
-                    <TextBox Name="Tb_EquipID" Text="{Binding equipment}"
+                    <TextBlock Text="설비 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Name="Tb_EquipID" Grid.Column="0"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
-                         FontSize="13" Margin="5 0 0 0"/>
+                         FontSize="13" Margin="5 0 5 0" Text="{Binding equipment}" />
+
+                        <Button Background="#ffffff" Grid.Column="1" BorderBrush="#799EFB" Click="Btn_SearchEquipment_Click">
+                            <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
+                        </Button>
+                    </Grid>
                 </StackPanel>
 
                 <!--Recipe Staten Box-->
                 <StackPanel Grid.Row="4" Grid.Column="0">
-                    <TextBlock Text="Param ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <TextBlock Text="항목 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
                     <TextBox Name="Tb_ParamID" Text="{Binding param}"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 

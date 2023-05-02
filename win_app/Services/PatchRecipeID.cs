@@ -11,11 +11,11 @@ namespace SOM.Services
 {
     public class PatchRecipeID
     {
-        public async static Task<HttpResponseMessage> PatchRecipeIDAsync(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_state, string modifier_name, string equipment, string param )
+        public async static Task<HttpResponseMessage> PatchRecipeIDAsync(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_use, string modifier_name, string equipment, string param )
         {
             HttpClient client = HttpClientSingleton.client;
             string jsonData = $"{{ \"recipe_id\": \"{recipe_id}\", \"recipe_name\": \"{recipe_name}\", \"lsl\": {lsl}, \"usl\": {usl}, \"lsl_action\": \"{lsl_action}\"," +
-                $"\"usl_action\": \"{usl_action}\", \"recipe_state\": \"{recipe_state}\", \"modifier_name\": \"{modifier_name}\", \"equipment\": \"{equipment}\", \"param\": \"{param}\"}}";
+                $"\"usl_action\": \"{usl_action}\", \"recipe_use\": \"{recipe_use}\", \"modifier_name\": \"{modifier_name}\", \"equipment\": \"{equipment}\", \"param\": \"{param}\"}}";
 
             try
             {
