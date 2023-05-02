@@ -421,6 +421,9 @@
     <Compile Include="View\Modal\SearchEquipmentIDModal.xaml.cs">
       <DependentUpon>SearchEquipmentIDModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modal\SearchParamIDModal.xaml.cs">
+      <DependentUpon>SearchParamIDModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
@@ -489,6 +492,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modal\SearchEquipmentIDModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\SearchParamIDModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

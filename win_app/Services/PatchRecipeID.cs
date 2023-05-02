@@ -11,7 +11,7 @@ namespace SOM.Services
 {
     public class PatchRecipeID
     {
-        public async static Task<HttpResponseMessage> PatchRecipeIDAsync(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_use, string modifier_name, string equipment, string param )
+        public async static Task<HttpResponseMessage> PatchRecipeIDAsync(string recipe_id, string recipe_name, float lsl, float usl, string lsl_action, string usl_action, string recipe_use, string modifier_name, string equipment, string param )
         {
             HttpClient client = HttpClientSingleton.client;
             string jsonData = $"{{ \"recipe_id\": \"{recipe_id}\", \"recipe_name\": \"{recipe_name}\", \"lsl\": {lsl}, \"usl\": {usl}, \"lsl_action\": \"{lsl_action}\"," +

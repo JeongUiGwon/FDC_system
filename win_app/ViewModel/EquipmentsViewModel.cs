@@ -15,13 +15,12 @@ namespace SOM.ViewModel
 {
     public class EquipmentsViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<EquipmentsModel> _equipments;
-
         public EquipmentsViewModel()
         {
             SetEquipments();
         }
 
+        private ObservableCollection<EquipmentsModel> _equipments;
         public ObservableCollection<EquipmentsModel> Equipments
         {
             get { return _equipments; }

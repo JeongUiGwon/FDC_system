@@ -54,12 +54,12 @@ namespace SOM.View.Modal
             string recipe_state = Cb_RecipeState.Text;
             string creator_name = App.CurrentUser.UserName;
             string equip_id = Tb_EquipID.Text;
-            string param_id = Tb_ParamID.Text;
-            int lsl;
-            int usl;
+            string param_id = tb_paramID.Text;
+            float lsl;
+            float usl;
 
             // LSL 숫자인지 확인
-            if (!int.TryParse(str_lsl, out lsl))
+            if (!float.TryParse(str_lsl, out lsl))
             {
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
                 Tb_ErrorMsg.Text = "LSL must be entered as a number.";
@@ -67,7 +67,7 @@ namespace SOM.View.Modal
             }
 
             // USL 숫자인지 확인
-            if (!int.TryParse(str_usl, out usl))
+            if (!float.TryParse(str_usl, out usl))
             {
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
                 Tb_ErrorMsg.Text = "USL must be entered as a number.";
@@ -124,6 +124,15 @@ namespace SOM.View.Modal
 
             string equip_id = Modal.Result;
             Tb_EquipID.Text = equip_id;
+        }
+
+        private void Btn_SearchParams_Click(object sender, EventArgs e)
+        {
+            var Modal = new SearchParamIDModal();
+            Modal.ShowDialog();
+
+            string param_id = Modal.Result;
+            tb_paramID.Text = param_id;
         }
     }
 }

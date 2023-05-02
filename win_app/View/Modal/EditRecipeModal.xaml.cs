@@ -63,16 +63,16 @@ namespace SOM.View.Modal
             string recipe_state = Cb_RecipeState.Text;
             string modifier_name = App.CurrentUser.UserName;
             string equip_id = Tb_EquipID.Text;
-            string param_id = Tb_ParamID.Text;
-            int lsl;
-            int usl;
+            string param_id = tb_paramID.Text;
+            float lsl;
+            float usl;
 
             // 버튼 비활성화
             Btn_Save.IsEnabled = false;
             _new_value = DataContext as RecipeModel;
 
             // LSL 숫자인지 확인
-            if (!int.TryParse(str_lsl, out lsl))
+            if (!float.TryParse(str_lsl, out lsl))
             {
                 Btn_Save.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
@@ -81,7 +81,7 @@ namespace SOM.View.Modal
             }
 
             // USL 숫자인지 확인
-            if (!int.TryParse(str_usl, out usl))
+            if (!float.TryParse(str_usl, out usl))
             {
                 Btn_Save.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
@@ -129,6 +129,15 @@ namespace SOM.View.Modal
 
             string equip_id = Modal.Result;
             Tb_EquipID.Text = equip_id;
+        }
+
+        private void Btn_SearchParams_Click(object sender, EventArgs e)
+        {
+            var Modal = new SearchParamIDModal();
+            Modal.ShowDialog();
+
+            string param_id = Modal.Result;
+            tb_paramID.Text = param_id;
         }
     }
 }
