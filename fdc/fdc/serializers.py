@@ -7,19 +7,33 @@ class EquipmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ParamSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+
     class Meta:
         model = Param
         fields = '__all__'
+        extra_fields = ('equipment_name')
+
 
 class RecipeSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+
     class Meta:
         model = Recipe
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name')
+
 
 class LotLogSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+    recipe_name = serializers.CharField(source='recipe.recipe_name', read_only=True)
+
     class Meta:
         model = LotLog
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name', 'recipe_name')
 
 class EquipmentStateSerializer(serializers.ModelSerializer):
     class Meta:
