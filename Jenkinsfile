@@ -5,7 +5,6 @@ pipeline{
             steps {
                 sh  '''
                 cd /var/lib/jenkins/workspace/A201_FDC_Server/fdc
-                docker login
                 docker build -t jeonguigwon/a201_fdc .
                 ''' 
             }
