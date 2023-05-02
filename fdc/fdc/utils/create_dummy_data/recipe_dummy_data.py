@@ -11,13 +11,13 @@ def generate_dummy_data_recipe():
     usl_interlock_action = random.choice(['MAIL', 'WARNING', 'INTERLOCK'])
     recipe_use = random.choice(['사용', '미사용'])
     creator_name = random.choice(['최명서', '정의권', '임상빈', '조성환', '채민기', '김지선'])
-    modifier_name = random.choice(['최명서', '정의권', '임상빈', '조성환', '채민기', '김지선'])
+    # modifier_name = random.choice(['최명서', '정의권', '임상빈', '조성환', '채민기', '김지선'])
 
     equipment = random.choice(Equipment.objects.all())
     param = random.choice(Param.objects.all())
 
     created_at = random_past_datetime()
-    updated_at = random_future_datetime_from_past()
+    # updated_at = random_future_datetime_from_past()
 
     return (equipment,
             param,
@@ -28,6 +28,5 @@ def generate_dummy_data_recipe():
             usl_interlock_action,
             recipe_use,
             creator_name,
-            created_at,
-            modifier_name,
-            updated_at)
+            created_at)
+
