@@ -8,7 +8,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:viewmodels="clr-namespace:SOM.ViewModel"
         mc:Ignorable="d"
-        Title="SearchEquipmentIDModal" Height="600" Width="500"
+        Title="SearchEquipmentIDModal" Height="700" Width="500"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
         FontFamily="{DynamicResource MaterialDesignFont}">
@@ -36,11 +36,11 @@
             <Grid Margin="30 50 30 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="400"/>
                 </Grid.RowDefinitions>
 
                 <!--Search Bar-->
-                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
                     <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="20" Height="20"/>
                     <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                              BorderBrush="#757A89" Margin="5 0 0 0" Width="150" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
