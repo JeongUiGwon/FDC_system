@@ -9,12 +9,12 @@ namespace SOM.Model
         public string action { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public string recipe { get; set; }
-        public ParamsModel old_value { get; set; }
-        public ParamsModel new_value { get; set; }
+        public RecipeModel old_value { get; set; }
+        public RecipeModel new_value { get; set; }
         public string str_old_value { get; set; }
         public string str_new_value { get; set; }
 
-        public RecipeHistoryModel(int log_id, string action, Nullable<DateTime> created_at, string recipe, ParamsModel old_value, ParamsModel new_value)
+        public RecipeHistoryModel(int log_id, string action, Nullable<DateTime> created_at, string recipe, RecipeModel old_value, RecipeModel new_value)
         {
             this.log_id = log_id;
             this.action = action;
