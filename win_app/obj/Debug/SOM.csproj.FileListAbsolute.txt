@@ -482,19 +482,14 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditParamMod
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\EditRecipeModal.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.AssemblyReference.cache
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.csproj.SuggestedBindingRedirects.cache
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPasswordPage.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginWindow.baml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUpPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\App.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddEquipmentModal.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ChangePasswordPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\DashboardPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\DataPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\EquipmentsPage.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\ForgotPasswordPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\InterlockPage.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\LoginWindow.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\MainWindow.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Modal\AddParamModal.g.cs
@@ -508,7 +503,6 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ParamsPage.g
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ProfilePage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipeHistoryPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipePage.g.cs
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\SignUpPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\UsersPage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\App.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -836,3 +830,9 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\ProfilePage.
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipeHistoryPage.baml
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\RecipePage.baml
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Pages\UsersPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\ForgotPasswordPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\LoginPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\SignUpPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\ForgotPasswordPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\LoginPage.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Login\SignUpPage.g.cs

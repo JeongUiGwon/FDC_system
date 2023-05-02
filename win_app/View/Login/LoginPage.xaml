@@ -209,7 +209,7 @@
                                  BorderThickness="0 0 0 1.5" />
 
                     <TextBlock HorizontalAlignment="Right" Margin="0 5 0 0">
-                        <Hyperlink NavigateUri="/View/ForgotPasswordPage.xaml">Forgot Password?</Hyperlink>
+                        <Hyperlink NavigateUri="/View/Login/ForgotPasswordPage.xaml">Forgot Password?</Hyperlink>
                     </TextBlock>
 
                     <TextBlock x:Name="Tb_ErrorMsg" FontSize="13" Foreground="Red" Margin="0 5 0 0"/>

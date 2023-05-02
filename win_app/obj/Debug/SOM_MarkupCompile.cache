@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\
 SOM
 none
 false
 DEBUG;TRACE
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\App.xaml
-25-1837284955
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\App.xaml
+25823718736
 
-651327463540
-20899483097
-View\Modal\AddEquipmentModal.xaml;View\Modal\SearchEquipmentIDModal.xaml;View\Modal\SearchParamIDModal.xaml;View\Pages\ChangePasswordPage.xaml;View\Pages\DashboardPage.xaml;View\Pages\DataPage.xaml;View\Pages\EquipmentsPage.xaml;View\ForgotPasswordPage.xaml;View\Pages\InterlockPage.xaml;View\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Modal\AddParamModal.xaml;View\Modal\AddRecipeModal.xaml;View\Modal\EditEquipmentModal.xaml;View\Modal\EditParamModal.xaml;View\Modal\EditRecipeModal.xaml;View\Pages\EquipmentStatePage.xaml;View\Pages\ParamHistoryPage.xaml;View\Pages\ParamsPage.xaml;View\Pages\ProfilePage.xaml;View\Pages\RecipeHistoryPage.xaml;View\Pages\RecipePage.xaml;View\SignUpPage.xaml;View\Pages\UsersPage.xaml;
+65533658457
+2081179137186
+View\Modal\AddEquipmentModal.xaml;View\Modal\SearchEquipmentIDModal.xaml;View\Modal\SearchParamIDModal.xaml;View\Pages\ChangePasswordPage.xaml;View\Pages\DashboardPage.xaml;View\Pages\DataPage.xaml;View\Pages\EquipmentsPage.xaml;View\Login\ForgotPasswordPage.xaml;View\Pages\InterlockPage.xaml;View\Login\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Modal\AddParamModal.xaml;View\Modal\AddRecipeModal.xaml;View\Modal\EditEquipmentModal.xaml;View\Modal\EditParamModal.xaml;View\Modal\EditRecipeModal.xaml;View\Pages\EquipmentStatePage.xaml;View\Pages\ParamHistoryPage.xaml;View\Pages\ParamsPage.xaml;View\Pages\ProfilePage.xaml;View\Pages\RecipeHistoryPage.xaml;View\Pages\RecipePage.xaml;View\Login\SignUpPage.xaml;View\Pages\UsersPage.xaml;
 
 False
 

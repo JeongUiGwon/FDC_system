@@ -35,12 +35,12 @@ namespace SOM.View
             FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
             await firebaseAuth.client.ResetEmailPasswordAsync(email);
 
-            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Login/LoginPage.xaml", UriKind.Relative));
         }
 
         private void Btn_LoginNow_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/LoginPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Login/LoginPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
