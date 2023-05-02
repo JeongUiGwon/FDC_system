@@ -1,4 +1,6 @@
-﻿using SOM.Services;
+﻿using Newtonsoft.Json;
+using SOM.Model;
+using SOM.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,17 +74,56 @@ namespace SOM.View.Modal
                 return;
             }
 
+            // Recipe 등록 API 호출
             HttpResponseMessage response = await PostRecipe.PostRecipeAsync(recipe_id, recipe_name, lsl, usl, lsl_action, usl_action, recipe_state, creator_name, equip_id, param_id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                this.Close();
-            }
-            else
+            // Recipe 등록 요청 실패
+            if (!response.IsSuccessStatusCode)
             {
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "Recipe registration failed. " + response.ReasonPhrase;
+                return;
             }
+
+            // Recipe 조회 API 호출
+            HttpResponseMessage responseGet = await GetRecipeID.GetRecipeIDAsync(recipe_id);
+
+            // Recipe 조회 API 요청 실패
+            if (!responseGet.IsSuccessStatusCode)
+            {
+                Btn_Register.IsEnabled = true;
+                Bdr_ErrorBox.Visibility = Visibility.Visible;
+                Tb_ErrorMsg.Text = "Recipe lookup failed. " + response.ReasonPhrase;
+                return;
+            }
+
+            // 입력한 데이터 JSON화
+            string str_content = await responseGet.Content.ReadAsStringAsync();
+            RecipeModel new_content = JsonConvert.DeserializeObject<RecipeModel>(str_content);
+            string jsonNewData = JsonConvert.SerializeObject(new_content);
+
+            // Recipe 이력 기록 API 호출
+            HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("CREATE", recipe_id, new_value: jsonNewData);
+
+            // Recipe 이력 기록 API 요청 실패
+            if (!response_history.IsSuccessStatusCode)
+            {
+                Btn_Register.IsEnabled = true;
+                Bdr_ErrorBox.Visibility = Visibility.Visible;
+                Tb_ErrorMsg.Text = "Recipe history recording failed. " + response.ReasonPhrase;
+                return;
+            }
+
+            this.Close();
+        }
+
+        private void Btn_SearchEquipment_Click(object sender, EventArgs e)
+        {
+            var Modal = new SearchEquipmentIDModal();
+            Modal.ShowDialog();
+
+            string equip_id = Modal.Result;
+            Tb_EquipID.Text = equip_id;
         }
     }
 }
