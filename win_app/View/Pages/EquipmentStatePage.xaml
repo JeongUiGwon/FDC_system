@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SOM.View.Pages"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:viewmodels="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="EquipmentStatePage">
@@ -26,7 +27,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!--Title-->
@@ -37,11 +37,23 @@
             <!--Contents-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
 
-                <StackPanel Margin="10 35 10 10">
+                <Grid Margin="10 35 10 20">
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*" MaxHeight="900"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Search Bar-->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                        <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="EquipmentsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Equipments}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding FilteredEquipments}" Grid.Row="1"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
@@ -55,37 +67,7 @@
                             <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                </StackPanel>
-
-            </Border>
-
-            <!--Ragination Section-->
-            <Border Grid.Row="4" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
-                <StackPanel Orientation="Horizontal">
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#2f49cf" Foreground="#ffffff"/>
-                    <Button Style="{StaticResource pagingButton}" Content="2" />
-                    <Button Style="{StaticResource pagingButton}" Content="3" />
-
-                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
-
-                    <Button Style="{StaticResource pagingButton}" Content="7" />
-                    <Button Style="{StaticResource pagingButton}" Content="8" />
-                    <Button Style="{StaticResource pagingButton}" Content="9" />
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-                </StackPanel>
+                </Grid>
             </Border>
         </Grid>
     </Border>

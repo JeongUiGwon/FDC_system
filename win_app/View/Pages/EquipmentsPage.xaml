@@ -41,7 +41,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*" MaxHeight="1000"/>
+                        <RowDefinition Height="*" MaxHeight="800"/>
                     </Grid.RowDefinitions>
                     
                     <!--Add Button-->
