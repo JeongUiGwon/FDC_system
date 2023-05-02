@@ -117,72 +117,79 @@ def CheckInterlock(data):
      
 
 def CheckwithMES(data):
-    conn = pymysql.connect(host='172.26.6.41',
-                            user='cms',
-                            password='11111111',
-                            db='minki',
-                            charset='utf8')
-    cursor = conn.cursor()
+    try:
+        conn = pymysql.connect(host='172.26.6.41',
+                                user='cms',
+                                password='11111111',
+                                db='minki',
+                                charset='utf8')
+        cursor = conn.cursor()
 
-    # data = {"created_at": "2023-05-01T14:30:45.973232", "data_value": 11.861240, "equipment_id": "6272CMK6", "lot_id": "1", "param_id": "N7I6IXN7OSNS22O", "recipe_id": "NNX12IIWNWH1PPQX733M"}
+        equipment_id = data["equipment_id"]
+        param_id = data["param_id"]
+        recipe_id = data["recipe_id"]
 
-    equipment_id = data["equipment_id"]
-    param_id = data["param_id"]
-    recipe_id = data["recipe_id"]
+        param_sql = f'SELECT * FROM param_test WHERE param_id = "{param_id}" AND equipment_id = "{equipment_id}"'
+        cursor.execute(param_sql)
+        param = cursor.fetchone()
+        param_level = param[1]
 
-    param_sql = f'SELECT * FROM param_test WHERE param_id = "{param_id}" AND equipment_id = "{equipment_id}"'
-    cursor.execute(param_sql)
-    param = cursor.fetchone()
-    # cursor.close()
-    param_level = param[1]
+        recipe_sql = f'SELECT * FROM recipe_test WHERE recipe_id = "{recipe_id}"'
+        cursor.execute(recipe_sql)
+        recipe = cursor.fetchone()
+        lsl = recipe[2]
+        usl = recipe[3]
+        lsl_interlock_action = recipe[4]
+        usl_interlock_action = recipe[5]
 
-    recipe_sql = f'SELECT * FROM recipe_test WHERE recipe_id = "{recipe_id}"'
-    cursor.execute(recipe_sql)
-    recipe = cursor.fetchone()
-    # cursor.close()
-    lsl = recipe[2]
-    usl = recipe[3]
-    lsl_interlock_action = recipe[4]
-    usl_interlock_action = recipe[5]
+        connMES = pymysql.connect(host='172.26.6.41',
+                                user='cms',
+                                password='11111111',
+                                db='mes',
+                                charset='utf8')
+        
+        cursorMES = connMES.cursor()
 
-    master_data_sql = f'SELECT * FROM master_data WHERE recipe_id = "{recipe_id}" AND equipment_id = "{equipment_id}" AND param_id = "{param_id}"'
-    cursor.execute(master_data_sql)
-    mes = cursor.fetchone()
-    # cursor.close()
+        # master_data : MES의 기준정보 테이블
+        master_data_sql = f'SELECT * FROM recipe_master_data WHERE recipe_id = "{recipe_id}" AND equipment_id = "{equipment_id}" AND param_id = "{param_id}"'
+        cursorMES.execute(master_data_sql)
+        mes = cursorMES.fetchone()
+        cursorMES.close()
+        connMES.close()
 
-    if param_level == mes[3] and usl == mes[4] and lsl == mes[5] and usl_interlock_action == mes[6] and lsl_interlock_action == mes[7]:
-        print("FDC 설비 데이터가 MES 기준 정보와 일치합니다.")
+        if param_level == mes[3] and usl == mes[4] and lsl == mes[5] and usl_interlock_action == mes[6] and lsl_interlock_action == mes[7]:
+            print("FDC 설비 데이터가 MES 기준 정보와 일치합니다.")
 
-    if param_level != mes[3]:
-        update_sql = f'UPDATE param_test SET param_level = "{mes[3]}" param_id = "{param_id}" AND equipment_id = "{equipment_id}"'
-        cursor.execute(update_sql)
-        conn.commit()
-        # cursor.close()
-        print("Data Change : param_level")
-    if usl != mes[4]:
-        update_sql = f'UPDATE recipe_test SET usl = "{mes[4]}" WHERE recipe_id = "{recipe_id}"'
-        cursor.execute(update_sql)
-        conn.commit()
-        # cursor.close()
-        print("Data Change : usl")
-    if lsl != mes[5]:
-        update_sql = f'UPDATE recipe_test SET lsl = "{mes[5]}" WHERE recipe_id = "{recipe_id}"'
-        cursor.execute(update_sql)
-        conn.commit()
-        # cursor.close()
-        print("Data Change : lsl")
-    if usl_interlock_action != mes[6]:
-        update_sql = f'UPDATE recipe_test SET usl_interlock_action = "{mes[6]}" WHERE recipe_id = "{recipe_id}"'
-        cursor.execute(update_sql)
-        conn.commit()
-        # cursor.close()
-        print("Data Change : usl_interlock_action")
-    if lsl_interlock_action != mes[7]:
-        update_sql = f'UPDATE recipe_test SET lsl_interlock_action = "{mes[7]}" WHERE recipe_id = "{recipe_id}"'
-        cursor.execute(update_sql)
-        conn.commit()
-        # cursor.close()
-        print("Data Change : lsl_interlock_action")
+        if param_level != mes[3]:
+            update_sql = f'UPDATE param_test SET param_level = "{mes[3]}" param_id = "{param_id}" AND equipment_id = "{equipment_id}"'
+            cursor.execute(update_sql)
+            conn.commit()
+            print("Data Change : param_level")
+        if usl != mes[4]:
+            update_sql = f'UPDATE recipe_test SET usl = "{mes[4]}" WHERE recipe_id = "{recipe_id}"'
+            cursor.execute(update_sql)
+            conn.commit()
+            print("Data Change : usl")
+        if lsl != mes[5]:
+            update_sql = f'UPDATE recipe_test SET lsl = "{mes[5]}" WHERE recipe_id = "{recipe_id}"'
+            cursor.execute(update_sql)
+            conn.commit()
+            print("Data Change : lsl")
+        if usl_interlock_action != mes[6]:
+            update_sql = f'UPDATE recipe_test SET usl_interlock_action = "{mes[6]}" WHERE recipe_id = "{recipe_id}"'
+            cursor.execute(update_sql)
+            conn.commit()
+            print("Data Change : usl_interlock_action")
+        if lsl_interlock_action != mes[7]:
+            update_sql = f'UPDATE recipe_test SET lsl_interlock_action = "{mes[7]}" WHERE recipe_id = "{recipe_id}"'
+            cursor.execute(update_sql)
+            conn.commit()
+            print("Data Change : lsl_interlock_action")
+
+        cursor.close()
+        conn.close()
+    except:
+        print("Can Not Access to DB")
 
 
 # storage에 할당된 Data를 DB 저장하고 flush
