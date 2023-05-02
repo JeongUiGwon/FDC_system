@@ -9,6 +9,10 @@
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="RecipeHistoryPage">
 
+    <Page.DataContext>
+        <viewmodel:RecipeHistoryViewModel />
+    </Page.DataContext>
+    
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -35,14 +39,14 @@
 
                 <StackPanel Margin="0 35 0 0">
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <!--History Button-->
                         <Button Name="Btn_list" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" 
-                            Margin="0 10" Click="Btn_list_Click">
+                            Margin="10 10" Click="Btn_list_Click">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ListStatus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="레시피" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    <TextBlock Text="리스트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
                                 </StackPanel>
                             </Border>
                         </Button>
@@ -50,19 +54,128 @@
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Params}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding RecipeHistory}" Margin="10 0"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding param_id}"/>
-                            <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
-                            <DataGridTextColumn Header="항목명" Width="auto" Binding="{Binding param_name}"/>
-                            <DataGridTextColumn Header="항목등급" Width="auto" Binding="{Binding param_level}"/>
-                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding param_state}"/>
-                            <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
-                            <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
-
+                            <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
+                            <DataGridTextColumn Header="액션" Width="auto" Binding="{Binding action}"/>
+                            <DataGridTextColumn Header="레시피 ID" Width="auto" Binding="{Binding recipe}"/>
+                            <DataGridTextColumn Header="변경 전" Width="*" Binding="{Binding str_old_value}"/>
+                            <DataGridTextColumn Header="변경 후" Width="*" Binding="{Binding str_new_value}"/>
                         </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <Grid Background="#eff4fc">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="변경 전" Foreground="#444C66" FontWeight="DemiBold" FontSize="20" Margin="10"/>
+
+                                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="#757A89" BorderThickness="0.5" CornerRadius="5" Margin="10">
+                                        <StackPanel Margin="10">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="레시피명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.recipe_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.recipe_use}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="LSL" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.lsl}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="USL" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.usl}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="LSL 인터락 액션" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.lsl_interlock_action}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="USL 인터락 액션" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.usl_interlock_action}" Foreground="#757A89"/>
+                                            </StackPanel>
+                                            
+                                        </StackPanel>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="변경 후" Foreground="#444C66" FontWeight="DemiBold" FontSize="20" Margin="10"/>
+
+                                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="#757A89" BorderThickness="0.5" CornerRadius="5" Margin="10">
+                                        <StackPanel Margin="10">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="레시피명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.recipe_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.recipe_use}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="LSL" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.lsl}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="USL" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.usl}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="LSL 인터락 액션" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.lsl_interlock_action}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="USL 인터락 액션" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.usl_interlock_action}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
                     </DataGrid>
                 </StackPanel>
 

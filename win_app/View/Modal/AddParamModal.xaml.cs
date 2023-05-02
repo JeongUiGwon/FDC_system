@@ -57,7 +57,7 @@ namespace SOM.View.Modal
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = "[POST]/Param/ " + response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "Params Registration failed. " + response.ReasonPhrase;
                 return;
             }
 
@@ -69,7 +69,7 @@ namespace SOM.View.Modal
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = "[GET]/param/parm_id/ " + response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "Params lookup failed. " + response.ReasonPhrase;
                 return;
             }
 
@@ -79,14 +79,14 @@ namespace SOM.View.Modal
             string jsonNewData = JsonConvert.SerializeObject(new_content);
 
             // Post param_history API 요청
-            HttpResponseMessage responseHistory = await PostParamHistory.PostParamHistoryAsync("생성", param_id, new_value: jsonNewData);
+            HttpResponseMessage responseHistory = await PostParamHistory.PostParamHistoryAsync("CREATE", param_id, new_value: jsonNewData);
 
             // Post param_history API 요청 실패
             if (!responseHistory.IsSuccessStatusCode)
             {
                 Btn_Register.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = "[POST]/param_history/ " + response.ReasonPhrase;
+                Tb_ErrorMsg.Text = "Params history recording failed. " + response.ReasonPhrase;
                 return;
             }
 

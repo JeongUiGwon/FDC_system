@@ -9,11 +9,11 @@ namespace SOM.Services
 {
     public class PostRecipe
     {
-        public static async Task<HttpResponseMessage> PostRecipeAsync(string recipe_id, string recipe_name, int lsl, int usl, string lsl_action, string usl_action, string recipe_state, string creator_name, string equipment, string param)
+        public static async Task<HttpResponseMessage> PostRecipeAsync(string recipe_id, string recipe_name, float lsl, float usl, string lsl_interlock_action, string usl_interlock_action, string recipe_use, string creator_name, string equipment, string param)
         {
             HttpClient client = HttpClientSingleton.client;
-            string jsonData = $"{{ \"recipe_id\": \"{recipe_id}\", \"recipe_name\": \"{recipe_name}\", \"lsl\": {lsl}, \"usl\": {usl}, \"lsl_action\": \"{lsl_action}\"," +
-                $"\"usl_action\": \"{usl_action}\", \"recipe_state\": \"{recipe_state}\", \"creator_name\": \"{creator_name}\", \"equipment\": \"{equipment}\", \"param\": \"{param}\"}}";
+            string jsonData = $"{{ \"recipe_id\": \"{recipe_id}\", \"recipe_name\": \"{recipe_name}\", \"lsl\": {lsl}, \"usl\": {usl}, \"lsl_interlock_action\": \"{lsl_interlock_action}\"," +
+                $"\"usl_interlock_action\": \"{usl_interlock_action}\", \"recipe_use\": \"{recipe_use}\", \"creator_name\": \"{creator_name}\", \"equipment\": \"{equipment}\", \"param\": \"{param}\"}}";
 
             try
             {

@@ -91,14 +91,14 @@ namespace SOM.View.Modal
             string str_new_value = JsonConvert.SerializeObject(_new_value);
 
             // Post param_history API 요청
-            HttpResponseMessage responseHistory = await PostParamHistory.PostParamHistoryAsync("생성", param_id, str_old_value, str_new_value);
+            HttpResponseMessage responseHistory = await PostParamHistory.PostParamHistoryAsync("UPDATE", param_id, str_old_value, str_new_value);
 
             // Post param_history API 요청 실패
             if (!responseHistory.IsSuccessStatusCode)
             {
                 Btn_Save.IsEnabled = true;
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
-                Tb_ErrorMsg.Text = "항목 변경 이력 기록 실패";
+                Tb_ErrorMsg.Text = "Failed to record params history. " + responseHistory.ReasonPhrase;
                 Console.WriteLine(response.ReasonPhrase);
                 return;
             }

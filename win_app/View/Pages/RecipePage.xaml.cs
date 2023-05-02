@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
 using SOM.Services;
 using SOM.View.Modal;
 using System;
@@ -88,6 +89,10 @@ namespace SOM.View
 
             if (result == MessageBoxResult.Yes)
             {
+                // 레시피 삭제 이력 기록 API 호출
+                string str_recipeModel = JsonConvert.SerializeObject(dataContext);
+                HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("DELETE", recipe_id, old_value: str_recipeModel);
+
                 // Delete Param/param_id API 호출
                 HttpResponseMessage response = await DeleteRecipeID.DeleteRecipeIDAsync(recipe_id);
 

@@ -33,7 +33,7 @@ namespace SOM.ViewModel
 
         private async void SetRecipeHistory()
         {
-            HttpResponseMessage response = await GetParamHistory.GetParamHistoryAsync();
+            HttpResponseMessage response = await GetRecipeHistory.GetRecipeHistoryAsync();
             ObservableCollection<RecipeHistoryModel> content = new ObservableCollection<RecipeHistoryModel>();
 
             if (response != null)

@@ -399,6 +399,7 @@
     <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\GetRecipe.cs" />
     <Compile Include="Services\GetRecipeHistory.cs" />
+    <Compile Include="Services\GetRecipeID.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
     <Compile Include="Services\PatchParamID.cs" />
@@ -407,6 +408,7 @@
     <Compile Include="Services\PostParam.cs" />
     <Compile Include="Services\PostParamHistory.cs" />
     <Compile Include="Services\PostRecipe.cs" />
+    <Compile Include="Services\PostRecipeHistory.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
