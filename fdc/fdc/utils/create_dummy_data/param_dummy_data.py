@@ -1,5 +1,6 @@
 import random
 from fdc.models import Equipment
+from fdc.utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
 
 def generate_dummy_data_param():
     param_name = random.choice(['수평 진동', '수직 진동', '탱크 온도'])
@@ -10,4 +11,14 @@ def generate_dummy_data_param():
 
     equipment = random.choice(Equipment.objects.all())
 
-    return (equipment, param_name, param_level, param_state, creator_name, modifier_name)
+    created_at = random_past_datetime()
+    updated_at = random_future_datetime_from_past()
+
+    return (equipment,
+            param_name,
+            param_level,
+            param_state,
+            creator_name,
+            created_at,
+            modifier_name,
+            updated_at)
