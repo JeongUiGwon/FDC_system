@@ -68,7 +68,7 @@
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    <TextBlock Text="항목 등록" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
                                 </StackPanel>
                             </Border>
                         </Button>
