@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.2.202303221144" AlpVersion="8.7.7">
 <Model>
 	<Id>1682385884277</Id>
-	<Name><![CDATA[Test]]></Name>
+	<Name><![CDATA[Interlock_Test_5]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[test]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -107,11 +107,85 @@
 			</ScaleRuler>
 			<CurrentLevel>1682385884287</CurrentLevel>
 			<ConnectionsId>1682385884281</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1683008408208</Id>
+					<Name><![CDATA[parameter_mixer_h_vibration_data]]></Name>
+					<X>-210</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[(Math.random() * 10.0f) + 10.0f]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683008408206</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1683008638561</Id>
+					<Name><![CDATA[parameter_coater_a_temp_data]]></Name>
+					<X>-210</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[(Math.random() * 10.0f) + 30.0f]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683008638559</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1683008796437</Id>
+					<Name><![CDATA[parameter_press_press_data]]></Name>
+					<X>-210</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[(Math.random() * 10.0f) + 40.0f]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683008796435</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
 			<Connectors>
 				<Connector>
 					<Id>1682474346514</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>120</X><Y>500</Y>
+					<X>170</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -138,13 +212,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-40</X><Y>0</Y></Point>
+						<Point><X>-50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1682475744673</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>280</X><Y>500</Y>
+					<X>330</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -177,7 +251,7 @@
 				<Connector>
 					<Id>1682479663800</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>200</X><Y>500</Y>
+					<X>250</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -210,7 +284,7 @@
 				<Connector>
 					<Id>1682663092388</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>360</X><Y>500</Y>
+					<X>410</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -243,7 +317,7 @@
 				<Connector>
 					<Id>1682663193050</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>440</X><Y>500</Y>
+					<X>490</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -276,7 +350,7 @@
 				<Connector>
 					<Id>1682663204138</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>610</X><Y>500</Y>
+					<X>660</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -309,7 +383,7 @@
 				<Connector>
 					<Id>1682663204142</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>520</X><Y>500</Y>
+					<X>570</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -340,6 +414,39 @@
 					</Points>
 				</Connector>
 			</Connectors>
+			<Events>
+				<Event>
+					<Id>1683005819593</Id>
+					<Name><![CDATA[event]]></Name>
+					<X>200</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="condition" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1683014400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Logging>false</Logging>
+				</Event>
+			</Events>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1682385884281</Id>
@@ -366,7 +473,7 @@
 				<EmbeddedObject>
 					<Id>1682474309874</Id>
 					<Name><![CDATA[source]]></Name>
-					<X>50</X><Y>490</Y>
+					<X>90</X><Y>490</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -630,7 +737,7 @@
 				<EmbeddedObject>
 					<Id>1682474343327</Id>
 					<Name><![CDATA[Mixer]]></Name>
-					<X>120</X><Y>490</Y>
+					<X>170</X><Y>490</Y>
 					<Label><X>0</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -723,7 +830,8 @@
 							<Name><![CDATA[onAtExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[System.out.println("믹서\n{");
-float h_vibration_data = (float) (Math.random() * 10.0f) + 10.0f; // 수평 진동 범위: 10-20
+//float h_vibration_data = (float) (Math.random() * 10.0f) + 10.0f; // 수평 진동 범위: 10-20
+float h_vibration_data = (float) parameter_mixer_h_vibration_data; // 수평 진동 범위: 10-20
 float v_vibration_data = (float) (Math.random() * 10.0f) + 10.0f; // 수직 진동 범위: 10-20
 float temp_data = (float) (Math.random() * 5.0f) + 20.0f; // 탱크 온도 범위: 20-25
 float current_data = (float) (Math.random() * 15.0f) + 10.0f; // 모터 전류 범위: 10-25
@@ -793,7 +901,7 @@ client.main(h_vibration_data_st, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDF
 				<EmbeddedObject>
 					<Id>1682474355054</Id>
 					<Name><![CDATA[sink]]></Name>
-					<X>610</X><Y>490</Y>
+					<X>660</X><Y>490</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -859,7 +967,7 @@ client.main(h_vibration_data_st, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDF
 				<EmbeddedObject>
 					<Id>1682475053405</Id>
 					<Name><![CDATA[Coater]]></Name>
-					<X>200</X><Y>490</Y>
+					<X>250</X><Y>490</Y>
 					<Label><X>0</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -955,7 +1063,8 @@ client.main(h_vibration_data_st, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDF
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[System.out.println("코터\n{");
-float a_temp_data = (float) (Math.random() * 10.0f) + 30.0f; // a면 온도 범위: 30-40
+//float a_temp_data = (float) (Math.random() * 10.0f) + 30.0f; // a면 온도 범위: 30-40
+float a_temp_data = (float) parameter_coater_a_temp_data;
 float b_temp_data = (float) (Math.random() * 5.0f) + 20.0f; // b면 온도 범위: 20-25
 float a_power_data = (float) (Math.random() * 10.0f) + 30.0f; // a면 파워 범위: 30-40
 float b_power_data = (float) (Math.random() * 10.0f) + 30.0f; // b면 파워 범위: 30-40
@@ -1025,7 +1134,7 @@ client.main(a_temp_data_st, "8210JEK6", "X8S5OWN7NWIS11T", "OSO62ONWNWS8OOWN017P
 				<EmbeddedObject>
 					<Id>1682475742329</Id>
 					<Name><![CDATA[Press]]></Name>
-					<X>280</X><Y>490</Y>
+					<X>330</X><Y>490</Y>
 					<Label><X>5</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1121,7 +1230,8 @@ client.main(a_temp_data_st, "8210JEK6", "X8S5OWN7NWIS11T", "OSO62ONWNWS8OOWN017P
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[System.out.println("프레스\n{");
-float press_data = (float) (Math.random() * 10.0f) + 40.0f; // 압력 범위: 40-50
+//float press_data = (float) (Math.random() * 10.0f) + 40.0f; // 압력 범위: 40-50
+float press_data = (float) parameter_press_press_data;
 float thick_data = (float) (Math.random() * 10.0f) + 10.0f; // 두께 범위: 10-20
 float a_temp_data = (float) (Math.random() * 10.0f) + 30.0f; // a면 온도 범위: 30-40
 float b_temp_data = (float) (Math.random() * 10.0f) + 30.0f; // b면 온도 범위: 30-40
@@ -1185,7 +1295,7 @@ client.main(press_data_st, "6272CMK6", "N7I6IXN7OSNS22O", "NNX12IIWNWH1PPQX733M"
 				<EmbeddedObject>
 					<Id>1682663085027</Id>
 					<Name><![CDATA[Slitter]]></Name>
-					<X>360</X><Y>490</Y>
+					<X>410</X><Y>490</Y>
 					<Label><X>0</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1342,7 +1452,7 @@ System.out.println("}");]]></Code>
 				<EmbeddedObject>
 					<Id>1682663187632</Id>
 					<Name><![CDATA[Winding]]></Name>
-					<X>440</X><Y>490</Y>
+					<X>490</X><Y>490</Y>
 					<Label><X>-5</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1500,7 +1610,7 @@ System.out.println("}");]]></Code>
 				<EmbeddedObject>
 					<Id>1682663201077</Id>
 					<Name><![CDATA[convey5]]></Name>
-					<X>520</X><Y>490</Y>
+					<X>570</X><Y>490</Y>
 					<Label><X>-5</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1674,7 +1784,7 @@ System.out.println("}");]]></Code>
 				<Conveyor TargetId="1682474986656">
 					<Id>1682474236112</Id>
 					<Name><![CDATA[conveyor]]></Name>
-					<X>100</X><Y>300</Y>
+					<X>220</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1804,9 +1914,9 @@ System.out.println("}");]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>150</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>125</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>30</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>5</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-120</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 
 
@@ -3249,9 +3359,9 @@ System.out.println("}");]]></Code>
 		<Height>700</Height>
 	</Frame>
 	<Database>
-		<Logging>false</Logging>
+		<Logging>true</Logging>
 		<AutoExport>false</AutoExport>
-		<ShutdownCompact>false</ShutdownCompact>
+		<ShutdownCompact>true</ShutdownCompact>
 		<ImportSettings>
 		</ImportSettings>
 		<ExportSettings>
@@ -3321,6 +3431,15 @@ System.out.println("}");]]></Code>
 			</Presentation>
 
 			<Parameters>			
+				<Parameter>
+					<ParameterName><![CDATA[parameter_mixer_h_vibration_data]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[parameter_coater_a_temp_data]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[parameter_press_press_data]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
