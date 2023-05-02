@@ -16,15 +16,15 @@ schema_view = get_schema_view(
 )
 
 router = DefaultRouter()
-router.register(r'equipment', equipment.EquipmentViewSet)
-router.register(r'param', param.ParamViewSet)
-router.register(r'recipe', recipe.RecipeViewSet)
-router.register(r'lot_log', lot_log.LotLogViewSet)
-router.register(r'equipment_state', equipment_state.EquipmentStateViewSet)
-router.register(r'param_log', param_log.ParamLogViewSet)
-router.register(r'interlock_log', interlock_log.InterlockLogViewSet)
-router.register(r'param_history', param_history.ParamHistoryViewSet)
-router.register(r'recipe_history', recipe_history.RecipeHistoryViewSet)
+router.register(r'equipment', equipment.EquipmentViewSet, basename='equipment')
+router.register(r'param', param.ParamViewSet, basename='param')
+router.register(r'recipe', recipe.RecipeViewSet, basename='recipe')
+router.register(r'lot_log', lot_log.LotLogViewSet, basename='lot_log')
+router.register(r'equipment_state', equipment_state.EquipmentStateViewSet, basename='equipment_state')
+router.register(r'param_log', param_log.ParamLogViewSet, basename='param_log')
+router.register(r'interlock_log', interlock_log.InterlockLogViewSet, basename='interlock_log')
+router.register(r'param_history', param_history.ParamHistoryViewSet, basename='param_history')
+router.register(r'recipe_history', recipe_history.RecipeHistoryViewSet, basename='recipe_history')
 
 urlpatterns = [
     path('', include(router.urls)),
