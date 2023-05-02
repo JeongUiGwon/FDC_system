@@ -1,7 +1,7 @@
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql', # 사용할 DB의 종류
-        'ENGINE': 'psqlextra.backend',
+        'ENGINE': 'django.db.backends.postgresql', # 사용할 DB의 종류
+        # 'ENGINE': 'psqlextra.backend',
 
         'NAME': 'fdc',    # DB 이름
         'USER': 'cms',       # DB 계정 이름

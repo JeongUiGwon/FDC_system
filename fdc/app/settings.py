@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'fdc',
     'drf_yasg',
     'rest_framework',
-    "django.contrib.postgres",
-    "psqlextra",
 ]
 
 MIDDLEWARE = [

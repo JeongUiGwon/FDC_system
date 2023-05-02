@@ -1,5 +1,6 @@
 import random
 from fdc.models import Equipment, Param
+from fdc.utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
 
 
 def generate_dummy_data_recipe():
@@ -15,4 +16,18 @@ def generate_dummy_data_recipe():
     equipment = random.choice(Equipment.objects.all())
     param = random.choice(Param.objects.all())
 
-    return (equipment, param, recipe_name, lsl, usl, lsl_interlock_action, usl_interlock_action, recipe_use, creator_name, modifier_name)
+    created_at = random_past_datetime()
+    updated_at = random_future_datetime_from_past()
+
+    return (equipment,
+            param,
+            recipe_name,
+            lsl,
+            usl,
+            lsl_interlock_action,
+            usl_interlock_action,
+            recipe_use,
+            creator_name,
+            created_at,
+            modifier_name,
+            updated_at)
