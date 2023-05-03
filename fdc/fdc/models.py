@@ -26,7 +26,7 @@ def generate_id(length):
     characters = string.ascii_uppercase + string.digits
     id = ''.join(random.choice(characters) for i in range(length))
 
-    return id
+    return id.strip()
 
 def get_model(table_name):
     for model in apps.get_models():
@@ -221,7 +221,7 @@ class RecipeHistory(models.Model):
     new_value = models.JSONField(null=True)
 
     def save(self, *args, **kwargs):
-        self.recipe_name = self.recipe.param_name
+        self.recipe_name = self.recipe.param.param_name
         super().save(*args, **kwargs)
     class Meta:
         db_table = 'recipe_history'
