@@ -1,6 +1,6 @@
 import random
-from fdc.models import Equipment, Param, Recipe
-from fdc.utils.create_dummy_data.create_time import random_past_datetime
+from ...models import Equipment, Param, Recipe
+from ...utils.create_dummy_data.create_time import random_past_datetime
 
 def generate_dummy_data_param_log():
     equipment = random.choice(Equipment.objects.all())

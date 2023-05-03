@@ -1,6 +1,6 @@
 import random
-from fdc.models import Equipment, Param
-from fdc.utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
+from ...models import Equipment, Param
+from ...utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
 
 
 def generate_dummy_data_recipe():

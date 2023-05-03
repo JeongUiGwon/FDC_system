@@ -1,6 +1,6 @@
 import random
-from fdc.models import Equipment
-from fdc.utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
+from ...models import Equipment
+from ...utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
 
 def generate_dummy_data_param():
     param_name = random.choice(['수평 진동', '수직 진동', '탱크 온도'])
