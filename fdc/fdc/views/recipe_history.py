@@ -3,5 +3,14 @@ from ..models import RecipeHistory
 from ..serializers import RecipeHistorySerializer
 
 class RecipeHistoryViewSet(viewsets.ModelViewSet):
-    queryset = RecipeHistory.objects.all()
     serializer_class = RecipeHistorySerializer
+
+    def get_queryset(self):
+        queryset = RecipeHistory.objects.all()
+
+        action = self.request.GET.get('action', None)
+
+        if action:
+            queryset = queryset.filter(action__icontains=action)
+
+        return queryset
