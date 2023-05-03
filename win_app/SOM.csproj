@@ -411,6 +411,7 @@
     <Compile Include="Services\PostRecipeHistory.cs" />
     <Compile Include="Utils\EmailValidator.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
+    <Compile Include="ViewModel\DataViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
@@ -422,6 +423,9 @@
     </Compile>
     <Compile Include="View\Equipment\SearchEquipmentIDModal.xaml.cs">
       <DependentUpon>SearchEquipmentIDModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Param\GetParamModal.xaml.cs">
+      <DependentUpon>GetParamModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Param\SearchParamIDModal.xaml.cs">
       <DependentUpon>SearchParamIDModal.xaml</DependentUpon>
@@ -494,6 +498,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Equipment\SearchEquipmentIDModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Param\GetParamModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

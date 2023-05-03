@@ -1,4 +1,5 @@
 ﻿using SOM.Model;
+using SOM.View.Param;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,15 +26,25 @@ namespace SOM.View.Data
         public DataPage()
         {
             InitializeComponent();
+        }
 
-            ObservableCollection<EquipmentsDataModel> equipmentsDatas = new ObservableCollection<EquipmentsDataModel>();
+        private void btn_apply_click(object sender, RoutedEventArgs e)
+        {
+            var equipments = dg_equipment.ItemsSource as ObservableCollection<EquipmentsModel>;
+            var selectedEquipments = equipments.Where(el => el.isSelected).ToList();
 
-            equipmentsDatas.Add(new EquipmentsDataModel("abcd", "Equip 1", "LOT1", "Recipe1", "Param1", 100, DateTime.Now));
-            equipmentsDatas.Add(new EquipmentsDataModel("bsdw", "Equip 2", "LOT2", "Recipe2", "Param2", 80, DateTime.Now));
-            equipmentsDatas.Add(new EquipmentsDataModel("asgs", "Equip 3", "LOT3", "Recipe3", "Param3", 70, DateTime.Now));
-            equipmentsDatas.Add(new EquipmentsDataModel("fsdw", "Equip 4", "LOT4", "Recipe4", "Param4", 60, DateTime.Now));
+            string startDate = dp_startDate.Text;
+            string startTime = tp_startTime.Text;
+            string endDate = dp_endDate.Text;
+            string endTime = tp_endTime.Text;
 
-            DataDatagrid.ItemsSource = equipmentsDatas;
+            Console.WriteLine("hello");
+        }
+
+        private void btn_SearchParams_click(object sender, RoutedEventArgs e)
+        {
+            var modal = new GetParamModal();
+            modal.ShowDialog();
         }
     }
 }

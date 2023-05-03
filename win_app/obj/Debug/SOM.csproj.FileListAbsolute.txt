@@ -836,3 +836,5 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Profile\ChangePass
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Interlock\InterlockPage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Profile\ProfilePage.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Users\UsersPage.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Param\GetParamModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Param\GetParamModal.baml

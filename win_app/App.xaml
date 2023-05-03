@@ -20,7 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!--전역 FontFamily 설정-->
-            <Style TargetType="Control">
+            <Style TargetType="Window">
                 <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
             </Style>
             
