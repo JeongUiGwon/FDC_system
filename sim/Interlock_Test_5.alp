@@ -180,6 +180,78 @@
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1683012363298</Id>
+					<Name><![CDATA[mixer_speed]]></Name>
+					<X>-210</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683012363296</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1683090177080</Id>
+					<Name><![CDATA[coater_speed]]></Name>
+					<X>-210</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683090177078</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1683090225993</Id>
+					<Name><![CDATA[press_speed]]></Name>
+					<X>-210</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1683090225991</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -840,7 +912,7 @@ System.out.println("수평 진동: " + h_vibration_data + ", 수직 진동: " + 
 System.out.println("탱크 온도: " + temp_data + ", 모터 전류: " + current_data);
 System.out.println("}");
 
-newClient client = new newClient();
+newClient client = new newClient(this);
 
 String h_vibration_data_st = Double.toString(h_vibration_data);
 client.main(h_vibration_data_st, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");
@@ -1079,7 +1151,7 @@ System.out.println("a면 코팅 길이: " + a_length_data + ", b면 코팅 길�
 System.out.println("a면 코딩 폭: " + a_width_data + ", b면 코딩 폭: " + b_width_data);
 System.out.println("}");
 
-newClient client = new newClient();
+newClient client = new newClient(this);
 
 String a_temp_data_st = Double.toString(a_temp_data);
 client.main(a_temp_data_st, "8210JEK6", "X8S5OWN7NWIS11T", "OSO62ONWNWS8OOWN017P");]]></Code>
@@ -1240,7 +1312,7 @@ System.out.println("압력: " + press_data + ", 두께: " + thick_data + ",");
 System.out.println("a면 온도: " + a_temp_data + ", b면 온도: " + b_temp_data);
 System.out.println("}");
 
-newClient client = new newClient();
+newClient client = new newClient(this);
 
 String press_data_st = Double.toString(press_data);
 client.main(press_data_st, "6272CMK6", "N7I6IXN7OSNS22O", "NNX12IIWNWH1PPQX733M");]]></Code>
@@ -1812,9 +1884,17 @@ System.out.println("}");]]></Code>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[maxSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[mixer_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[initialSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[mixer_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[acceleration]]></Name>
@@ -1952,9 +2032,17 @@ System.out.println("}");]]></Code>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[maxSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[coater_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[initialSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[coater_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[acceleration]]></Name>
@@ -2113,9 +2201,17 @@ System.out.println("}");]]></Code>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[maxSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[press_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[initialSpeed]]></Name>
+								<Value Class="CodeUnitValue">
+									<Code><![CDATA[press_speed]]></Code>
+									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[acceleration]]></Name>
@@ -2215,6 +2311,9 @@ System.out.println("}");]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-64</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-39</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-89</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-200</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-175</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
@@ -3440,6 +3539,15 @@ System.out.println("}");]]></Code>
 				<Parameter>
 					<ParameterName><![CDATA[parameter_press_press_data]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[mixer_speed]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[coater_speed]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[press_speed]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -3471,7 +3579,7 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.time.LocalDateTime;
- 
+
 public class newClient {
 
   // lot 관리를 위해 선언하는 글로벌변수
@@ -3495,12 +3603,21 @@ public class newClient {
  * SIM에서 main함수 호출 시 newClient.main("a", "b", "c", ...) 와 같은 형태로 호출하고
  * 이 때 갖고온 arguments는 args[0] = "a", args[1] = "b", args[2] = "c" ... 와 같이 불러올 수 있음
  */
-
+  
+  // Main agent에 대한 참조 변수 생성
+  static private Main myMainAgent;
+  // 매개변수 없는 생성자
+  public newClient() {}
+  // Main에 접근할 수 있는 생성자. 시뮬레이터에선 this를 넣음
+  public newClient(Main mainAgent) {
+	  this.myMainAgent = mainAgent;
+  }
+  
   public static void main(String... args) {
-    // 소켓을 선언
+	// 소켓을 선언
     try (Socket client = new Socket()) {
       // 소켓에 접속하기 위한 접속 정보를 선언
-      InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8888);
+      InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8889);
       // 소켓 접속
       client.connect(ipep);
       // 소켓이 접속이 완료되면 inputstream과 outputstream을 받기
@@ -3536,7 +3653,7 @@ public class newClient {
          // 번거로울 것 같아 그냥 노가다했음
          // 나중에 완성될 때 쯤 바꿔야될 것 같으면 제가 바꿀게요
         String msg = String.format("{\"created_at\": \"%s\", \"data_value\": %f, \"equipment_id\": \"%s\", \"lot_id\": \"%d\", \"param_id\": \"%s\", \"recipe_id\": \"%s\"}", created_at, data_value, equipment_id, lot_id, param_id, recipe_id);
-      
+        
         
         // string을 byte배열 형식으로 변환
         byte[] data = msg.getBytes("UTF-8");
@@ -3564,6 +3681,18 @@ public class newClient {
         
         // byte형식의 데이터를 string형식으로 변환
         msg = new String(data, "UTF-8");
+        // interlock 발생
+        if (msg.equals("9988YSB0 interlock")) {
+        	//mixer_speed 변경
+        	myMainAgent.set_mixer_speed(0);
+        	//System.out.println(myMainAgent.mixer_speed);
+        } else if (msg.equals("8210JEK6 interlock")) {
+        	//coater_speed 변경
+        	myMainAgent.set_coater_speed(0);
+        } else if (msg.equals("6272CMK6 interlock")) {
+        	//press_speed 변경
+        	myMainAgent.set_press_speed(0);
+        }
         // 콘솔에 출력
         System.out.println(msg);
       }
