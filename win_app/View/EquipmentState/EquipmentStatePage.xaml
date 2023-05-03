@@ -48,7 +48,8 @@
                     <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
                         <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
+                                 materialDesign:HintAssist.Hint="Search" Padding="10 0"/>
                     </StackPanel>
                     
                     <!--Equipments Datagrid-->
