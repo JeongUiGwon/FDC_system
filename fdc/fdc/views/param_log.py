@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from fdc.models import ParamLog
-from fdc.serializers import ParamLogSerializer
+from ..models import ParamLog
+from ..serializers import ParamLogSerializer
 
 class ParamLogViewSet(viewsets.ModelViewSet):
     queryset = ParamLog.objects.all()

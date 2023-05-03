@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from fdc.models import RecipeHistory
-from fdc.serializers import RecipeHistorySerializer
+from ..models import RecipeHistory
+from ..serializers import RecipeHistorySerializer
 
 class RecipeHistoryViewSet(viewsets.ModelViewSet):
     queryset = RecipeHistory.objects.all()

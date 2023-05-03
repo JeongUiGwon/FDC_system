@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from fdc.models import LotLog
-from fdc.serializers import LotLogSerializer
+from ..models import LotLog
+from ..serializers import LotLogSerializer
 
 class LotLogViewSet(viewsets.ModelViewSet):
     queryset = LotLog.objects.all()
