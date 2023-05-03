@@ -4,6 +4,10 @@ import numpy as np
 import datetime as dt
 import time
 import threading
+import firebase_admin
+from firebase_admin import credentials, storage
+from uuid import uuid4
+import os
 
 
 def record(equip_name, x, y, w, h):
@@ -35,7 +39,7 @@ def record(equip_name, x, y, w, h):
             out.write(frame) 
             
             # 현재 시간이 시작시간으로부터 nn초 이상 흘렀거나 q를 누를 시 스샷누적 종료
-            if time.time() - start_time > 60 or cv2.waitKey(1) == ord('q'):
+            if time.time() - start_time > 10 or cv2.waitKey(1) == ord('q'):
                 print(equip_name + " - " + now + '.avi is done !')
                 break
     
@@ -43,10 +47,35 @@ def record(equip_name, x, y, w, h):
     out.release()
     cv2.destroyAllWindows()
 
+    # firebase에 영상 업로드
+    fileUpload(equip_name, filename, location)
+    # local에서 영상 제거
+    os.remove(location+'/'+filename)
 
 def do_record(equip_name, x, y, w, h):
      while True:
           record(equip_name, x, y, w, h)
+
+
+def fileUpload(equip_name, file_name, location):
+    # firebase storage에서 파일이 저장될 경로를 설정
+    blob = bucket.blob(equip_name+'/'+file_name)
+    new_token = uuid4()
+    metadata = {"firebaseStorageDownloadTokens": new_token}
+    blob.metadata = metadata
+
+    # upload할 파일이 있는 local 폴더 주소
+    blob.upload_from_filename(location+'/'+file_name)
+
+
+# 인증 정보 (personal key)
+cred = credentials.Certificate("C:/Users/SSAFY/Desktop/gitlab/자율/CCTV/ssafy-a201-firebase.json")
+# firebase storage 주소
+app = firebase_admin.initialize_app(cred, {
+    'storageBucket': 'ssafy-a201.appspot.com',
+})
+
+bucket = storage.bucket()
 
 
 thread1 = threading.Thread(target=do_record, args=('설비1', 0, 0, 300, 300))
