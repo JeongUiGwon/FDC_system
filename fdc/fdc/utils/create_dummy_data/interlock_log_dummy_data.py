@@ -4,11 +4,11 @@ from ...utils.create_dummy_data.create_time import random_past_datetime, random_
 
 
 def generate_dummy_data_interlock_log():
-    equipment = random.choice(Equipment.objects.all())
-    param = random.choice(Param.objects.all())
-    recipe = random.choice(Recipe.objects.all())
     lot = random.choice(LotLog.objects.all())
-    created_at = random_past_datetime()
+    equipment = Equipment.objects.get(pk=lot.equipment_id.strip())
+    param = Param.objects.get(pk=lot.param_id.strip())
+    recipe = Recipe.objects.get(pk=lot.recipe_id.strip())
+    created_at = lot.created_at
     interlock_type = random.choice(['S', 'A', 'B'])
     out_count = random.choice(['0', '1', '2', '3'])
     lower_limit = recipe.lsl
