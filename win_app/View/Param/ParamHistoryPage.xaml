@@ -41,26 +41,30 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*" MaxHeight="900"/>
+                        <RowDefinition Height="*" MaxHeight="1000"/>
                     </Grid.RowDefinitions>
 
-                    <!--History Button-->
-                    <Button Name="Btn_list" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Grid.Row="0"
-                            Margin="10 10 0 0" Click="Btn_list_Click" HorizontalAlignment="Left">
-                        <Border CornerRadius="10 10 10 10" >
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="ListStatus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                <TextBlock Text="리스트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                            </StackPanel>
-                        </Border>
-                    </Button>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10" Grid.Row="0" VerticalAlignment="Center">
+                        
+                        <!--Search Bar-->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                            <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" 
+                                 materialDesign:HintAssist.Hint="Search" Padding="10 0" Height="30"/>
+                        </StackPanel>
+                        
+                        <!--History Button-->
+                        <Button Name="Btn_list" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Grid.Row="0"
+                            Margin="10 0 0 0" Click="Btn_list_Click" HorizontalAlignment="Left">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ListStatus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="리스트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
 
-                    <!--Search Bar-->
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 10 0 10">
-                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
-                        <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <!--Equipments Datagrid-->

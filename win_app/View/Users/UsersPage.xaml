@@ -30,7 +30,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!--Title-->
@@ -38,61 +37,48 @@
                 <TextBlock Text="Users" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
-            <!--Users Datagrid-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17"
+                <Grid Margin="10 35 10 20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*" MaxHeight="1000"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Search Bar-->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Height="30">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                        <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" 
+                                 materialDesign:HintAssist.Hint="Search" Padding="10 0"/>
+                    </StackPanel>
+
+                    <!--Users Datagrid-->
+                    <DataGrid x:Name="UsersDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" Grid.Row="1" Margin="0 10 0 0"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
-                      RowEditEnding="DG_UsersDatagrid_RowEditEnding" ItemsSource="{Binding UsersList}">
-                    <DataGrid.Columns>
+                      RowEditEnding="DG_UsersDatagrid_RowEditEnding" ItemsSource="{Binding FilteredUserList}">
+                        <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Name" Width="auto" IsReadOnly="True" Binding="{Binding UserName}"/>
-                        <DataGridTextColumn Header="Email" Width="auto" IsReadOnly="True" Binding="{Binding Email}"/>
+                            <DataGridTextColumn Header="Name" Width="auto" IsReadOnly="True" Binding="{Binding UserName}"/>
+                            <DataGridTextColumn Header="Email" Width="auto" IsReadOnly="True" Binding="{Binding Email}"/>
 
-                        <DataGridComboBoxColumn Header="Role" Width="auto" SelectedValueBinding="{Binding Role}" >
-                            <DataGridComboBoxColumn.ItemsSource>
-                                <x:Array Type="{x:Type sys:String}">
-                                    <sys:String>User</sys:String>
-                                    <sys:String>SuperUser</sys:String>
-                                    <sys:String>Developer</sys:String>
-                                    <sys:String>Admin</sys:String>
-                                </x:Array>
-                            </DataGridComboBoxColumn.ItemsSource>
-                        </DataGridComboBoxColumn>
+                            <DataGridComboBoxColumn Header="Role" Width="auto" SelectedValueBinding="{Binding Role}" >
+                                <DataGridComboBoxColumn.ItemsSource>
+                                    <x:Array Type="{x:Type sys:String}">
+                                        <sys:String>User</sys:String>
+                                        <sys:String>SuperUser</sys:String>
+                                        <sys:String>Developer</sys:String>
+                                        <sys:String>Admin</sys:String>
+                                    </x:Array>
+                                </DataGridComboBoxColumn.ItemsSource>
+                            </DataGridComboBoxColumn>
 
-                        <DataGridTextColumn Header="Department" Width="auto" IsReadOnly="True" Binding="{Binding Department}"/>
-                        <DataGridTextColumn Header="Phone Number" Width="auto" IsReadOnly="True" Binding="{Binding PhoneNumber}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Border>      
-            
-            <!--Ragination Section-->
-            <Border Grid.Row="4" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
-                <StackPanel Orientation="Horizontal">
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#2f49cf" Foreground="#ffffff" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" />
-                    <Button Style="{StaticResource pagingButton}" Content="3" />
-
-                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
-
-                    <Button Style="{StaticResource pagingButton}" Content="7" />
-                    <Button Style="{StaticResource pagingButton}" Content="8" />
-                    <Button Style="{StaticResource pagingButton}" Content="9" />
-                    
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-                    
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-                </StackPanel>
+                            <DataGridTextColumn Header="Department" Width="auto" IsReadOnly="True" Binding="{Binding Department}"/>
+                            <DataGridTextColumn Header="Phone Number" Width="auto" IsReadOnly="True" Binding="{Binding PhoneNumber}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>                
             </Border>
         </Grid>
     </Border>

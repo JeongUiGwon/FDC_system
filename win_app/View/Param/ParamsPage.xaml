@@ -43,14 +43,22 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*" MaxHeight="900"/>
                     </Grid.RowDefinitions>
 
                     <!--Left Section-->
-                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0" VerticalAlignment="Center">
+                        
+                        <!--Search Bar-->
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                            <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
+                                     materialDesign:HintAssist.Hint="Search" Padding="10 0"/>
+                        </StackPanel>
+                        
                         <!--History Button-->
-                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_history_Click">
+                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_history_Click" Margin="10 0 0 0">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -73,17 +81,12 @@
                         </Button>
                     </StackPanel>
 
-                    <!--Search Bar-->
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
-                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
-                        <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                    
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" 
                               CanUserAddRows="False" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" 
-                              ItemsSource="{Binding FilteredParams}" Margin="10 0" Grid.Row="2"
+                              ItemsSource="{Binding FilteredParams}" Margin="10 0" Grid.Row="1"
                               CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
