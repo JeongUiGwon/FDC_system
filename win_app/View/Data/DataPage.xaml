@@ -1,0 +1,153 @@
+﻿<Page x:Class="SOM.View.Data.DataPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d" MinHeight="500" MinWidth="700"
+      Title="DataPage">
+
+    <!--Main Section-->
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <GradientStop Color="#f0f2f5" Offset="0"/>
+                <GradientStop Color="#f0f2f5" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left Section-->
+            <!--Title-->
+            <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
+                <TextBlock Text="Filter" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+
+            <!--Filter-->
+            <Border Grid.Row="1" Grid.Column="0" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+                <StackPanel>
+                    <TextBlock Text="Equipments" FontWeight="DemiBold" FontSize="15" Margin="20 40 0 10"/>
+
+                    <Border CornerRadius="20 20 20 20" Background="#f8f9fa" Height="300" Margin="10">
+
+                    </Border>
+
+                    <TextBlock Text="Date Time" FontWeight="DemiBold" FontSize="15" Margin="20 0 0 10"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <ComboBox Width="110" />
+                        <ComboBox Margin="20 0 0 0" Width="110" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <ComboBox Width="110" />
+                        <ComboBox Margin="20 0 0 0" Width="110" />
+                    </StackPanel>
+                    
+                    <TextBlock Text="Param ID" FontWeight="DemiBold" FontSize="15" Margin="20 10 0 10"/>
+
+                    <ComboBox Width="250"/>
+                </StackPanel>
+            </Border>
+
+
+            <!--Right Section-->
+            <!--Title-->
+            <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="1" Panel.ZIndex="1">
+                <TextBlock Text="Data" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+            
+            <!--Contents-->
+            <Border Grid.Row="1" Grid.Column="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+                <StackPanel Margin="0 35 0 0">
+                    
+                    <!--Buttons-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <!--Chart Button-->
+                        <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="5 10">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ChartBar" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="Chart" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                        
+                        <!--Excel Button-->
+                        <Button BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Margin="5 10">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="MicrosoftExcel" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="Excel" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+                    
+
+                    <!--Data Datagrid-->
+                    <DataGrid x:Name="DataDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True"
+                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Created_at}"/>
+                            <DataGridTextColumn Header="Equip ID" Width="*" Binding="{Binding Equipment_ID}"/>
+                            <DataGridTextColumn Header="Equip Name" Width="*" Binding="{Binding Equipment_Name}"/>
+                            <DataGridTextColumn Header="LOT ID" Width="*" Binding="{Binding LOT_ID}"/>
+                            <DataGridTextColumn Header="Recipe ID" Width="*" Binding="{Binding Recipe_ID}"/>
+                            <DataGridTextColumn Header="Param ID" Width="*" Binding="{Binding Data_Value}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </Border>
+                    
+            
+            
+
+            <!--Ragination Section-->
+            <Border Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Style="{StaticResource pagingButton}">
+                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                    <Button Style="{StaticResource pagingButton}" Content="1" />
+                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#2f49cf" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="3" />
+
+                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
+
+                    <Button Style="{StaticResource pagingButton}" Content="7" />
+                    <Button Style="{StaticResource pagingButton}" Content="8" />
+                    <Button Style="{StaticResource pagingButton}" Content="9" />
+
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                    <Button Style="{StaticResource pagingButton}">
+                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Page>

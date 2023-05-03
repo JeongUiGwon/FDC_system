@@ -128,7 +128,7 @@
         
         <!--Main Section-->
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
-            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Pages/DashboardPage.xaml"/>
+            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Dashboard/DashboardPage.xaml"/>
         </Border>        
     </Grid>
 </Window>
