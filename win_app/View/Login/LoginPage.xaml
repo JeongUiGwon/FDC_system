@@ -38,7 +38,7 @@
 
                     <TextBlock FontSize="46"
                            FontWeight="Light"
-                           Text="Login"
+                           Text="로그인"
                            Foreground="#ffffff"
                            TextAlignment="Center" />
 
@@ -209,7 +209,7 @@
                                  BorderThickness="0 0 0 1.5" />
 
                     <TextBlock HorizontalAlignment="Right" Margin="0 5 0 0">
-                        <Hyperlink NavigateUri="/View/Login/ForgotPasswordPage.xaml">Forgot Password?</Hyperlink>
+                        <Hyperlink NavigateUri="/View/Login/ForgotPasswordPage.xaml">비밀번호 찾기</Hyperlink>
                     </TextBlock>
 
                     <TextBlock x:Name="Tb_ErrorMsg" FontSize="13" Foreground="Red" Margin="0 5 0 0"/>
@@ -220,7 +220,7 @@
                         </TextBlock>
                     </CheckBox>
 
-                    <Button Content="Login"
+                    <Button Content="로그인"
                                 Name="btn_login"
                                 Background="#1B59F8"
                                 Foreground="#ffffff"
@@ -230,7 +230,7 @@
                                 materialDesign:ButtonAssist.CornerRadius="22"
                                 Click="Btn_Login_Click"/>
 
-                    <Button Content="Sign Up"
+                    <Button Content="회원가입"
                                 FontSize="18"
                                 Width="280"
                                 Height="45"

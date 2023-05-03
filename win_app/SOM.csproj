@@ -409,6 +409,7 @@
     <Compile Include="Services\PostParamHistory.cs" />
     <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="Services\PostRecipeHistory.cs" />
+    <Compile Include="Utils\EmailValidator.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />

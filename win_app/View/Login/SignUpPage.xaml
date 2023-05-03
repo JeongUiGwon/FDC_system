@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="875"
-      Title="SignUp">
+      Title="SignUp" FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
         <Grid.Effect>
@@ -38,7 +38,7 @@
 
                     <TextBlock FontSize="46"
                            FontWeight="Light"
-                           Text="Sign up"
+                           Text="회원가입"
                            Foreground="#ffffff"
                            TextAlignment="Center" />
 
@@ -198,30 +198,23 @@
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5" />
 
-                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text=""
-                             Name="tb_Email"
-                                     materialDesign:HintAssist.Hint="Email"
-                                     materialDesign:HintAssist.FloatingOffset="0, -20"
-                                     BorderBrush="#c5c8cc"
-                                     Margin="0 27"
-                                     BorderThickness="0 0 0 1.5" />
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tb_Email"
+                                     materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.FloatingOffset="0, -20"
+                                     BorderBrush="#c5c8cc" Margin="0 27 0 0" BorderThickness="0 0 0 1.5" TextChanged="tb_email_textChanged"/>
 
-                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password=""
-                                 Name="pwdBox_pwd"
-                                     materialDesign:HintAssist.Hint="Password"
-                                     materialDesign:HintAssist.FloatingOffset="0, -18"
-                                     BorderBrush="#c5c8cc"
-                                     BorderThickness="0 0 0 1.5" />
+                    <TextBlock Name="tb_emailError" Foreground="Red" Visibility="Collapsed"/>
 
-                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     Password=""
-                                     materialDesign:HintAssist.Hint="Repeat Password"
+                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="pwdBox_pwd"  materialDesign:HintAssist.Hint="Password" Margin="0 27 0 0"
+                                     materialDesign:HintAssist.FloatingOffset="0, -18" BorderBrush="#c5c8cc" BorderThickness="0 0 0 1.5" PasswordChanged="pwdBox_pwd_passwordChanged"/>
+
+                    <TextBlock Name="tb_pwdError" Foreground="Red" Visibility="Collapsed"/>
+
+                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="pwdBox_confirmPwd"
+                                     materialDesign:HintAssist.Hint="Confirm Password" 
                                      materialDesign:HintAssist.FloatingOffset="0, -18"
-                                     BorderBrush="#c5c8cc"
-                                     Margin="0 27 0 0"
-                                     BorderThickness="0 0 0 1.5" />
+                                     BorderBrush="#c5c8cc" Margin="0 27 0 0" BorderThickness="0 0 0 1.5" PasswordChanged="pwdBox_confirmPwd_passwordChanged"/>
+
+                    <TextBlock Name="tb_confirmPwdError" Foreground="Red" Visibility="Collapsed"/>
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text=""
@@ -233,7 +226,7 @@
                                      BorderThickness="0 0 0 1.5" />
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text=""
+                                     Text="010-0000-0000"
                                      Name="tb_PhoneNumber"
                                      materialDesign:HintAssist.Hint="PhoneNumber"
                                      materialDesign:HintAssist.FloatingOffset="0, -20"
@@ -241,7 +234,9 @@
                                      Margin="0 27 0 0"
                                      BorderThickness="0 0 0 1.5" />
 
-                    <Button Content="Sign up"
+                    <TextBlock x:Name="Tb_ErrorMsg" FontSize="15" Foreground="Red" Margin="0 5 0 0"/>
+                    
+                    <Button Content="회원가입"
                             Name="btn_signUp"
                             Background="#1B59F8"
                             Foreground="#ffffff"
@@ -252,7 +247,7 @@
                             materialDesign:ButtonAssist.CornerRadius="22"
                             Click="Btn_SignUp_Click"/>
 
-                    <Button Content="Login Now"
+                    <Button Content="로그인 하기"
                                 FontSize="18"
                                 Width="280"
                                 Height="45"
