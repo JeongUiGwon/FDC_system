@@ -43,6 +43,12 @@ namespace SOM.View.Users
             FirebaseAdminAuth firebase = new FirebaseAdminAuth();
             await firebase.auth.SetCustomUserClaimsAsync(editedItem.UID, customClaims);
 
+            if (App.CurrentUser.Role == "Developer" && (editedItem.Role == "Developer" || editedItem.Role == "Admin"))
+            {
+                MessageBox.Show("Developer 권한으로는 상대에게 Developer와 Admin 권한을 부여할 수 없습니다.");
+                return;
+            }
+
             customClaims = new Dictionary<string, object>()
             {
                 { "Authority", editedItem.Role },
