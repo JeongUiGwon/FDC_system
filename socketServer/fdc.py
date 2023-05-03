@@ -4,59 +4,78 @@ import json
 import pymysql
 import time
 
+fdc_port = 8888
+mes_port = 8887
+
+mutex = threading.Lock()
+
 # Socket 으로 받은 Data를 1분간 할당할 Memory
 storage = []
+temp = []
 # intervalSave 함수를 th2로 돌릴 단위 시간(초)
 save_interval = 10
 last_save_time = time.time()
 
-def FDCServer(client_socket, addr):	
+
+def FDCServer():	
     global storage, last_save_time
-    print('Join : ', addr)
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)	
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
+    server_socket.bind(('172.26.6.41', fdc_port))	
+    server_socket.listen(1)	
+    # print('Join : ', addr)
 
-    try:	
-        # 접속 상태에서 메세지 수신 무한 대기, 접속 끊기면 except 발생
-        while True:	
-            # 1024 byte 데이터 수신 대기
-            data = client_socket.recv(1024)	
-            # little 엔디언으로 byte에서 int로 변환
-            length = int.from_bytes(data, "little") 
-            # 다시 데이터 수신 대기
-            data = client_socket.recv(length)
-            # 수신된 데이터 문자열 형태로 Decoding	
-            msg = data.decode()	
-            if (length > 0):
-                print(addr, ' 에서', msg,' 를 보냈습니다.')
-                # Data dict 형변환 
-                data = json.loads(data)
-                storage.append(data)
-                # Interlock 감지 및 인터락 설비 데이터 바로 DB 저장 함수 호출
-                CheckInterlock(data)
-                # Data Spec MES 기준정보와 비교하고 다른 경우 업데이트하는 함수 호출
-                CheckwithMES(data)
-                    
-            # Client 에게 메세지 송신 (echo), 수신과 서순 반대
-            msg = "서버에서 " + msg + " 의 내용을 받았습니다."	
-            data = msg.encode()		
-            length = len(data)	
-            client_socket.sendall(length.to_bytes(1024, byteorder='little'))		
-            client_socket.sendall(data)
-            # print("--------------Response to Client--------------")
+    while True:
+        mutex.acquire()
+        client_socket, addr = server_socket.accept()
+        print('Join : ', addr)
+        mutex.release()
+        try:
+            # 접속 상태에서 메세지 수신 무한 대기, 접속 끊기면 except 발생
+            while True:	
+                
+                # 1024 byte 데이터 수신 대기
+                data = client_socket.recv(1024)	
+                # little 엔디언으로 byte에서 int로 변환
+                length = int.from_bytes(data, "little") 
+                # 다시 데이터 수신 대기
+                data = client_socket.recv(length)
+                # 수신된 데이터 문자열 형태로 Decoding	
+                msg = data.decode()	
+                if (length > 0):
+                    print(addr, ' 에서', msg,' 를 보냈습니다.')
+                    # Data dict 형변환 
+                    data = json.loads(data)
+                    storage.append(data)
+                    # Interlock 감지 및 인터락 설비 데이터 바로 DB 저장 함수 호출
+                    CheckInterlock(data)
+                    # Data Spec MES 기준정보와 비교하고 다른 경우 업데이트하는 함수 호출
+                    CheckwithMES(data)
+                        
+                # Client 에게 메세지 송신 (echo), 수신과 서순 반대
+                msg = "서버에서 " + msg + " 의 내용을 받았습니다."	
+                data = msg.encode()		
+                length = len(data)	
+                client_socket.sendall(length.to_bytes(1024, byteorder='little'))		
+                client_socket.sendall(data)
+                # print("--------------Response to Client--------------")
 
-            # 단위 시간마다 2번 스레드 동작
-            elapsed_time = time.time() - last_save_time
-            if elapsed_time > save_interval:
-                 # 2번 스레드는 intervalSave 함수
-                 th2 = threading.Thread(target=intervalSave)
-                 th2.start()
-                 last_save_time = time.time() 
-    except:	
-        print("Exit : " , addr)	
-    finally:		
-        client_socket.close() 
+                # 단위 시간마다 2번 스레드 동작
+                elapsed_time = time.time() - last_save_time
+                if elapsed_time > save_interval:
+                    # 2번 스레드는 intervalSave 함수
+                    th2 = threading.Thread(target=intervalSave)
+                    th2.start()
+                    last_save_time = time.time() 
+        except:	
+            print("Exit : " , addr)	
+        finally:		
+            client_socket.close() 
 
 
+# interlock 판정
 def CheckInterlock(data):
+    global temp
     conn = pymysql.connect(host='172.26.6.41',
                             user='cms',
                             password='11111111',
@@ -88,6 +107,9 @@ def CheckInterlock(data):
         print("--------------Safe Data--------------")
         conn.close()
     else:
+        temp.append(data)
+        print("!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@")
+        print(temp)
         # Interlock 판정 데이터는 DB에 바로 저장
         print("--------------Interlock Found--------------")
         upper_limit = usl
@@ -114,8 +136,10 @@ def CheckInterlock(data):
         conn.commit()
         cursor.close()
         conn.close()
+
      
 
+# 기준정보 업데이트
 def CheckwithMES(data):
     try:
         conn = pymysql.connect(host='172.26.6.41',
@@ -214,25 +238,59 @@ def intervalSave():
     print("--------------Bulk Insert--------------")
 
 
+def MESClient():
+    global temp
+    print(temp)
+    while True:
+        print('@@@안꺼졌는지 확인@@@')
+        if len(temp) > 0:
+        # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+        # print(temp)
+            mes_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            mes_addr = ("k8a201.p.ssafy.io", mes_port)
+            mes_client_socket.connect(mes_addr)
+            while temp!=[]:
+                mutex.acquire()
+                # print(temp["equipment_id"])
+                # temp = {equip_id : 1, ...} -> temp[0]["equip_id"]
+                temp_str = json.dumps(temp[0])
+                temp = []
+                print(temp_str)
+                mes_client_socket.sendall(temp_str.encode())
+                # mes_client_socket.sendall(temp.encode('utf-8'))
+                response = mes_client_socket.recv(1024)
+                # print(f'Received: {response.decode()}')
+                mutex.release()
+            # try:
+                
+            # finally:
+            #     mes_client_socket.close()
 
-# Socket Setting
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)	
-server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
-server_socket.bind(('172.26.6.41', 8888))	
-server_socket.listen()	
 
+
+# Socket SIM > FDC
+
+# # Socket FDC > MES
+
+# mes_server_socket.bind(('172.26.6.41', 8887))
+# mes_server_socket.listen()
 
 # FDCServer 함수를 1번 스레드로 무한 루프
-try:		
-    while True:		
-        client_socket, addr = server_socket.accept()	
-        th1 = threading.Thread(target=FDCServer, args = (client_socket,addr))	
-        th1.start()	
-except:	
-    print("Server Down")	
-finally:	
-    # 에러 발생하면 서버 소켓 close
-    server_socket.close() 
+# try:		
+#     while True:			
+        
+# except:	
+#     print("Server Down")
+
+while True:
+    time.sleep(10)
+    th1 = threading.Thread(target=FDCServer)	
+    th3 = threading.Thread(target=MESClient)
+    th1.start()	
+    th3.start()	
+# finally:	
+#     # 에러 발생하면 서버 소켓 close
+#     server_socket.close() 
 
 
 
