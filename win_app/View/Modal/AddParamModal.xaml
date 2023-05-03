@@ -104,7 +104,7 @@
                 </StackPanel>
             </Border>
 
-            <Button Name="Btn_Register" Content="Register" HorizontalAlignment="Right" Margin="0 20 30 20" Background="#2f49cf" Click="Btn_Register_Click"/>
+            <Button Name="Btn_Register" Content="등록" HorizontalAlignment="Right" Margin="0 20 30 20" Background="#2f49cf" Click="Btn_Register_Click"/>
         </StackPanel>
     </Border>
 </Window>

@@ -37,7 +37,7 @@ namespace SOM.View
 
         private void Btn_SignUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/SignUpPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Login/SignUpPage.xaml", UriKind.Relative));
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
@@ -86,24 +86,16 @@ namespace SOM.View
                     Properties.Settings.Default.Save();
                 }
 
-                // 권한 접근
-                if (authority == "Guest") 
-                {
-                    Tb_ErrorMsg.Text = "Authoriztion Error";
-                }
-                else
-                {
-                    // 현재 로그인 유저 정보 저장
-                    App.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, department, phoneNumber);
+                // 현재 로그인 유저 정보 저장
+                App.CurrentUser = new UsersModel(email, userCredential.User.Uid, user.DisplayName, authority, department, phoneNumber);
 
-                    // 메인 화면 열기
-                    var mainWindow = new MainWindow();
-                    mainWindow.Show();
+                // 메인 화면 열기
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
 
-                    // 로그인 창 닫기
-                    var window = Window.GetWindow(this);
-                    window.Close();
-                }
+                // 로그인 창 닫기
+                var window = Window.GetWindow(this);
+                window.Close();
             }
             catch (FirebaseAuthHttpException ex)
             {

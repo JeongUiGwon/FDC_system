@@ -42,8 +42,12 @@ namespace SOM.View.Modal
         private void DataGrid_Equipment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             EquipmentsModel item = dg_Equipment.CurrentItem as EquipmentsModel;
-            Result = item.equipment_id;
-            this.Close();
+
+            if (item != null)
+            {
+                Result = item.equipment_id;
+                this.Close();
+            }
         }
     }
 }

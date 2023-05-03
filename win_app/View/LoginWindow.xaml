@@ -16,6 +16,6 @@
         FontSize="18"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid Margin="20">
-        <Frame NavigationUIVisibility="Hidden" Source="/View/LoginPage.xaml" MouseDown="Frame_MouseDown"/>
+        <Frame NavigationUIVisibility="Hidden" Source="/View/Login/LoginPage.xaml" MouseDown="Frame_MouseDown"/>
     </Grid>
 </Window>

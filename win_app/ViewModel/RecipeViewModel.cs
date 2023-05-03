@@ -14,13 +14,12 @@ namespace SOM.ViewModel
 {
     public class RecipeViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<RecipeModel> _recipe;
-
         public RecipeViewModel()
         {
             SetRecipe();
         }
 
+        private ObservableCollection<RecipeModel> _recipe;
         public ObservableCollection<RecipeModel> Recipes
         {
             get { return _recipe; }
@@ -28,6 +27,29 @@ namespace SOM.ViewModel
             {
                 _recipe = value;
                 OnPropertyChanged(nameof(Recipes));
+            }
+        }
+
+        private ObservableCollection<RecipeModel> _filteredRecipe;
+        public ObservableCollection<RecipeModel> FilteredRecipe
+        {
+            get { return _filteredRecipe; }
+            set
+            {
+                _filteredRecipe = value; 
+                OnPropertyChanged(nameof(FilteredRecipe));
+            }
+        }
+
+        private string _searchTerm;
+        public string SearchTerm
+        {
+            get { return _searchTerm; }
+            set
+            {
+                _searchTerm = value;
+                OnPropertyChanged(nameof(SearchTerm));
+                FilterRecipe();
             }
         }
 
@@ -41,6 +63,20 @@ namespace SOM.ViewModel
                 string str_content = await response.Content.ReadAsStringAsync();
                 content = JsonConvert.DeserializeObject<ObservableCollection<RecipeModel>>(str_content);
                 Recipes = new ObservableCollection<RecipeModel>(content);
+                FilterRecipe();
+            }
+        }
+
+        private void FilterRecipe()
+        {
+            if (Recipes != null && Recipes.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            {
+                FilteredRecipe = new ObservableCollection<RecipeModel>(Recipes.Where(e => e.recipe_id.Contains(SearchTerm) || e.recipe_name.Contains(SearchTerm)
+                || e.equipment.Contains(SearchTerm) || e.param.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm))); ;
+            }
+            else
+            {
+                FilteredRecipe = Recipes;
             }
         }
 

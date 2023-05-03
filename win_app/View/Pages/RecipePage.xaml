@@ -39,39 +39,50 @@
 
             <!--Contents-->
             <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <StackPanel Margin="0 35 0 0">
-                    <Grid>
-                        <!--Left Section-->
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <!--History Button-->
-                            <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click">
-                                <Border CornerRadius="10 10 10 10" >
-                                    <StackPanel Orientation="Horizontal">
-                                        <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                        <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                        </StackPanel>
+                <Grid Margin="10 35 10 20">
 
-                        <!--Right Section-->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                            <!--Add Button-->
-                            <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
-                                <Border CornerRadius="10 10 10 10" >
-                                    <StackPanel Orientation="Horizontal">
-                                        <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                        <TextBlock Text="추가" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                        </StackPanel>
-                    </Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*" MaxHeight="900"/>
+                    </Grid.RowDefinitions>
 
+                    <!--Left Section-->
+                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+                        <!--History Button-->
+                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="이력" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+
+                    <!--Right Section-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+                        <!--Add Button-->
+                        <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="레시피 등록" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+
+                    <!--Search Bar-->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                        <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
 
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="RecipeDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding Recipes}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" ItemsSource="{Binding FilteredRecipe}" Grid.Row="2"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
@@ -104,37 +115,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                </StackPanel>
-
-            </Border>
-
-            <!--Ragination Section-->
-            <Border Grid.Row="4" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
-                <StackPanel Orientation="Horizontal">
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="1" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#2f49cf" Foreground="#ffffff"/>
-                    <Button Style="{StaticResource pagingButton}" Content="3" />
-
-                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
-
-                    <Button Style="{StaticResource pagingButton}" Content="7" />
-                    <Button Style="{StaticResource pagingButton}" Content="8" />
-                    <Button Style="{StaticResource pagingButton}" Content="9" />
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-                </StackPanel>
+                </Grid>
             </Border>
         </Grid>
     </Border>

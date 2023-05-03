@@ -409,6 +409,8 @@
     <Compile Include="Services\PostParamHistory.cs" />
     <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="Services\PostRecipeHistory.cs" />
+    <Compile Include="Utils\EmailValidator.cs" />
+    <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
@@ -420,6 +422,9 @@
     </Compile>
     <Compile Include="View\Modal\SearchEquipmentIDModal.xaml.cs">
       <DependentUpon>SearchEquipmentIDModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modal\SearchParamIDModal.xaml.cs">
+      <DependentUpon>SearchParamIDModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
@@ -433,13 +438,13 @@
     <Compile Include="View\Pages\EquipmentsPage.xaml.cs">
       <DependentUpon>EquipmentsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ForgotPasswordPage.xaml.cs">
+    <Compile Include="View\Login\ForgotPasswordPage.xaml.cs">
       <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\InterlockPage.xaml.cs">
       <DependentUpon>InterlockPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginPage.xaml.cs">
+    <Compile Include="View\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
@@ -478,7 +483,7 @@
     <Compile Include="View\Pages\RecipePage.xaml.cs">
       <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SignUpPage.xaml.cs">
+    <Compile Include="View\Login\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\UsersPage.xaml.cs">
@@ -489,6 +494,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modal\SearchEquipmentIDModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modal\SearchParamIDModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -508,7 +517,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ForgotPasswordPage.xaml">
+    <Page Include="View\Login\ForgotPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -516,7 +525,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LoginPage.xaml">
+    <Page Include="View\Login\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -580,7 +589,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SignUpPage.xaml">
+    <Page Include="View\Login\SignUpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

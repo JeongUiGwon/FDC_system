@@ -8,19 +8,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SOM.ViewModel
 {
     public class EquipmentsViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<EquipmentsModel> _equipments;
-
         public EquipmentsViewModel()
         {
             SetEquipments();
         }
 
+        private ObservableCollection<EquipmentsModel> _equipments;
         public ObservableCollection<EquipmentsModel> Equipments
         {
             get { return _equipments; }
@@ -50,7 +50,6 @@ namespace SOM.ViewModel
             {
                 _searchTerm = value;
                 OnPropertyChanged(nameof(SearchTerm));
-                Console.WriteLine("hello");
                 FilterEquipments();
             }
         }
@@ -73,7 +72,8 @@ namespace SOM.ViewModel
         {
             if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
             {
-                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) || e.equipment_name.Contains(SearchTerm)));
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) 
+                || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm)));
             }
             else
             {

@@ -46,7 +46,7 @@ namespace SOM.View.Modal
             string equip_id = Tb_EquipID.Text;
             string equip_name = Tb_EquipName.Text;
             string equip_use = Cb_EquipUse.Text;
-            string interlock_id = Tb_InterlockID.Text;
+            string interlock_id = tb_interlockID.Text;
             string modifier_name = App.CurrentUser.UserName;
             
             // Patch Equipment 실행
@@ -65,6 +65,15 @@ namespace SOM.View.Modal
                 Bdr_ErrorBox.Visibility = Visibility.Visible;
                 Tb_ErrorMsg.Text = response.ReasonPhrase;
             }
+        }
+
+        private void Btn_SearchEquipment_Click(object sender, EventArgs e)
+        {
+            var Modal = new SearchEquipmentIDModal();
+            Modal.ShowDialog();
+
+            string equip_id = Modal.Result;
+            tb_interlockID.Text = equip_id;
         }
     }
 }
