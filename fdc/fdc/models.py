@@ -7,17 +7,19 @@ from django.apps import apps
 is_manage = True
 
 def random_past_datetime():
-    return datetime.now() - timedelta(days=random.randint(0, 365),
+    past_time = datetime.now() - timedelta(days=random.randint(0, 365),
                                       hours=random.randint(0, 23),
                                       minutes=random.randint(0, 59),
                                       seconds=random.randint(0, 59))
+    return past_time.strftime("%Y-%m-%d %H:%M:%S")
 
 def random_future_datetime_from_past():
-    past_time = random_past_datetime()
-    return past_time + timedelta(days=random.randint(0, 365),
-                                 hours=random.randint(0, 23),
-                                 minutes=random.randint(0, 59),
-                                 seconds=random.randint(0, 59))
+    past_time = datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
+    future_time = past_time + timedelta(days=random.randint(0, 365),
+                                        hours=random.randint(0, 23),
+                                        minutes=random.randint(0, 59),
+                                        seconds=random.randint(0, 59))
+    return future_time.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def generate_id(length):
@@ -54,12 +56,12 @@ class Equipment(models.Model):
     equipment_id = models.CharField(max_length=50, primary_key=True)
     equipment_name = models.CharField(max_length=50)
     equipment_use = models.CharField(max_length=10)
-    equipment_state = models.CharField(max_length=10, null=True)
-    equipment_mode = models.CharField(max_length=10, null=True)
+    equipment_state = models.CharField(max_length=10)
+    equipment_mode = models.CharField(max_length=10)
     creator_name = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
-    updated_at = models.DateTimeField(default=random_future_datetime_from_past, null=True)
+    updated_at = models.DateTimeField(null=True)
     interlock_id = models.CharField(max_length=50)
 
     def save(self, *args, **kwargs):
@@ -73,14 +75,14 @@ class Equipment(models.Model):
 
 class Param(models.Model):
     param_id = models.CharField(max_length=50, primary_key=True)
-    equipment = models.ForeignKey(Equipment, on_delete=models.PROTECT)
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     param_name = models.CharField(max_length=50)
     param_level = models.CharField(max_length=2)
     param_state = models.CharField(max_length=10)
     creator_name = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
-    updated_at = models.DateTimeField(default=random_future_datetime_from_past, null=True)
+    updated_at = models.DateTimeField(null=True)
 
     def save(self, *args, **kwargs):
         if not self.param_id:
@@ -94,15 +96,15 @@ class Recipe(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     param = models.ForeignKey(Param, on_delete=models.CASCADE)
     recipe_name = models.CharField(max_length=50)
-    lsl = models.FloatField(null=True)
-    usl = models.FloatField(null=True)
-    lsl_interlock_action = models.CharField(max_length=50, null=True)
-    usl_interlock_action = models.CharField(max_length=50, null=True)
+    lsl = models.FloatField()
+    usl = models.FloatField()
+    lsl_interlock_action = models.CharField(max_length=50)
+    usl_interlock_action = models.CharField(max_length=50)
     recipe_use = models.CharField(max_length=10)
     creator_name = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
-    updated_at = models.DateTimeField(default=random_future_datetime_from_past, null=True)
+    updated_at = models.DateTimeField(null=True)
 
     def save(self, *args, **kwargs):
         if not self.recipe_id:
@@ -117,6 +119,7 @@ class LotLog(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     start_time = models.DateTimeField(default=datetime.now)
     end_time = models.DateTimeField(default=random_future_datetime_from_past)
+    param = models.ForeignKey(Param, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     lot_state = models.CharField(max_length=10, null=True)
     created_at = models.DateTimeField(default=random_past_datetime)
@@ -213,9 +216,13 @@ class RecipeHistory(models.Model):
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField(default=random_past_datetime)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe_name = models.CharField(max_length=20)
     old_value = models.JSONField(null=True)
     new_value = models.JSONField(null=True)
 
+    def save(self, *args, **kwargs):
+        self.recipe_name = self.recipe.param_name
+        super().save(*args, **kwargs)
     class Meta:
         db_table = 'recipe_history'
         managed = is_manage
