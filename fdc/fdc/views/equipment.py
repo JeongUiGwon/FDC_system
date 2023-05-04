@@ -1,6 +1,9 @@
 from rest_framework import viewsets
 from ..models import Equipment
 from ..serializers import EquipmentSerializer
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+
 
 class EquipmentViewSet(viewsets.ModelViewSet):
     serializer_class = EquipmentSerializer
@@ -32,3 +35,23 @@ class EquipmentViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(interlock_id__icontains=interlock_id)
 
         return queryset
+
+    @swagger_auto_schema(
+        operation_description="Get a list of Equipment objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('equipment_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of equipment IDs to filter by."),
+            openapi.Parameter('equipment_use', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by equipment use."),
+            openapi.Parameter('equipment_state', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by equipment state."),
+            openapi.Parameter('equipment_mode', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by equipment mode."),
+            openapi.Parameter('creator_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by creator name."),
+            openapi.Parameter('interlock_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by interlock ID."),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super(EquipmentViewSet, self).list(request, *args, **kwargs)

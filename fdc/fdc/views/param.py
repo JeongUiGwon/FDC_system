@@ -1,6 +1,9 @@
 from rest_framework import viewsets
 from ..models import Param
 from ..serializers import ParamSerializer
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+
 
 class ParamViewSet(viewsets.ModelViewSet):
     serializer_class = ParamSerializer
@@ -9,7 +12,6 @@ class ParamViewSet(viewsets.ModelViewSet):
         queryset = Param.objects.all()
 
         param_id = self.request.GET.get('param_id', None)
-        param_name = self.request.GET.get('param_name', None)
         param_level = self.request.GET.get('param_level', None)
         param_state = self.request.GET.get('param_state', None)
         creator_name = self.request.GET.get('creator_name', None)
@@ -28,3 +30,21 @@ class ParamViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(equipment__equipment_id__icontains=equipment_id)
 
         return queryset
+
+    @swagger_auto_schema(
+        operation_description="Get a list of Param objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('param_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of parameter IDs to filter by."),
+            openapi.Parameter('param_level', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by parameter level."),
+            openapi.Parameter('param_state', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by parameter state."),
+            openapi.Parameter('creator_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by creator name."),
+            openapi.Parameter('equipment_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by equipment ID."),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super(ParamViewSet, self).list(request, *args, **kwargs)

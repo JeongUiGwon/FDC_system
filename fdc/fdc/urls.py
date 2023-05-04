@@ -26,6 +26,8 @@ router.register(r'interlock_log', interlock_log.InterlockLogViewSet, basename='i
 router.register(r'param_history', param_history.ParamHistoryViewSet, basename='param_history')
 router.register(r'recipe_history', recipe_history.RecipeHistoryViewSet, basename='recipe_history')
 
+
+
 urlpatterns = [
     path('', include(router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
