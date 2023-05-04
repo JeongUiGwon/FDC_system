@@ -10,7 +10,6 @@ class ParamLogViewSet(viewsets.ModelViewSet):
         queryset = ParamLog.objects.all()
 
         factory_id = self.request.GET.get('factory_id', None)
-        param_value = self.request.GET.get('param_value', None)
         equipment_id = self.request.GET.get('equipment_id', None)
         param_id = self.request.GET.get('param_id', None)
         recipe_id = self.request.GET.get('recipe_id', None)

@@ -1,3 +1,4 @@
+import datetime
 from rest_framework import viewsets
 from ..models import RecipeHistory
 from ..serializers import RecipeHistorySerializer
@@ -9,8 +10,14 @@ class RecipeHistoryViewSet(viewsets.ModelViewSet):
         queryset = RecipeHistory.objects.all()
 
         action = self.request.GET.get('action', None)
+        start_date = self.request.GET.get('start_date', None)
+        end_date = self.request.GET.get('end_date', None)
 
         if action:
             queryset = queryset.filter(action__icontains=action)
+        if start_date and end_date:
+            start_date_obj = datetime.strptime(start_date, '%Y-%m-%d %H:%M')
+            end_date_obj = datetime.strptime(end_date, '%Y-%m-%d %H:%M')
+            queryset = queryset.filter(created_at__range=(start_date_obj, end_date_obj))
 
         return queryset
