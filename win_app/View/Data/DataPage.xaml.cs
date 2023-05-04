@@ -1,9 +1,12 @@
-﻿using SOM.Model;
+﻿using Newtonsoft.Json;
+using SOM.Model;
+using SOM.Services;
 using SOM.View.Param;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Google.Apis.Requests.BatchRequest;
 
 namespace SOM.View.Data
 {
@@ -28,23 +32,39 @@ namespace SOM.View.Data
             InitializeComponent();
         }
 
-        private void btn_apply_click(object sender, RoutedEventArgs e)
+        private async void btn_apply_click(object sender, RoutedEventArgs e)
         {
             var equipments = dg_equipment.ItemsSource as ObservableCollection<EquipmentsModel>;
             var selectedEquipments = equipments.Where(el => el.isSelected).ToList();
 
-            string startDate = dp_startDate.Text;
-            string startTime = tp_startTime.Text;
-            string endDate = dp_endDate.Text;
-            string endTime = tp_endTime.Text;
+            string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
 
-            Console.WriteLine("hello");
+            string startDate = $"{dp_startDate.Text} {tp_startTime.Text}";
+            string endDate = $"{dp_endDate.Text} {tp_endTime.Text}";
+
+            string str_params = tb_paramID.Text;
+
+            HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(str_selectedEquipments, str_params, startDate, endDate);
+            ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
+
+            if (response_getParamLog != null && response_getParamLog.Content != null)
+            {
+                string str_content = await response_getParamLog.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
+                dg_equipmentData.ItemsSource = content;
+            }
+            
         }
 
         private void btn_SearchParams_click(object sender, RoutedEventArgs e)
         {
             var modal = new GetParamModal();
             modal.ShowDialog();
+
+            if (modal.Result != null)
+            {
+                tb_paramID.Text = modal.Result.ToString();
+            }
         }
     }
 }

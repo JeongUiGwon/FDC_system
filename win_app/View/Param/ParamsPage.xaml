@@ -83,7 +83,7 @@
 
                     
 
-                    <!--Equipments Datagrid-->
+                    <!--Param Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" 
                               CanUserAddRows="False" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" 
                               ItemsSource="{Binding FilteredParams}" Margin="10 0" Grid.Row="1"

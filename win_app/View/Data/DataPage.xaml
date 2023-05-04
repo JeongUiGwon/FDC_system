@@ -49,11 +49,22 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>                        
                     </Grid.RowDefinitions>
 
+                    <!--Apply Button-->
+                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0" Click="btn_apply_click">
+                        <Border CornerRadius="10 10 10 10" >
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
+                    
                     <!--Equiment Filter-->
-                    <Grid Grid.Row="0" Margin="0 50 0 0">
+                    <Grid Grid.Row="1" Margin="0 10 0 0">
                         
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -89,7 +100,7 @@
                     </Grid>                    
 
                     <!--Date Time Picker-->
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="2">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -115,7 +126,7 @@
                         <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15"/>
                     </Grid>
 
-                    <Grid Grid.Row="2" Margin="0 10 0 30">
+                    <Grid Grid.Row="3" Margin="0 10 0 30">
                         <StackPanel>
                             <TextBlock Text="항목 ID*" FontWeight="DemiBold" FontSize="15" Margin="0 10 0 10" Foreground="#757A89"/>
 
@@ -157,16 +168,7 @@
                     
                     <!--Left Section-->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0">
-                        
-                        <!--Apply Button-->
-                        <Button x:Name="btn_apply" BorderBrush="#2f49cf" Background="#ffffff" HorizontalAlignment="Right" Width="auto" Click="btn_apply_click">
-                            <Border CornerRadius="10 10 10 10" >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="FileSearch" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
-                                </StackPanel>
-                            </Border>
-                        </Button>
+
                     </StackPanel>
                     
                     <!--Right Section-->
@@ -192,19 +194,18 @@
                         </Button>
                     </StackPanel>
 
-
                     <!--Data Datagrid-->
-                    <DataGrid x:Name="DataDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1"
+                    <DataGrid x:Name="dg_equipmentData" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1" Margin="0 10 0 0"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Created_at}"/>
-                            <DataGridTextColumn Header="Equip ID" Width="*" Binding="{Binding Equipment_ID}"/>
-                            <DataGridTextColumn Header="Equip Name" Width="*" Binding="{Binding Equipment_Name}"/>
-                            <DataGridTextColumn Header="LOT ID" Width="*" Binding="{Binding LOT_ID}"/>
-                            <DataGridTextColumn Header="Recipe ID" Width="*" Binding="{Binding Recipe_ID}"/>
-                            <DataGridTextColumn Header="Param ID" Width="*" Binding="{Binding Data_Value}"/>
+                            <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
+                            <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
+                            <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
+                            <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 

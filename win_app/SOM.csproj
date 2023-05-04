@@ -386,6 +386,7 @@
     <Compile Include="Model\FirebaseAuthModel.cs" />
     <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamHistoryModel.cs" />
+    <Compile Include="Model\ParamLogModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
     <Compile Include="Model\RecipeHistoryModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
@@ -396,6 +397,7 @@
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\GetParamHistory.cs" />
     <Compile Include="Services\GetParamID.cs" />
+    <Compile Include="Services\GetParamLog.cs" />
     <Compile Include="Services\GetParams.cs" />
     <Compile Include="Services\GetRecipe.cs" />
     <Compile Include="Services\GetRecipeHistory.cs" />

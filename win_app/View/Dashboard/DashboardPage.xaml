@@ -125,7 +125,7 @@
                     <Border.Effect>
                         <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
                     </Border.Effect>
-                    
+
                     <StackPanel Margin="20 40 10 10">
                     </StackPanel>
                 </Border>

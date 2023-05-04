@@ -38,6 +38,17 @@ namespace SOM.ViewModel
             }
         }
 
+        private ObservableCollection<ParamsModel> _selectedParams;
+        public ObservableCollection<ParamsModel> SelectedParams
+        {
+            get { return _selectedParams; }
+            set
+            {
+                _selectedParams = value;
+                OnPropertyChanged(nameof(SelectedParams));
+            }
+        }
+
         private string _searchTerm;
         public string SearchTerm
         {
@@ -46,6 +57,42 @@ namespace SOM.ViewModel
             {
                 _searchTerm = value;
                 OnPropertyChanged(nameof(SearchTerm));
+                FilterParams();
+            }
+        }
+
+        private string _searchEquipment;
+        public string SearchEquipment
+        {
+            get { return _searchEquipment; }
+            set
+            {
+                _searchEquipment = value;
+                OnPropertyChanged(nameof(SearchEquipment));
+                FilterParams();
+            }
+        }
+
+        private string _searchParamLevel;
+        public string SearchParamLevel
+        {
+            get { return _searchParamLevel; }
+            set
+            {
+                _searchParamLevel = value;
+                OnPropertyChanged(nameof(SearchParamLevel));
+                FilterParams();
+            }
+        }
+
+        private string _searchParamUse;
+        public string SearchParamUse
+        {
+            get { return _searchParamUse; }
+            set
+            {
+                _searchParamUse = value;
+                OnPropertyChanged(nameof(SearchParamUse));
                 FilterParams();
             }
         }
@@ -66,10 +113,30 @@ namespace SOM.ViewModel
 
         private void FilterParams()
         {
-            if (Params != null && Params.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            if (Params != null && Params.Any())
             {
-                FilteredParams = new ObservableCollection<ParamsModel>(Params.Where(e => e.param_id.Contains(SearchTerm) || e.param_name.Contains(SearchTerm)
-                || e.param_level.Contains(SearchTerm) || e.param_state.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm))); ;
+                FilteredParams = new ObservableCollection<ParamsModel>(Params);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredParams = new ObservableCollection<ParamsModel>(FilteredParams.Where(e => e.param_id.Contains(SearchTerm) || e.param_name.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipment))
+                {
+                    FilteredParams = new ObservableCollection<ParamsModel>(FilteredParams.Where(e => e.equipment.Contains(SearchEquipment)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchParamLevel) && SearchParamLevel != "All")
+                {
+                    FilteredParams = new ObservableCollection<ParamsModel>(FilteredParams.Where(e => e.param_level.Equals(SearchParamLevel)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchParamUse) && SearchParamUse != "All")
+                {
+                    FilteredParams = new ObservableCollection<ParamsModel>(FilteredParams.Where(e => e.param_state.Equals(SearchParamUse)));
+                }
+
             }
             else
             {
