@@ -2,9 +2,16 @@ from rest_framework import viewsets
 from ..models import ParamLog
 from ..serializers import ParamLogSerializer
 from datetime import datetime
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 
 class ParamLogViewSet(viewsets.ModelViewSet):
+    """
+    hihih
+    """
     serializer_class = ParamLogSerializer
+
+
 
     def get_queryset(self):
         queryset = ParamLog.objects.all()
@@ -37,6 +44,27 @@ class ParamLogViewSet(viewsets.ModelViewSet):
             end_date_obj = datetime.strptime(end_date, '%Y-%m-%d %H:%M')
             queryset = queryset.filter(created_at__range=(start_date_obj, end_date_obj))
 
-
-
         return queryset
+
+    @swagger_auto_schema(
+        operation_description="Get a list of ParamLog objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('factory_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of factory IDs to filter by."),
+            openapi.Parameter('equipment_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of equipment IDs to filter by."),
+            openapi.Parameter('param_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of parameter IDs to filter by."),
+            openapi.Parameter('recipe_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of recipe IDs to filter by."),
+            openapi.Parameter('lot_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of lot IDs to filter by."),
+            openapi.Parameter('start_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Start date for filtering created_at, format: 'YYYY-MM-DD HH:MM'"),
+            openapi.Parameter('end_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="End date for filtering created_at, format: 'YYYY-MM-DD HH:MM'"),
+        ]
+    )
+
+    def list(self, request, *args, **kwargs):
+        return super(ParamLogViewSet, self).list(request, *args, **kwargs)
