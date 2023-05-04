@@ -12,7 +12,7 @@
       Title="DataPage" FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Page.DataContext>
-        <viewmodel:DataViewModel/>
+        <viewmodel:EquipmentsViewModel/>
     </Page.DataContext>
     
     <!--Main Section-->
@@ -91,7 +91,14 @@
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                                 <DataGrid.Columns>
-                                    <DataGridCheckBoxColumn Width="auto" Binding="{Binding isSelected}"/>
+                                    <DataGridCheckBoxColumn Width="auto" Binding="{Binding isSelected, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False">
+                                        <DataGridCheckBoxColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <CheckBox IsChecked="{Binding Path=DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType={x:Type Page}}, UpdateSourceTrigger=PropertyChanged}"
+                                                          Checked="dg_equipment_checked" Unchecked="dg_equipment_checked"/>
+                                            </DataTemplate>
+                                        </DataGridCheckBoxColumn.HeaderTemplate>
+                                    </DataGridCheckBoxColumn>
                                     <DataGridTextColumn Header="설비명" Width="*" IsReadOnly="True" Binding="{Binding equipment_name}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -203,8 +210,11 @@
                             <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
                             <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
                             <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
+                            <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
                             <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
+                            <DataGridTextColumn Header="레시피명" Width="*" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
                             <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
                         </DataGrid.Columns>
                     </DataGrid>
