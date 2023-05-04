@@ -19,7 +19,8 @@ class EquipmentViewSet(viewsets.ModelViewSet):
         # 필터링 값이 제공된 경우 필터링 적용
         if equipment_id:
             equipment_id_list = equipment_id.split(',')
-            queryset = queryset.filter(equipment_id__icontains=equipment_id_list)
+            print(equipment_id_list)
+            queryset = queryset.filter(equipment_id__in=equipment_id_list)
         if equipment_use:
             queryset = queryset.filter(equipment_use__icontains=equipment_use)
         if equipment_state:
