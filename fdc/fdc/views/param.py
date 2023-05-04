@@ -13,19 +13,18 @@ class ParamViewSet(viewsets.ModelViewSet):
         param_level = self.request.GET.get('param_level', None)
         param_state = self.request.GET.get('param_state', None)
         creator_name = self.request.GET.get('creator_name', None)
-        equipment_name = self.request.GET.get('equipment_name', None) # 쿼리 파라미터에서 equipment_name 가져오기
+        equipment_id = self.request.GET.get('equipment_id', None)
 
         if param_id:
-            queryset = queryset.filter(param_id__icontains=param_id)
-        if param_name:
-            queryset = queryset.filter(param_name__icontains=param_name)
+            param_id_list = param_id.split(',')
+            queryset = queryset.filter(param_id__in=param_id_list)
         if param_level:
             queryset = queryset.filter(param_level__icontains=param_level)
         if param_state:
             queryset = queryset.filter(param_state__icontains=param_state)
         if creator_name:
             queryset = queryset.filter(creator_name__icontains=creator_name)
-        if equipment_name:
-            queryset = queryset.filter(equipment__equipment_name__icontains=equipment_name)  # equipment_name으로 필터링
+        if equipment_id:
+            queryset = queryset.filter(equipment__equipment_id__icontains=equipment_id)
 
         return queryset
