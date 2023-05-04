@@ -8,18 +8,6 @@ from drf_yasg.utils import swagger_auto_schema
 class RecipeHistoryViewSet(viewsets.ModelViewSet):
     serializer_class = RecipeHistorySerializer
 
-    @swagger_auto_schema(
-        operation_description="Get a list of RecipeHistory objects filtered by the provided parameters.",
-        manual_parameters=[
-            openapi.Parameter('action', openapi.IN_QUERY, type=openapi.TYPE_STRING,
-                              description="Filter by action."),
-            openapi.Parameter('start_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
-                              description="Filter by start date (format: YYYY-MM-DD HH:MM)."),
-            openapi.Parameter('end_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
-                              description="Filter by end date (format: YYYY-MM-DD HH:MM)."),
-        ]
-    )
-
     def get_queryset(self):
         queryset = RecipeHistory.objects.all()
 
@@ -36,5 +24,16 @@ class RecipeHistoryViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    @swagger_auto_schema(
+        operation_description="Get a list of RecipeHistory objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('action', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by action."),
+            openapi.Parameter('start_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by start date (format: YYYY-MM-DD HH:MM)."),
+            openapi.Parameter('end_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by end date (format: YYYY-MM-DD HH:MM)."),
+        ]
+    )
     def list(self, request, *args, **kwargs):
         return super(RecipeHistoryViewSet, self).list(request, *args, **kwargs)
