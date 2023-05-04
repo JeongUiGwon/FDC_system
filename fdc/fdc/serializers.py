@@ -41,9 +41,14 @@ class EquipmentStateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ParamLogSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+    recipe_name = serializers.CharField(source='recipe.recipe_name', read_only=True)
+
     class Meta:
         model = ParamLog
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name', 'recipe_name')
 
 class InterlockLogSerializer(serializers.ModelSerializer):
     class Meta:
