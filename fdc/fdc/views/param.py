@@ -18,8 +18,6 @@ class ParamViewSet(viewsets.ModelViewSet):
         if param_id:
             param_id_list = param_id.split(',')
             queryset = queryset.filter(param_id__in=param_id_list)
-        if param_name:
-            queryset = queryset.filter(param_name__icontains=param_name)
         if param_level:
             queryset = queryset.filter(param_level__icontains=param_level)
         if param_state:
