@@ -3,15 +3,16 @@ from datetime import datetime, timedelta
 import random, string
 from django.apps import apps
 
-
 is_manage = True
+
 
 def random_past_datetime():
     past_time = datetime.now() - timedelta(days=random.randint(0, 365),
-                                      hours=random.randint(0, 23),
-                                      minutes=random.randint(0, 59),
-                                      seconds=random.randint(0, 59))
+                                           hours=random.randint(0, 23),
+                                           minutes=random.randint(0, 59),
+                                           seconds=random.randint(0, 59))
     return past_time.strftime("%Y-%m-%d %H:%M:%S")
+
 
 def random_future_datetime_from_past():
     past_time = datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
@@ -28,6 +29,7 @@ def generate_id(length):
 
     return id.strip()
 
+
 def get_model(table_name):
     for model in apps.get_models():
         if model._meta.db_table == table_name:
@@ -35,12 +37,14 @@ def get_model(table_name):
 
     raise ValueError(f"Model for table '{table_name}' not found.")
 
+
 def get_pk(model_class):
     for field in model_class._meta.get_fields():
         if not isinstance(field, models.ManyToOneRel) and field.primary_key:
             return field.name
 
     raise ValueError(f"pk of '{model_class}' not found.")
+
 
 def random_id_generate(table_name, length):
     model_class = get_model(table_name)
@@ -51,6 +55,7 @@ def random_id_generate(table_name, length):
         id = generate_id(length)
 
     return id
+
 
 class Equipment(models.Model):
     equipment_id = models.CharField(max_length=50, primary_key=True)
@@ -70,8 +75,10 @@ class Equipment(models.Model):
         if not self.interlock_id:
             self.interlock_id = self.equipment_id
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'equipment'
+
 
 class Param(models.Model):
     param_id = models.CharField(max_length=50, primary_key=True)
@@ -88,8 +95,10 @@ class Param(models.Model):
         if not self.param_id:
             self.param_id = random_id_generate('param', 15)
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'param'
+
 
 class Recipe(models.Model):
     recipe_id = models.CharField(max_length=50, primary_key=True)
@@ -110,8 +119,10 @@ class Recipe(models.Model):
         if not self.recipe_id:
             self.recipe_id = random_id_generate('recipe', 20)
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'recipe'
+
 
 class LotLog(models.Model):
     lot_id = models.CharField(max_length=15, primary_key=True)
@@ -128,6 +139,7 @@ class LotLog(models.Model):
         if not self.lot_id:
             self.lot_id = random_id_generate('lot_log', 12)
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'lot_log'
         managed = False
@@ -144,11 +156,12 @@ class EquipmentState(models.Model):
     class Meta:
         db_table = 'equipment_state'
 
+
 class ParamLog(models.Model):
     log_id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
-    param = models.ForeignKey(Param, on_delete=models.CASCADE) # TODO cascade 맞나
+    param = models.ForeignKey(Param, on_delete=models.CASCADE)  # TODO cascade 맞나
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=random_past_datetime)
     param_value = models.FloatField()
@@ -159,9 +172,6 @@ class ParamLog(models.Model):
 
 
 class InterlockLog(models.Model):
-    # class PartitioningMeta:
-    #     method = PostgresPartitionedModel.RANGE
-
     log_id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
@@ -189,13 +199,14 @@ class InterlockLog(models.Model):
             self.lower_limit = self.recipe.lsl
             self.upper_limit = self.recipe.usl
 
-
         super(InterlockLog, self).save(*args, **kwargs)
+
     class Meta:
         db_table = 'interlock_log'
         managed = False
 
-class ParamHistory(models.Model): # TODO GET 할 때 param_name join해서 보여주기
+
+class ParamHistory(models.Model):  # TODO GET 할 때 param_name join해서 보여주기
     log_id = models.AutoField(primary_key=True)
     action = models.CharField(max_length=20)
     created_at = models.DateTimeField(default=random_past_datetime)
@@ -207,9 +218,11 @@ class ParamHistory(models.Model): # TODO GET 할 때 param_name join해서 보�
     def save(self, *args, **kwargs):
         self.param_name = self.param.param_name
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'param_history'
         managed = is_manage
+
 
 class RecipeHistory(models.Model):
     log_id = models.AutoField(primary_key=True)
@@ -223,6 +236,7 @@ class RecipeHistory(models.Model):
     def save(self, *args, **kwargs):
         self.recipe_name = self.recipe.param.param_name
         super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'recipe_history'
         managed = is_manage
