@@ -1,6 +1,9 @@
 from rest_framework import viewsets
 from ..models import Recipe
 from ..serializers import RecipeSerializer
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+
 
 class RecipeViewSet(viewsets.ModelViewSet):
     serializer_class = RecipeSerializer
@@ -29,3 +32,23 @@ class RecipeViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(param__param_name__icontains=param_name)  # param_name으로 필터링
 
         return queryset
+
+    @swagger_auto_schema(
+        operation_description="Get a list of Recipe objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('recipe_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by recipe ID."),
+            openapi.Parameter('recipe_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by recipe name."),
+            openapi.Parameter('recipe_use', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by recipe use."),
+            openapi.Parameter('creator_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by creator name."),
+            openapi.Parameter('equipment_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by equipment name."),
+            openapi.Parameter('param_name', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by parameter name."),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super(RecipeViewSet, self).list(request, *args, **kwargs)

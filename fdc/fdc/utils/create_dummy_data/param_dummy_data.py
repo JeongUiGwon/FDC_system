@@ -5,7 +5,7 @@ from ...utils.create_dummy_data.create_time import random_past_datetime, random_
 def generate_dummy_data_param():
     param_name = random.choice(['수평 진동', '수직 진동', '탱크 온도'])
     param_level = random.choice(['S', 'A', 'B'])
-    param_state = random.choice(['RUN', 'DOWN'])
+    param_state = random.choice(['사용', '미사'])
     creator_name = random.choice(['최명서', '정의권', '임상빈', '조성환', '채민기', '김지선'])
     # modifier_name = random.choice(['최명서', '정의권', '임상빈', '조성환', '채민기', '김지선'])
 

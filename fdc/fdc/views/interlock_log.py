@@ -2,6 +2,8 @@ from rest_framework import viewsets
 from ..models import InterlockLog
 from ..serializers import InterlockLogSerializer
 import datetime
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 
 class InterlockLogViewSet(viewsets.ModelViewSet):
     serializer_class = InterlockLogSerializer
@@ -40,3 +42,27 @@ class InterlockLogViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(created_at__range=(start_date_obj, end_date_obj))
 
         return queryset
+
+    @swagger_auto_schema(
+        operation_description="Get a list of InterlockLog objects filtered by the provided parameters.",
+        manual_parameters=[
+            openapi.Parameter('factory_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of factory IDs to filter by."),
+            openapi.Parameter('equipment_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of equipment IDs to filter by."),
+            openapi.Parameter('param_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of parameter IDs to filter by."),
+            openapi.Parameter('recipe_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Comma-separated list of recipe IDs to filter by."),
+            openapi.Parameter('interlock_type', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by interlock type."),
+            openapi.Parameter('out_count', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by output count."),
+            openapi.Parameter('start_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by start date (format: YYYY-MM-DD HH:MM)."),
+            openapi.Parameter('end_date', openapi.IN_QUERY, type=openapi.TYPE_STRING,
+                              description="Filter by end date (format: YYYY-MM-DD HH:MM)."),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super(InterlockLogViewSet, self).list(request, *args, **kwargs)
