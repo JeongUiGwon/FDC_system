@@ -8,9 +8,14 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewmodel="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
       Title="InterlockPage">
 
+    <Page.DataContext>
+        <viewmodel:EquipmentsViewModel/>
+    </Page.DataContext>
+    
     <!--Main Section-->
     <Border>
         <Border.Background>
@@ -24,7 +29,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -40,26 +44,119 @@
 
             <!--Filter-->
             <Border Grid.Row="1" Grid.Column="0" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <StackPanel>
-                    <TextBlock Text="Equipments" FontWeight="DemiBold" FontSize="15" Margin="20 40 0 10"/>
-                    
-                    <Border CornerRadius="20 20 20 20" Background="#f8f9fa" Height="300" Margin="10">
+                <Grid Margin="10 0">
 
-                    </Border>
-                    
-                    <TextBlock Text="Date Time" FontWeight="DemiBold" FontSize="15" Margin="20 0 0 10"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <ComboBox Width="110" />
-                        <ComboBox Margin="20 0 0 0" Width="110" />
-                    </StackPanel>
+                    <!--Apply Button-->
+                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0" Click="btn_apply_click">
+                        <Border CornerRadius="10 10 10 10" >
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
 
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <ComboBox Width="110" />
-                        <ComboBox Margin="20 0 0 0" Width="110" />
-                    </StackPanel>
-                </StackPanel>
+                    <!--Equiment Filter-->
+                    <Grid Grid.Row="1" Margin="0 10 0 0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="설비 목록*" FontWeight="DemiBold" FontSize="15" Foreground="#757A89"/>
+
+                        <!--Search Bar-->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 10 0 0">
+                            <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                            <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="150" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" 
+                             materialDesign:HintAssist.Hint="Search" Padding="10 0" Height="30"/>
+                        </StackPanel>
+
+                        <Border CornerRadius="10" Background="#f8f9fa" Height="400" Margin="0 10" Grid.Row="2">
+
+                            <!--Equipments Datagrid-->
+                            <DataGrid x:Name="dg_equipment" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" Grid.Row="1"  Margin="5"
+                                  ItemsSource="{Binding FilteredEquipments}"
+                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+
+                                <DataGrid.Columns>
+                                    <DataGridCheckBoxColumn Width="auto" Binding="{Binding isSelected, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False">
+                                        <DataGridCheckBoxColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <CheckBox IsChecked="{Binding Path=DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType={x:Type Page}}, UpdateSourceTrigger=PropertyChanged}"
+                                                          Checked="dg_equipment_refresh" Unchecked="dg_equipment_refresh"/>
+                                            </DataTemplate>
+                                        </DataGridCheckBoxColumn.HeaderTemplate>
+                                    </DataGridCheckBoxColumn>
+                                    <DataGridTextColumn Header="설비명" Width="*" IsReadOnly="True" Binding="{Binding equipment_name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </Border>
+                    </Grid>
+
+                    <!--Date Time Picker-->
+                    <Grid Grid.Row="2">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="조회 기간*" FontWeight="DemiBold" FontSize="15" Foreground="#757A89"/>
+
+                        <!--Start Date-->
+                        <DatePicker Name="dp_startDate" Grid.Row="1" Grid.Column="0" Margin="0 10 5 0" FontSize="15"/>
+
+                        <materialDesign:TimePicker Name="tp_startTime" Grid.Row="1" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15"/>
+
+                        <!--End Date-->
+                        <DatePicker Name="dp_endDate" Grid.Row="2" Grid.Column="0" Margin="0 10 5 0" FontSize="15"/>
+
+                        <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="0 10 0 30">
+                        <StackPanel>
+                            <TextBlock Text="항목 ID*" FontWeight="DemiBold" FontSize="15" Margin="0 10 0 10" Foreground="#757A89"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Name="tb_paramID" Grid.Column="0" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                                         FontSize="13" Margin="0 0 5 0" />
+
+                                <Button Background="#ffffff" Grid.Column="1" BorderBrush="#799EFB" Click="btn_SearchParams_click">
+                                    <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
+                                </Button>
+                            </Grid>
+
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
             </Border>
+
 
 
             <!--Right Section-->
@@ -70,54 +167,27 @@
 
             <!--Interlock Datagrid-->
             <Border Grid.Row="1" Grid.Column="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
-                <DataGrid x:Name="InterlockDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                <DataGrid x:Name="dg_interlock" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Created_at}"/>
-                        <DataGridTextColumn Header="Equip ID" Width="auto" Binding="{Binding Interlock_ID}"/>
-                        <DataGridTextColumn Header="Equip Name" Width="auto" Binding="{Binding Interlock_Name}"/>
-                        <DataGridTextColumn Header="Cause Equip ID" Width="auto" Binding="{Binding Equipment_ID}"/>
-                        <DataGridTextColumn Header="Cause Equip Name" Width="auto" Binding="{Binding Equipment_Name}"/>
-                        <DataGridTextColumn Header="Param ID" Width="auto" Binding="{Binding Param_ID}"/>
-                        <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding Recipe_ID}"/>
-                        <DataGridTextColumn Header="LOT ID" Width="auto" Binding="{Binding LOT_ID}"/>
-                        <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding LSL}"/>
-                        <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding USL}"/>
-                        <DataGridTextColumn Header="Value" Width="auto" Binding="{Binding Data_Value}"/>
+                        <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding Created_at}"/>
+                        <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
+                        <DataGridTextColumn Header="설비명" Width="auto" Binding="{Binding equipment_name}"/>
+                        <DataGridTextColumn Header="원인 설비 ID" Width="auto" Binding="{Binding cause_equip_id}"/>
+                        <DataGridTextColumn Header="원인 설비명" Width="auto" Binding="{Binding cause_equip_name}"/>
+                        <DataGridTextColumn Header="인터락 타입" Width="auto" Binding="{Binding interlock_type}"/>
+                        <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
+                        <DataGridTextColumn Header="항목 값" Width="auto" Binding="{Binding data_value}"/>
+                        <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lower_limit}"/>
+                        <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding upper_limit}"/>
+                        <DataGridTextColumn Header="아웃 수" Width="auto" Binding="{Binding out_count}"/>
+                        <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding recipe}"/>
+                        <DataGridTextColumn Header="LOT ID" Width="auto" Binding="{Binding lot}"/>
+                        <DataGridTextColumn Header="CCTV 주소" Width="auto" Binding="{Binding cctv_video_url}"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Border>
-
-            <!--Ragination Section-->
-            <Border Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                    CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10 ">
-                <StackPanel Orientation="Horizontal">
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="1" />
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#2f49cf" Foreground="#ffffff"/>
-                    <Button Style="{StaticResource pagingButton}" Content="3" />
-
-                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0" />
-
-                    <Button Style="{StaticResource pagingButton}" Content="7" />
-                    <Button Style="{StaticResource pagingButton}" Content="8" />
-                    <Button Style="{StaticResource pagingButton}" Content="9" />
-
-                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-                </StackPanel>
             </Border>
         </Grid>
     </Border>
