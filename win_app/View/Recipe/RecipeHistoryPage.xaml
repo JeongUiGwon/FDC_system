@@ -68,7 +68,7 @@
                     
                     <!--Equipments Datagrid-->
                     <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" Margin="0 10 0 0"
-                              CanUserAddRows="False" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1"
+                              CanUserAddRows="False" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1" Background="#ffffff"
                               ItemsSource="{Binding FilteredRecipeHistory}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>

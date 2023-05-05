@@ -108,7 +108,7 @@ namespace SOM.View.Recipe
             string str_new_value = JsonConvert.SerializeObject(_new_value);
 
             // Recipe 변경 이력 기록 API 호출
-            HttpResponseMessage responseHistory = await PostRecipeHistory.PostRecipeHistoryAsync("UPDATE", recipe_id, str_old_value, str_new_value);
+            HttpResponseMessage responseHistory = await PostRecipeHistory.PostRecipeHistoryAsync("UPDATE", recipe_id, recipe_name, str_old_value, str_new_value);
 
             // Recipe 변경 이력 기록 API 요청 실패
             if (!responseHistory.IsSuccessStatusCode)

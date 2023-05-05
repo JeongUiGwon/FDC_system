@@ -82,6 +82,7 @@ namespace SOM.View.Recipe
             Button clickedButton = sender as Button;
             RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
             string recipe_id = dataContext.recipe_id;
+            string recipe_name = dataContext.recipe_name;
 
             // 삭제 확인 다이얼로그 실행
             var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -90,7 +91,7 @@ namespace SOM.View.Recipe
             {
                 // 레시피 삭제 이력 기록 API 호출
                 string str_recipeModel = JsonConvert.SerializeObject(dataContext);
-                HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("DELETE", recipe_id, old_value: str_recipeModel);
+                HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("DELETE", recipe_id, recipe_name, old_value: str_recipeModel);
 
                 // Delete Param/param_id API 호출
                 HttpResponseMessage response = await DeleteRecipeID.DeleteRecipeIDAsync(recipe_id);

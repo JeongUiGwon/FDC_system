@@ -105,7 +105,7 @@ namespace SOM.View.Recipe
             string jsonNewData = JsonConvert.SerializeObject(new_content);
 
             // Recipe 이력 기록 API 호출
-            HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("CREATE", recipe_id, new_value: jsonNewData);
+            HttpResponseMessage response_history = await PostRecipeHistory.PostRecipeHistoryAsync("CREATE", recipe_id, recipe_name, new_value: jsonNewData);
 
             // Recipe 이력 기록 API 요청 실패
             if (!response_history.IsSuccessStatusCode)

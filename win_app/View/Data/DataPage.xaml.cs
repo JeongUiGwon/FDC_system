@@ -62,7 +62,7 @@ namespace SOM.View.Data
             
         }
 
-        private void dg_equipment_checked(object sender, RoutedEventArgs e)
+        private void dg_equipment_refresh(object sender, RoutedEventArgs e)
         {
             dg_equipment.Items.Refresh();
         }

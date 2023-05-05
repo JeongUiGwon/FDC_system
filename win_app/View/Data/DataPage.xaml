@@ -95,7 +95,7 @@
                                         <DataGridCheckBoxColumn.HeaderTemplate>
                                             <DataTemplate>
                                                 <CheckBox IsChecked="{Binding Path=DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType={x:Type Page}}, UpdateSourceTrigger=PropertyChanged}"
-                                                          Checked="dg_equipment_checked" Unchecked="dg_equipment_checked"/>
+                                                          Checked="dg_equipment_refresh" Unchecked="dg_equipment_refresh"/>
                                             </DataTemplate>
                                         </DataGridCheckBoxColumn.HeaderTemplate>
                                     </DataGridCheckBoxColumn>
