@@ -51,13 +51,20 @@ class ParamLogSerializer(serializers.ModelSerializer):
         extra_fields = ('equipment_name', 'param_name', 'recipe_name')
 
 class InterlockLogSerializer(serializers.ModelSerializer):
+    param_name = serializers.StringRelatedField(source='param.param_name')
+    recipe_name = serializers.StringRelatedField(source='recipe.recipe_name')
+
     class Meta:
         model = InterlockLog
-        fields = '__all__'
+        fields = ('log_id', 'factory_id', 'equipment', 'equipment_name', 'cause_equip_id', 'cause_equip_name',
+                          'param', 'param_name', 'recipe', 'recipe_name', 'lot', 'created_at', 'interlock_type',
+                          'out_count', 'lower_limit', 'upper_limit', 'data_value', 'cctv_video_url')
+
         extra_kwargs = {'equipment_name': {'required': False},
                         'cause_equip_name': {'required': False}}
 
-        read_only_fields = ('equipment_name', 'cause_equip_name')
+        read_only_fields = ('equipment_name', 'cause_equip_name', 'param_name', 'recipe_name')
+
     def create(self, validated_data):
         equipment = Equipment.objects.get(pk=validated_data['equipment_id'].id)
         validated_data['equipment_name'] = equipment.equipment_name
