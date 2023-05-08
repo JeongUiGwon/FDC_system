@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SOM.Model;
 using SOM.Services;
 using SOM.View.Param;
@@ -53,12 +55,30 @@ namespace SOM.View.Data
             HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(str_selectedEquipments, str_params, startDate, endDate);
             ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
 
+            // 설비 데이터를 DataGrid에 바인딩
             if (response_getParamLog != null && response_getParamLog.Content != null)
             {
                 string str_content = await response_getParamLog.Content.ReadAsStringAsync();
                 content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
                 dg_equipmentData.ItemsSource = content;
             }
+
+            // 설비 데이터를 param_id에 따라 분류
+            Dictionary<string, List<ParamLogModel>> paramData = new Dictionary<string, List<ParamLogModel>>();
+
+            foreach (ParamLogModel equipmentData_item in content)
+            {
+                if (paramData.ContainsKey(equipmentData_item.param))
+                {
+                    paramData[equipmentData_item.param].Add(equipmentData_item);
+                }
+                else
+                {
+                    paramData[equipmentData_item.param] = new List<ParamLogModel> { equipmentData_item };
+                }
+            }
+
+            Console.WriteLine("hello");
             
         }
 

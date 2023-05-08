@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts.Defaults;
+using LiveCharts;
+using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
 using System;
@@ -10,6 +12,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using LiveCharts.Wpf;
 
 namespace SOM.ViewModel
 {

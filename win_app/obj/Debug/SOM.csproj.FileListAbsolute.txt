@@ -574,10 +574,6 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Auth.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Auth.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Core.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Google.Apis.Core.xml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.pdb
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.xml
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.pdb
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.xml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb

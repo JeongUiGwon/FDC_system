@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using LiveCharts;
+using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
 using System;
@@ -9,6 +12,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SOM.ViewModel
 {
@@ -17,6 +21,8 @@ namespace SOM.ViewModel
         public DataViewModel()
         {
             SetEquipments();
+
+            ApplyCommand = new RelayCommand(ExecuteApplyCommand);
         }
 
         private ObservableCollection<EquipmentsModel> _equipments;
@@ -53,6 +59,42 @@ namespace SOM.ViewModel
             }
         }
 
+        private bool _isAllSelected;
+        public bool IsAllSelected
+        {
+            get { return _isAllSelected; }
+            set
+            {
+                _isAllSelected = value;
+                OnPropertyChanged(nameof(IsAllSelected));
+                SelectAllEquipments();
+                FilterEquipments();
+            }
+        }
+        public ICommand ApplyCommand { get; }
+
+        private SeriesCollection _chartSeries;
+        private ChartValues<ObservablePoint> _chartData;
+        private ObservableCollection<string> _chartLabels;
+
+        public SeriesCollection ChartSeries
+        {
+            get { return _chartSeries; }
+            set { _chartSeries = value; OnPropertyChanged(); }
+        }
+
+        public ChartValues<ObservablePoint> ChartData
+        {
+            get { return _chartData; }
+            set { _chartData = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<string> ChartLabels
+        {
+            get { return _chartLabels; }
+            set { _chartLabels = value; OnPropertyChanged(); }
+        }
+
         private async void SetEquipments()
         {
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
@@ -78,6 +120,19 @@ namespace SOM.ViewModel
             {
                 FilteredEquipments = Equipments;
             }
+        }
+
+        private void SelectAllEquipments()
+        {
+            foreach (EquipmentsModel equipment in Equipments)
+            {
+                equipment.isSelected = IsAllSelected;
+            }
+        }
+
+        private void ExecuteApplyCommand()
+        {
+            Console.WriteLine("hello");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -27,7 +27,7 @@ namespace SOM.Model
 
         public InterlockLogModel(int log_id, string factory_id, string equipment_name, string cause_equip_id, string cause_equip_name, string interlock_type, 
             int out_count, float lower_limit, float upper_limit, float data_value, string cctv_video_url, string equipment, string param, string recipe, 
-            string lot, Nullable<DateTime> Created_at)
+            string lot, Nullable<DateTime> created_at)
         {
             this.log_id = log_id;
             this.factory_id = factory_id;
@@ -40,7 +40,7 @@ namespace SOM.Model
             this.upper_limit = upper_limit;
             this.data_value = data_value;
             this.cctv_video_url = cctv_video_url;
-            this.created_at = Created_at;
+            this.created_at = created_at;
             this.equipment = equipment;
             this.param = param;
             this.recipe = recipe;
