@@ -238,6 +238,29 @@ namespace SOM.ViewModel
                 }
             }
 
+            foreach (var kvp in paramData)
+            {
+                string paramId = kvp.Key;
+                List<ParamLogModel> paramLogs = kvp.Value;
+                ChartData = new ChartValues<ObservablePoint>();
+                ChartLabels = new ObservableCollection<string>();
+                int idx = 0;
+
+                foreach (var paramLog in paramLogs)
+                {
+                    ChartData.Add(new ObservablePoint(idx++, paramLog.param_value));
+                    ChartLabels.Add(paramLog.created_at.ToString());
+                }
+            }
+
+            ChartSeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = ChartData
+                }
+            };
+
             Console.WriteLine("hello");
         }
 
