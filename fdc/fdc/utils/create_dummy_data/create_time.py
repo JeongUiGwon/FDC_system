@@ -8,7 +8,7 @@ def random_past_datetime():
     return past_time.strftime("%Y-%m-%d %H:%M:%S")
 
 def random_future_datetime_from_past():
-    past_time = datetime.datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
+    past_time = datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
     future_time = past_time + timedelta(days=random.randint(0, 365),
                                         hours=random.randint(0, 23),
                                         minutes=random.randint(0, 59),

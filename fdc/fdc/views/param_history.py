@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from ..models import ParamHistory
 from ..serializers import ParamHistorySerializer
-import datetime
+from datetime import datetime
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
@@ -20,8 +20,8 @@ class ParamHistoryViewSet(viewsets.ModelViewSet):
         if param_name:
             queryset = queryset.filter(param_name__icontains=param_name)
         if start_date and end_date:
-            start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d %H:%M')
-            end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d %H:%M')
+            start_date_obj = datetime.strptime(start_date, '%Y-%m-%d %H:%M')
+            end_date_obj = datetime.strptime(end_date, '%Y-%m-%d %H:%M')
             queryset = queryset.filter(created_at__range=(start_date_obj, end_date_obj))
         return queryset
 
