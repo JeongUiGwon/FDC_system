@@ -243,10 +243,6 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.dll
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.dll
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.Zondicons.dll
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.pdb
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.xml
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.pdb
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.xml
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb
@@ -840,3 +836,7 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.exe.manifest
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.application
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe.manifest
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.application
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.exe.manifest
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.application
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.exe.manifest
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.application

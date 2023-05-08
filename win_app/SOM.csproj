@@ -393,6 +393,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CartesianChartModel.cs" />
     <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAdminAuth.cs" />
