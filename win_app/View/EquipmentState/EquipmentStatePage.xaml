@@ -58,12 +58,11 @@
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding equipment_id}"/>
-                            <DataGridTextColumn Header="설비명" Width="auto" Binding="{Binding equipment_name}"/>
-                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding equipment_use}"/>
-                            <DataGridTextColumn Header="설비 상태" Width="auto" Binding="{Binding equipment_state}"/>
-                            <DataGridTextColumn Header="설비 모드" Width="auto" Binding="{Binding equipment_mode}"/>
-                            <DataGridTextColumn Header="인터락 ID" Width="auto" Binding="{Binding interlock_id}"/>
+                            <DataGridTextColumn Header="ID" Width="*" Binding="{Binding equipment_id}"/>
+                            <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
+                            <DataGridTextColumn Header="사용여부" Width="*" Binding="{Binding equipment_use}"/>
+                            <DataGridTextColumn Header="설비 상태" Width="*" Binding="{Binding equipment_state}"/>
+                            <DataGridTextColumn Header="설비 모드" Width="*" Binding="{Binding equipment_mode}"/>
                             <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
                         </DataGrid.Columns>

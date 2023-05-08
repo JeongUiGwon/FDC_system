@@ -10,7 +10,7 @@
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:viewmodel="clr-namespace:SOM.ViewModel"
       mc:Ignorable="d" MinHeight="500" MinWidth="700"
-      Title="InterlockPage">
+      Title="InterlockPage" FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Page.DataContext>
         <viewmodel:EquipmentsViewModel/>
@@ -58,7 +58,7 @@
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf" />
                             </StackPanel>
                         </Border>
                     </Button>
