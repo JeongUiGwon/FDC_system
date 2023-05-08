@@ -32,12 +32,6 @@ namespace SOM.View.Data
         public DataPage()
         {
             InitializeComponent();
-
-            // 조회기간 세팅
-            dp_startDate.Text = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
-            tp_startTime.Text = DateTime.Now.ToString("HH:mm");
-            dp_endDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
-            tp_endTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private async void btn_apply_click(object sender, RoutedEventArgs e)

@@ -168,7 +168,7 @@
             <!--Interlock Datagrid-->
             <Border Grid.Row="1" Grid.Column="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
                 <DataGrid x:Name="dg_interlock" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                     <DataGrid.Columns>

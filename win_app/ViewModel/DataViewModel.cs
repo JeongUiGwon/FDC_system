@@ -21,8 +21,13 @@ namespace SOM.ViewModel
         public DataViewModel()
         {
             SetEquipments();
-
             ApplyCommand = new RelayCommand(ExecuteApplyCommand);
+
+            // 조회시간 초기값 세팅
+            StartDate = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
+            StartTime = DateTime.Now.ToString("HH:mm");
+            EndtDate = DateTime.Today.ToString("yyyy-MM-dd");
+            EndTime = DateTime.Now.ToString("HH:mm");
         }
 
         private ObservableCollection<EquipmentsModel> _equipments;
@@ -69,6 +74,72 @@ namespace SOM.ViewModel
                 OnPropertyChanged(nameof(IsAllSelected));
                 SelectAllEquipments();
                 FilterEquipments();
+            }
+        }
+
+        private string _startDate;
+        public string StartDate
+        {
+            get { return _startDate; }
+            set
+            {
+                _startDate = value;
+                OnPropertyChanged(nameof(StartDate));
+            }
+        }
+
+        private string _startTime;
+        public string StartTime
+        {
+            get { return _startTime; }
+            set
+            {
+                _startTime = value;
+                OnPropertyChanged(nameof(StartTime));
+            }
+        }
+
+        private string _endDate;
+        public string EndtDate
+        {
+            get { return _endDate; }
+            set
+            {
+                _endDate = value;
+                OnPropertyChanged(nameof(EndtDate));
+            }
+        }
+
+        private string _endTime;
+        public string EndTime
+        {
+            get { return _endTime; }
+            set
+            {
+                _endTime = value;
+                OnPropertyChanged(nameof(EndTime));
+            }
+        }
+
+        private string _paramList;
+        public string ParamList
+        {
+            get { return _paramList; }
+            set
+            {
+                _paramList = value;
+                OnPropertyChanged(nameof(ParamList));
+            }
+        }
+
+        private ObservableCollection<ParamLogModel> _equipmentData;
+        public ObservableCollection<ParamLogModel> EquipmentData
+        {
+            get { return _equipmentData; }
+            set
+            {
+                _equipmentData = value;
+                OnPropertyChanged(nameof(EquipmentData));
             }
         }
         public ICommand ApplyCommand { get; }
@@ -130,8 +201,43 @@ namespace SOM.ViewModel
             }
         }
 
-        private void ExecuteApplyCommand()
+        private async void ExecuteApplyCommand()
         {
+            var selectedEquipments = FilteredEquipments.Where(el => el.isSelected).ToList();
+
+            string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
+
+            string startDate = $"{StartDate} {StartTime}";
+            string endDate = $"{EndtDate}   {EndTime}";
+
+            string str_params = ParamList;
+
+            HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(str_selectedEquipments, str_params, startDate, endDate);
+            ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
+
+            // 설비 데이터를 DataGrid에 바인딩
+            if (response_getParamLog != null && response_getParamLog.Content != null)
+            {
+                string str_content = await response_getParamLog.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
+                EquipmentData = new ObservableCollection<ParamLogModel>(content);
+            }
+
+            // 설비 데이터를 param_id에 따라 분류
+            Dictionary<string, List<ParamLogModel>> paramData = new Dictionary<string, List<ParamLogModel>>();
+
+            foreach (ParamLogModel equipmentData_item in content)
+            {
+                if (paramData.ContainsKey(equipmentData_item.param))
+                {
+                    paramData[equipmentData_item.param].Add(equipmentData_item);
+                }
+                else
+                {
+                    paramData[equipmentData_item.param] = new List<ParamLogModel> { equipmentData_item };
+                }
+            }
+
             Console.WriteLine("hello");
         }
 
