@@ -15,7 +15,7 @@ def random_past_datetime():
 
 
 def random_future_datetime_from_past():
-    past_time = datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
+    past_time = datetime.datetime.strptime(random_past_datetime(), "%Y-%m-%d %H:%M:%S")
     future_time = past_time + timedelta(days=random.randint(0, 365),
                                         hours=random.randint(0, 23),
                                         minutes=random.randint(0, 59),
@@ -192,7 +192,7 @@ class InterlockLog(models.Model):
     def save(self, *args, **kwargs):
         if self.equipment:
             self.equipment_name = self.equipment.equipment_name
-            self.cause_equip_id = self.equipment
+            self.cause_equip_id = self.equipment.equipment_id
             self.cause_equip_name = self.equipment_name
 
         if self.recipe:
