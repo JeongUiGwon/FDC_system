@@ -144,26 +144,15 @@ namespace SOM.ViewModel
         }
         public ICommand ApplyCommand { get; }
 
-        private SeriesCollection _chartSeries;
-        private ChartValues<ObservablePoint> _chartData;
-        private ObservableCollection<string> _chartLabels;
-
-        public SeriesCollection ChartSeries
+        private ObservableCollection<CartesianChartModel> _chartSeriesCollection;
+        public ObservableCollection<CartesianChartModel> ChartSeriesCollection
         {
-            get { return _chartSeries; }
-            set { _chartSeries = value; OnPropertyChanged(); }
-        }
-
-        public ChartValues<ObservablePoint> ChartData
-        {
-            get { return _chartData; }
-            set { _chartData = value; OnPropertyChanged(); }
-        }
-
-        public ObservableCollection<string> ChartLabels
-        {
-            get { return _chartLabels; }
-            set { _chartLabels = value; OnPropertyChanged(); }
+            get { return _chartSeriesCollection; }
+            set
+            {
+                _chartSeriesCollection = value;
+                OnPropertyChanged(nameof(ChartSeriesCollection));
+            }
         }
 
         private async void SetEquipments()
@@ -228,44 +217,49 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content)
             {
-                if (paramData.ContainsKey($"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"))
+                if (paramData.ContainsKey($"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"))
                 {
-                    paramData[$"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[$"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
+            // 차트 컬렉션 초기화
+            ChartSeriesCollection = new ObservableCollection<CartesianChartModel>();
+
+            // 차트 생성
             foreach (var kvp in paramData)
             {
-                string paramId = kvp.Key;
+                string title = kvp.Key;
                 List<ParamLogModel> paramLogs = kvp.Value;
-                ChartData = new ChartValues<ObservablePoint>();
-                ChartLabels = new ObservableCollection<string>();
+                ChartValues<float> ChartData = new ChartValues<float>();
+                List<string> ChartLabels = new List<string>();
 
                 foreach (var paramLog in paramLogs)
                 {
                     long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
-                    ChartData.Add(new ObservablePoint(timestamp, paramLog.param_value));
+                    ChartData.Add(paramLog.param_value);
                     ChartLabels.Add(paramLog.created_at.ToString());
                 }
 
-                ChartSeries = new SeriesCollection
+                SeriesCollection ChartSeries = new SeriesCollection
                 {
                     new LineSeries
                     {
-                        Title = paramId,
+                        Title = title,
                         Values = ChartData
                     }
                 };
+
+                ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
             }
-
             
-
-            Console.WriteLine("hello");
+                Console.WriteLine("hello");
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
