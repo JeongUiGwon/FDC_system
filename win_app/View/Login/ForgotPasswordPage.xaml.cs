@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SOM.View
+namespace SOM.View.Login
 {
     /// <summary>
     /// ForgotPassword.xaml에 대한 상호 작용 논리

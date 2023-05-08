@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts.Defaults;
+using LiveCharts;
+using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
 using System;
@@ -10,6 +12,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using LiveCharts.Wpf;
 
 namespace SOM.ViewModel
 {
@@ -54,6 +57,19 @@ namespace SOM.ViewModel
             }
         }
 
+        private bool _isAllSelected;
+        public bool IsAllSelected
+        {
+            get { return _isAllSelected; }
+            set
+            {
+                _isAllSelected = value;
+                OnPropertyChanged(nameof(IsAllSelected));
+                SelectAllEquipments();
+                FilterEquipments();
+            }
+        }
+
         private async void SetEquipments()
         {
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
@@ -78,6 +94,14 @@ namespace SOM.ViewModel
             else
             {
                 FilteredEquipments = Equipments;
+            }
+        }
+
+        private void SelectAllEquipments()
+        {
+            foreach (EquipmentsModel equipment in Equipments)
+            {
+                equipment.isSelected = IsAllSelected;
             }
         }
 

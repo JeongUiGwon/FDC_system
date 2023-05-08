@@ -10,13 +10,13 @@ namespace SOM.Services
 {
     public class PostRecipeHistory
     {
-        public static async Task<HttpResponseMessage> PostRecipeHistoryAsync(string action, string recipe, string old_value = null, string new_value = null)
+        public static async Task<HttpResponseMessage> PostRecipeHistoryAsync(string action, string recipe, string recipe_name, string old_value = null, string new_value = null)
         {
             HttpClient client = HttpClientSingleton.client;
 
-            string jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"old_value\": {old_value}, \"new_value\": {new_value}}}";
-            if (new_value == null && old_value != null) jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"old_value\": {old_value}}}";
-            if (new_value != null && old_value == null) jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"new_value\": {new_value}}}";
+            string jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"recipe_name\": \"{recipe_name}\", \"old_value\": {old_value}, \"new_value\": {new_value}}}";
+            if (new_value == null && old_value != null) jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"recipe_name\": \"{recipe_name}\", \"old_value\": {old_value}}}";
+            if (new_value != null && old_value == null) jsonData = $"{{ \"action\": \"{action}\", \"recipe\": \"{recipe}\", \"recipe_name\": \"{recipe_name}\", \"new_value\": {new_value}}}";
 
             try
             {
