@@ -228,13 +228,13 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content)
             {
-                if (paramData.ContainsKey(equipmentData_item.param))
+                if (paramData.ContainsKey($"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"))
                 {
-                    paramData[equipmentData_item.param].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[equipmentData_item.param] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.param_name},{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
@@ -244,22 +244,25 @@ namespace SOM.ViewModel
                 List<ParamLogModel> paramLogs = kvp.Value;
                 ChartData = new ChartValues<ObservablePoint>();
                 ChartLabels = new ObservableCollection<string>();
-                int idx = 0;
 
                 foreach (var paramLog in paramLogs)
                 {
-                    ChartData.Add(new ObservablePoint(idx++, paramLog.param_value));
+                    long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
+                    ChartData.Add(new ObservablePoint(timestamp, paramLog.param_value));
                     ChartLabels.Add(paramLog.created_at.ToString());
                 }
+
+                ChartSeries = new SeriesCollection
+                {
+                    new LineSeries
+                    {
+                        Title = paramId,
+                        Values = ChartData
+                    }
+                };
             }
 
-            ChartSeries = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = ChartData
-                }
-            };
+            
 
             Console.WriteLine("hello");
         }

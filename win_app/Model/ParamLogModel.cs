@@ -17,9 +17,9 @@ namespace SOM.Model
         public string equipment_name { get; set; }
         public string param_name { get; set; }
         public string recipe_name { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
+        public DateTime created_at { get; set; }
 
-        public ParamLogModel(int log_id, string factory_id, float param_value, string equipment, string param, string recipe, string equipment_name, string param_name, string recipe_name, Nullable<DateTime> Created_at)
+        public ParamLogModel(int log_id, string factory_id, float param_value, string equipment, string param, string recipe, string equipment_name, string param_name, string recipe_name, DateTime Created_at)
         {
             this.log_id = log_id;
             this.factory_id = factory_id;

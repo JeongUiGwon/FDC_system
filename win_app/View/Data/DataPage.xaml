@@ -210,14 +210,20 @@
                                 </StackPanel>
                             </TabItem.Header>
 
-                            <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="Right">
-                                <lvc:CartesianChart.AxisX>
-                                    <lvc:Axis Title="X Axis" Labels="{Binding ChartLabels}"></lvc:Axis>
-                                </lvc:CartesianChart.AxisX>
-                                <lvc:CartesianChart.AxisY>
-                                    <lvc:Axis Title="Y Axis"></lvc:Axis>
-                                </lvc:CartesianChart.AxisY>
-                            </lvc:CartesianChart>
+                            <ItemsControl x:Name="ChartItems" ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="Right" >
+                                            <lvc:CartesianChart.AxisX>
+                                                <lvc:Axis Title="Time" Labels="{Binding ChartLabels}"></lvc:Axis>
+                                            </lvc:CartesianChart.AxisX>
+                                            <lvc:CartesianChart.AxisY>
+                                                <lvc:Axis Title="Value"></lvc:Axis>
+                                            </lvc:CartesianChart.AxisY>
+                                        </lvc:CartesianChart>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>                           
                         </TabItem>
                         
                     </TabControl>
