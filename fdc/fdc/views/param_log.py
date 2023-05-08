@@ -65,6 +65,5 @@ class ParamLogViewSet(viewsets.ModelViewSet):
                               description="End date for filtering created_at, format: 'YYYY-MM-DD HH:MM'"),
         ]
     )
-
     def list(self, request, *args, **kwargs):
         return super(ParamLogViewSet, self).list(request, *args, **kwargs)
