@@ -6,7 +6,6 @@ import time
 
 fdc_port = 8888
 mes_port = 8887
-
 mutex = threading.Lock()
 
 # Socket 으로 받은 Data를 1분간 할당할 Memory
@@ -23,7 +22,6 @@ def FDCServer():
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
     server_socket.bind(('172.26.6.41', fdc_port))	
     server_socket.listen(1)	
-    # print('Join : ', addr)
 
     while True:
         mutex.acquire()
@@ -53,12 +51,11 @@ def FDCServer():
                     CheckwithMES(data)
                         
                 # Client 에게 메세지 송신 (echo), 수신과 서순 반대
-                msg = "서버에서 " + msg + " 의 내용을 받았습니다."	
+                msg = "FDC 서버에서 수신 : " + msg	
                 data = msg.encode()		
                 length = len(data)	
                 client_socket.sendall(length.to_bytes(1024, byteorder='little'))		
                 client_socket.sendall(data)
-                # print("--------------Response to Client--------------")
 
                 # 단위 시간마다 2번 스레드 동작
                 elapsed_time = time.time() - last_save_time
@@ -71,6 +68,7 @@ def FDCServer():
             print("Exit : " , addr)	
         finally:		
             client_socket.close() 
+
 
 
 # interlock 판정
@@ -108,8 +106,6 @@ def CheckInterlock(data):
         conn.close()
     else:
         temp.append(data)
-        print("!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@")
-        print(temp)
         # Interlock 판정 데이터는 DB에 바로 저장
         print("--------------Interlock Found--------------")
         upper_limit = usl
@@ -213,7 +209,8 @@ def CheckwithMES(data):
         cursor.close()
         conn.close()
     except:
-        print("Can Not Access to DB")
+        print("Can Not Access : FDC DB to MES DB")
+
 
 
 # storage에 할당된 Data를 DB 저장하고 flush
@@ -238,63 +235,47 @@ def intervalSave():
     print("--------------Bulk Insert--------------")
 
 
+
+# MES 서버에 인터락 설비 데이터 전송
 def MESClient():
     global temp
-    print(temp)
     while True:
-        print('@@@안꺼졌는지 확인@@@')
         if len(temp) > 0:
-        # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-        # print(temp)
             mes_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             mes_addr = ("k8a201.p.ssafy.io", mes_port)
             mes_client_socket.connect(mes_addr)
             while temp!=[]:
                 mutex.acquire()
-                # print(temp["equipment_id"])
-                # temp = {equip_id : 1, ...} -> temp[0]["equip_id"]
                 temp_str = json.dumps(temp[0])
                 temp = []
-                print(temp_str)
                 mes_client_socket.sendall(temp_str.encode())
-                # mes_client_socket.sendall(temp.encode('utf-8'))
                 response = mes_client_socket.recv(1024)
-                # print(f'Received: {response.decode()}')
                 mutex.release()
-            # try:
-                
-            # finally:
-            #     mes_client_socket.close()
 
 
 
-# Socket SIM > FDC
+def FDC():
+    Server_thread = threading.Thread(target=FDCServer)
+    Client_thread = threading.Thread(target=MESClient)
+    Server_thread.start()	
+    Client_thread.start()
 
-# # Socket FDC > MES
+    while True:
+        if not Server_thread.is_alive():
+            Server_thread.start()
+            print("서버 소켓 스레드 재실행")
+        if not Client_thread.is_alive():
+            Client_thread.start()
+            print("클라이언트 소켓 스레드 재실행")
 
-# mes_server_socket.bind(('172.26.6.41', 8887))
-# mes_server_socket.listen()
 
-# FDCServer 함수를 1번 스레드로 무한 루프
-# try:		
-#     while True:			
+FDC()
+
+            
         
-# except:	
-#     print("Server Down")
 
-while True:
-    time.sleep(10)
-    th1 = threading.Thread(target=FDCServer)	
-    th3 = threading.Thread(target=MESClient)
-    th1.start()	
-    th3.start()	
-# finally:	
-#     # 에러 발생하면 서버 소켓 close
-#     server_socket.close() 
+# 기준 정보 샘플 (master_data)
+# equipment_id | 6272CMK6             | 8210JEK6             | 9988YSB0             | BIX762X4             | 968CMK30
+# param_id     | N7I6IXN7OSNS22O      | X8S5OWN7NWIS11T      | O4I2WWF2BUKK52U      | DR9NQXWHQ65SGW5      | C7M6KHA1EINI511
+# recipe_id    | NNX12IIWNWH1PPQX733M | OSO62ONWNWS8OOWN017P | SQK24INRJSP2FDFQ322K | MNZ0ENFBBKL1UM4DANTI | MIN2KICHAEG4OD7KINGO
 
-
-
-# 테스트용 기준 정보 (master_data)
-# equipment_id | 6272CMK6             | 8210JEK6             | 9988YSB0
-# param_id     | N7I6IXN7OSNS22O      | X8S5OWN7NWIS11T      | O4I2WWF2BUKK52U
-# recipe_id    | NNX12IIWNWH1PPQX733M | OSO62ONWNWS8OOWN017P | SQK24INRJSP2FDFQ322K
