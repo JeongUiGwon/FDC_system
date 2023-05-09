@@ -24,10 +24,10 @@ namespace SOM.ViewModel
             ApplyCommand = new RelayCommand(ExecuteApplyCommand);
 
             // 조회시간 초기값 세팅
-            StartDate = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
-            StartTime = DateTime.Now.ToString("HH:mm");
-            EndtDate = DateTime.Today.ToString("yyyy-MM-dd");
-            EndTime = DateTime.Now.ToString("HH:mm");
+            StartDate = DateTime.Now.AddMonths(-3);
+            StartTime = DateTime.Now;
+            EndtDate = DateTime.Today;
+            EndTime = DateTime.Now;
         }
 
         private ObservableCollection<EquipmentsModel> _equipments;
@@ -77,8 +77,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _startDate;
-        public string StartDate
+        private DateTime _startDate;
+        public DateTime StartDate
         {
             get { return _startDate; }
             set
@@ -88,8 +88,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _startTime;
-        public string StartTime
+        private DateTime _startTime;
+        public DateTime StartTime
         {
             get { return _startTime; }
             set
@@ -99,8 +99,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _endDate;
-        public string EndtDate
+        private DateTime _endDate;
+        public DateTime EndtDate
         {
             get { return _endDate; }
             set
@@ -110,8 +110,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _endTime;
-        public string EndTime
+        private DateTime _endTime;
+        public DateTime EndTime
         {
             get { return _endTime; }
             set
@@ -195,9 +195,9 @@ namespace SOM.ViewModel
             var selectedEquipments = FilteredEquipments.Where(el => el.isSelected).ToList();
 
             string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
-
-            string startDate = $"{StartDate} {StartTime}";
-            string endDate = $"{EndtDate}   {EndTime}";
+            
+            string startDate = $"{StartDate.ToString("yyyy-MM-dd")} {StartTime.ToString("HH:mm")}";
+            string endDate = $"{EndtDate.ToString("yyyy-MM-dd")} {EndTime.ToString("HH:mm")}";
 
             string str_params = ParamList;
 

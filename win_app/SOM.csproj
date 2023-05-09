@@ -443,6 +443,9 @@
     <Compile Include="View\Equipment\SearchEquipmentIDModal.xaml.cs">
       <DependentUpon>SearchEquipmentIDModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Interlock\InterlockDetailModal.xaml.cs">
+      <DependentUpon>InterlockDetailModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Param\GetParamModal.xaml.cs">
       <DependentUpon>GetParamModal.xaml</DependentUpon>
     </Compile>
@@ -517,6 +520,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Equipment\SearchEquipmentIDModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Interlock\InterlockDetailModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

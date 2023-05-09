@@ -35,6 +35,20 @@ namespace SOM.View.Login
             chk_Remember.IsChecked = Properties.Settings.Default.IsRememberLogin;
         }
 
+        private void page_loaded(object sender, RoutedEventArgs e)
+        {
+            tb_email.Focus();
+        }
+
+        private void page_keydown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // 로그인 버튼 클릭 이벤트 호출
+                Btn_Login_Click(sender, e);
+            }
+        }
+
         private void Btn_SignUp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/View/Login/SignUpPage.xaml", UriKind.Relative));
