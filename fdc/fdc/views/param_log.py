@@ -44,6 +44,7 @@ class ParamLogViewSet(viewsets.ModelViewSet):
             end_date_obj = datetime.strptime(end_date, '%Y-%m-%d %H:%M')
             queryset = queryset.filter(created_at__range=(start_date_obj, end_date_obj))
 
+        queryset = queryset.order_by('created_at')
         return queryset
 
     @swagger_auto_schema(
