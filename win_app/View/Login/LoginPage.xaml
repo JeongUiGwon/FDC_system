@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="875"
-      Title="Login">
+      Title="Login" KeyDown="page_keydown" Loaded="page_loaded">
 
     <Grid>
         <Grid.Effect>
