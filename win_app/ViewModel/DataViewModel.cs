@@ -256,8 +256,6 @@ namespace SOM.ViewModel
 
                 ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
             }
-            
-                Console.WriteLine("hello");
         }
 
 
