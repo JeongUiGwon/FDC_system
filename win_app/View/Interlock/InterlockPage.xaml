@@ -150,7 +150,7 @@
                                     <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
                                 </Button>
                             </Grid>
-
+                            
                         </StackPanel>
                     </Grid>
 

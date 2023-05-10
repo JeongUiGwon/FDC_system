@@ -55,6 +55,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Firebase.Storage.dll" size="20992">
+      <assemblyIdentity name="Firebase.Storage" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>+VLFUCAgK4O2Ng/mTbX/rTq0RYV4G8HIVBBsbuaRl64=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirebaseAdmin.dll" size="283136">
       <assemblyIdentity name="FirebaseAdmin" version="2.3.0.0" publicKeyToken="97C8D00C348326ED" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -943,14 +955,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="541664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="543712">
       <assemblyIdentity name="SOM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4DlPJO5/U+Gv+oDDBCEvacT8wFKEna1kJSPGXw+tbq0=</dsig:DigestValue>
+        <dsig:DigestValue>zDC68QHP0V+HMYgcupy9JDQqJJcYFU7/uolZBaRz6SU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

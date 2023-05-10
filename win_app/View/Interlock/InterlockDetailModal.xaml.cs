@@ -13,6 +13,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Firebase.Storage;
+using SOM.Model;
+using System.IO;
+using System.Diagnostics;
+using System.Windows.Navigation;
+using System.Net;
 
 namespace SOM.View.Interlock
 {
@@ -24,6 +30,28 @@ namespace SOM.View.Interlock
         public InterlockDetailModal()
         {
             InitializeComponent();
+        }
+
+        private void btn_show_click(object sender, RoutedEventArgs e)
+        {
+            //string videoUrl = me_cctv.ToolTip.ToString();
+            string videoUrl = "https://firebasestorage.googleapis.com/v0/b/ssafy-a201.appspot.com/o/HO3IXOQV%2F2023_05_10_11_26.avi?alt=media&token=fe97a14c-cb2b-40e1-a581-4652363d9ae5";
+            string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); ; // 임시 파일 경로
+            string savePath = userPath + @"\Downloads\streaming.avi";
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(videoUrl, savePath);
+            }
+
+            me_cctv.Source = new Uri(savePath);
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            string url = e.Uri.AbsoluteUri;
+            Process.Start(new ProcessStartInfo(url));
+            e.Handled = true;
         }
     }
 }

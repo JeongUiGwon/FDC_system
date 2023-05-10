@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SOM.ViewModel
 {
@@ -235,12 +236,18 @@ namespace SOM.ViewModel
             {
                 string title = kvp.Key;
                 List<ParamLogModel> paramLogs = kvp.Value;
+                string recipe_id = paramLogs[0].recipe;
                 ChartValues<float> ChartData = new ChartValues<float>();
                 List<string> ChartLabels = new List<string>();
+
+                HttpResponseMessage response_getRecipe = await GetRecipeID.GetRecipeIDAsync(recipe_id);
+                string str_content = await response_getRecipe.Content.ReadAsStringAsync();
+                RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
 
                 foreach (var paramLog in paramLogs)
                 {
                     long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
+
                     ChartData.Add(paramLog.param_value);
                     ChartLabels.Add(paramLog.created_at.ToString());
                 }
