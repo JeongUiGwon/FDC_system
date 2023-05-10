@@ -70,6 +70,7 @@
                                 <ComboBoxItem>미사용</ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
+                        
                     </StackPanel>
 
                     <!--Equipments Datagrid-->

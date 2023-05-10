@@ -41,7 +41,7 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*" MaxHeight="900"/>
+                        <RowDefinition Height="*" MaxHeight="1000"/>
                     </Grid.RowDefinitions>
 
                     <!--Search Bar-->
@@ -49,7 +49,38 @@
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
                         <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                              BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
-                                 materialDesign:HintAssist.Hint="Search" Padding="10 0"/>
+                                 materialDesign:HintAssist.Hint="설비 ID, 설비명 검색" Padding="10 0"/>
+
+                        <!--Search Param Level-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="cb_equipUse" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchEquipUse, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>사용</ComboBoxItem>
+                                <ComboBoxItem>미사용</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!--Search Param Level-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="설비 상태" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="cb_equipState" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchEquipState, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>IDLE</ComboBoxItem>
+                                <ComboBoxItem>PROCESSING</ComboBoxItem>
+                                <ComboBoxItem>PAUSE</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!--Search Param Level-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="설비 모드" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="cb_equipMode" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchEquipMode, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>AUTO</ComboBoxItem>
+                                <ComboBoxItem>MANUAL</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
                     </StackPanel>
                     
                     <!--Equipments Datagrid-->

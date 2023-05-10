@@ -69,6 +69,30 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _searchEquipState;
+        public string SearchEquipState
+        {
+            get { return _searchEquipState; }
+            set
+            {
+                _searchEquipState = value;
+                OnPropertyChanged(nameof(SearchEquipState));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipMode;
+        public string SearchEquipMode
+        {
+            get { return _searchEquipMode; }
+            set
+            {
+                _searchEquipMode = value;
+                OnPropertyChanged(nameof(SearchEquipMode));
+                FilterEquipments();
+            }
+        }
+
         private bool _isAllSelected;
         public bool IsAllSelected
         {
@@ -111,6 +135,16 @@ namespace SOM.ViewModel
                 if (!string.IsNullOrWhiteSpace(SearchEquipUse) && SearchEquipUse != "All")
                 {
                     FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_use.Equals(SearchEquipUse)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipState) && SearchEquipState != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_state.Equals(SearchEquipState)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipMode) && SearchEquipMode != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_mode.Equals(SearchEquipMode)));
                 }
             }
             else
