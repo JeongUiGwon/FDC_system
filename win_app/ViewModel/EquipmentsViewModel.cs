@@ -57,6 +57,18 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _searchEquipUse;
+        public string SearchEquipUse
+        {
+            get { return _searchEquipUse; }
+            set
+            {
+                _searchEquipUse = value;
+                OnPropertyChanged(nameof(SearchEquipUse));
+                FilterEquipments();
+            }
+        }
+
         private bool _isAllSelected;
         public bool IsAllSelected
         {
@@ -86,10 +98,20 @@ namespace SOM.ViewModel
 
         private void FilterEquipments()
         {
-            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            if (Equipments != null && Equipments.Any())
             {
-                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) 
-                || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm)));
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_id.Contains(SearchTerm)
+                    || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipUse) && SearchEquipUse != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_use.Equals(SearchEquipUse)));
+                }
             }
             else
             {
