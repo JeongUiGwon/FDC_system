@@ -57,8 +57,13 @@
                                      materialDesign:HintAssist.Hint="Search" Padding="10 0" Height="30"/>
                         </StackPanel>
                         
+                    </StackPanel>
+
+                    <!--Right Section-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+                        
                         <!--History Button-->
-                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click" Margin="10 0 0 0">
+                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click" Margin="0 0 10 0">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -66,10 +71,7 @@
                                 </StackPanel>
                             </Border>
                         </Button>
-                    </StackPanel>
-
-                    <!--Right Section-->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+                        
                         <!--Add Button-->
                         <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
                             <Border CornerRadius="10 10 10 10" >
