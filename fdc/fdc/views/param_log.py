@@ -6,12 +6,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 class ParamLogViewSet(viewsets.ModelViewSet):
-    """
-    hihih
-    """
     serializer_class = ParamLogSerializer
-
-
 
     def get_queryset(self):
         queryset = ParamLog.objects.all()
