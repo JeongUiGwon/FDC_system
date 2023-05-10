@@ -59,7 +59,17 @@
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
                         <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                              BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" Height="30"
-                                 materialDesign:HintAssist.Hint="Search" Padding="10 0"/>
+                                 materialDesign:HintAssist.Hint="설비 ID, 설비명 검색" Padding="10 0"/>
+
+                        <!--Search Param Level-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchEquipUse, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>사용</ComboBoxItem>
+                                <ComboBoxItem>미사용</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
                     </StackPanel>
 
                     <!--Equipments Datagrid-->
@@ -69,11 +79,11 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding equipment_id}"/>
-                            <DataGridTextColumn Header="설비명" Width="auto" Binding="{Binding equipment_name}"/>
-                            <DataGridTextColumn Header="사용여부" Width="auto" Binding="{Binding equipment_use}"/>
-                            <DataGridTextColumn Header="인터락 ID" Width="auto" Binding="{Binding interlock_id}"/>
-                            <DataGridTextColumn Header="작성자" Width="auto" Binding="{Binding creator_name}"/>
-                            <DataGridTextColumn Header="수정자" Width="auto" Binding="{Binding modifier_name}"/>
+                            <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
+                            <DataGridTextColumn Header="사용여부" Width="*" Binding="{Binding equipment_use}"/>
+                            <DataGridTextColumn Header="인터락 ID" Width="*" Binding="{Binding interlock_id}"/>
+                            <DataGridTextColumn Header="작성자" Width="*" Binding="{Binding creator_name}"/>
+                            <DataGridTextColumn Header="수정자" Width="*" Binding="{Binding modifier_name}"/>
 
                             <DataGridTemplateColumn x:Name="Dg_Action" IsReadOnly="True" Width="auto">
                                 <DataGridTemplateColumn.CellTemplate>

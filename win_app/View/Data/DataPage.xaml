@@ -197,6 +197,7 @@
                                     <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
                                     <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
                                     <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
+                                    <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 

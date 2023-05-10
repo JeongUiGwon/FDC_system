@@ -127,7 +127,6 @@
                     </Border.Effect>
 
                     <StackPanel Margin="20 40 10 10">
-                        <MediaElement Name="mediaElement"/>
                     </StackPanel>
                 </Border>
 
