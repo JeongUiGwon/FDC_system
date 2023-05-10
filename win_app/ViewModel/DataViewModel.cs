@@ -244,9 +244,12 @@ namespace SOM.ViewModel
                 string str_content = await response_getRecipe.Content.ReadAsStringAsync();
                 RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
 
+                SeriesCollection ChartSeries2 = new SeriesCollection();
+
                 foreach (var paramLog in paramLogs)
                 {
                     long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
+
 
                     ChartData.Add(paramLog.param_value);
                     ChartLabels.Add(paramLog.created_at.ToString());
@@ -256,8 +259,8 @@ namespace SOM.ViewModel
                 {
                     new LineSeries
                     {
-                        Title = title,
-                        Values = ChartData
+                    Title = title,
+                    Values = ChartData
                     }
                 };
 

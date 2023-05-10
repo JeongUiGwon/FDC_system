@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
+using SOM.View.Equipment;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -99,6 +100,15 @@ namespace SOM.View.Recipe
                 // Parmas page 새로고침
                 NavigationService.Refresh();
             }
+        }
+
+        private void Btn_SearchEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            var Modal = new SearchEquipmentIDModal();
+            Modal.ShowDialog();
+
+            string equip_id = Modal.Result;
+            Tb_EquipID.Text = equip_id;
         }
     }
 }
