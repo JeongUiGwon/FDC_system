@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SOM.ViewModel
 {
@@ -24,10 +25,10 @@ namespace SOM.ViewModel
             ApplyCommand = new RelayCommand(ExecuteApplyCommand);
 
             // 조회시간 초기값 세팅
-            StartDate = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
-            StartTime = DateTime.Now.ToString("HH:mm");
-            EndtDate = DateTime.Today.ToString("yyyy-MM-dd");
-            EndTime = DateTime.Now.ToString("HH:mm");
+            StartDate = DateTime.Now.AddMonths(-3);
+            StartTime = DateTime.Now;
+            EndtDate = DateTime.Today;
+            EndTime = DateTime.Now;
         }
 
         private ObservableCollection<EquipmentsModel> _equipments;
@@ -77,8 +78,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _startDate;
-        public string StartDate
+        private DateTime _startDate;
+        public DateTime StartDate
         {
             get { return _startDate; }
             set
@@ -88,8 +89,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _startTime;
-        public string StartTime
+        private DateTime _startTime;
+        public DateTime StartTime
         {
             get { return _startTime; }
             set
@@ -99,8 +100,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _endDate;
-        public string EndtDate
+        private DateTime _endDate;
+        public DateTime EndtDate
         {
             get { return _endDate; }
             set
@@ -110,8 +111,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string _endTime;
-        public string EndTime
+        private DateTime _endTime;
+        public DateTime EndTime
         {
             get { return _endTime; }
             set
@@ -144,26 +145,15 @@ namespace SOM.ViewModel
         }
         public ICommand ApplyCommand { get; }
 
-        private SeriesCollection _chartSeries;
-        private ChartValues<ObservablePoint> _chartData;
-        private ObservableCollection<string> _chartLabels;
-
-        public SeriesCollection ChartSeries
+        private ObservableCollection<CartesianChartModel> _chartSeriesCollection;
+        public ObservableCollection<CartesianChartModel> ChartSeriesCollection
         {
-            get { return _chartSeries; }
-            set { _chartSeries = value; OnPropertyChanged(); }
-        }
-
-        public ChartValues<ObservablePoint> ChartData
-        {
-            get { return _chartData; }
-            set { _chartData = value; OnPropertyChanged(); }
-        }
-
-        public ObservableCollection<string> ChartLabels
-        {
-            get { return _chartLabels; }
-            set { _chartLabels = value; OnPropertyChanged(); }
+            get { return _chartSeriesCollection; }
+            set
+            {
+                _chartSeriesCollection = value;
+                OnPropertyChanged(nameof(ChartSeriesCollection));
+            }
         }
 
         private async void SetEquipments()
@@ -206,9 +196,9 @@ namespace SOM.ViewModel
             var selectedEquipments = FilteredEquipments.Where(el => el.isSelected).ToList();
 
             string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
-
-            string startDate = $"{StartDate} {StartTime}";
-            string endDate = $"{EndtDate}   {EndTime}";
+            
+            string startDate = $"{StartDate.ToString("yyyy-MM-dd")} {StartTime.ToString("HH:mm")}";
+            string endDate = $"{EndtDate.ToString("yyyy-MM-dd")} {EndTime.ToString("HH:mm")}";
 
             string str_params = ParamList;
 
@@ -228,41 +218,56 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content)
             {
-                if (paramData.ContainsKey(equipmentData_item.param))
+                if (paramData.ContainsKey($"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"))
                 {
-                    paramData[equipmentData_item.param].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[equipmentData_item.param] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
+            // 차트 컬렉션 초기화
+            ChartSeriesCollection = new ObservableCollection<CartesianChartModel>();
+
+            // 차트 생성
             foreach (var kvp in paramData)
             {
-                string paramId = kvp.Key;
+                string title = kvp.Key;
                 List<ParamLogModel> paramLogs = kvp.Value;
-                ChartData = new ChartValues<ObservablePoint>();
-                ChartLabels = new ObservableCollection<string>();
-                int idx = 0;
+                string recipe_id = paramLogs[0].recipe;
+                ChartValues<float> ChartData = new ChartValues<float>();
+                List<string> ChartLabels = new List<string>();
+
+                HttpResponseMessage response_getRecipe = await GetRecipeID.GetRecipeIDAsync(recipe_id);
+                string str_content = await response_getRecipe.Content.ReadAsStringAsync();
+                RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
+
+                SeriesCollection ChartSeries2 = new SeriesCollection();
 
                 foreach (var paramLog in paramLogs)
                 {
-                    ChartData.Add(new ObservablePoint(idx++, paramLog.param_value));
+                    long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
+
+
+                    ChartData.Add(paramLog.param_value);
                     ChartLabels.Add(paramLog.created_at.ToString());
                 }
-            }
 
-            ChartSeries = new SeriesCollection
-            {
-                new LineSeries
+                SeriesCollection ChartSeries = new SeriesCollection
                 {
+                    new LineSeries
+                    {
+                    Title = title,
                     Values = ChartData
-                }
-            };
+                    }
+                };
 
-            Console.WriteLine("hello");
+                ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
+            }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

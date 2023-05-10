@@ -123,14 +123,14 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="조회 기간*" FontWeight="DemiBold" FontSize="15" Foreground="#757A89"/>
 
                         <!--Start Date-->
-                        <DatePicker Name="dp_startDate" Grid.Row="1" Grid.Column="0" Margin="0 10 5 0" FontSize="15" Text="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DatePicker Name="dp_startDate" Grid.Row="1" Grid.Column="0" Margin="0 10 5 0" FontSize="15"  SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <materialDesign:TimePicker Name="tp_startTime" Grid.Row="1" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" Text="{Binding StartTime, UpdateSourceTrigger=PropertyChanged}"/>
+                        <materialDesign:TimePicker Name="tp_startTime" Grid.Row="1" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" SelectedTime="{Binding StartTime, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <!--End Date-->
-                        <DatePicker Name="dp_endDate" Grid.Row="2" Grid.Column="0" Margin="0 10 5 0" FontSize="15" Text="{Binding EndtDate, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DatePicker Name="dp_endDate" Grid.Row="2" Grid.Column="0" Margin="0 10 5 0" FontSize="15" SelectedDate="{Binding EndtDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" Text="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}"/>
+                        <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" SelectedTime="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
 
                     <Grid Grid.Row="3" Margin="0 10 0 30">
@@ -197,6 +197,7 @@
                                     <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
                                     <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
                                     <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
+                                    <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -210,16 +211,36 @@
                                 </StackPanel>
                             </TabItem.Header>
 
-                            <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="Right">
-                                <lvc:CartesianChart.AxisX>
-                                    <lvc:Axis Title="X Axis" Labels="{Binding ChartLabels}"></lvc:Axis>
-                                </lvc:CartesianChart.AxisX>
-                                <lvc:CartesianChart.AxisY>
-                                    <lvc:Axis Title="Y Axis"></lvc:Axis>
-                                </lvc:CartesianChart.AxisY>
-                            </lvc:CartesianChart>
+                            <ScrollViewer>
+                                <StackPanel>
+                                    <ItemsControl x:Name="ChartItems" ItemsSource="{Binding ChartSeriesCollection}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="#ffffff" CornerRadius="10" Margin="5 10">
+
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
+                                                    </Border.Effect>
+                                                    
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding title}" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Center" Margin="0 10"/>
+                                                        <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="None" Height="400">
+                                                            <lvc:CartesianChart.AxisX>
+                                                                <lvc:Axis Labels="{Binding ChartLabels}"></lvc:Axis>
+                                                            </lvc:CartesianChart.AxisX>
+                                                            <lvc:CartesianChart.AxisY>
+                                                                <lvc:Axis Title="Value"></lvc:Axis>
+                                                            </lvc:CartesianChart.AxisY>
+                                                        </lvc:CartesianChart>
+                                                    </StackPanel>
+                                                </Border>
+                                                
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
                         </TabItem>
-                        
                     </TabControl>
                 </Grid>
             </Border>
