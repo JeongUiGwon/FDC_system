@@ -46,6 +46,8 @@ namespace SOM.View.Data
 
             string str_params = tb_paramID.Text;
 
+            btn_apply.IsEnabled = false;
+
             HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(str_selectedEquipments, str_params, startDate, endDate);
             ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
 
@@ -72,8 +74,7 @@ namespace SOM.View.Data
                 }
             }
 
-            Console.WriteLine("hello");
-            
+            btn_apply.IsEnabled = true;
         }
 
         private void dg_equipment_refresh(object sender, RoutedEventArgs e)

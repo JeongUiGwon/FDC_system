@@ -56,9 +56,57 @@
                                      BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
                                      materialDesign:HintAssist.Hint="Search" Padding="10 0" Height="30"/>
                         </StackPanel>
+
+                        <!--Search Equipment-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="설비 ID" Foreground="#757A89" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                            <TextBox Name="Tb_EquipID" Width="150" FontSize="13" Height="30"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         Margin="10 0 5 0" Text="{Binding SearchEquipment, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Background="#ffffff" BorderBrush="#799EFB" Click="Btn_SearchEquipment_Click" >
+                                <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
+                            </Button>
+                        </StackPanel>
+
+                        <!--Param State Box-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="LSL Action" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="cb_lslAction" FontSize="13"  Margin="10 0 0 0" Width="100" Text="{Binding SearchLslAction, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>INTERLOCK</ComboBoxItem>
+                                <ComboBoxItem>WARNING</ComboBoxItem>
+                                <ComboBoxItem>MAIL</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!--Param State Box-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="USL Action" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="cb_uslAction" FontSize="13"  Margin="10 0 0 0" Width="100" Text="{Binding SearchUslAction, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>INTERLOCK</ComboBoxItem>
+                                <ComboBoxItem>WARNING</ComboBoxItem>
+                                <ComboBoxItem>MAIL</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!--Param State Box-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="Cb_ParamState" FontSize="13"  Margin="10 0 0 0" Width="100" Text="{Binding SearchRecipeUse, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>사용</ComboBoxItem>
+                                <ComboBoxItem>미사용</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Right Section-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
                         
                         <!--History Button-->
-                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click" Margin="10 0 0 0">
+                        <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_History_Click" Margin="0 0 10 0">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="History" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -66,10 +114,7 @@
                                 </StackPanel>
                             </Border>
                         </Button>
-                    </StackPanel>
-
-                    <!--Right Section-->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+                        
                         <!--Add Button-->
                         <Button Name="Btn_Add" BorderBrush="#2f49cf" Background="#ffffff"  Width="auto" Click="Btn_Add_Click" HorizontalAlignment="Right">
                             <Border CornerRadius="10 10 10 10" >
@@ -90,9 +135,9 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="레시피 ID" Width="auto" Binding="{Binding recipe_id}"/>
+                            <DataGridTextColumn Header="레시피명" Width="auto" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="설비 ID" Width="auto" Binding="{Binding equipment}"/>
                             <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
-                            <DataGridTextColumn Header="레시피명" Width="auto" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lsl}"/>
                             <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding usl}"/>
                             <DataGridTextColumn Header="LSL Action" Width="auto" Binding="{Binding lsl_interlock_action}"/>

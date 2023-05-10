@@ -57,6 +57,42 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _searchEquipUse;
+        public string SearchEquipUse
+        {
+            get { return _searchEquipUse; }
+            set
+            {
+                _searchEquipUse = value;
+                OnPropertyChanged(nameof(SearchEquipUse));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipState;
+        public string SearchEquipState
+        {
+            get { return _searchEquipState; }
+            set
+            {
+                _searchEquipState = value;
+                OnPropertyChanged(nameof(SearchEquipState));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipMode;
+        public string SearchEquipMode
+        {
+            get { return _searchEquipMode; }
+            set
+            {
+                _searchEquipMode = value;
+                OnPropertyChanged(nameof(SearchEquipMode));
+                FilterEquipments();
+            }
+        }
+
         private bool _isAllSelected;
         public bool IsAllSelected
         {
@@ -86,10 +122,30 @@ namespace SOM.ViewModel
 
         private void FilterEquipments()
         {
-            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            if (Equipments != null && Equipments.Any())
             {
-                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) 
-                || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm)));
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_id.Contains(SearchTerm)
+                    || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipUse) && SearchEquipUse != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_use.Equals(SearchEquipUse)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipState) && SearchEquipState != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_state.Equals(SearchEquipState)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipMode) && SearchEquipMode != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_mode.Equals(SearchEquipMode)));
+                }
             }
             else
             {

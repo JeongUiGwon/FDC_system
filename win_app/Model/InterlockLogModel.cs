@@ -13,7 +13,7 @@ namespace SOM.Model
         public string equipment_name { get; set; }
         public string cause_equip_id { get; set; }
         public string cause_equip_name { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
+        public DateTime created_at { get; set; }
         public string interlock_type { get; set; }
         public int out_count { get; set; }
         public float lower_limit { get; set; }
@@ -22,12 +22,14 @@ namespace SOM.Model
         public string cctv_video_url { get; set; }
         public string equipment { get; set; }
         public string param { get; set; }
+        public string param_name { get; set; }
         public string recipe { get; set; }
+        public string recipe_name { get; set; }
         public string lot { get; set; }
 
         public InterlockLogModel(int log_id, string factory_id, string equipment_name, string cause_equip_id, string cause_equip_name, string interlock_type, 
-            int out_count, float lower_limit, float upper_limit, float data_value, string cctv_video_url, string equipment, string param, string recipe, 
-            string lot, Nullable<DateTime> created_at)
+            int out_count, float lower_limit, float upper_limit, float data_value, string cctv_video_url, string equipment, string param, string param_name, string recipe, string recipe_name,
+            string lot, DateTime created_at)
         {
             this.log_id = log_id;
             this.factory_id = factory_id;
@@ -43,7 +45,9 @@ namespace SOM.Model
             this.created_at = created_at;
             this.equipment = equipment;
             this.param = param;
+            this.param_name = param_name;
             this.recipe = recipe;
+            this.recipe_name = recipe_name;
             this.lot = lot;
         }
     }
