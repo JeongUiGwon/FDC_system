@@ -165,6 +165,7 @@ class ParamLog(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=random_past_datetime)
     param_value = models.FloatField()
+    is_interlock = models.BooleanField()
 
     class Meta:
         db_table = 'param_log'
