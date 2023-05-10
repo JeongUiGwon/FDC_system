@@ -73,7 +73,7 @@ namespace SOM.View.Login
                 // Firebase 연결
                 FirebaseAuthModel firebaseAuth = new FirebaseAuthModel();
                 var userCredential = await firebaseAuth.client.SignInWithEmailAndPasswordAsync(email, password);
-                
+
                 // User 권한 조회
                 FirebaseAdminAuth firebaseAdminAuth = new FirebaseAdminAuth();
                 var user = await firebaseAdminAuth.auth.GetUserAsync(userCredential.User.Uid);

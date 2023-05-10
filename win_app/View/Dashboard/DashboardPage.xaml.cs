@@ -27,6 +27,19 @@ namespace SOM.View
         public DashboardPage()
         {
             InitializeComponent();
+
+            // 스트리밍할 Firebase Storage의 영상 URL
+            string videoUrl = "https://firebasestorage.googleapis.com/v0/b/ssafy-a201.appspot.com/o/HO3IXOQV%2F2023_05_10_11_26.avi?alt=media&token=fe97a14c-cb2b-40e1-a581-4652363d9ae5";
+            string temp = @"C:\Temp\test.avi";
+
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(videoUrl, temp);
+            }
+
+            mediaElement.Source = new Uri(temp);
+
         }
     }
 }

@@ -113,6 +113,13 @@
                         <TextBlock Text="{Binding InterlockData.lot}" FontSize="15" Foreground="#757A89" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Grid>
 
+                    <Grid VerticalAlignment="Center" Margin="20 0 20 20">
+                        <TextBlock Text="CCTV 주소" FontSize="18" FontWeight="DemiBold" Foreground="#757A89" />
+                        <TextBlock  FontSize="15" Foreground="#757A89" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Hyperlink NavigateUri="{Binding InterlockData.cctv_video_url}" RequestNavigate="Hyperlink_RequestNavigate">CCTV 영상 다운로드</Hyperlink>
+                        </TextBlock>
+                    </Grid>
+
                 </StackPanel>
             </Border>
 
@@ -163,8 +170,10 @@
                     <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
                 </Border.Effect>
 
-                <StackPanel Margin="20 40 10 10">
-                </StackPanel>
+                <Grid Margin="20 40 10 10">
+                    <Button Content="Show" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_show_click" Panel.ZIndex="1"/>
+                    <MediaElement Name="me_cctv" ToolTip="{Binding InterlockData.cctv_video_url}" />
+                </Grid>
             </Border>
 
         </Grid>
