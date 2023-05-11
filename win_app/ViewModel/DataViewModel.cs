@@ -25,7 +25,7 @@ namespace SOM.ViewModel
             ApplyCommand = new RelayCommand(ExecuteApplyCommand);
 
             // 조회시간 초기값 세팅
-            StartDate = DateTime.Now.AddMonths(-3);
+            StartDate = DateTime.Now.AddDays(-1);
             StartTime = DateTime.Now;
             EndtDate = DateTime.Today;
             EndTime = DateTime.Now;

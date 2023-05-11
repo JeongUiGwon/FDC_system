@@ -483,6 +483,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\CartesianChartModel.cs" />
+    <Compile Include="Model\ChatbotModel.cs" />
+    <Compile Include="Model\ChatModel.cs" />
     <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAdminAuth.cs" />
@@ -498,6 +500,7 @@
     <Compile Include="Services\DeleteEquipmentID.cs" />
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\DeleteRecipeID.cs" />
+    <Compile Include="Services\GetChatbot.cs" />
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\GetInterlockLog.cs" />
     <Compile Include="Services\GetParamHistory.cs" />
