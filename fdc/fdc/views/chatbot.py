@@ -85,14 +85,16 @@ def chatbot(request):
     print(f'translate question: {user_question}')
 
     question = QUERY.format(question=user_question)
-    answer = db_chain(question)['intermediate_steps']
+    answer = db_chain(question)
+    intermediate_steps = answer['intermediate_steps']
+    answer = answer['result']
 
     if user_question is None or answer == '':
         answer = 'not valid'
         response_data = ''
 
     else:
-        response_data = {'query': answer[0], 'result': answer[1]}
+        response_data = {'query': intermediate_steps[0], 'result': intermediate_steps[1], 'answer': answer}
         # response_data = {'answer': answer}
 
     # print(type(answer))
