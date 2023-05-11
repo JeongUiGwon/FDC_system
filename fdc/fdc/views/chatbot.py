@@ -78,8 +78,8 @@ def chatbot(request):
     db_chain = SQLDatabaseSequentialChain.from_llm(llm=llm, database=db, verbose=True, return_intermediate_steps=True)
 
     user_question = request.GET.get('question', None)
-    print(f'user question: {user_question}')
-    user_question = translate(user_question, 'ko', 'en')
+    # print(f'user question: {user_question}')
+    # user_question = translate(user_question, 'ko', 'en')
     print(f'translate question: {user_question}')
 
     question = QUERY.format(question=user_question)
