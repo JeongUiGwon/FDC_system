@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SOM.ViewModel
 {
@@ -97,8 +98,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private string[] _labels;
-        public string[] Labels
+        private List<string> _labels;
+        public List<string> Labels
         {
             get { return _labels; }
             set
@@ -170,30 +171,59 @@ namespace SOM.ViewModel
             }
         }
 
-        private void GetInterlockData()
+        private async void GetInterlockData()
         {
-            
+            ChartValues<int> values = new ChartValues<int>();
+            List<string> ChartLabels = new List<string>();
+
+            string startDate = DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd HH:mm");
+            string endDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+            HttpResponseMessage response_getInterlock = await GetInterlockLog.GetInterlockLogAsync(start_date: startDate, end_date: endDate);
+
+            if (response_getInterlock.IsSuccessStatusCode)
+            {
+
+                string str_content = await response_getInterlock.Content.ReadAsStringAsync();
+                ObservableCollection<InterlockLogModel> content = JsonConvert.DeserializeObject<ObservableCollection<InterlockLogModel>>(str_content);
+
+                Dictionary<DateTime, int> itemCounts = new Dictionary<DateTime, int>();
+
+                foreach (InterlockLogModel item in content)
+                {
+                    DateTime createdAt = item.created_at.Date; // 날짜 부분만 사용
+
+                    if (itemCounts.ContainsKey(createdAt))
+                    {
+                        itemCounts[createdAt]++;
+                    }
+                    else
+                    {
+                        itemCounts.Add(createdAt, 1);
+                    }
+                }
+
+                // 결과 출력
+                foreach (KeyValuePair<DateTime, int> count in itemCounts)
+                {
+                    values.Add(count.Value);
+                    ChartLabels.Add(count.Key.ToString());
+                }
+            }
+
+
             SeriesCollection = new SeriesCollection
             {
                 new ColumnSeries
                 {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    Title = "Interlock",
+                    Values = values,
+                    Fill = Brushes.Red
                 }
             };
 
-            //adding series will update and animate the chart automatically
-            SeriesCollection.Add(new ColumnSeries
-            {
-                Title = "2016",
-                Values = new ChartValues<double> { 11, 56, 42 }
-            });
-
-            //also adding values updates and animates the chart automatically
-            SeriesCollection[1].Values.Add(48d);
-
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
-            Formatter = value => value.ToString("N");
+            Labels = ChartLabels;
+            //Formatter = value => value.ToString("N");
         }
 
         private async void GetChatbotData()
