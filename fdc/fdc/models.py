@@ -90,6 +90,7 @@ class Param(models.Model):
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
     updated_at = models.DateTimeField(null=True)
+    is_autorange = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.param_id:
@@ -114,7 +115,6 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
     updated_at = models.DateTimeField(null=True)
-    is_autorange = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.recipe_id:
@@ -251,3 +251,10 @@ class AutoRange(models.Model):
     max_range = models.FloatField()
     interval = models.IntegerField()
     range = models.IntegerField()
+    prev_usl = models.FloatField(default=None, null=True)
+    prev_lsl = models.FloatField(default=None, null=True)
+    type = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'auto_range'
+        managed = is_manage
