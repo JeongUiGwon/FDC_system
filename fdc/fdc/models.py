@@ -114,6 +114,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(default=random_past_datetime)
     modifier_name = models.CharField(max_length=50, null=True)
     updated_at = models.DateTimeField(null=True)
+    is_autorange = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.recipe_id:
@@ -241,3 +242,12 @@ class RecipeHistory(models.Model):
     class Meta:
         db_table = 'recipe_history'
         managed = is_manage
+
+
+class AutoRange(models.Model):
+    id = models.AutoField(primary_key=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    min_range = models.FloatField()
+    max_range = models.FloatField()
+    interval = models.IntegerField()
+    range = models.IntegerField()
