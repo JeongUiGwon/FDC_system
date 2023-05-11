@@ -490,7 +490,6 @@
     <Compile Include="Model\FirebaseAdminAuth.cs" />
     <Compile Include="Model\FirebaseAuthModel.cs" />
     <Compile Include="Model\InterlockLogModel.cs" />
-    <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamHistoryModel.cs" />
     <Compile Include="Model\ParamLogModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
