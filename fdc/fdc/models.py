@@ -182,7 +182,7 @@ class InterlockLog(models.Model):
     cause_equip_name = models.CharField(max_length=50, null=True)
     param = models.ForeignKey(Param, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    lot = models.ForeignKey(LotLog, on_delete=models.CASCADE)
+    # lot = models.ForeignKey(LotLog, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=random_past_datetime)
     interlock_type = models.CharField(max_length=15)
     out_count = models.IntegerField()

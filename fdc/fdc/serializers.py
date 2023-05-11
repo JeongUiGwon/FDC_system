@@ -57,8 +57,8 @@ class InterlockLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = InterlockLog
         fields = ('log_id', 'factory_id', 'equipment', 'equipment_name', 'cause_equip_id', 'cause_equip_name',
-                          'param', 'param_name', 'recipe', 'recipe_name', 'lot', 'created_at', 'interlock_type',
-                          'out_count', 'lower_limit', 'upper_limit', 'data_value', 'cctv_video_url')
+                  'param', 'param_name', 'recipe', 'recipe_name', 'created_at', 'interlock_type',
+                  'out_count', 'lower_limit', 'upper_limit', 'data_value', 'cctv_video_url')
 
         extra_kwargs = {'equipment_name': {'required': False},
                         'cause_equip_name': {'required': False}}
