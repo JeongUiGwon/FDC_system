@@ -42,7 +42,7 @@ def translate(text, source, target):
 
 def chatbot(request):
     db = SQLDatabase.from_uri(
-        "postgresql://cms:1234@localhost:5432/fdc",
+        "postgresql://cms:1234@k8a201.p.ssafy.io:5432/fdc",
         include_tables=['equipment', 'recipe', 'param', 'param_log', 'interlock_log', 'param_history',
                         'recipe_history'],
         # include_tables= ['param_log'],
