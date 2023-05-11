@@ -28,9 +28,11 @@ namespace SOM.ViewModel
 
             ChatCollection = new ObservableCollection<ChatModel>();
             SendCommand = new RelayCommand(GetChatbotData);
+            EnterPressedCommand = new RelayCommand(GetChatbotData);
         }
 
-        public ICommand SendCommand { get; }
+        public ICommand SendCommand { get; private set; }
+        public ICommand EnterPressedCommand { get; private set; }
 
         private int _equipmentCount;
         public int EquipmentCount
@@ -207,7 +209,7 @@ namespace SOM.ViewModel
                 foreach (KeyValuePair<DateTime, int> count in itemCounts)
                 {
                     values.Add(count.Value);
-                    ChartLabels.Add(count.Key.ToString());
+                    ChartLabels.Add(count.Key.ToString("yyyy-MM-dd"));
                 }
             }
 
@@ -228,6 +230,8 @@ namespace SOM.ViewModel
 
         private async void GetChatbotData()
         {
+            if (SendText == null) return;
+
             string questionText = SendText;
             SendText = string.Empty;
             string answerText = "작성 중...";
@@ -244,8 +248,9 @@ namespace SOM.ViewModel
             }
             else
             {
-                answerText = "현재 서버와 연결할 수 없습니다.";
+                answerText = "해당 질문에 대해 답변을 찾기 어렵습니다.";
             }
+
             ChatCollection.RemoveAt(ChatCollection.Count - 1);
             ChatCollection.Add(new ChatModel(questionText, answerText));
         }

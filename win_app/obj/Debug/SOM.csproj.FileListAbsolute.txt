@@ -843,3 +843,6 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\SOM.application
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Interlock\InterlockDetailModal.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Interlock\InterlockDetailModal.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\Firebase.Storage.dll
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\bin\Debug\Firebase.Storage.dll
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Interlock\InterlockDetailModal.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\Interlock\InterlockDetailModal.baml

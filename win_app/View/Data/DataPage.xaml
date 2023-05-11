@@ -173,7 +173,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Tab Section-->
-                    <TabControl Grid.Row="0">
+                    <TabControl Grid.Row="0" >
                         <TabItem>
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal">
