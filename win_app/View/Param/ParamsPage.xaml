@@ -133,7 +133,7 @@
                             <DataGridTextColumn Header="작성자" Width="*" Binding="{Binding creator_name}"/>
                             <DataGridTextColumn Header="수정자" Width="*" Binding="{Binding modifier_name}"/>
 
-                            <DataGridTemplateColumn x:Name="Dg_Action" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn x:Name="Dg_Action" IsReadOnly="True" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
