@@ -34,8 +34,7 @@ namespace SOM.View.Interlock
 
         private void btn_show_click(object sender, RoutedEventArgs e)
         {
-            //string videoUrl = me_cctv.ToolTip.ToString();
-            string videoUrl = "https://firebasestorage.googleapis.com/v0/b/ssafy-a201.appspot.com/o/HO3IXOQV%2F2023_05_10_11_26.avi?alt=media&token=fe97a14c-cb2b-40e1-a581-4652363d9ae5";
+            string videoUrl = me_cctv.ToolTip.ToString();
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); ; // 임시 파일 경로
             string savePath = userPath + @"\Downloads\streaming.avi";
 

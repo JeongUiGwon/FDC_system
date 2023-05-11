@@ -117,7 +117,7 @@
                 <!--Subtitle Section-->
                 <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
                         Margin="25 10">
-                    <TextBlock Text="최근 1개월간 인터락 차트" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                    <TextBlock Text="최근 1개월간 인터락 발생 현황" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
                 </Border>
 
                 <!--Content Section-->

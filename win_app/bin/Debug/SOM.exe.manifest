@@ -962,7 +962,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PPE/rbAa1mvzj5JlHaCeUlPio/cAPNp91bP7V/m7ZgY=</dsig:DigestValue>
+        <dsig:DigestValue>YGFkxoGLguVxa55Qq8tnEZIkoRKZYdRlNrhM6BWlfmU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

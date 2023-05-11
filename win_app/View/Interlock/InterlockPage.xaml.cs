@@ -93,8 +93,8 @@ namespace SOM.View.Interlock
                 dataContext.InterlockData = selectedItem;
 
                 // 조회기간 설정
-                string startDate = selectedItem.created_at.AddMonths(-1).ToString("yyyy-MM-dd HH:mm");
-                string endDate = selectedItem.created_at.AddMonths(1).ToString("yyyy-MM-dd HH:mm");
+                string startDate = selectedItem.created_at.AddHours(-1).ToString("yyyy-MM-dd HH:mm");
+                string endDate = selectedItem.created_at.AddHours(1).ToString("yyyy-MM-dd HH:mm");
 
                 HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(selectedItem.equipment, selectedItem.param, startDate, endDate, recipe_id: selectedItem.recipe);
                 ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
