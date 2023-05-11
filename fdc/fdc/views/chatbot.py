@@ -59,7 +59,7 @@ def chatbot(request):
     2. Look at the results of the query and return the answer.
     
     각 테이블의 한글명은 다음과 같아
-    equipment:설비, param:항목, recipe:레시피, param_log: 항목 로그, interlock_log: 인터락 로그, param_history:항목 이력(기록), interlock_history: 인터락 이력(기록) 
+    equipment:설비, param:항목, recipe:레시피, param_log: 항목 로그, interlock_log: 인터락 로그, param_history:항목 CRUD 이력(기록), recipe_history: 레시피 CRUD 이력(기록) 
     
     There are conditions.
     1. Use public schema
