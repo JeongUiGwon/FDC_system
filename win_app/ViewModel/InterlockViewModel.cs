@@ -1,5 +1,4 @@
-﻿using LiveCharts.Defaults;
-using LiveCharts.Wpf;
+﻿using LiveCharts.Wpf;
 using LiveCharts;
 using Newtonsoft.Json;
 using SOM.Model;
@@ -10,25 +9,20 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace SOM.ViewModel
 {
-    public class DataViewModel : INotifyPropertyChanged
+    public class InterlockViewModel : INotifyPropertyChanged
     {
-        public DataViewModel()
+        public InterlockViewModel()
         {
             SetEquipments();
-            ApplyCommand = new RelayCommand(ExecuteApplyCommand);
 
-            // 조회시간 초기값 세팅
-            StartDate = DateTime.Now.AddDays(-1);
-            StartTime = DateTime.Now;
-            EndtDate = DateTime.Today;
-            EndTime = DateTime.Now;
+            ApplyCommand = new RelayCommand(ExecuteApplyCommand);
         }
 
         private ObservableCollection<EquipmentsModel> _equipments;
@@ -65,6 +59,42 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _searchEquipUse;
+        public string SearchEquipUse
+        {
+            get { return _searchEquipUse; }
+            set
+            {
+                _searchEquipUse = value;
+                OnPropertyChanged(nameof(SearchEquipUse));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipState;
+        public string SearchEquipState
+        {
+            get { return _searchEquipState; }
+            set
+            {
+                _searchEquipState = value;
+                OnPropertyChanged(nameof(SearchEquipState));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipMode;
+        public string SearchEquipMode
+        {
+            get { return _searchEquipMode; }
+            set
+            {
+                _searchEquipMode = value;
+                OnPropertyChanged(nameof(SearchEquipMode));
+                FilterEquipments();
+            }
+        }
+
         private bool _isAllSelected;
         public bool IsAllSelected
         {
@@ -78,7 +108,8 @@ namespace SOM.ViewModel
             }
         }
 
-        private DateTime _startDate;
+
+        private DateTime _startDate = DateTime.Now.AddMonths(-3);
         public DateTime StartDate
         {
             get { return _startDate; }
@@ -89,7 +120,7 @@ namespace SOM.ViewModel
             }
         }
 
-        private DateTime _startTime;
+        private DateTime _startTime = DateTime.Now.AddMonths(-3);
         public DateTime StartTime
         {
             get { return _startTime; }
@@ -100,7 +131,7 @@ namespace SOM.ViewModel
             }
         }
 
-        private DateTime _endDate;
+        private DateTime _endDate = DateTime.Now;
         public DateTime EndtDate
         {
             get { return _endDate; }
@@ -111,7 +142,7 @@ namespace SOM.ViewModel
             }
         }
 
-        private DateTime _endTime;
+        private DateTime _endTime = DateTime.Now;
         public DateTime EndTime
         {
             get { return _endTime; }
@@ -133,28 +164,7 @@ namespace SOM.ViewModel
             }
         }
 
-        private ObservableCollection<ParamLogModel> _equipmentData;
-        public ObservableCollection<ParamLogModel> EquipmentData
-        {
-            get { return _equipmentData; }
-            set
-            {
-                _equipmentData = value;
-                OnPropertyChanged(nameof(EquipmentData));
-            }
-        }
         public ICommand ApplyCommand { get; private set; }
-
-        private ObservableCollection<CartesianChartModel> _chartSeriesCollection;
-        public ObservableCollection<CartesianChartModel> ChartSeriesCollection
-        {
-            get { return _chartSeriesCollection; }
-            set
-            {
-                _chartSeriesCollection = value;
-                OnPropertyChanged(nameof(ChartSeriesCollection));
-            }
-        }
 
         private string _guideBoxVisibility = "Visible";
         public string GuideBoxVisibility
@@ -189,6 +199,17 @@ namespace SOM.ViewModel
             }
         }
 
+        private ObservableCollection<InterlockLogModel> _interlockItemsSource;
+        public ObservableCollection<InterlockLogModel> InterlockItemsSource
+        {
+            get { return _interlockItemsSource;}
+            set
+            {
+                _interlockItemsSource = value;
+                OnPropertyChanged(nameof(InterlockItemsSource));
+            }
+        }
+
         private async void SetEquipments()
         {
             HttpResponseMessage response = await GetEquipment.GetEquipmentAsync();
@@ -205,10 +226,30 @@ namespace SOM.ViewModel
 
         private void FilterEquipments()
         {
-            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            if (Equipments != null && Equipments.Any())
             {
-                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm)
-                || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm) || e.creator_name.Contains(SearchTerm)));
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_id.Contains(SearchTerm)
+                    || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipUse) && SearchEquipUse != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_use.Equals(SearchEquipUse)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipState) && SearchEquipState != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_state.Equals(SearchEquipState)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipMode) && SearchEquipMode != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_mode.Equals(SearchEquipMode)));
+                }
             }
             else
             {
@@ -225,7 +266,7 @@ namespace SOM.ViewModel
         }
 
         private async void ExecuteApplyCommand()
-        {            
+        {
             BtnApplyIsEnabled = "False";
             GuideBoxVisibility = "Hidden";
             LoadingVisibility = "Visible";
@@ -239,76 +280,20 @@ namespace SOM.ViewModel
 
             string str_params = ParamList;
 
-            HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(str_selectedEquipments, str_params, startDate, endDate);
-            ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
+            HttpResponseMessage response_getInterlockLog = await GetInterlockLog.GetInterlockLogAsync(str_selectedEquipments, str_params, startDate, endDate);
+            ObservableCollection<InterlockLogModel> content = new ObservableCollection<InterlockLogModel>();
 
-            // 설비 데이터를 DataGrid에 바인딩
-            if (response_getParamLog != null && response_getParamLog.Content != null)
+            if (response_getInterlockLog != null && response_getInterlockLog.Content != null)
             {
-                string str_content = await response_getParamLog.Content.ReadAsStringAsync();
-                content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
-                EquipmentData = new ObservableCollection<ParamLogModel>(content);
+                string str_content = await response_getInterlockLog.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<InterlockLogModel>>(str_content);
+                InterlockItemsSource = content;
             }
 
-            // 설비 데이터를 param_id에 따라 분류
-            Dictionary<string, List<ParamLogModel>> paramData = new Dictionary<string, List<ParamLogModel>>();
-
-            foreach (ParamLogModel equipmentData_item in content)
-            {
-                if (paramData.ContainsKey($"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"))
-                {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"].Add(equipmentData_item);
-                }
-                else
-                {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
-                }
-            }
-
-            // 차트 컬렉션 초기화
-            ChartSeriesCollection = new ObservableCollection<CartesianChartModel>();
-
-            // 차트 생성
-            foreach (var kvp in paramData)
-            {
-                string title = kvp.Key;
-                List<ParamLogModel> paramLogs = kvp.Value;
-                string recipe_id = paramLogs[0].recipe;
-                ChartValues<float> ChartData = new ChartValues<float>();
-                List<string> ChartLabels = new List<string>();
-
-                HttpResponseMessage response_getRecipe = await GetRecipeID.GetRecipeIDAsync(recipe_id);
-                string str_content = await response_getRecipe.Content.ReadAsStringAsync();
-                RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
-
-                SeriesCollection ChartSeries2 = new SeriesCollection();
-
-                foreach (var paramLog in paramLogs)
-                {
-                    long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
-
-
-                    ChartData.Add(paramLog.param_value);
-                    ChartLabels.Add(paramLog.created_at.ToString());
-                }
-
-                SeriesCollection ChartSeries = new SeriesCollection
-                {
-                    new LineSeries
-                    {
-                    Title = title,
-                    Values = ChartData
-                    }
-                };
-
-                ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
-
-                // 안내 문구 숨기기
-                LoadingVisibility = "Hidden";
-                BtnApplyIsEnabled = "True";
-            }
+            // 안내 문구 숨기기
+            LoadingVisibility = "Hidden";
+            BtnApplyIsEnabled = "True";
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

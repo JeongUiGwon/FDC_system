@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:controls="http://materialdesigninxaml.net/winfx/xaml/controls" 
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -54,7 +55,8 @@
                     </Grid.RowDefinitions>
 
                     <!--Apply Button-->
-                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0" Command="{Binding ApplyCommand}">
+                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0"
+                            IsEnabled="{Binding BtnApplyIsEnabled}" Command="{Binding ApplyCommand}">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -244,6 +246,19 @@
                     </TabControl>
                 </Grid>
             </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                
+                <!--GuideBox-->
+                <StackPanel Visibility="{Binding GuideBoxVisibility}" >
+                    <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Foreground="#757A89" HorizontalAlignment="Center" Width="50" Height="50" Margin="10"/>
+                    <TextBlock Text="필터를 선택한 후, Apply 버튼을 눌러주세요." Foreground="#757A89" FontSize="20"/>
+                </StackPanel>
+
+                <!--Loading-->
+                <ProgressBar Visibility="{Binding LoadingVisibility}" Style="{StaticResource MaterialDesignCircularProgressBar}" Width="50" Height="50" IsIndeterminate="true"/>
+            </StackPanel>
+            
         </Grid>
     </Border>
 </Page>
