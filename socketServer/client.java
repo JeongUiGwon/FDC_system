@@ -1,3 +1,10 @@
+/* 
+anylogic simulator 내장 실행 클래스
+클래스는 2개로, agent마다 각각 호출
+*/
+
+
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -108,9 +115,7 @@ import java.io.IOException;
 public class SecondClient {
 	
   static private Main myMainAgent;
-	  // 매개변수 없는 생성자
   public SecondClient() {}
-	  // Main에 접근할 수 있는 생성자. 시뮬레이터에선 this를 넣음
   public SecondClient(Main mainAgent) {
 	this.myMainAgent = mainAgent;
   }
@@ -120,31 +125,24 @@ public class SecondClient {
       InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8889);      
       client.connect(ipep);
       try (OutputStream sender = client.getOutputStream(); InputStream receiver = client.getInputStream();) {
-        String msg = "From SIM to MES : require the interaction data";
-        //System.out.println(msg);
-        
+        String msg = "From SIM to MES : require the interaction data";        
         byte[] data = msg.getBytes("UTF-8");
         ByteBuffer b = ByteBuffer.allocate(1024);
         b.order(ByteOrder.LITTLE_ENDIAN);
         b.putInt(data.length);
         sender.write(b.array(), 0, 1024);
         sender.write(data);
-        System.out.println("requirement send,,,");
-        
         data = new byte[1024];
         receiver.read(data, 0, 1024);
-        System.out.println("response get,,,");
         ByteBuffer bb = ByteBuffer.wrap(data);
         bb.order(ByteOrder.LITTLE_ENDIAN);
         int length = bb.getInt();
         data = new byte[length];
         receiver.read(data, 0, length);
-        
         msg = new String(data, "UTF-8");
         System.out.println(msg);
       }
     }  catch (Throwable e) {
-      // 기타 예외 처리
       e.printStackTrace();
     }
   }
