@@ -183,7 +183,7 @@
 
                                         <materialDesign:PackIcon Grid.Column="0" Kind="Announcement" Height="30" Width="30" HorizontalAlignment="Center" Foreground="#908eff" Margin="20"/>
 
-                                        <TextBlock Name="tb_question" Grid.Column="1" FontSize="15" Margin="20" FontWeight="DemiBold" Foreground="#908eff" TextWrapping="Wrap" Text="무엇이든 검색하세요.&#10;예시) '오늘 발생한 인터락 정보들 알려줘'"/>
+                                        <TextBlock Name="tb_question" Grid.Column="1" FontSize="15" Margin="20" FontWeight="DemiBold" Foreground="#908eff" TextWrapping="Wrap" Text="무엇이든 검색하세요.&#10;예시) '현재 사용 중인 설비 정보들 알려줘'"/>
                                     </Grid>
                                 </Border>
 

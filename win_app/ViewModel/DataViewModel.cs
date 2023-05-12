@@ -255,13 +255,13 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content)
             {
-                if (paramData.ContainsKey($"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"))
+                if (paramData.ContainsKey($"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"))
                 {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
