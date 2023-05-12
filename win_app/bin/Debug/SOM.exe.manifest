@@ -955,14 +955,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="570336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="573920">
       <assemblyIdentity name="SOM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>78Una/ILiz9Jn57aalsfJcZvs6NcW49dE4Xg4qWDfLQ=</dsig:DigestValue>
+        <dsig:DigestValue>IMwqsyX+FMbcSfAAtvMHYR8CHa8i/JrF1MxFg6QHJ2k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
