@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\App.xaml
-28-1622622693
+292039023343
 
-81121585939
+82-601081881
 212-353570374
-View\CCTV\CCTVWindow.xaml;View\Equipment\AddEquipmentModal.xaml;View\Equipment\SearchEquipmentIDModal.xaml;View\Interlock\InterlockDetailModal.xaml;View\Param\GetParamModal.xaml;View\Param\SearchParamIDModal.xaml;View\Profile\ChangePasswordPage.xaml;View\Dashboard\DashboardPage.xaml;View\Data\DataPage.xaml;View\Equipment\EquipmentsPage.xaml;View\Login\ForgotPasswordPage.xaml;View\Interlock\InterlockPage.xaml;View\Login\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Param\AddParamModal.xaml;View\Recipe\AddRecipeModal.xaml;View\Equipment\EditEquipmentModal.xaml;View\Param\EditParamModal.xaml;View\Recipe\EditRecipeModal.xaml;View\EquipmentState\EquipmentStatePage.xaml;View\Param\ParamHistoryPage.xaml;View\Param\ParamsPage.xaml;View\Profile\ProfilePage.xaml;View\Recipe\RecipeHistoryPage.xaml;View\Recipe\RecipePage.xaml;View\Login\SignUpPage.xaml;View\Users\UsersPage.xaml;
+View\AutoRange\AutoRangePage.xaml;View\CCTV\CCTVWindow.xaml;View\Equipment\AddEquipmentModal.xaml;View\Equipment\SearchEquipmentIDModal.xaml;View\Interlock\InterlockDetailModal.xaml;View\Param\GetParamModal.xaml;View\Param\SearchParamIDModal.xaml;View\Profile\ChangePasswordPage.xaml;View\Dashboard\DashboardPage.xaml;View\Data\DataPage.xaml;View\Equipment\EquipmentsPage.xaml;View\Login\ForgotPasswordPage.xaml;View\Interlock\InterlockPage.xaml;View\Login\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Param\AddParamModal.xaml;View\Recipe\AddRecipeModal.xaml;View\Equipment\EditEquipmentModal.xaml;View\Param\EditParamModal.xaml;View\Recipe\EditRecipeModal.xaml;View\EquipmentState\EquipmentStatePage.xaml;View\Param\ParamHistoryPage.xaml;View\Param\ParamsPage.xaml;View\Profile\ProfilePage.xaml;View\Recipe\RecipeHistoryPage.xaml;View\Recipe\RecipePage.xaml;View\Login\SignUpPage.xaml;View\Users\UsersPage.xaml;
 
-True
+False
 
