@@ -13,7 +13,7 @@
       Title="InterlockPage" FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Page.DataContext>
-        <viewmodel:EquipmentsViewModel/>
+        <viewmodel:InterlockViewModel/>
     </Page.DataContext>
     
     <!--Main Section-->
@@ -54,7 +54,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Apply Button-->
-                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0" Click="btn_apply_click">
+                    <Button x:Name="btn_apply" Grid.Row="0" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Margin="0 40 0 0" Command="{Binding ApplyCommand}">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -123,14 +123,14 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="조회 기간*" FontWeight="DemiBold" FontSize="15" Foreground="#757A89"/>
 
                         <!--Start Date-->
-                        <DatePicker Name="dp_startDate" Grid.Row="1" Grid.Column="0" Margin="0 10 5 0" FontSize="15"/>
+                        <DatePicker Name="dp_startDate" Grid.Row="1" Grid.Column="0" Margin="0 10 5 0" FontSize="15" SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <materialDesign:TimePicker Name="tp_startTime" Grid.Row="1" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15"/>
+                        <materialDesign:TimePicker Name="tp_startTime" Grid.Row="1" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" SelectedTime="{Binding StartTime, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <!--End Date-->
-                        <DatePicker Name="dp_endDate" Grid.Row="2" Grid.Column="0" Margin="0 10 5 0" FontSize="15"/>
+                        <DatePicker Name="dp_endDate" Grid.Row="2" Grid.Column="0" Margin="0 10 5 0" FontSize="15" SelectedDate="{Binding EndtDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15"/>
+                        <materialDesign:TimePicker Name="tp_endTime" Grid.Row="2" Grid.Column="1" Margin="5 10 0 0" Is24Hours="True" FontSize="15" SelectedTime="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
 
                     <Grid Grid.Row="3" Margin="0 10 0 30">
@@ -144,7 +144,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBox Name="tb_paramID" Grid.Column="0" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
-                                         FontSize="13" Margin="0 0 5 0" />
+                                         FontSize="13" Margin="0 0 5 0" Text="{Binding ParamList, UpdateSourceTrigger=PropertyChanged}"/>
 
                                 <Button Background="#ffffff" Grid.Column="1" BorderBrush="#799EFB" Click="btn_SearchParams_click">
                                     <materialDesign:PackIcon Kind="Search" Foreground="#799EFB"/>
@@ -166,7 +166,8 @@
             <!--Interlock Datagrid-->
             <Border Grid.Row="1" Grid.Column="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
                 <DataGrid x:Name="dg_interlock" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="0 50 0 0" FontSize="17" IsReadOnly="True" MouseDoubleClick="dg_interlock_mouseDoubleClick"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="10 50 10 20" FontSize="17" IsReadOnly="True" 
+                          MouseDoubleClick="dg_interlock_mouseDoubleClick" ItemsSource="{Binding InterlockItemsSource}"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                     <DataGrid.Columns>
@@ -184,11 +185,22 @@
                         <DataGridTextColumn Header="아웃 수" Width="auto" Binding="{Binding out_count}"/>
                         <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding recipe}"/>
                         <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding recipe_name}"/>
-                        <DataGridTextColumn Header="LOT ID" Width="auto" Binding="{Binding lot}"/>
                         <DataGridTextColumn Header="CCTV 주소" Width="auto" Binding="{Binding cctv_video_url}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!--GuideBox-->
+                <StackPanel Visibility="{Binding GuideBoxVisibility}" >
+                    <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Foreground="#757A89" HorizontalAlignment="Center" Width="50" Height="50" Margin="10"/>
+                    <TextBlock Text="필터를 선택한 후, Apply 버튼을 눌러주세요." Foreground="#757A89" FontSize="20"/>
+                </StackPanel>
+
+                <!--Loading-->
+                <ProgressBar Visibility="{Binding LoadingVisibility}" Style="{StaticResource MaterialDesignCircularProgressBar}" Width="50" Height="50" IsIndeterminate="true"/>
+            </StackPanel>
         </Grid>
     </Border>
 </Page>

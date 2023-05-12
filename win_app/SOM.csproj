@@ -523,12 +523,16 @@
     <Compile Include="ViewModel\DataViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\InterlockDetailViewModel.cs" />
+    <Compile Include="ViewModel\InterlockViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\RecipeHistoryViewModel.cs" />
     <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\CCTV\CCTVWindow.xaml.cs">
+      <DependentUpon>CCTVWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Equipment\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
     </Compile>
@@ -607,6 +611,10 @@
     <Compile Include="View\Users\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CCTV\CCTVWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Equipment\AddEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
