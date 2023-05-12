@@ -4,13 +4,15 @@ from ..serializers import ParamLogSerializer
 from datetime import datetime
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+
 
 class ParamLogViewSet(viewsets.ModelViewSet):
     serializer_class = ParamLogSerializer
 
     def get_queryset(self):
-        queryset = ParamLog.objects.all()
-
+        queryset = ParamLog.objects.all().order_by('created_at')
         factory_id = self.request.GET.get('factory_id', None)
         equipment_id = self.request.GET.get('equipment_id', None)
         param_id = self.request.GET.get('param_id', None)
@@ -45,6 +47,10 @@ class ParamLogViewSet(viewsets.ModelViewSet):
     @swagger_auto_schema(
         operation_description="Get a list of ParamLog objects filtered by the provided parameters.",
         manual_parameters=[
+            openapi.Parameter('page', openapi.IN_QUERY, type=openapi.TYPE_INTEGER,
+                              description="Page number to retrieve."),
+            openapi.Parameter('page_size', openapi.IN_QUERY, type=openapi.TYPE_INTEGER,
+                              description="Number of objects per page."),
             openapi.Parameter('factory_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
                               description="Comma-separated list of factory IDs to filter by."),
             openapi.Parameter('equipment_id', openapi.IN_QUERY, type=openapi.TYPE_STRING,
@@ -62,4 +68,14 @@ class ParamLogViewSet(viewsets.ModelViewSet):
         ]
     )
     def list(self, request, *args, **kwargs):
-        return super(ParamLogViewSet, self).list(request, *args, **kwargs)
+        queryset = self.filter_queryset(self.get_queryset())
+
+        paginator = PageNumberPagination()
+        page = paginator.paginate_queryset(queryset, request)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+
+        return Response(serializer.data)
