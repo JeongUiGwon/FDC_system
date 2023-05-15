@@ -183,25 +183,45 @@
                                     <TextBlock Text="표" HorizontalAlignment="Left"/>
                                 </StackPanel>
                             </TabItem.Header>
-                            
-                            <!--Data Datagrid-->
-                            <DataGrid x:Name="dg_equipmentData" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+
+                            <Grid>
+                                
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10">
+                                    <!--CSV Button-->
+                                    <Button x:Name="Btn_csv" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_exportCSV_Click" Grid.Row="0" Margin="0 0 10 0">
+                                        <Border CornerRadius="10 10 10 10" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Icon:PackIconMaterial Kind="Export" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                                <TextBlock Text="CSV" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Button>
+                                </StackPanel>
+
+                                <!--Data Datagrid-->
+                                <DataGrid x:Name="dg_equipmentData" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1" Margin="0 10 0 0" ItemsSource="{Binding EquipmentData}"
                                   CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
-                                    <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
-                                    <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
-                                    <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
-                                    <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
-                                    <DataGridTextColumn Header="레시피명" Width="*" Binding="{Binding recipe_name}"/>
-                                    <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
-                                    <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
-                                    <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
-                                    <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
+                                        <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
+                                        <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
+                                        <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
+                                        <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
+                                        <DataGridTextColumn Header="레시피명" Width="*" Binding="{Binding recipe_name}"/>
+                                        <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
+                                        <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
+                                        <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
+                                        <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
 
                         </TabItem>
 

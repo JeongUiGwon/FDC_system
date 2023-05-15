@@ -22,6 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using SOM.Utils;
 
 namespace SOM.View.Interlock
 {
@@ -102,6 +103,11 @@ namespace SOM.View.Interlock
                 modal.DataContext = dataContext;
                 modal.Show();
             }
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_interlock);
         }
     }
 }

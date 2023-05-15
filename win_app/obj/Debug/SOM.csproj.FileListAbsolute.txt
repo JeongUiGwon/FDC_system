@@ -850,3 +850,7 @@ C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\CCTV\CCTVWindow.g.
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\CCTV\CCTVWindow.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AutoRangePage.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AutoRangePage.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AutoRangePage.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\CCTV\CCTVWindow.g.cs
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AutoRangePage.baml
+C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\CCTV\CCTVWindow.baml

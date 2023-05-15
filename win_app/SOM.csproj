@@ -519,6 +519,7 @@
     <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="Services\PostRecipeHistory.cs" />
     <Compile Include="Utils\EmailValidator.cs" />
+    <Compile Include="Utils\ExportFile.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\DataViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />

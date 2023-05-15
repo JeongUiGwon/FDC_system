@@ -46,8 +46,13 @@
                         <RowDefinition Height="*" MaxHeight="900"/>
                     </Grid.RowDefinitions>
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
                     <!--Left Section-->
-                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
                         
                         <!--Search Bar-->
                         <StackPanel Orientation="Horizontal">
@@ -93,7 +98,17 @@
                     </StackPanel>
 
                     <!--Right Section-->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0" Grid.Column="1">
+
+                        <!--CSV Button-->
+                        <Button x:Name="Btn_csv" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_exportCSV_Click" Grid.Row="0" Margin="0 0 10 0">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Export" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="CSV" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
 
                         <!--History Button-->
                         <Button Name="Btn_history" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Click="Btn_history_Click" Margin="0 0 10 0">
@@ -119,9 +134,9 @@
                     
 
                     <!--Param Datagrid-->
-                    <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" 
+                    <DataGrid x:Name="dg_params" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" 
                               CanUserAddRows="False" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" 
-                              ItemsSource="{Binding FilteredParams}" Margin="10 0" Grid.Row="1"
+                              ItemsSource="{Binding FilteredParams}" Margin="10 0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                               CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
