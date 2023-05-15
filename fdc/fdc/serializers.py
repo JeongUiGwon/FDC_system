@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Equipment, Param, Recipe, LotLog, EquipmentState, ParamLog, InterlockLog, ParamHistory, RecipeHistory
+from .models import Equipment, Param, Recipe, LotLog, EquipmentState, ParamLog, InterlockLog, ParamHistory, \
+    RecipeHistory, AutoRange
 
 class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -53,6 +54,8 @@ class ParamLogSerializer(serializers.ModelSerializer):
 class InterlockLogSerializer(serializers.ModelSerializer):
     param_name = serializers.StringRelatedField(source='param.param_name')
     recipe_name = serializers.StringRelatedField(source='recipe.recipe_name')
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    cause_equip_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
 
     class Meta:
         model = InterlockLog
@@ -78,7 +81,14 @@ class ParamHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['param_name']
 
+
 class RecipeHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = RecipeHistory
+        fields = '__all__'
+
+
+class AutoRangeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AutoRange
         fields = '__all__'
