@@ -1,16 +1,8 @@
-﻿using Microsoft.Win32;
-using SOM.Model;
+﻿using SOM.Model;
 using SOM.Services;
 using SOM.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace SOM.View.Equipment
 {

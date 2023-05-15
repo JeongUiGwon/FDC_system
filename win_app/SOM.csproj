@@ -482,6 +482,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CartesianChartModel.cs" />
     <Compile Include="Model\ChatbotModel.cs" />
     <Compile Include="Model\ChatModel.cs" />
@@ -615,6 +618,10 @@
     <Compile Include="View\Users\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AutoRange\AutoRangePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
