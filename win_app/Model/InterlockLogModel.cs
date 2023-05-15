@@ -25,11 +25,10 @@ namespace SOM.Model
         public string param_name { get; set; }
         public string recipe { get; set; }
         public string recipe_name { get; set; }
-        public string lot { get; set; }
 
         public InterlockLogModel(int log_id, string factory_id, string equipment_name, string cause_equip_id, string cause_equip_name, string interlock_type, 
             int out_count, float lower_limit, float upper_limit, float data_value, string cctv_video_url, string equipment, string param, string param_name, string recipe, string recipe_name,
-            string lot, DateTime created_at)
+            DateTime created_at)
         {
             this.log_id = log_id;
             this.factory_id = factory_id;
@@ -48,7 +47,6 @@ namespace SOM.Model
             this.param_name = param_name;
             this.recipe = recipe;
             this.recipe_name = recipe_name;
-            this.lot = lot;
         }
     }
 }

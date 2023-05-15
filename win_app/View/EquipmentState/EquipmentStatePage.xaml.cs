@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOM.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace SOM.View.EquipmentState
         public EquipmentStatePage()
         {
             InitializeComponent();
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_equipmentState);
         }
     }
 }

@@ -38,6 +38,17 @@ namespace SOM.ViewModel
             }
         }
 
+        private ObservableCollection<ParamLogModel> _equipmentData;
+        public ObservableCollection<ParamLogModel> EquipmentData
+        {
+            get { return _equipmentData; }
+            set
+            {
+                _equipmentData = value;
+                OnPropertyChanged(nameof(EquipmentData));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName = null)

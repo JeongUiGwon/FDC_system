@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SOM.Model;
 using SOM.Services;
+using SOM.Utils;
 using SOM.View.Param;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,11 @@ namespace SOM.View.Data
             {
                 tb_paramID.Text = modal.Result.ToString();
             }
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_equipmentData);
         }
     }
 }

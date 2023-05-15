@@ -1,5 +1,6 @@
 ﻿using SOM.Model;
 using SOM.Services;
+using SOM.Utils;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -69,6 +70,11 @@ namespace SOM.View.Equipment
                 await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
                 NavigationService.Refresh();
             }
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_equipments);
         }
     }
 }
