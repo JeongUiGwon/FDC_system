@@ -183,7 +183,7 @@ namespace SOM.ViewModel
 
             HttpResponseMessage response_getInterlock = await GetInterlockLog.GetInterlockLogAsync(start_date: startDate, end_date: endDate);
 
-            if (response_getInterlock.IsSuccessStatusCode)
+            if (response_getInterlock != null && response_getInterlock.IsSuccessStatusCode)
             {
 
                 string str_content = await response_getInterlock.Content.ReadAsStringAsync();
@@ -211,6 +211,10 @@ namespace SOM.ViewModel
                     values.Add(count.Value);
                     ChartLabels.Add(count.Key.ToString("yyyy-MM-dd"));
                 }
+            }
+            else
+            {
+                return;
             }
 
 
