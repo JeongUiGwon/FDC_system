@@ -32,7 +32,7 @@ class ParamLogViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(param__param_id__in=param_id_list)
         if recipe_id:
             recipe_id_list = recipe_id.split(',')
-            queryset = queryset.filter(recipe__recipe_id__icontains=recipe_id_list)
+            queryset = queryset.filter(recipe__recipe_id__in=recipe_id_list)
         if lot_id:
             lot_id_list = lot_id.split(',')
             queryset = queryset.filter(lot__lot_id__in=lot_id_list)
