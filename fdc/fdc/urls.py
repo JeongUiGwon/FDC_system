@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import equipment, param, recipe, lot_log, equipment_state, param_log, interlock_log, param_history, \
     recipe_history
 from .views import chatbot
-
+from .views import auto_range
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework.permissions import AllowAny
@@ -28,6 +28,7 @@ router.register(r'param_log', param_log.ParamLogViewSet, basename='param_log')
 router.register(r'interlock_log', interlock_log.InterlockLogViewSet, basename='interlock_log')
 router.register(r'param_history', param_history.ParamHistoryViewSet, basename='param_history')
 router.register(r'recipe_history', recipe_history.RecipeHistoryViewSet, basename='recipe_history')
+router.register(r'autorange', auto_range.AutoRangeViewSet, basename='auto_range')
 
 
 
@@ -35,6 +36,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('chatbot/', chatbot.chatbot, name='chatbot')
-
+    path('chatbot/', chatbot.chatbot, name='chatbot'),
+    # path('autorange/', auto_range.auto_range, name='autorange')
 ]
