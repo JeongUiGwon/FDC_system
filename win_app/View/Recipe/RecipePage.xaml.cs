@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SOM.Components;
 using SOM.Model;
 using SOM.Services;
 using SOM.Utils;
@@ -85,11 +86,13 @@ namespace SOM.View.Recipe
             RecipeModel dataContext = clickedButton.DataContext as RecipeModel;
             string recipe_id = dataContext.recipe_id;
             string recipe_name = dataContext.recipe_name;
+            var CustomMessageBox = new CustomMessageBox();
+            CustomMessageBoxModel customMessage = new CustomMessageBoxModel("레시피 삭제", "등록된 레시피를 삭제하시겠습니까?");
+            CustomMessageBox.DataContext = customMessage;
 
-            // 삭제 확인 다이얼로그 실행
-            var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            CustomMessageBox.ShowDialog();
 
-            if (result == MessageBoxResult.Yes)
+            if (CustomMessageBox.Result == "OK")
             {
                 // 레시피 삭제 이력 기록 API 호출
                 string str_recipeModel = JsonConvert.SerializeObject(dataContext);
