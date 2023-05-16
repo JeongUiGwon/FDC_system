@@ -2,11 +2,9 @@ from langchain import OpenAI, SQLDatabase
 from langchain.chains import SQLDatabaseSequentialChain
 from django.http import JsonResponse
 import os
-import sys
 import urllib.request
 import json
 
-# import urllib
 
 os.environ["OPENAI_API_KEY"] = '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'
 API_KEY = os.getenv('OPENAI_API_KEY')
@@ -45,7 +43,6 @@ def chatbot(request):
         "postgresql://cms:1234@k8a201.p.ssafy.io:5432/fdc",
         include_tables=['equipment', 'recipe', 'param', 'param_log', 'interlock_log', 'param_history',
                         'recipe_history'],
-        # include_tables= ['param_log'],
         sample_rows_in_table_info=2
     )
 

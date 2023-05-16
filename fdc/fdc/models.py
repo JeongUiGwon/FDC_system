@@ -162,15 +162,16 @@ class ParamLog(models.Model):
     log_id = models.AutoField(primary_key=True)
     factory_id = models.CharField(max_length=10, default='KOR')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
-    param = models.ForeignKey(Param, on_delete=models.CASCADE)  # TODO cascade 맞나
+    param = models.ForeignKey(Param, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=random_past_datetime)
     param_value = models.FloatField()
-    is_interlock = models.BooleanField()
+    is_interlock = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'param_log'
         managed = False
+
 
 
 class InterlockLog(models.Model):
@@ -193,6 +194,7 @@ class InterlockLog(models.Model):
 
     def save(self, *args, **kwargs):
         if self.equipment:
+            print(f'euqipment: {self.equipment}')
             self.equipment_name = self.equipment.equipment_name
             self.cause_equip_id = self.equipment.equipment_id
             self.cause_equip_name = self.equipment_name
@@ -246,14 +248,19 @@ class RecipeHistory(models.Model):
 
 class AutoRange(models.Model):
     id = models.AutoField(primary_key=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    param = models.OneToOneField(Param, on_delete=models.CASCADE)
     min_range = models.FloatField()
     max_range = models.FloatField()
-    interval = models.IntegerField()
-    range = models.IntegerField()
+    usl_weight = models.FloatField(default=1)
+    lsl_weight = models.FloatField(default=1)
+    interval = models.IntegerField(default=240)
+    range = models.IntegerField(default=360)
     prev_usl = models.FloatField(default=None, null=True)
     prev_lsl = models.FloatField(default=None, null=True)
     type = models.CharField(max_length=20)
+    created_at = models.DateTimeField(default=datetime.now)
+    is_active = models.BooleanField()
+    task_id = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         db_table = 'auto_range'
