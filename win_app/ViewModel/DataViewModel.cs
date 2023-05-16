@@ -302,11 +302,11 @@ namespace SOM.ViewModel
                 };
 
                 ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
-
-                // 안내 문구 숨기기
-                LoadingVisibility = "Hidden";
-                BtnApplyIsEnabled = "True";
             }
+
+            // 안내 문구 숨기기
+            LoadingVisibility = "Hidden";
+            BtnApplyIsEnabled = "True";
         }
 
 
