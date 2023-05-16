@@ -485,9 +485,11 @@
     <Compile Include="Components\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AutoRangeModel.cs" />
     <Compile Include="Model\CartesianChartModel.cs" />
     <Compile Include="Model\ChatbotModel.cs" />
     <Compile Include="Model\ChatModel.cs" />
+    <Compile Include="Model\CustomMessageBoxModel.cs" />
     <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAdminAuth.cs" />
@@ -502,6 +504,7 @@
     <Compile Include="Services\DeleteEquipmentID.cs" />
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\DeleteRecipeID.cs" />
+    <Compile Include="Services\GetAutorange.cs" />
     <Compile Include="Services\GetChatbot.cs" />
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\GetInterlockLog.cs" />
@@ -523,6 +526,7 @@
     <Compile Include="Services\PostRecipeHistory.cs" />
     <Compile Include="Utils\EmailValidator.cs" />
     <Compile Include="Utils\ExportFile.cs" />
+    <Compile Include="ViewModel\AutoRangeViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\DataViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />

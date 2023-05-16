@@ -1,4 +1,5 @@
-﻿using SOM.Model;
+﻿using SOM.Components;
+using SOM.Model;
 using SOM.Services;
 using SOM.Utils;
 using System.Windows;
@@ -61,11 +62,13 @@ namespace SOM.View.Equipment
             Button clickedButton = sender as Button;
             EquipmentsModel equipment = clickedButton.DataContext as EquipmentsModel;
             string equip_id = equipment.equipment_id;
+            var customMessageBox = new CustomMessageBox();
+            CustomMessageBoxModel customMessage = new CustomMessageBoxModel("설비 제거", "등록된 설비 데이터를 삭제하시겠습니까?");
+            customMessageBox.DataContext = customMessage;
 
-            // 삭제 확인 다이얼로그 실행
-            var result = MessageBox.Show("Are you sure you want to remove this equipment information?", "Remove Equipment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            customMessageBox.ShowDialog();
 
-            if (result == MessageBoxResult.Yes)
+            if (customMessageBox.Result == "OK")
             {
                 await DeleteEquipmentID.DeleteEquipmentIDAsync(equip_id);
                 NavigationService.Refresh();
