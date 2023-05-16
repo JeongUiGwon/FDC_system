@@ -54,6 +54,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -70,6 +71,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -85,6 +87,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -100,6 +103,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -115,6 +119,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -130,6 +135,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -145,6 +151,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
@@ -160,10 +167,27 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButtonActive"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
 
             frame.Navigate(new Uri("/View/Profile/ProfilePage.xaml", UriKind.Relative));
+        }
+
+        private void Btn_AutoRange_Click(object sender, RoutedEventArgs e)
+        {
+            Btn_Dashboard.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Equipments.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_EquipmentState.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Params.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButtonActive"] as Style;
+            Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_Users.Style = Application.Current.Resources["menuButton"] as Style;
+
+            frame.Navigate(new Uri("/View/AutoRange/AutoRangePage.xaml", UriKind.Relative));
         }
 
         private void Btn_Users_Click(object sender, RoutedEventArgs e)
@@ -175,6 +199,7 @@ namespace SOM
             Btn_Recipe.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Datas.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Interlock.Style = Application.Current.Resources["menuButton"] as Style;
+            Btn_AutoRange.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Profile.Style = Application.Current.Resources["menuButton"] as Style;
             Btn_Users.Style = Application.Current.Resources["menuButtonActive"] as Style;
 

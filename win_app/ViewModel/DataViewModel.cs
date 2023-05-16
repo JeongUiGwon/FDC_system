@@ -25,7 +25,7 @@ namespace SOM.ViewModel
             ApplyCommand = new RelayCommand(ExecuteApplyCommand);
 
             // 조회시간 초기값 세팅
-            StartDate = DateTime.Now.AddMonths(-3);
+            StartDate = DateTime.Now.AddDays(-1);
             StartTime = DateTime.Now;
             EndtDate = DateTime.Today;
             EndTime = DateTime.Now;
@@ -143,7 +143,7 @@ namespace SOM.ViewModel
                 OnPropertyChanged(nameof(EquipmentData));
             }
         }
-        public ICommand ApplyCommand { get; }
+        public ICommand ApplyCommand { get; private set; }
 
         private ObservableCollection<CartesianChartModel> _chartSeriesCollection;
         public ObservableCollection<CartesianChartModel> ChartSeriesCollection
@@ -153,6 +153,39 @@ namespace SOM.ViewModel
             {
                 _chartSeriesCollection = value;
                 OnPropertyChanged(nameof(ChartSeriesCollection));
+            }
+        }
+
+        private string _guideBoxVisibility = "Visible";
+        public string GuideBoxVisibility
+        {
+            get { return _guideBoxVisibility; }
+            set
+            {
+                _guideBoxVisibility = value;
+                OnPropertyChanged(nameof(GuideBoxVisibility));
+            }
+        }
+
+        private string _loadingVisibility = "Hidden";
+        public string LoadingVisibility
+        {
+            get { return _loadingVisibility; }
+            set
+            {
+                _loadingVisibility = value;
+                OnPropertyChanged(nameof(LoadingVisibility));
+            }
+        }
+
+        private string _btnApplyIsEnabled = "True";
+        public string BtnApplyIsEnabled
+        {
+            get { return _btnApplyIsEnabled; }
+            set
+            {
+                _btnApplyIsEnabled = value;
+                OnPropertyChanged(nameof(BtnApplyIsEnabled));
             }
         }
 
@@ -192,11 +225,15 @@ namespace SOM.ViewModel
         }
 
         private async void ExecuteApplyCommand()
-        {
+        {            
+            BtnApplyIsEnabled = "False";
+            GuideBoxVisibility = "Hidden";
+            LoadingVisibility = "Visible";
+
             var selectedEquipments = FilteredEquipments.Where(el => el.isSelected).ToList();
 
             string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
-            
+
             string startDate = $"{StartDate.ToString("yyyy-MM-dd")} {StartTime.ToString("HH:mm")}";
             string endDate = $"{EndtDate.ToString("yyyy-MM-dd")} {EndTime.ToString("HH:mm")}";
 
@@ -218,13 +255,13 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content)
             {
-                if (paramData.ContainsKey($"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"))
+                if (paramData.ContainsKey($"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"))
                 {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[$"{equipmentData_item.param_name}\t{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
@@ -265,6 +302,10 @@ namespace SOM.ViewModel
                 };
 
                 ChartSeriesCollection.Add(new CartesianChartModel(title, ChartSeries, ChartLabels));
+
+                // 안내 문구 숨기기
+                LoadingVisibility = "Hidden";
+                BtnApplyIsEnabled = "True";
             }
         }
 

@@ -22,6 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using SOM.Utils;
 
 namespace SOM.View.Interlock
 {
@@ -33,36 +34,6 @@ namespace SOM.View.Interlock
         public InterlockPage()
         {
             InitializeComponent();
-
-            // 조회기간 세팅
-            dp_startDate.Text = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
-            tp_startTime.Text = DateTime.Now.ToString("HH:mm");
-            dp_endDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
-            tp_endTime.Text = DateTime.Now.ToString("HH:mm");
-        }
-
-        private async void btn_apply_click(object sender, RoutedEventArgs e)
-        {
-            var equipments = dg_equipment.ItemsSource as ObservableCollection<EquipmentsModel>;
-            var selectedEquipments = equipments.Where(el => el.isSelected).ToList();
-
-            string str_selectedEquipments = string.Join(",", selectedEquipments.Select(el => el.equipment_id));
-
-            string startDate = $"{dp_startDate.Text} {tp_startTime.Text}";
-            string endDate = $"{dp_endDate.Text} {tp_endTime.Text}";
-
-            string str_params = tb_paramID.Text;
-
-            HttpResponseMessage response_getInterlockLog = await GetInterlockLog.GetInterlockLogAsync(str_selectedEquipments, str_params, startDate, endDate);
-            ObservableCollection<InterlockLogModel> content = new ObservableCollection<InterlockLogModel>();
-
-            if (response_getInterlockLog != null && response_getInterlockLog.Content != null)
-            {
-                string str_content = await response_getInterlockLog.Content.ReadAsStringAsync();
-                content = JsonConvert.DeserializeObject<ObservableCollection<InterlockLogModel>>(str_content);
-                dg_interlock.ItemsSource = content;
-            }
-
         }
 
         private void dg_equipment_refresh(object sender, RoutedEventArgs e)
@@ -93,10 +64,10 @@ namespace SOM.View.Interlock
                 dataContext.InterlockData = selectedItem;
 
                 // 조회기간 설정
-                string startDate = selectedItem.created_at.AddMonths(-1).ToString("yyyy-MM-dd HH:mm");
-                string endDate = selectedItem.created_at.AddMonths(1).ToString("yyyy-MM-dd HH:mm");
+                string startDate = selectedItem.created_at.AddHours(-1).ToString("yyyy-MM-dd HH:mm");
+                string endDate = selectedItem.created_at.AddHours(1).ToString("yyyy-MM-dd HH:mm");
 
-                HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(selectedItem.equipment, selectedItem.param, startDate, endDate, recipe_id: selectedItem.recipe);
+                HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(equipment_id:selectedItem.equipment, param_id:selectedItem.param, start_date:startDate, end_date:endDate, recipe_id: selectedItem.recipe);
                 ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
 
                 // 설비 데이터를 DataGrid에 바인딩
@@ -104,6 +75,7 @@ namespace SOM.View.Interlock
                 {
                     string str_content = await response_getParamLog.Content.ReadAsStringAsync();
                     content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
+                    dataContext.EquipmentData = content;
                 }
 
                 string title = selectedItem.param_name;
@@ -131,6 +103,11 @@ namespace SOM.View.Interlock
                 modal.DataContext = dataContext;
                 modal.Show();
             }
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_interlock);
         }
     }
 }

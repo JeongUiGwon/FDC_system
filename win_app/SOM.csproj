@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>preferences_options_settings_setting_icon_250764.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>A4AC8777F04794A714139C46AFF02B7C87CA49D9</ManifestCertificateThumbprint>
@@ -482,13 +482,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CartesianChartModel.cs" />
+    <Compile Include="Model\ChatbotModel.cs" />
+    <Compile Include="Model\ChatModel.cs" />
     <Compile Include="Model\EquipmentsDataModel.cs" />
     <Compile Include="Model\EquipmentsModel.cs" />
     <Compile Include="Model\FirebaseAdminAuth.cs" />
     <Compile Include="Model\FirebaseAuthModel.cs" />
     <Compile Include="Model\InterlockLogModel.cs" />
-    <Compile Include="Model\InterlockModel.cs" />
     <Compile Include="Model\ParamHistoryModel.cs" />
     <Compile Include="Model\ParamLogModel.cs" />
     <Compile Include="Model\ParamsModel.cs" />
@@ -498,6 +502,7 @@
     <Compile Include="Services\DeleteEquipmentID.cs" />
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\DeleteRecipeID.cs" />
+    <Compile Include="Services\GetChatbot.cs" />
     <Compile Include="Services\GetEquipment.cs" />
     <Compile Include="Services\GetInterlockLog.cs" />
     <Compile Include="Services\GetParamHistory.cs" />
@@ -517,16 +522,24 @@
     <Compile Include="Services\PostRecipe.cs" />
     <Compile Include="Services\PostRecipeHistory.cs" />
     <Compile Include="Utils\EmailValidator.cs" />
+    <Compile Include="Utils\ExportFile.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\DataViewModel.cs" />
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\InterlockDetailViewModel.cs" />
+    <Compile Include="ViewModel\InterlockViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\RecipeHistoryViewModel.cs" />
     <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\AutoRange\AutoRangePage.xaml.cs">
+      <DependentUpon>AutoRangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CCTV\CCTVWindow.xaml.cs">
+      <DependentUpon>CCTVWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Equipment\AddEquipmentModal.xaml.cs">
       <DependentUpon>AddEquipmentModal.xaml</DependentUpon>
     </Compile>
@@ -605,6 +618,18 @@
     <Compile Include="View\Users\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AutoRange\AutoRangePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CCTV\CCTVWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Equipment\AddEquipmentModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -766,13 +791,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="preferences_options_settings_setting_icon_250764.ico" />
+    <Resource Include="Resources\preferences_options_settings_setting_icon_250764.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\som_bm.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="som_bm.ico" />
+    <Resource Include="Resources\settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets')" />

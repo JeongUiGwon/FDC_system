@@ -19,6 +19,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Navigation;
 using System.Net;
+using SOM.View.CCTV;
 
 namespace SOM.View.Interlock
 {
@@ -32,26 +33,35 @@ namespace SOM.View.Interlock
             InitializeComponent();
         }
 
-        private void btn_show_click(object sender, RoutedEventArgs e)
-        {
-            //string videoUrl = me_cctv.ToolTip.ToString();
-            string videoUrl = "https://firebasestorage.googleapis.com/v0/b/ssafy-a201.appspot.com/o/HO3IXOQV%2F2023_05_10_11_26.avi?alt=media&token=fe97a14c-cb2b-40e1-a581-4652363d9ae5";
-            string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); ; // 임시 파일 경로
-            string savePath = userPath + @"\Downloads\streaming.avi";
-
-            using (WebClient client = new WebClient())
-            {
-                client.DownloadFile(videoUrl, savePath);
-            }
-
-            me_cctv.Source = new Uri(savePath);
-        }
-
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             string url = e.Uri.AbsoluteUri;
             Process.Start(new ProcessStartInfo(url));
             e.Handled = true;
+        }
+
+        private void Hyperlink_ShowCCTV(object sender, RequestNavigateEventArgs e)
+        {
+            var modal = new CCTVWindow();
+            string videoUrl = e.Uri.AbsoluteUri;
+            string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); ; // 임시 파일 경로
+            string savePath = userPath + @"\Downloads\streaming.avi";
+
+            // CCTV 영상 파일 다운로드
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(videoUrl, savePath);
+                }
+
+                modal.DataContext = savePath;
+                modal.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

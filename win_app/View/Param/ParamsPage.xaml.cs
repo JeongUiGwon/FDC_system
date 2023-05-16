@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
+using SOM.Utils;
 using SOM.View.Equipment;
 using System;
 using System.Collections.Generic;
@@ -108,6 +109,11 @@ namespace SOM.View.Param
 
             string equip_id = Modal.Result;
             Tb_EquipID.Text = equip_id;
+        }
+
+        private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)
+        {
+            ExportFile.ExportCSV(dg_params);
         }
     }
 }
