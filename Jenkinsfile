@@ -1,6 +1,16 @@
 pipeline{
     agent any
     stages {
+        stage('Docker Initial') {
+            steps {
+                sh '''
+                sudo docker stop a201_fdc
+                sudo docker rm a201_fdc
+                sudo docker rmi $(sudo docker images -q)
+                '''
+            }
+        }
+
         stage('Docker build') {
             steps {
                 sh  '''
@@ -17,16 +27,7 @@ pipeline{
                 '''
             }
         }
-
-        stage('Docker Initial') {
-            steps {
-                sh '''
-                sudo docker stop a201_fdc
-                sudo docker rm a201_fdc
-                '''
-            }
-        }
-
+        
         stage('Docker Run') {
             steps {
                 sh '''
