@@ -1,0 +1,139 @@
+﻿<Window x:Class="SOM.View.AutoRange.EditAutoRangeModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:SOM.View.AutoRange"
+        mc:Ignorable="d"
+        Title="EditAutoRangeModal" MinHeight="500" Width="500"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Border Background="#ffffff" CornerRadius="10" BorderBrush="#757A89" BorderThickness="0.5" MouseDown="Border_MouseDown">
+        <StackPanel >
+            <!--Close Button-->
+            <Button VerticalAlignment="Top" Width="50" Height="40" HorizontalAlignment="Right" Margin="0 13 14 0" Content="{materialDesign:PackIcon Kind=Close}" 
+                    Background="Transparent" Foreground="Gray" BorderBrush="Transparent" Cursor="Hand" Click="Btn_Close_Click"/>
+
+            <!--Icon-->
+            <fa:IconImage Icon="Autoprefixer" HorizontalAlignment="Left" Width="80" Height="80" Foreground="#799EFB" Margin="30 0 0 0"/>
+
+            <!--Title-->
+            <TextBlock Text="Auto Range 편집" FontWeight="DemiBold" FontSize="20" Margin="30 20 0 0" Foreground="#444C66"/>
+
+            <!--Details-->
+            <TextBlock Text="Auto Range 정보를 변경하세요." FontSize="13" Foreground="#757A89" Margin="30 10 0 0"/>
+
+            <!--Contents-->
+            <Grid Margin="30 50 30 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Sigma(-) Box-->
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Sigma (-)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
+                    <TextBox Name="Tb_SigamMinus" Text="{Binding min_range}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="0 0 5 0"/>
+                </StackPanel>
+
+                <!--Sigma(+) Box-->
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="Sigma (+)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 0 0 5"/>
+                    <TextBox Name="Tb_SigamPlus" Text="{Binding max_range}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="5 0 0 0"/>
+                </StackPanel>
+
+                <!--Auto Range Type Box-->
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="AUto Range Type" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <ComboBox Name="Cb_AutoRangeType" FontSize="13" Margin="0 0 5 0" Text="{Binding type}">
+                        <ComboBoxItem IsSelected="True">sigma</ComboBoxItem>
+                        <ComboBoxItem>percent</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+                <!--param ID Box-->
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="항목 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
+                    <TextBox Name="Tb_ParamID" Grid.Column="0" IsEnabled="False"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="5 0 0 0" Text="{Binding param}"/>
+                </StackPanel>
+
+                <!--Min Range(-) Box-->
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Min Range (-)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <TextBox Name="Tb_MinRange" Text="{Binding min_value}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="0 0 5 0"/>
+                </StackPanel>
+
+                <!--Max Range(+) Box-->
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="Max Range (+)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
+                    <TextBox Name="Tb_MaxRange" Text="{Binding max_value}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="5 0 0 0"/>
+                </StackPanel>
+
+                <!--Cal Range Box-->
+                <StackPanel Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="계산 기간(h)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <TextBox Name="Tb_CalRange" Text="{Binding range}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="0 0 5 0"/>
+                </StackPanel>
+
+                <!--Max Range(+) Box-->
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="계산 주기(h)" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="5 20 0 5"/>
+                    <TextBox Name="Tb_CalInterval" Text="{Binding interval}"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
+                         materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
+                         FontSize="13" Margin="5 0 0 0"/>
+                </StackPanel>
+
+                <!--Auto Range Use Box-->
+                <StackPanel Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 20 0 5"/>
+                    <ComboBox Name="Cb_AutoRangeUse" FontSize="13" Margin="0 0 5 0" Text="{Binding is_active}">
+                        <ComboBoxItem IsSelected="True">true</ComboBoxItem>
+                        <ComboBoxItem>false</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Border Name="Bdr_ErrorBox" Margin="30 20 30 0" Background="#fbeae5" CornerRadius="3" BorderBrush="#ff4200" BorderThickness="1">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Error" Width="25" Height="25" VerticalAlignment="Center" Foreground="#ff4200" Margin="10 0 0 0"/>
+                    <TextBlock Text="Error :" FontWeight="DemiBold" Foreground="#ff4200" Margin="10 10 5 10" />
+                    <TextBlock Name="Tb_ErrorMsg" Text="error message" Foreground="#ff4200" Margin="0 10"/>
+                </StackPanel>
+            </Border>
+
+            <Button Name="Btn_Save" Content="저장" HorizontalAlignment="Right" Margin="0 20 30 20" Background="#2f49cf" Click="Btn_Save_Click"/>
+        </StackPanel>
+    </Border>
+</Window>

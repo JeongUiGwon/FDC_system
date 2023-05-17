@@ -16,7 +16,7 @@ namespace SOM.ViewModel
     {
         public AutoRangeViewModel()
         {
-
+            SetAutoRange();
         }
 
         private ObservableCollection<AutoRangeModel> _autoRange;

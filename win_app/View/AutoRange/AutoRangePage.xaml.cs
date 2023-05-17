@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOM.View.Equipment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace SOM.View.AutoRange
         public AutoRangePage()
         {
             InitializeComponent();
+        }
+
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            var addModal = new AddAutoRangeModal();
+            addModal.ShowDialog();
+            NavigationService.Refresh();
         }
     }
 }

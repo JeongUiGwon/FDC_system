@@ -516,9 +516,11 @@
     <Compile Include="Services\GetRecipeHistory.cs" />
     <Compile Include="Services\GetRecipeID.cs" />
     <Compile Include="Services\HttpClientSingleton.cs" />
+    <Compile Include="Services\PatchAutorange.cs" />
     <Compile Include="Services\PatchEquipmentID.cs" />
     <Compile Include="Services\PatchParamID.cs" />
     <Compile Include="Services\PatchRecipeID.cs" />
+    <Compile Include="Services\PostAutornage.cs" />
     <Compile Include="Services\PostEquipment.cs" />
     <Compile Include="Services\PostParam.cs" />
     <Compile Include="Services\PostParamHistory.cs" />
@@ -538,8 +540,14 @@
     <Compile Include="ViewModel\RecipeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\AutoRange\AddAutoRangeModal.xaml.cs">
+      <DependentUpon>AddAutoRangeModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AutoRange\AutoRangePage.xaml.cs">
       <DependentUpon>AutoRangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AutoRange\EditAutoRangeModal.xaml.cs">
+      <DependentUpon>EditAutoRangeModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CCTV\CCTVWindow.xaml.cs">
       <DependentUpon>CCTVWindow.xaml</DependentUpon>
@@ -626,7 +634,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AutoRange\AddAutoRangeModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AutoRange\AutoRangePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AutoRange\EditAutoRangeModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

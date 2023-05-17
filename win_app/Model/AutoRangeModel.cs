@@ -11,8 +11,8 @@ namespace SOM.Model
         public float max_value { get; set; }
         public int interval { get; set; }
         public int range { get; set; }
-        public float prev_usl { get; set; }
-        public float prev_lsl { get; set; }
+        public Nullable<float> prev_usl { get; set; }
+        public Nullable<float> prev_lsl { get; set; }
         public string type { get; set; }
 
         public DateTime created_at { get; set; }

@@ -856,3 +856,7 @@ C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AutoRang
 C:\Users\jek94\Desktop\A201\S08P31A201\win_app\obj\Debug\View\CCTV\CCTVWindow.baml
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\Components\CustomMessageBox.g.cs
 C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\Components\CustomMessageBox.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AddAutoRangeModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\AddAutoRangeModal.baml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\EditAutoRangeModal.g.cs
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\View\AutoRange\EditAutoRangeModal.baml
