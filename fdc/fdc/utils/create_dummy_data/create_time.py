@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 import random
+
 def random_past_datetime():
-    past_time = datetime.now() - timedelta(days=random.randint(0, 150),
+    past_time = datetime.now() - timedelta(days=random.randint(0, 365),
                                            hours=random.randint(0, 23),
                                            minutes=random.randint(0, 59),
                                            seconds=random.randint(0, 59))
