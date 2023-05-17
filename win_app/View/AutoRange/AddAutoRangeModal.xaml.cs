@@ -53,7 +53,9 @@ namespace SOM.View.AutoRange
             float maxRange = float.Parse(Tb_MaxRange.Text);
             int range = int.Parse(Tb_CalRange.Text);
             int interval = int.Parse(Tb_CalInterval.Text);
-            string is_activate = Cb_AutoRangeUse.Text;
+            string str_is_activate = Cb_AutoRangeUse.Text;
+            string is_activate = "false";
+            if (str_is_activate == "True") is_activate = "true";
 
             // Post Equipment 실행
             HttpResponseMessage response = await PostAutornage.PostAutorangeAsync(sigmaMinus, sigmaPlus, minRange, maxRange, interval, range, autoRangeType, is_activate, paramID);

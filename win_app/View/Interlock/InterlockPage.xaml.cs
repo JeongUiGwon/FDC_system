@@ -54,55 +54,54 @@ namespace SOM.View.Interlock
 
         private async void dg_interlock_mouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            if (dg_interlock.SelectedItem != null)
+            if (dg_interlock.SelectedItem == null) return;
+
+            var modal = new InterlockDetailModal();
+            InterlockDetailViewModel dataContext = new InterlockDetailViewModel();
+            var selectedItem = dg_interlock.SelectedItem as InterlockLogModel;
+
+            // Interlock 데이터 저장
+            dataContext.InterlockData = selectedItem;
+
+            // 조회기간 설정
+            string startDate = selectedItem.created_at.AddHours(-1).ToString("yyyy-MM-dd HH:mm");
+            string endDate = selectedItem.created_at.AddHours(1).ToString("yyyy-MM-dd HH:mm");
+
+            HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(equipment_id:selectedItem.equipment, param_id:selectedItem.param, start_date:startDate, end_date:endDate, recipe_id: selectedItem.recipe);
+            ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
+
+            // 설비 데이터를 DataGrid에 바인딩
+            if (response_getParamLog != null && response_getParamLog.Content != null)
             {
-                var modal = new InterlockDetailModal();
-                InterlockDetailViewModel dataContext = new InterlockDetailViewModel();
-                var selectedItem = dg_interlock.SelectedItem as InterlockLogModel;
-
-                // Interlock 데이터 저장
-                dataContext.InterlockData = selectedItem;
-
-                // 조회기간 설정
-                string startDate = selectedItem.created_at.AddHours(-1).ToString("yyyy-MM-dd HH:mm");
-                string endDate = selectedItem.created_at.AddHours(1).ToString("yyyy-MM-dd HH:mm");
-
-                HttpResponseMessage response_getParamLog = await GetParamLog.GetParamLogAsync(equipment_id:selectedItem.equipment, param_id:selectedItem.param, start_date:startDate, end_date:endDate, recipe_id: selectedItem.recipe);
-                ObservableCollection<ParamLogModel> content = new ObservableCollection<ParamLogModel>();
-
-                // 설비 데이터를 DataGrid에 바인딩
-                if (response_getParamLog != null && response_getParamLog.Content != null)
-                {
-                    string str_content = await response_getParamLog.Content.ReadAsStringAsync();
-                    content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
-                    dataContext.EquipmentData = content;
-                }
-
-                string title = selectedItem.param_name;
-                ChartValues<float> ChartData = new ChartValues<float>();
-                List<string> ChartLabels = new List<string>();
-
-                foreach (var paramLog in content)
-                {
-                    long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
-                    ChartData.Add(paramLog.param_value);
-                    ChartLabels.Add(paramLog.created_at.ToString());
-                }
-
-                SeriesCollection ChartSeries = new SeriesCollection
-                {
-                    new LineSeries
-                    {
-                        Title = title,
-                        Values = ChartData
-                    }
-                };
-
-                dataContext.ChartSeriesCollection = new CartesianChartModel(title, ChartSeries, ChartLabels);
-
-                modal.DataContext = dataContext;
-                modal.Show();
+                string str_content = await response_getParamLog.Content.ReadAsStringAsync();
+                content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
+                dataContext.EquipmentData = content;
             }
+
+            string title = selectedItem.param_name;
+            ChartValues<float> ChartData = new ChartValues<float>();
+            List<string> ChartLabels = new List<string>();
+
+            foreach (var paramLog in content)
+            {
+                long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
+                ChartData.Add(paramLog.param_value);
+                ChartLabels.Add(paramLog.created_at.ToString());
+            }
+
+            SeriesCollection ChartSeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = title,
+                    Values = ChartData
+                }
+            };
+
+            dataContext.ChartSeriesCollection = new CartesianChartModel(title, ChartSeries, ChartLabels);
+
+            modal.DataContext = dataContext;
+            modal.Show();
         }
 
         private void Btn_exportCSV_Click(object sender, RoutedEventArgs e)

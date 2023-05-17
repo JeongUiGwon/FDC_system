@@ -41,6 +41,42 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _searchTerm;
+        public string SearchTerm
+        {
+            get { return _searchTerm; }
+            set
+            {
+                _searchTerm = value;
+                OnPropertyChanged(nameof(SearchTerm));
+                FilterAutoRange();
+            }
+        }
+
+        private string _searchAutoRangeType;
+        public string SearchAutoRangeType
+        {
+            get { return _searchAutoRangeType; }
+            set
+            {
+                _searchAutoRangeType = value;
+                OnPropertyChanged(nameof(SearchAutoRangeType));
+                FilterAutoRange();
+            }
+        }
+
+        private string _searchAutoRangeUse;
+        public string SearchAutoRangeUse
+        {
+            get { return _searchAutoRangeUse; }
+            set
+            {
+                _searchAutoRangeUse = value;
+                OnPropertyChanged(nameof(SearchAutoRangeUse));
+                FilterAutoRange();
+            }
+        }
+
         private async void SetAutoRange()
         {
             HttpResponseMessage response = await GetAutorange.GetAutorangeAsync();
@@ -51,10 +87,38 @@ namespace SOM.ViewModel
                 string str_content = await response.Content.ReadAsStringAsync();
                 content = JsonConvert.DeserializeObject<ObservableCollection<AutoRangeModel>>(str_content);
                 AutoRange = new ObservableCollection<AutoRangeModel>(content);
-                //FilterEquipments();
+                FilterAutoRange();
             }
         }
 
+        private void FilterAutoRange()
+        {
+            if (AutoRange != null && AutoRange.Any())
+            {
+                FilteredAutoRange = new ObservableCollection<AutoRangeModel>(AutoRange);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredAutoRange = new ObservableCollection<AutoRangeModel>(FilteredAutoRange.Where(e => e.param.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchAutoRangeType) && SearchAutoRangeType != "All")
+                {
+                    FilteredAutoRange = new ObservableCollection<AutoRangeModel>(FilteredAutoRange.Where(e => e.type.Equals(SearchAutoRangeType)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchAutoRangeUse) && SearchAutoRangeUse != "All")
+                {
+                    bool bool_is_active = false;
+                    if (SearchAutoRangeUse == "True") bool_is_active = true;
+                    FilteredAutoRange = new ObservableCollection<AutoRangeModel>(FilteredAutoRange.Where(e => e.is_active.Equals(bool_is_active)));
+                }
+            }
+            else
+            {
+                FilteredAutoRange = AutoRange;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -22,6 +22,8 @@ namespace SOM.Model
         public string equipment { get; set; }
         public string param { get; set; }
 
+        public RecipeModel() { }
+
         public RecipeModel(string recipe_id, string recipe_name, float lsl, float usl, string lsl_interlock_action, string usl_interlock_action, string recipe_use, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at, string equipment, string param)
         {
             this.recipe_id = recipe_id;

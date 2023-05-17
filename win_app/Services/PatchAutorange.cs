@@ -10,11 +10,14 @@ namespace SOM.Services
 {
     public class PatchAutorange
     {
-        public async static Task<HttpResponseMessage> PatchAutorangeAsync(int autorange_id, float min_range, float max_range, float min_value, float max_value, int interval, int range, string type, string is_active)
+        public async static Task<HttpResponseMessage> PatchAutorangeAsync(int autorange_id, float min_range, float max_range, float min_value, float max_value, int interval, int range, string type, bool is_active)
         {
+            string str_is_activate = "false";
+            if (is_active) str_is_activate = "true";
+
             HttpClient client = HttpClientSingleton.client;
             string jsonData = $"{{ \"min_range\": {min_range}, \"max_range\": {max_range}, \"min_value\": {min_value}, \"max_value\": {max_value}, \"interval\": {interval}, " +
-                $"\"range\": {range}, \"type\": \"{type}\", \"is_active\": {is_active}}}";
+                $"\"range\": {range}, \"type\": \"{type}\", \"is_active\": {str_is_activate}}}";
 
             try
             {

@@ -501,6 +501,7 @@
     <Compile Include="Model\RecipeHistoryModel.cs" />
     <Compile Include="Model\RecipeModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="Services\DeleteAutorangeID.cs" />
     <Compile Include="Services\DeleteEquipmentID.cs" />
     <Compile Include="Services\DeleteParamID.cs" />
     <Compile Include="Services\DeleteRecipeID.cs" />
@@ -542,6 +543,9 @@
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\AutoRange\AddAutoRangeModal.xaml.cs">
       <DependentUpon>AddAutoRangeModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AutoRange\AutoRangeChartModal.xaml.cs">
+      <DependentUpon>AutoRangeChartModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AutoRange\AutoRangePage.xaml.cs">
       <DependentUpon>AutoRangePage.xaml</DependentUpon>
@@ -635,6 +639,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AutoRange\AddAutoRangeModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AutoRange\AutoRangeChartModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

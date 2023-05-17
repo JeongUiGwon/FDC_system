@@ -57,15 +57,25 @@
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
                         <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                              BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" Height="30"
-                                 materialDesign:HintAssist.Hint="설비 ID, 설비명 검색" Padding="10 0"/>
+                                 materialDesign:HintAssist.Hint="항목 ID, 항목명 검색" Padding="10 0"/>
+
+                        <!--Search Param Level-->
+                        <StackPanel Orientation="Horizontal" Margin="15 0">
+                            <TextBlock Text="Type" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
+                            <ComboBox Name="Cb_type" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchAutoRangeType, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+                                <ComboBoxItem>sigma</ComboBoxItem>
+                                <ComboBoxItem>percent</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
 
                         <!--Search Param Level-->
                         <StackPanel Orientation="Horizontal" Margin="15 0">
                             <TextBlock Text="사용여부" Foreground="#757A89" FontWeight="DemiBold" FontSize="13" VerticalAlignment="Center"/>
-                            <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchEquipUse, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox Name="Cb_ParamLevel" FontSize="13" Margin="10 0 0 0" Width="100" Text="{Binding SearchAutoRangeUse, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem IsSelected="True">All</ComboBoxItem>
-                                <ComboBoxItem>사용</ComboBoxItem>
-                                <ComboBoxItem>미사용</ComboBoxItem>
+                                <ComboBoxItem>True</ComboBoxItem>
+                                <ComboBoxItem>False</ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
 
@@ -74,7 +84,7 @@
                     <!--Button Section-->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="10">
 
-                        <Button x:Name="Btn_csv" BorderBrush="#2f49cf" Background="#ffffff" Grid.Row="0" Margin="0 0 10 0">
+                        <Button x:Name="Btn_csv" BorderBrush="#2f49cf" Background="#ffffff" Grid.Row="0" Margin="0 0 10 0" Click="Btn_ExportCSV_Click">
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Export" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
@@ -93,10 +103,10 @@
                         </Button>
                     </StackPanel>
 
-                    <!--Equipments Datagrid-->
-                    <DataGrid x:Name="dg_equipments" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                    <!--AutoRange Datagrid-->
+                    <DataGrid x:Name="dg_AutoRange" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding AutoRange}"
+                              ItemsSource="{Binding FilteredAutoRange}" MouseDoubleClick="dg_AutoRange_MouseDoubleClick"
                       CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
                         <DataGrid.Columns>
@@ -114,10 +124,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button x:Name="Btn_Edit" Style="{StaticResource gridEditButton}">
+                                            <Button x:Name="Btn_Edit" Style="{StaticResource gridEditButton}" Click="Btn_Edit_Click">
                                                 <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
-                                            <Button x:Name="Btn_Delete" Style="{StaticResource gridRemoveButton}">
+                                            <Button x:Name="Btn_Delete" Style="{StaticResource gridRemoveButton}" Click="Btn_Delete_Click">
                                                 <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                         </StackPanel>

@@ -19,6 +19,7 @@ namespace SOM.Model
         public string equipment { get; set; }
         public bool is_autorange { get; set; }
 
+        public ParamsModel() { }
         public ParamsModel(string param_id, string equipment, string param_name, string param_level, string param_state, string creator_name, Nullable<DateTime> created_at, string modifier_name, Nullable<DateTime> updated_at)
         {
             this.param_id = param_id;
