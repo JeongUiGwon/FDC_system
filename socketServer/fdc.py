@@ -34,7 +34,6 @@ def FDCServer():
                 client_socket, addr = server_socket.accept()
             print('Join : ', addr)
             # 1024 byte 데이터 수신 대기
-            print("data receiving....")
 
             with mutex:
                 data = client_socket.recv(1024)	
@@ -48,15 +47,9 @@ def FDCServer():
             if (length > 0):
                 print(addr, ' : ', msg)
                 list_data =  msg.split('|')
-                print(list_data)
-                # Data dict 형변환 
-                                    
-                print("list_data count : ", len(list_data))
 
                 for item in list_data:
-                    print("----------------")
-                    print(item)
-                    print("----------------")
+                    
                     json_data = json.loads(item)
                     CheckInterlock(json_data)
                     CheckwithMES(json_data)
@@ -65,24 +58,12 @@ def FDCServer():
                 # Client 에게 메세지 송신 (echo), 수신과 서순 반대
                 msg = "FDC : " + msg
                 msg = msg.encode()
-                # data = json.dumps(data)
                 length = len(msg)
-                # print(data)
 
                 with mutex:
-                    print("send")
+                    # print("send")
                     client_socket.sendall(length.to_bytes(1024, byteorder='little'))		
                     client_socket.sendall(msg)                    
-
-                
-            
-            # elapsed_time = time.time() - last_save_time
-            # if elapsed_time > save_interval:
-            #     print("2번 스레드 동작!!!")
-            #     # 2번 스레드는 intervalSave 함수
-            #     th2 = threading.Thread(target=intervalSave)
-            #     th2.start()
-            #     last_save_time = time.time()
 
         except:	
             print("Exit : " , addr)	
@@ -95,7 +76,6 @@ def FDCServer():
 # interlock 판정
 def CheckInterlock(data):
     global temp
-    # print("checkinterlock data : ", data)
     conn = psycopg2.connect(host='k8a201.p.ssafy.io',
                             database='fdc',
                             user='cms',
@@ -192,8 +172,6 @@ def CheckInterlock(data):
 
 # 기준정보 업데이트
 def CheckwithMES(data):
-    # print("checkwithmes : ", data)
-
     try:
         conn = psycopg2.connect(host='k8a201.p.ssafy.io',
                             database='fdc',
@@ -328,7 +306,6 @@ def MESClient():
                 with mutex:
                     temp_str = json.dumps(temp[0])
                     temp = []
-                # print("temp_str : ", temp_str)
 
                 temp_str = temp_str.encode()
                 length = len(temp_str)
