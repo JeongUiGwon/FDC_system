@@ -17,6 +17,7 @@ class Command(BaseCommand):
     def print_data(self, data, columns):
         for column, value in zip(columns, data):
             pprint.pprint(f'{column}: {value}')
+
     def add_arguments(self, parser):
         parser.add_argument('table_name', type=str, help='Name of the table to generate dummy data for')
         parser.add_argument('num_dummy_data', type=int, help='Number of dummy data to generate', default=1)
@@ -44,10 +45,10 @@ class Command(BaseCommand):
                 hasattr(f, 'has_default') and not f.has_default()) and not f.null or isinstance(f,
                                                                                                 models.DateTimeField)]
 
-        pprint.pprint(f'columns:{columns}')
+        # pprint.pprint(f'columns:{columns}')
         for _ in range(num_dummy_data):
             data = generator()
-            self.print_data(data, columns)
+            # self.print_data(data, columns)
             instance = model_class()
 
             for column, value in zip(columns, data):

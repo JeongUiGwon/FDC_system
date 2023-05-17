@@ -1,11 +1,12 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from ..models import AutoRange, Param, Recipe, ParamLog
+from ..models import AutoRange
 from ..serializers import AutoRangeSerializer
 from datetime import datetime
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from django.db.models import Avg, StdDev
+import json
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
 
 from ..celery import app
 from ..tasks import apply_auto_range_task
@@ -26,10 +27,25 @@ class AutoRangeViewSet(viewsets.ModelViewSet):
 
         if serializer.validated_data.get('is_active'):
             auto_range = AutoRange.objects.get(id=serializer.data['id'])
-            countdown = auto_range.interval * 60 * 60
-            task = apply_auto_range_task.apply_async((auto_range.id,), countdown=countdown)
+            # countdown = auto_range.interval * 60 * 60
+            countdown = 10
+            task = apply_auto_range_task.apply_async((auto_range.id,))
             auto_range.task_id = task.id
             auto_range.save()
+
+            interval, created = IntervalSchedule.objects.get_or_create(
+                every=countdown,
+                period=IntervalSchedule.SECONDS,
+            )
+            print(f'interval {interval}')
+            periodic_task = PeriodicTask.objects.create(
+                name=f"auto_range_task_{auto_range.id}",
+                task="fdc.fdc.apply_auto_range_task",
+                interval=interval,
+                args=json.dumps([auto_range.id])
+            )
+            print(f'periodic_task {periodic_task}')
+            periodic_task.save()
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
@@ -49,9 +65,17 @@ class AutoRangeViewSet(viewsets.ModelViewSet):
 
             # Schedule the new task
             countdown = auto_range.interval * 60 * 60
-            task = apply_auto_range_task.apply_async((auto_range.id,), countdown=countdown)
+            task = apply_auto_range_task.apply_async((auto_range.id,))
             auto_range.task_id = task.id
             auto_range.save()
+
+            periodic_task = PeriodicTask.objects.create(
+                name=f"auto_range_task_{auto_range.id}",
+                task="fdc.fdc.apply_auto_range_task",
+                interval=IntervalSchedule.objects.get(every=countdown, period=IntervalSchedule.SECONDS),
+                args=json.dumps([auto_range.id])
+            )
+            periodic_task.save()
 
         return Response(serializer.data)
 
