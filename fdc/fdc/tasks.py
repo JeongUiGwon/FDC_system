@@ -5,15 +5,16 @@ from .models import AutoRange, Recipe, ParamLog
 
 @shared_task
 def apply_auto_range_task(auto_range_id):
+    print('START apply_auto_range_task..')
     auto_range = AutoRange.objects.get(id=auto_range_id)
     param_id = auto_range.param_id
 
     recipes = Recipe.objects.filter(param__param_id=param_id)
-    print(f'recipes: {recipes}')
+    # print(f'recipes: {recipes}')
     for recipe in recipes:
-        print(f'recipe: {recipe}')
+        # print(f'recipe: {recipe}')
         param_logs = ParamLog.objects.filter(recipe_id=recipe)
-        print(f'param_logs: {param_logs}')
+        # print(f'param_logs: {param_logs}')
 
         # 데이터가 없다면 함수 종료
         if not param_logs.exists():
@@ -24,11 +25,11 @@ def apply_auto_range_task(auto_range_id):
             std_dev = param_logs.aggregate(StdDev('param_value'))['param_value__stddev']
             print(f'mean:{mean}, std_dev: {std_dev}')
             if auto_range.type == 'percent':
-                lower_bound = mean - (mean * auto_range.lsl_weight / 100)
-                upper_bound = mean + (mean * auto_range.usl_weight / 100)
+                lower_bound = mean - (mean * auto_range.min_range / 100)
+                upper_bound = mean + (mean * auto_range.max_range / 100)
             elif auto_range.type == 'sigma':
-                lower_bound = mean - auto_range.lsl_weight * std_dev
-                upper_bound = mean + auto_range.usl_weight * std_dev
+                lower_bound = mean - auto_range.min_range * std_dev
+                upper_bound = mean + auto_range.max_range * std_dev
             else:
                 return
         except Exception as e:
