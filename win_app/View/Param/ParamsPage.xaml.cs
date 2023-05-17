@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SOM.Components;
 using SOM.Model;
 using SOM.Services;
 using SOM.Utils;
@@ -87,12 +88,13 @@ namespace SOM.View.Param
             Button clickedButton = sender as Button;
             ParamsModel dataContext = clickedButton.DataContext as ParamsModel;
             string param_id = dataContext.param_id;
-            string jsonData = JsonConvert.SerializeObject(dataContext);
+            var CustomMessageBox = new CustomMessageBox();
+            CustomMessageBoxModel customMessage = new CustomMessageBoxModel("항목 삭제", "등록된 항목을 삭제하시겠습니까?");
+            CustomMessageBox.DataContext = customMessage;
 
-            // 삭제 확인 다이얼로그 실행
-            var result = MessageBox.Show("Are you sure you want to remove this param information?", "Remove Param", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            CustomMessageBox.ShowDialog();
 
-            if (result == MessageBoxResult.Yes)
+            if (CustomMessageBox.Result== "OK")
             {
                 // Delete Param/param_id API 호출
                 HttpResponseMessage resDelete = await DeleteParamID.DeleteParamIDAsync(param_id);
