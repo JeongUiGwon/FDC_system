@@ -102,10 +102,19 @@
                     </StackPanel>
                 </Button>
 
+                <Separator Height="0.8" Margin="20 10" Background="#ffffff"/>
+                
                 <Button Name="Btn_AutoRange" Style="{StaticResource menuButton}" Click="Btn_AutoRange_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Autoprefixer" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Auto Range" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="Btn_AIAnalysis" Style="{StaticResource menuButton}" Click="Btn_AIAnalysis_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Computer" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="AI 예측" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
