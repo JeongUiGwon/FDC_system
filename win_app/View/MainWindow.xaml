@@ -114,7 +114,7 @@
                 <Button Name="Btn_AIAnalysis" Style="{StaticResource menuButton}" Click="Btn_AIAnalysis_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Computer" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="AI 예측" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="AI 분석" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </Button>
 
