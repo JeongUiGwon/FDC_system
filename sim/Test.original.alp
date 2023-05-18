@@ -107,33 +107,6 @@
 			</ScaleRuler>
 			<CurrentLevel>1682385884287</CurrentLevel>
 			<ConnectionsId>1682385884281</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1682570816121</Id>
-					<Name><![CDATA[AAA]]></Name>
-					<X>50</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<UnitOfValue Class="FlowRateUnits"><![CDATA[CUBIC_METER_PER_SECOND]]></UnitOfValue>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1682570816119</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
 			<Connectors>
 				<Connector>
 					<Id>1682474346514</Id>
@@ -316,9 +289,6 @@
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[arrivalType]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[self.INTERARRIVAL_TIME]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rate]]></Name>
@@ -329,10 +299,6 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[interarrivalTime]]></Name>
-							<Value Class="CodeUnitValue">
-								<Code><![CDATA[1]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[firstArrivalMode]]></Name>
@@ -657,10 +623,18 @@
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[newClient client = new newClient();
-double data = Math.random()*20;
-String tmp = Double.toString(data);
-client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Code>
+								<Code><![CDATA[//System.out.println("place1");
+System.out.println("권취기\n{");
+float anode_data = (float) (Math.random() * 5.0f) + 10.0f; // 양극 극판 길이 범위: 10-15
+float cathode_data = (float) (Math.random() * 5.0f) + 10.0f; // 음극 극판 길이 범위: 10-15
+float acc_data = (float) (Math.random() * 5.0f) + 5.0f; // 권취 가속 범위: 5-10
+float dec_data = (float) (Math.random() * 5.0f) + 5.0f; // 권취 감속 범위: 5-10
+float v_data = (float) (Math.random() * 10.0f) + 20.0f; // 권취 속도 범위: 20-30
+
+
+System.out.println("양극 극판 길이: " + anode_data + ", 음극 극판 길이: " + cathode_data + ",");
+System.out.println("권취 가속: " + acc_data + ", 권취 감속: " + dec_data + ", 권취 속도: " + v_data);
+System.out.println("}");]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -873,7 +847,17 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[System.out.println("place2");]]></Code>
+								<Code><![CDATA[System.out.println("슬리터\n{");
+
+int cnt_data = (int) (Math.random() * 2) + 10; // 개수 범위: 10-11
+float supply_time_data = (float) (Math.random() * 10.0f) + 10.0f; // 오일 공급 시간 범위: 10-20
+float supply_data = (float) (Math.random() * 10.0f) + 20.0f; // 오일 공급량 범위: 20-30
+float a_width_data = (float) (Math.random() * 5.0f) + 10.0f; // a릴 코팅 폭 범위: 10-15
+float b_width_data = (float) (Math.random() * 5.0f) + 10.0f; // b릴 코팅 폭 범위: 10-15
+
+System.out.println("개수: " + cnt_data + ", 오일 공급 시간: " + supply_time_data + ", 오일 공급량: " + supply_data + ",");
+System.out.println("a릴 코팅 폭: " + a_width_data + ", b릴 코팅 폭: " + b_width_data);
+System.out.println("}");]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1019,9 +1003,6 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[System.out.println("1ROT");]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -1133,10 +1114,6 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[initialSpeed]]></Name>
-								<Value Class="CodeUnitValue">
-									<Code><![CDATA[]]></Code>
-									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[acceleration]]></Name>
@@ -1435,17 +1412,9 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[maxSpeed]]></Name>
-								<Value Class="CodeUnitValue">
-									<Code><![CDATA[AAA]]></Code>
-									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[initialSpeed]]></Name>
-								<Value Class="CodeUnitValue">
-									<Code><![CDATA[AAA]]></Code>
-									<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-								</Value>
 							</Parameter>
 							<Parameter>
 								<Name><![CDATA[acceleration]]></Name>
@@ -1622,30 +1591,25 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 					<Width>40</Width>
 					<Height>40</Height>
 				</RectangleWall>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1682571762907</Id>
-					<Name><![CDATA[interlockControl]]></Name>
-					<X>40</X><Y>80</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
+				<RectangleWall>
+					<Id>1682579918646</Id>
+					<Name><![CDATA[wall2]]></Name>
+					<X>130</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[2]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>AAA</Link>
-					</ExtendedProperties>
-				</Control>
+					<Z>0</Z>
+					<LineColor>-3308225</LineColor>
+					<LineWidth>2</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Rotation>0.0</Rotation>
+					<Width>40</Width>
+					<Height>40</Height>
+				</RectangleWall>
 			</Presentation>
 
 				</Level>
@@ -2161,168 +2125,6 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 			</Presentation>
 
 		</ActiveObjectClass>
-		<!--   =========   Active Object Class   ========  -->
-		<ActiveObjectClass>
-			<Id>1682570399139</Id>
-			<Name><![CDATA[MaterialItem]]></Name>
-			<Generic>false</Generic>
-			<GenericParameter>
-				<Id>1682570399145</Id>
-				<Name><![CDATA[1682570399145]]></Name>
-				<GenericParameterValue Class="CodeValue">
-					<Code><![CDATA[T extends Agent]]></Code>
-				</GenericParameterValue>
-				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
-			</GenericParameter>
-			<FlowChartsUsage>MATERIAL_ITEM</FlowChartsUsage>
-			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
-			<MakeDefaultViewArea>true</MakeDefaultViewArea>
-			<SceneGridColor/>
-			<SceneBackgroundColor/>
-			<SceneSkybox>null</SceneSkybox>
-			<AgentProperties>
-				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
-				<RotateAnimationVertically>true</RotateAnimationVertically>
-				<VelocityCode Class="CodeUnitValue">
-					<Code><![CDATA[10]]></Code>
-					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-				</VelocityCode>
-				<PhysicalLength Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalLength>
-				<PhysicalWidth Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalWidth>
-				<PhysicalHeight Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalHeight>
-			</AgentProperties>
-			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
-					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
-			</EnvironmentProperties>
-			<DatasetsCreationProperties>
-				<AutoCreate>true</AutoCreate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1682582400000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</RecurrenceCode>
-			</DatasetsCreationProperties>
-			<ScaleRuler>
-				<Id>1682570399142</Id>
-				<Name><![CDATA[scale]]></Name>
-				<X>0</X><Y>-150</Y>
-				<PublicFlag>false</PublicFlag>
-				<PresentationFlag>false</PresentationFlag>
-				<ShowLabel>false</ShowLabel>
-				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-				<Length>100</Length>
-				<Rotation>0</Rotation>
-				<ScaleType>BASED_ON_LENGTH</ScaleType>
-				<ModelLength>10</ModelLength>
-				<LengthUnits>METER</LengthUnits>
-				<Scale>10</Scale>
-				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
-			</ScaleRuler>
-			<CurrentLevel>1682570399146</CurrentLevel>
-			<ConnectionsId>1682570399140</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1682570399163</Id>
-					<Name><![CDATA[parameter]]></Name>
-					<X>50</X><Y>50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>0</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1682570399140</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
-
-
-			<Presentation>
-				<Level>
-					<Id>1682570399146</Id>
-					<Name><![CDATA[level]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
-
-
-				</Level>
-			</Presentation>
-
-		</ActiveObjectClass>
 	</ActiveObjectClasses>	
 	<DifferentialEquationsMethod>EULER</DifferentialEquationsMethod>
 	<MixedEquationsMethod>RK45_NEWTON</MixedEquationsMethod>
@@ -2408,9 +2210,6 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 			</Presentation>
 
 			<Parameters>			
-				<Parameter>
-					<ParameterName><![CDATA[AAA]]></ParameterName>
-				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -2430,96 +2229,6 @@ client.main(tmp, "9988YSB0", "O4I2WWF2BUKK52U", "SQK24INRJSP2FDFQ322K");]]></Cod
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
-	<JavaClasses>
-		<!--   =========   Java Class   ========  -->
-		<JavaClass>
-			<Id>1682581907721</Id>
-			<Name><![CDATA[newClient]]></Name>
-			<Text><![CDATA[import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Random;
- 
-public class newClient {
-  public static void main(String... args) {
-    // 소켓을 선언한다.
-    try (Socket client = new Socket()) {
-      // 소켓에 접속하기 위한 접속 정보를 선언한다.
-      InetSocketAddress ipep = new InetSocketAddress("k8a201.p.ssafy.io", 8888);
-      // 소켓 접속!
-      client.connect(ipep);
-      // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
-      try (OutputStream sender = client.getOutputStream(); InputStream receiver = client.getInputStream();) {
-        // 메시지는 for 문을 통해 10번 메시지를 전송한다.
-        
-        // 전송할 메시지를 작성한다.
-        // double param_value = 11.121;
-        // String equipment_id = 9988YSB0;
-        // String param_id = O4I2WWF2BUKK52U; // DOWN
-        // String recipe_id = SQK24INRJSP2FDFQ322K;
-
-        // 변수화하기 (함수 호출 시 param으로 전달)
-        double param_value = Double.parseDouble(args[0]);
-        String equipment_id = args[1];
-        String param_id = args[2]; // DOWN
-        String recipe_id = args[3];
-
-        String msg = String.format("{\"param_value\": %f, \"equipment_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\"}", param_value, equipment_id, param_id, recipe_id);
-        // String msg = "{\"equipment_Id\": 1, \"equiptment_Name\": \"권취\", \"equipment_State\": \"RUN\"}";
-        
-        // string을 byte배열 형식으로 변환한다.
-        byte[] data = msg.getBytes("UTF-8");
-        // ByteBuffer를 통해 데이터 길이를 byte형식으로 변환한다.
-        ByteBuffer b = ByteBuffer.allocate(1024);
-        // byte포멧은 little 엔디언이다.
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.putInt(data.length);
-        // 데이터 길이 전송
-        sender.write(b.array(), 0, 1024);
-        // 데이터 전송
-        sender.write(data);
-        
-        data = new byte[1024];
-        // 데이터 길이를 받는다.
-        receiver.read(data, 0, 1024);
-        // ByteBuffer를 통해 little 엔디언 형식으로 데이터 길이를 구한다.
-        ByteBuffer bb = ByteBuffer.wrap(data);
-        bb.order(ByteOrder.LITTLE_ENDIAN);
-        int length = bb.getInt();
-        // 데이터를 받을 버퍼를 선언한다.
-        data = new byte[length];
-        // 데이터를 받는다.
-        receiver.read(data, 0, length);
-        
-        // byte형식의 데이터를 string형식으로 변환한다.
-        msg = new String(data, "UTF-8");
-        // 콘솔에 출력한다.
-        System.out.println(msg);
-      }
-    } catch (Throwable e) {
-      e.printStackTrace();
-    }
-  }
-}]]></Text>
-		</JavaClass>
-	</JavaClasses>
-	<ModelResources>
-		<Resource>
-			<Path><![CDATA[3d/box_1_closed.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
-			<Path><![CDATA[3d/tank_3.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
-			<Path><![CDATA[3d/tank_4.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-	</ModelResources>
     <RequiredLibraryReference>
 		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
 		<VersionMajor>1</VersionMajor>
