@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 // 최초 설비데이터를 보내주는 클라이언트
 
-public class SendThread extends Thread {
+public class PatternDataSendThread extends Thread {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Calendar start_time;
 	private Calendar created_at;
@@ -24,8 +24,9 @@ public class SendThread extends Thread {
 	private float start_value;
 	private float value_term;
 	private int delay_miliseconds;
+	private int onesDigit;
 	
-	public SendThread(String... args) {
+	public PatternDataSendThread(String... args) {
 		if (start_time == null) {
 			start_time = Calendar.getInstance();
 		}
@@ -36,12 +37,15 @@ public class SendThread extends Thread {
 		recipe_id = args[3];
 		cycle_count = Integer.parseInt(args[4]);
 		start_value = Float.parseFloat(args[5]);
-		value_term = Float.parseFloat(args[6]);
+		value_term = Float.parseFloat(args[6]);		
 		Double elaspsed_time = Double.parseDouble(args[7]);
 		
 		delay_miliseconds = (int) (elaspsed_time * 1000);
 		created_at = start_time;
 		created_at.add(Calendar.MILLISECOND, delay_miliseconds);
+		
+		onesDigit = created_at.get(Calendar.MINUTE) % 10;
+
 	}
 
       @Override
@@ -49,7 +53,7 @@ public class SendThread extends Thread {
           try {
                 // 서버 주소와 포트 번호
                 String host = "k8A201.p.ssafy.io";
-                int port = 8888;                
+                int port = 8886;                
                 
                 // 서버 주소와 포트 번호를 지정하여 소켓 생성
                 Socket socket = new Socket(host, port);
@@ -65,19 +69,23 @@ public class SendThread extends Thread {
 				// 현재 시간 string으로 출력
                 String str_created_at = sdf.format(created_at.getTime());
                 
-                float data_value = (float) (Math.random() * value_term) + start_value;
+                float data_value = (float) ((Math.random() * 0.00007) + (onesDigit * 0.025)) + start_value;
                 String str_data_value = Float.toString(data_value);
                 
-                String msg = String.format("{\"created_at\": \"%s\", \"data_value\": %s, \"equipment_id\": \"%s\", \"lot_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\"}", str_created_at, str_data_value, equipment_id, lot_id, param_id, recipe_id);
+                String str_onesDigit = Integer.toString(onesDigit);
+                
+                String msg = String.format("{\"created_at\": \"%s\", \"data_value\": %s, \"equipment_id\": \"%s\", \"lot_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\", \"onesDigit\": \"%s\"}", str_created_at, str_data_value, equipment_id, lot_id, param_id, recipe_id, str_onesDigit);
                 
                 for (int i = 1; i < cycle_count; i++) {
                 	created_at.add(Calendar.MINUTE, 1);
                     str_created_at = sdf.format(created_at.getTime());                	
                 	
-                	data_value = (float) (Math.random() * value_term) + start_value;
+                	data_value = (float) ((Math.random() * 0.00007) + (onesDigit * 0.025)) + start_value;
                 	str_data_value = Float.toString(data_value);
+                	onesDigit = created_at.get(Calendar.MINUTE) % 10;
+                	str_onesDigit = Integer.toString(onesDigit);
                 	
-                	msg += String.format("|{\"created_at\": \"%s\", \"data_value\": %s, \"equipment_id\": \"%s\", \"lot_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\"}", str_created_at, str_data_value, equipment_id, lot_id, param_id, recipe_id);
+                	msg += String.format("|{\"created_at\": \"%s\", \"data_value\": %s, \"equipment_id\": \"%s\", \"lot_id\": \"%s\", \"param_id\": \"%s\", \"recipe_id\": \"%s\", \"onesDigit\": \"%s\"}", str_created_at, str_data_value, equipment_id, lot_id, param_id, recipe_id, str_onesDigit);
                 }
                 
                 System.out.println("send : " + msg);
@@ -111,20 +119,8 @@ public class SendThread extends Thread {
       }
 }
 
-// SIM 포팅 예시 (startup에 time 고정 필요)
-
-/*System.out.println("Mixer Start ,,,");
-SendThread thread1 = new SendThread("HO3IXOQV","1","Z5W9SQOQPQE1G8R","XCIG9G43XIMTLPR2KHHL","1","12.5","0.7", Double.toString(time()));
-thread1.start();*/
-
-/*System.out.println("Coater Start ,,,");
-SendThread thread1 = new SendThread("J74JM4W6","1","QSFGF5OYR80D4XQ","0FE8AAOVSDGKQH6M02QO","1","50.5","8.0", Double.toString(time()));
-thread1.start();*
-
-/*System.out.println("Press Start ,,,");
-SendThread thread1 = new SendThread("RP3A7CWU","1","RJWKR2WUXAB8BBN","N3BDK09OTVKH0D902ZHS","1","10.1","0.7", Double.toString(time()));
-thread1.start();*/
-
-/*System.out.println("Press Start ,,,");
-SendThread thread1 = new SendThread("SJG6EU48","1","D92OOHPQNJU0G4R","ST8B1IMW9J4PKG9LGL4V","1","52.1","2.5", Double.toString(time()));
-thread1.start();*/
+/*
+System.out.println("Full Pattern Data ,,,");
+PatternDataSendThread thread3 = new PatternDataSendThread("TFEISG9E","1","48EKB0UA1VT54ZS","HJ8IJJN2F36HI29PQZHA","1","13.485","0.35", Double.toString(time()));
+thread3.start();
+ */

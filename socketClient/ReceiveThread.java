@@ -85,8 +85,6 @@ public class ReceiveThread {
 	}
 }
 
-// 포팅 예시 (startup에 time 고정 필요)
-
 /*System.out.println("Factory Destory ,,,");
 ReceiveThread thread2 = new ReceiveThread(this);
 thread2.main();*/

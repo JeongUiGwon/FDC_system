@@ -3,11 +3,22 @@ import threading
 import logging
 import time
 import json
-
+from email_sender import EmailSender
 
 mes_port = 8887
 sim_port = 8889
 temp = []
+
+
+def email(msg2):
+    SMTP_SERVER = 'smtp.gmail.com'
+    SMTP_PORT = 465
+    EMAIL_ADDR = 'jek6020@gmail.com'
+    EMAIL_PASSWORD = 'jachapxeyhkzvoch'
+    
+    email_sender = EmailSender(SMTP_SERVER, SMTP_PORT, EMAIL_ADDR, EMAIL_PASSWORD)
+    email_sender.send_email('ksi03525@naver.com', '삼성 SDI 인터락 발생', msg2)
+
 
 def MESServer():
     global temp
@@ -100,6 +111,7 @@ def SIMServer():
 
                 msg2 = "Invalid equipment ID found : " + msg2
                 length = len(msg2.encode())
+                email(msg2)
 
                 with mutex:
                     conn.sendall(length.to_bytes(1024, byteorder='little'))
