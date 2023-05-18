@@ -282,14 +282,21 @@ namespace SOM.ViewModel
                 RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
 
                 SeriesCollection ChartSeries2 = new SeriesCollection();
+                List<long> interlockTime = new List<long>();
+                List<double> interlockValue = new List<double>();
 
                 foreach (var paramLog in paramLogs)
                 {
                     long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
 
-
                     ChartData.Add(paramLog.param_value);
                     ChartLabels.Add(paramLog.created_at.ToString());
+
+                    if (paramLog.is_interlock)
+                    {
+                        interlockTime.Add(timestamp);
+                        interlockValue.Add(paramLog.param_value);
+                    }
                 }
 
                 SeriesCollection ChartSeries = new SeriesCollection

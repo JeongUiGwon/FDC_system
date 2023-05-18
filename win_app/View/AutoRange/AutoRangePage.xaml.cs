@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace SOM.View.AutoRange
@@ -133,22 +134,30 @@ namespace SOM.View.AutoRange
                 new LineSeries
                 {
                     Title = "LSL",
-                    Values = lslData
+                    Values = lslData,
+                    Stroke  = Brushes.Red,
+                    Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Title = "USL",
-                    Values = uslData
+                    Values = uslData,
+                    Stroke  = Brushes.Red,
+                    Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Title = "Previous LSL",
-                    Values = prevLslData
+                    Values = prevLslData,
+                    Stroke  = Brushes.Green,
+                    Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Title = "Previous USL",
-                    Values = prevUslData
+                    Values = prevUslData,
+                    Stroke  = Brushes.Green,
+                    Fill = Brushes.Transparent
                 }
             };
 
