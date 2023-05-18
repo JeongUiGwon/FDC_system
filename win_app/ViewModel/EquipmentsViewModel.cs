@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts.Defaults;
+using LiveCharts;
+using Newtonsoft.Json;
 using SOM.Model;
 using SOM.Services;
 using System;
@@ -8,19 +10,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using LiveCharts.Wpf;
 
 namespace SOM.ViewModel
 {
     public class EquipmentsViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<EquipmentsModel> _equipments;
-
         public EquipmentsViewModel()
         {
             SetEquipments();
         }
 
+        private ObservableCollection<EquipmentsModel> _equipments;
         public ObservableCollection<EquipmentsModel> Equipments
         {
             get { return _equipments; }
@@ -50,7 +53,55 @@ namespace SOM.ViewModel
             {
                 _searchTerm = value;
                 OnPropertyChanged(nameof(SearchTerm));
-                Console.WriteLine("hello");
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipUse;
+        public string SearchEquipUse
+        {
+            get { return _searchEquipUse; }
+            set
+            {
+                _searchEquipUse = value;
+                OnPropertyChanged(nameof(SearchEquipUse));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipState;
+        public string SearchEquipState
+        {
+            get { return _searchEquipState; }
+            set
+            {
+                _searchEquipState = value;
+                OnPropertyChanged(nameof(SearchEquipState));
+                FilterEquipments();
+            }
+        }
+
+        private string _searchEquipMode;
+        public string SearchEquipMode
+        {
+            get { return _searchEquipMode; }
+            set
+            {
+                _searchEquipMode = value;
+                OnPropertyChanged(nameof(SearchEquipMode));
+                FilterEquipments();
+            }
+        }
+
+        private bool _isAllSelected;
+        public bool IsAllSelected
+        {
+            get { return _isAllSelected; }
+            set
+            {
+                _isAllSelected = value;
+                OnPropertyChanged(nameof(IsAllSelected));
+                SelectAllEquipments();
                 FilterEquipments();
             }
         }
@@ -71,13 +122,42 @@ namespace SOM.ViewModel
 
         private void FilterEquipments()
         {
-            if (Equipments != null && Equipments.Any() && !string.IsNullOrWhiteSpace(SearchTerm))
+            if (Equipments != null && Equipments.Any())
             {
-                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments.Where(e => e.equipment_id.Contains(SearchTerm) || e.equipment_name.Contains(SearchTerm)));
+                FilteredEquipments = new ObservableCollection<EquipmentsModel>(Equipments);
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_id.Contains(SearchTerm)
+                    || e.equipment_name.Contains(SearchTerm) || e.interlock_id.Contains(SearchTerm)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipUse) && SearchEquipUse != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_use.Equals(SearchEquipUse)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipState) && SearchEquipState != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_state.Equals(SearchEquipState)));
+                }
+
+                if (!string.IsNullOrWhiteSpace(SearchEquipMode) && SearchEquipMode != "All")
+                {
+                    FilteredEquipments = new ObservableCollection<EquipmentsModel>(FilteredEquipments.Where(e => e.equipment_mode.Equals(SearchEquipMode)));
+                }
             }
             else
             {
                 FilteredEquipments = Equipments;
+            }
+        }
+
+        private void SelectAllEquipments()
+        {
+            foreach (EquipmentsModel equipment in Equipments)
+            {
+                equipment.isSelected = IsAllSelected;
             }
         }
 

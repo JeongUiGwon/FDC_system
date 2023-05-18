@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Equipment, Param, Recipe, LotLog, EquipmentState, ParamLog, InterlockLog, ParamHistory, RecipeHistory
+from .models import Equipment, Param, Recipe, LotLog, EquipmentState, ParamLog, InterlockLog, ParamHistory, \
+    RecipeHistory, AutoRange
 
 class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,19 +8,33 @@ class EquipmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ParamSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+
     class Meta:
         model = Param
         fields = '__all__'
+        extra_fields = ('equipment_name')
+
 
 class RecipeSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+
     class Meta:
         model = Recipe
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name')
+
 
 class LotLogSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+    recipe_name = serializers.CharField(source='recipe.recipe_name', read_only=True)
+
     class Meta:
         model = LotLog
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name', 'recipe_name')
 
 class EquipmentStateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,18 +42,32 @@ class EquipmentStateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ParamLogSerializer(serializers.ModelSerializer):
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    param_name = serializers.CharField(source='param.param_name', read_only=True)
+    recipe_name = serializers.CharField(source='recipe.recipe_name', read_only=True)
+
     class Meta:
         model = ParamLog
         fields = '__all__'
+        extra_fields = ('equipment_name', 'param_name', 'recipe_name')
 
 class InterlockLogSerializer(serializers.ModelSerializer):
+    param_name = serializers.StringRelatedField(source='param.param_name')
+    recipe_name = serializers.StringRelatedField(source='recipe.recipe_name')
+    equipment_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+    cause_equip_name = serializers.CharField(source='equipment.equipment_name', read_only=True)
+
     class Meta:
         model = InterlockLog
-        fields = '__all__'
+        fields = ('log_id', 'factory_id', 'equipment', 'equipment_name', 'cause_equip_id', 'cause_equip_name',
+                  'param', 'param_name', 'recipe', 'recipe_name', 'created_at', 'interlock_type',
+                  'out_count', 'lower_limit', 'upper_limit', 'data_value', 'cctv_video_url')
+
         extra_kwargs = {'equipment_name': {'required': False},
                         'cause_equip_name': {'required': False}}
 
-        read_only_fields = ('equipment_name', 'cause_equip_name')
+        read_only_fields = ('equipment_name', 'cause_equip_name', 'param_name', 'recipe_name')
+
     def create(self, validated_data):
         equipment = Equipment.objects.get(pk=validated_data['equipment_id'].id)
         validated_data['equipment_name'] = equipment.equipment_name
@@ -52,7 +81,14 @@ class ParamHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['param_name']
 
+
 class RecipeHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = RecipeHistory
+        fields = '__all__'
+
+
+class AutoRangeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AutoRange
         fields = '__all__'

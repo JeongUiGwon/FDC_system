@@ -1,0 +1,159 @@
+﻿<Page x:Class="SOM.View.Param.ParamHistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOM.View.Param"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewmodel="clr-namespace:SOM.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" MinHeight="500" MinWidth="700"
+      Title="ParamHistoryPage">
+
+    <Page.DataContext>
+        <viewmodel:ParamHistoryViewModel />
+    </Page.DataContext>
+
+    <!--Main Section-->
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <GradientStop Color="#f0f2f5" Offset="0"/>
+                <GradientStop Color="#f0f2f5" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Title-->
+            <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
+                <TextBlock Text="항목 변경 이력" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </Border>
+
+            <!--Contents-->
+            <Border Grid.Row="1" CornerRadius="20 20 20 20" Margin="10 -40 10 10" Background="#ffffff">
+
+                <Grid Margin="10 35 10 20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*" MaxHeight="1000"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10" Grid.Row="0" VerticalAlignment="Center">
+                        
+                        <!--Search Bar-->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="#757A89" Width="30" Height="30"/>
+                            <TextBox x:Name="SearchBox" materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                             BorderBrush="#757A89" Margin="5 0 0 0" Width="200" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" 
+                                 materialDesign:HintAssist.Hint="Search" Padding="10 0" Height="30"/>
+                        </StackPanel>
+                        
+                        <!--History Button-->
+                        <Button Name="Btn_list" BorderBrush="#2f49cf" Background="#ffffff" Width="auto" Grid.Row="0"
+                            Margin="10 0 0 0" Click="Btn_list_Click" HorizontalAlignment="Left">
+                            <Border CornerRadius="10 10 10 10" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ListStatus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                    <TextBlock Text="리스트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                </StackPanel>
+                            </Border>
+                        </Button>
+
+                    </StackPanel>
+
+                    <!--Equipments Datagrid-->
+                    <DataGrid x:Name="ParamsDatagrid" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" 
+                              CanUserAddRows="False"  ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="2"
+                              ItemsSource="{Binding FilteredParamHistory}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
+                            <DataGridTextColumn Header="액션" Width="auto" Binding="{Binding action}"/>
+                            <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
+                            <DataGridTextColumn Header="항목 이름" Width="auto" Binding="{Binding param_name}"/>
+                            <DataGridTextColumn Header="변경 전" Width="*" Binding="{Binding str_old_value}"/>
+                            <DataGridTextColumn Header="변경 후" Width="*"  Binding="{Binding str_new_value}"/>
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <Grid Background="#eff4fc">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="변경 전" Foreground="#444C66" FontWeight="DemiBold" FontSize="20" Margin="10"/>
+
+                                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="#757A89" BorderThickness="0.5" CornerRadius="5" Margin="10">
+                                        <StackPanel Margin="5">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목등급" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_level}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.param_state}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding old_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="변경 후" Foreground="#444C66" FontWeight="DemiBold" FontSize="20" Margin="10"/>
+
+                                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="#757A89" BorderThickness="0.5" CornerRadius="5" Margin="10">
+                                        <StackPanel Margin="10">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목명" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_name}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="항목등급" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_level}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="사용여부" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.param_state}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="설비 ID" Foreground="#444C66" FontWeight="DemiBold" Width="150"/>
+                                                <TextBlock Text="{Binding new_value.equipment}" Foreground="#757A89"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Page>

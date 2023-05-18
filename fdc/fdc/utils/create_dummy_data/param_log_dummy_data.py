@@ -1,12 +1,14 @@
 import random
-from fdc.models import Equipment, Param, Recipe
-from fdc.utils.create_dummy_data.create_time import random_past_datetime
+from ...models import Equipment, Param, Recipe
+from ...utils.create_dummy_data.create_time import random_past_datetime
 
 def generate_dummy_data_param_log():
-    equipment = random.choice(Equipment.objects.all())
-    param = random.choice(Param.objects.all())
-    recipe = random.choice(Recipe.objects.all())
-    value = round(random.uniform(recipe.lsl, recipe.usl), 6)
+    # recipe = random.choice(Recipe.objects.all())
+    recipe = Recipe.objects.get(pk='HJ8IJJN2F36HI29PQZHA')
+    param = Param.objects.get(pk=recipe.param_id.strip())
+    equipment = Equipment.objects.get(pk=recipe.equipment_id.strip())
+
+    value = round(random.uniform(recipe.lsl + 1, recipe.usl - 1), 6)
 
     create_at = random_past_datetime()
 
