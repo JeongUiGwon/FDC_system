@@ -12,7 +12,7 @@ import os
 
 def record(equip_name, x, y, w, h):
     now = dt.datetime.now()
-    now = now.strftime("%Y_%m_%d_%H_%M_%S")
+    now = now.strftime("%Y_%m_%d_%H_%M")
 
     print(equip_name + " - " + now + '.avi is recording...')
 
@@ -23,7 +23,7 @@ def record(equip_name, x, y, w, h):
     # 저장할 이름 설정 - 단위시간마다 계속 저장할 것이므로 현재시간을 이름으로 가져올 생각
     filename = '{}.avi'.format(now)
     # 저장 경로 설정 - 고정된 경로일 것 같아서 변수화 안해도 될 것이라 생각
-    location = "C:/Users/SSAFY/Desktop/gitlab/자율/CCTV/지옥/"+equip_name
+    location = "./지옥/"+equip_name
     fps = 10.0
     # 융합
     out = cv2.VideoWriter(location+'/'+filename, codec, fps, resolution)
@@ -38,8 +38,8 @@ def record(equip_name, x, y, w, h):
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) 
             out.write(frame) 
             
-            # 현재 시간이 시작시간으로부터 nn초 이상 흘렀거나 q를 누를 시 스샷누적 종료
-            if time.time() - start_time > 10 or cv2.waitKey(1) == ord('q'):
+            # 현재 시간이 시작시간으로부터 nn초 이상 지났을 시 스샷누적 종료
+            if time.time() - start_time > 60:
                 print(equip_name + " - " + now + '.avi is done !')
                 break
     
@@ -68,8 +68,45 @@ def fileUpload(equip_name, file_name, location):
     blob.upload_from_filename(location+'/'+file_name)
 
 
+# def getCCTVUrl(equip_name, timeline):
+#     # 다운로드 URL 생성
+#     bucket = storage.bucket()
+#     # blob = bucket.blob('6272CMK6/2023_05_03_16_04_22.avi')
+#     blob = bucket.blob(f'{equip_name}/{timeline}.avi')
+#     url = blob.generate_signed_url(expiration=dt.timedelta(hours=1)) # 만료 시간 설정 가능
+#     print(url)
+#     return url
+
+
+# def getCCTVUrl(equip_name, timeline):
+#     bucket = storage.bucket()
+#     blobs = bucket.list_blobs(prefix=equip_name)
+
+#     latest_blob = None
+#     latest_time = None
+#     for blob in blobs:
+#         if not latest_time or blob.time_created > latest_time:
+#             latest_blob = blob
+#             latest_time = blob.time_created
+    
+#     if latest_blob:
+#         url = latest_blob.generate_signed_url(expiration=dt.timedelta(hours=12))
+#         return url
+#     else:
+#         print("file empty")
+#         return 
+    
+
+
+def getCCTVUrl(equip_name):
+    now = dt.datetime.now()
+    file_name = now.strftime("%Y_%m_%d_%H_%M")
+    url = f'https://firebasestorage.googleapis.com/v0/b/ssafy-a201.appspot.com/o/{equip_name}%2F{file_name}.avi?alt=media'
+    return url
+
+
 # 인증 정보 (personal key)
-cred = credentials.Certificate("C:/Users/SSAFY/Desktop/gitlab/자율/CCTV/ssafy-a201-firebase.json")
+cred = credentials.Certificate("./ssafy-a201-firebase.json")
 # firebase storage 주소
 app = firebase_admin.initialize_app(cred, {
     'storageBucket': 'ssafy-a201.appspot.com',
@@ -78,11 +115,11 @@ app = firebase_admin.initialize_app(cred, {
 bucket = storage.bucket()
 
 
-thread1 = threading.Thread(target=do_record, args=('설비1', 0, 0, 300, 300))
-thread2 = threading.Thread(target=do_record, args=('설비2', 300, 0, 300, 300))
-thread3 = threading.Thread(target=do_record, args=('설비3', 600, 0, 300, 300))
-thread4 = threading.Thread(target=do_record, args=('설비4', 0, 300, 300, 300))
-thread5 = threading.Thread(target=do_record, args=('설비5', 300, 300, 300, 300))
+thread1 = threading.Thread(target=do_record, args=('HO3IXOQV', 17, 120, 270, 205))
+thread2 = threading.Thread(target=do_record, args=('J74JM4W6', 345, 120, 270, 205))
+thread3 = threading.Thread(target=do_record, args=('RP3A7CWU', 673, 120, 270, 205))
+thread4 = threading.Thread(target=do_record, args=('SJG6EU48', 1001, 120, 270, 205))
+thread5 = threading.Thread(target=do_record, args=('TFEISG9E', 1329, 120, 270, 205))
 
 
 thread1.start()
