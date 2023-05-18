@@ -193,7 +193,7 @@ SSAFY 8기 2학기 삼성 SDI 연계 프로젝트 - 배터리 제조 기술 설�
 
 ### Functions (Backend)
 
-- 임상빈 : Factory - FDC 통신, openCV 영상처리, torch 머신러닝
+- 임상빈 : Factory - FDC 통신, openCV 영상처리, pyTorch 머신러닝
 - 채민기 : MES 구축, SIM - FDC - MES TCP/IP 통신 구현
 
 
