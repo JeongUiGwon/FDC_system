@@ -22,6 +22,7 @@ namespace SOM.Model
 
         public Nullable<DateTime> updated_at { get; set; }
         public string interlock_id { get; set; }
+        public bool isSelected { get; set; }
 
         public EquipmentsModel(string ID, string Name, string equipment_use, string Interlock_ID, string Creator, Nullable<DateTime> Created_at, string Modifier = null, Nullable<DateTime> Updated_at = null) 
         {

@@ -1,18 +1,19 @@
-import string
-
-import mysql.connector
 import random
-from datetime import datetime, timedelta
+from ...models import Equipment, Param, Recipe
+from ...utils.create_dummy_data.create_time import random_past_datetime
 
 def generate_dummy_data_param_log():
-    param_log_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-    param_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-    lot_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-    first_letter = random.choice(['A', 'B', 'C'])
-    rest_letters = random.choice(['1000000', '2000000', '3000000'])
-    equipment_id = first_letter + rest_letters
-    value = random.uniform(0, 100)
-    created_at = datetime.now() - timedelta(days=random.randint(0, 365), hours=random.randint(0, 23), minutes=random.randint(0, 59), seconds=random.randint(0, 59))
-    created_at_str = created_at.strftime('%Y-%m-%d %H:%M:%S')
+    # recipe = random.choice(Recipe.objects.all())
+    recipe = Recipe.objects.get(pk='HJ8IJJN2F36HI29PQZHA')
+    param = Param.objects.get(pk=recipe.param_id.strip())
+    equipment = Equipment.objects.get(pk=recipe.equipment_id.strip())
 
-    return (param_log_id, param_id, lot_id, equipment_id, value, created_at_str)
+    value = round(random.uniform(recipe.lsl + 1, recipe.usl - 1), 6)
+
+    create_at = random_past_datetime()
+
+    return (equipment,
+            param,
+            recipe,
+            create_at,
+            value)

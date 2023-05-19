@@ -1,13 +1,27 @@
-import random, string
-from datetime import datetime, timedelta
+import random
+from ...models import Equipment, Param, Recipe, LotLog
+from ...utils.create_dummy_data.create_time import random_past_datetime, random_future_datetime_from_past
+from datetime import datetime
 
 
-def generate_dummy_data_interlock_log(self):
-    equipment_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-    state = random.choice(['RUN', 'IDLE', 'DOWN'])
-    start_time = datetime.now() - timedelta(days=random.randint(0, 365), hours=random.randint(0, 23), minutes=random.randint(0, 59), seconds=random.randint(0, 59))
-    end_time = start_time + timedelta(hours=random.randint(0, 23), minutes=random.randint(0, 59), seconds=random.randint(0, 59))
-    start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
-    end_time_str = end_time.strftime('%Y-%m-%d %H:%M:%S')
+def generate_dummy_data_interlock_log():
+    # lot = random.choice(LotLog.objects.all())
+    recipe = random.choice(Recipe.objects.all())
+    equipment = Equipment.objects.get(pk=recipe.equipment_id)
+    param = Param.objects.get(pk=recipe.param_id)
+    created_at = datetime.now()
+    interlock_type = recipe.usl_interlock_action
+    out_count = random.choice(['0', '1', '2', '3'])
+    lower_limit = recipe.lsl + 1
+    upper_limit = recipe.usl - 1
+    data_value = random.uniform(lower_limit, upper_limit)
 
-    return (equipment_id, state, start_time_str, end_time_str)
+    return (equipment,
+            param,
+            recipe,
+            created_at,
+            interlock_type,
+            out_count,
+            lower_limit,
+            upper_limit,
+            data_value)

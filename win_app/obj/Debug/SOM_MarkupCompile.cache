@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\obj\Debug\
 SOM
 none
 false
 DEBUG;TRACE
-C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\App.xaml
-24739277818
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\App.xaml
+351745081927
 
-611869956328
-208398466992
-View\Modal\AddEquipmentModal.xaml;View\Modal\SearchEquipmentIDModal.xaml;View\Pages\ChangePasswordPage.xaml;View\Pages\DashboardPage.xaml;View\Pages\DataPage.xaml;View\Pages\EquipmentsPage.xaml;View\ForgotPasswordPage.xaml;View\Pages\InterlockPage.xaml;View\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Modal\AddParamModal.xaml;View\Modal\AddRecipeModal.xaml;View\Modal\EditEquipmentModal.xaml;View\Modal\EditParamModal.xaml;View\Modal\EditRecipeModal.xaml;View\Pages\EquipmentStatePage.xaml;View\Pages\ParamHistoryPage.xaml;View\Pages\ParamsPage.xaml;View\Pages\ProfilePage.xaml;View\Pages\RecipeHistoryPage.xaml;View\Pages\RecipePage.xaml;View\SignUpPage.xaml;View\Pages\UsersPage.xaml;
+97-563296522
+212-353570374
+Components\CustomMessageBox.xaml;View\AIAnalysis\AIAnalysisChartModal.xaml;View\AIAnalysis\AIAnalysisPage.xaml;View\AutoRange\AddAutoRangeModal.xaml;View\AutoRange\AutoRangeChartModal.xaml;View\AutoRange\AutoRangePage.xaml;View\AutoRange\EditAutoRangeModal.xaml;View\CCTV\CCTVWindow.xaml;View\Equipment\AddEquipmentModal.xaml;View\Equipment\SearchEquipmentIDModal.xaml;View\Interlock\InterlockDetailModal.xaml;View\Param\GetParamModal.xaml;View\Param\SearchParamIDModal.xaml;View\Profile\ChangePasswordPage.xaml;View\Dashboard\DashboardPage.xaml;View\Data\DataPage.xaml;View\Equipment\EquipmentsPage.xaml;View\Login\ForgotPasswordPage.xaml;View\Interlock\InterlockPage.xaml;View\Login\LoginPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\Param\AddParamModal.xaml;View\Recipe\AddRecipeModal.xaml;View\Equipment\EditEquipmentModal.xaml;View\Param\EditParamModal.xaml;View\Recipe\EditRecipeModal.xaml;View\EquipmentState\EquipmentStatePage.xaml;View\Param\ParamHistoryPage.xaml;View\Param\ParamsPage.xaml;View\Profile\ProfilePage.xaml;View\Recipe\RecipeHistoryPage.xaml;View\Recipe\RecipePage.xaml;View\Login\SignUpPage.xaml;View\Users\UsersPage.xaml;
 
 False
 
