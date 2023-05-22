@@ -253,15 +253,15 @@ namespace SOM.ViewModel
             // 설비 데이터를 param_id에 따라 분류
             Dictionary<string, List<ParamLogModel>> paramData = new Dictionary<string, List<ParamLogModel>>();
 
-            foreach (ParamLogModel equipmentData_item in content)
+            foreach (ParamLogModel equipmentData_item in content) 
             {
-                if (paramData.ContainsKey($"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"))
+                if (paramData.ContainsKey($"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"))
                 {
-                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[$"{equipmentData_item.param_name}\n{equipmentData_item.equipment_name}"] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 

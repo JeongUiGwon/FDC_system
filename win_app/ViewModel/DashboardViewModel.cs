@@ -224,8 +224,8 @@ namespace SOM.ViewModel
                 {
                     Title = "Interlock",
                     Values = values,
-                    Fill = Brushes.Red
-                }
+                    Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#d84a49")
+        }
             };
 
             Labels = ChartLabels;

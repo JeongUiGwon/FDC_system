@@ -136,6 +136,7 @@ namespace SOM.View.AutoRange
                     Title = "LSL",
                     Values = lslData,
                     Stroke  = Brushes.Red,
+                    PointGeometry = null,
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
@@ -143,20 +144,23 @@ namespace SOM.View.AutoRange
                     Title = "USL",
                     Values = uslData,
                     Stroke  = Brushes.Red,
+                    PointGeometry = null,
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Title = "Previous LSL",
                     Values = prevLslData,
-                    Stroke  = Brushes.Green,
+                    Stroke  = Brushes.Gray,
+                    PointGeometry = null,
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Title = "Previous USL",
                     Values = prevUslData,
-                    Stroke  = Brushes.Green,
+                    Stroke  = Brushes.Gray,
+                    PointGeometry = null,
                     Fill = Brushes.Transparent
                 }
             };

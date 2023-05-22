@@ -80,12 +80,16 @@ namespace SOM.View.Interlock
 
             string title = selectedItem.param_name;
             ChartValues<float> ChartData = new ChartValues<float>();
+            ChartValues<float> uslData = new ChartValues<float>();
+            ChartValues<float> lslData = new ChartValues<float>();
             List<string> ChartLabels = new List<string>();
 
             foreach (var paramLog in content)
             {
                 long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
                 ChartData.Add(paramLog.param_value);
+                uslData.Add(selectedItem.upper_limit);
+                lslData.Add(selectedItem.lower_limit);
                 ChartLabels.Add(paramLog.created_at.ToString());
             }
 
@@ -95,6 +99,22 @@ namespace SOM.View.Interlock
                 {
                     Title = title,
                     Values = ChartData
+                },
+                new LineSeries
+                {
+                    Title = "LSL",
+                    Values = lslData,
+                    Stroke  = Brushes.Red,
+                    PointGeometry = null,
+                    Fill = Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "USL",
+                    Values = uslData,
+                    Stroke  = Brushes.Red,
+                    PointGeometry = null,
+                    Fill = Brushes.Transparent
                 }
             };
 
