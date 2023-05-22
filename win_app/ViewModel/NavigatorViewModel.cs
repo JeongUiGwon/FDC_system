@@ -227,7 +227,7 @@ namespace SOM.ViewModel
                 RecipeMenu = "레시피";
                 DataMenu = "데이터";
                 InterlockMenu = "인터락";
-                AutoRangeMenu = "AutoRange 선정";
+                AutoRangeMenu = "AutoRange 설정";
                 FullPatternMenu = "풀 패턴";
                 ProfileMenu = "프로필";
                 UsersMenu = "유저 관리";

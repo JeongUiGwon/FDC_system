@@ -98,5 +98,15 @@ namespace SOM.View.Data
         {
             ExportFile.ExportCSV(dg_equipmentData);
         }
+
+        private void Btn_ShowChart_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem_Chart.IsSelected = true;
+        }
+
+        private void Btn_ShowTable_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem_Table.IsSelected = true;
+        }
     }
 }

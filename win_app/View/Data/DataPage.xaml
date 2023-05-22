@@ -40,7 +40,7 @@
             <!--Left Section-->
             <!--Title-->
             <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
-                <TextBlock Text="Filter" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                <TextBlock Text="필터" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
             <!--Filter-->
@@ -59,8 +59,8 @@
                             IsEnabled="{Binding BtnApplyIsEnabled}" Command="{Binding ApplyCommand}">
                         <Border CornerRadius="10 10 10 10" >
                             <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                <TextBlock Text="Apply" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                <Icon:PackIconMaterial Kind="FormSelect" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                <TextBlock Text="적용" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
                             </StackPanel>
                         </Border>
                     </Button>
@@ -163,7 +163,7 @@
             <!--Right Section-->
             <!--Title-->
             <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Grid.Column="1" Panel.ZIndex="1">
-                <TextBlock Text="Data" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                <TextBlock Text="데이터" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
             
             <!--Contents-->
@@ -176,14 +176,7 @@
 
                     <!--Tab Section-->
                     <TabControl Grid.Row="0" >
-                        <TabItem>
-                            <TabItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Table"/>
-                                    <TextBlock Text="표" HorizontalAlignment="Left"/>
-                                </StackPanel>
-                            </TabItem.Header>
-
+                        <TabItem Header="표" Visibility="Collapsed" Name="TabItem_Table">
                             <Grid>
                                 
                                 <Grid.RowDefinitions>
@@ -192,6 +185,17 @@
                                 </Grid.RowDefinitions>
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10">
+                                    
+                                    <!--Chart Button-->
+                                    <Button x:Name="Btn_Chart" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_ShowChart_Click" Grid.Row="0" Margin="0 0 10 0">
+                                        <Border CornerRadius="10 10 10 10" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Icon:PackIconMaterial Kind="ChartBar" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                                <TextBlock Text="차트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Button>
+                                    
                                     <!--CSV Button-->
                                     <Button x:Name="Btn_csv" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_exportCSV_Click" Grid.Row="0" Margin="0 0 10 0">
                                         <Border CornerRadius="10 10 10 10" >
@@ -225,42 +229,55 @@
 
                         </TabItem>
 
-                        <TabItem>
-                            <TabItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="BarChart"/>
-                                    <TextBlock Text="차트" />
-                                </StackPanel>
-                            </TabItem.Header>
-
+                        <TabItem Header="차트" Name="TabItem_Chart" Visibility="Collapsed">
                             <ScrollViewer>
-                                <StackPanel>
-                                    <ItemsControl x:Name="ChartItems" ItemsSource="{Binding ChartSeriesCollection}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Background="#ffffff" CornerRadius="10" Margin="5 10">
+                                <Grid>
 
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
-                                                    </Border.Effect>
-                                                    
-                                                    <StackPanel>
-                                                        <TextBlock Text="{Binding title}" FontWeight="DemiBold" FontSize="18" Foreground="#757A89" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 10"/>
-                                                        <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="None" Height="400" Zoom="X">
-                                                            <lvc:CartesianChart.AxisX>
-                                                                <lvc:Axis Labels="{Binding ChartLabels}"></lvc:Axis>
-                                                            </lvc:CartesianChart.AxisX>
-                                                            <lvc:CartesianChart.AxisY>
-                                                                <lvc:Axis Title="Value"></lvc:Axis>
-                                                            </lvc:CartesianChart.AxisY>
-                                                        </lvc:CartesianChart>
-                                                    </StackPanel>
-                                                </Border>
-                                                
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </StackPanel>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <!--Table Button-->
+                                        <Button x:Name="Btn_Table" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_ShowTable_Click" Grid.Row="0" Margin="0 0 0 0" HorizontalAlignment="Right">
+                                            <Border CornerRadius="10 10 10 10" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                                    <TextBlock Text="표" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </Button>
+                                    </Grid>
+                                    
+                                    <StackPanel Grid.Row="1">
+                                        <ItemsControl x:Name="ChartItems" ItemsSource="{Binding ChartSeriesCollection}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="#ffffff" CornerRadius="10" Margin="0 10">
+
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
+                                                        </Border.Effect>
+
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding title}" FontWeight="DemiBold" FontSize="18" Foreground="#757A89" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 10"/>
+                                                            <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="None" Height="400" Zoom="X">
+                                                                <lvc:CartesianChart.AxisX>
+                                                                    <lvc:Axis Labels="{Binding ChartLabels}"></lvc:Axis>
+                                                                </lvc:CartesianChart.AxisX>
+                                                                <lvc:CartesianChart.AxisY>
+                                                                    <lvc:Axis Title="Value"></lvc:Axis>
+                                                                </lvc:CartesianChart.AxisY>
+                                                            </lvc:CartesianChart>
+                                                        </StackPanel>
+                                                    </Border>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Grid>
                             </ScrollViewer>
                         </TabItem>
                     </TabControl>
@@ -272,7 +289,7 @@
                 <!--GuideBox-->
                 <StackPanel Visibility="{Binding GuideBoxVisibility}" >
                     <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Foreground="#757A89" HorizontalAlignment="Center" Width="50" Height="50" Margin="10"/>
-                    <TextBlock Text="필터를 선택한 후, Apply 버튼을 눌러주세요." Foreground="#757A89" FontSize="20"/>
+                    <TextBlock Text="필터를 선택한 후, [적용] 버튼을 눌러주세요." Foreground="#757A89" FontSize="20"/>
                 </StackPanel>
 
                 <!--Loading-->
