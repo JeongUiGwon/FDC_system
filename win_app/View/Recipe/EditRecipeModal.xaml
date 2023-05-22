@@ -43,7 +43,7 @@
                 <!--Recipe ID Box-->
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="레시피 ID" Foreground="#757A89" FontWeight="Medium" FontSize="13" Margin="0 0 0 5"/>
-                    <TextBox Name="Tb_RecipeID" Text="{Binding recipe_id}"
+                    <TextBox Name="Tb_RecipeID" Text="{Binding recipe_id}" IsEnabled="False"
                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" 
                          materialDesign:TextFieldAssist.TextFieldCornerRadius="3" 
                          FontSize="13" Margin="0 0 5 0"/>

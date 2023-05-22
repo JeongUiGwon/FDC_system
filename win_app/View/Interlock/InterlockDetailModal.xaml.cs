@@ -63,5 +63,15 @@ namespace SOM.View.Interlock
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Btn_ShowTable_Click(object sender, EventArgs e)
+        {
+            TabItem_Table.IsSelected = true;
+        }
+
+        private void Btn_ShowChart_Click(object sender, EventArgs e)
+        {
+            TabItem_Chart.IsSelected = true;
+        }
     }
 }

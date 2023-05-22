@@ -187,7 +187,7 @@
                     <DataGrid x:Name="dg_interlock" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Margin="10 0 10 20" FontSize="17" IsReadOnly="True" Grid.Row="1"
                           MouseDoubleClick="dg_interlock_mouseDoubleClick" ItemsSource="{Binding InterlockItemsSource}"
-                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
+                      CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyleInterlock}">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SOM.View.Interlock"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
@@ -11,17 +12,12 @@
     
     <Grid Background="#f0f2f5">
         
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+        <Grid Grid.Column="0">
 
             <!--Subtitle Section-->
             <Border Background="#2f49cf" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
@@ -131,77 +127,112 @@
 
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Column="1">
 
-            <!--Subtitle Section-->
-            <Border Background="#2f49cf" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
+            <TabControl>
+                <TabItem Name="TabItem_Chart" Header="차트" Visibility="Collapsed">
+                    <Grid>
+                        <!--Subtitle Section-->
+                        <Border Background="#2f49cf" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top" Margin="25 10">
+                            <TextBlock Text="항목 차트" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                        </Border>
+
+                        <!--Content Section-->
+                        <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid Margin="20 35 20 20">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignOutlinedButton}" Click="Btn_ShowTable_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Table"/>
+                                            <TextBlock Text="표"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+
+                                <TextBlock Grid.Row="1" Text="{Binding ChartSeriesCollection.title}" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Center" Margin="0 10"/>
+                                    
+                                <lvc:CartesianChart Grid.Row="2" Name="cartesianChart_paramData" Series="{Binding ChartSeriesCollection.ChartSeries}" LegendLocation="None" Zoom="X" >
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:Axis Labels="{Binding ChartSeriesCollection.ChartLabels}"></lvc:Axis>
+                                    </lvc:CartesianChart.AxisX>
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis></lvc:Axis>
+                                    </lvc:CartesianChart.AxisY>
+                                </lvc:CartesianChart>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Name="TabItem_Table" Header="표" Visibility="Collapsed">
+
+                    <Grid>
+                        <!--Subtitle Section-->
+                        <Border Background="#2f49cf" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
                         Margin="25 10">
-                <TextBlock Text="항목 차트" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
-            </Border>
+                            <TextBlock Text="항목 테이블" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                        </Border>
 
-            <!--Content Section-->
-            <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
+                        <!--Content Section-->
+                        <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
 
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
-                </Border.Effect>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
+                            </Border.Effect>
 
-                <Grid Margin="20 40 10 10">
-                    <TextBlock Text="{Binding ChartSeriesCollection.title}" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Center" Margin="0 10"/>
-                    <lvc:CartesianChart Name="cartesianChart_paramData" Series="{Binding ChartSeriesCollection.ChartSeries}" LegendLocation="None" >
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Labels="{Binding ChartSeriesCollection.ChartLabels}"></lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis></lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
-                </Grid>
-            </Border>
+                            <Grid Margin="20 35 20 20">
 
-        </Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid Grid.Row="0">
+                                    <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignOutlinedButton}" Click="Btn_ShowChart_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="ChartBar"/>
+                                            <TextBlock Text="Chart"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
 
-            <!--Subtitle Section-->
-            <Border Background="#2f49cf" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
-                        Margin="25 10">
-                <TextBlock Text="항목 테이블" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
-            </Border>
-
-            <!--Content Section-->
-            <Border Background="#ffffff" CornerRadius="10" Margin="10 30 10 10">
-
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>
-                </Border.Effect>
-
-                <Grid Margin="20 35 20 20">
-
-                    <!--Data Datagrid-->
-                    <DataGrid x:Name="dg_equipmentData" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
-                                  ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Grid.Row="1" Margin="0 10 0 0" ItemsSource="{Binding EquipmentData}"
+                                <!--Data Datagrid-->
+                                <DataGrid x:Name="dg_equipmentData" Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" ColumnWidth="*" GridLinesVisibility="None" CanUserAddRows="False"
+                                  ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" FontSize="17" IsReadOnly="True" Margin="0 10 0 0" ItemsSource="{Binding EquipmentData}"
                                   CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}">
 
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
-                            <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
-                            <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
-                            <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
-                            <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
-                            <DataGridTextColumn Header="레시피명" Width="*" Binding="{Binding recipe_name}"/>
-                            <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
-                            <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
-                            <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
-                            <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
+                                        <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
+                                        <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
+                                        <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>
+                                        <DataGridTextColumn Header="레시피 ID" Width="*" Binding="{Binding recipe}"/>
+                                        <DataGridTextColumn Header="레시피명" Width="*" Binding="{Binding recipe_name}"/>
+                                        <DataGridTextColumn Header="항목 ID" Width="*" Binding="{Binding param}"/>
+                                        <DataGridTextColumn Header="항목명" Width="*" Binding="{Binding param_name}"/>
+                                        <DataGridTextColumn Header="항목 값" Width="*" Binding="{Binding param_value}"/>
+                                        <DataGridTextColumn Header="인터락 여부" Width="*" Binding="{Binding is_interlock}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
 
-                </Grid>
-                
-            </Border>
+                            </Grid>
 
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </Grid>
-
     </Grid>
 </Window>
