@@ -62,7 +62,7 @@
                     </Border.Effect>
                     
                     <StackPanel Margin="20 40 10 10">
-                        <TextBlock Text="Equipments" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="{Binding EquipmentName}" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
                         <TextBlock x:Name="tb_EquipmentCount" Text="{Binding EquipmentCount}" FontSize="15" Foreground="#757A89" Margin="5 10"/>
                     </StackPanel>
                 </Border>
@@ -85,7 +85,7 @@
                     </Border.Effect>
                     
                     <StackPanel Margin="20 40 10 10">
-                        <TextBlock Text="Params" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="{Binding ParamsName}" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
                         <TextBlock x:Name="tb_ParamsCount" Text="{Binding ParamsCount}" FontSize="15" Foreground="#757A89" Margin="5 10"/>
                     </StackPanel>
                 </Border>
@@ -108,7 +108,7 @@
                     </Border.Effect>
 
                     <StackPanel Margin="20 40 10 10">
-                        <TextBlock Text="Recipe" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
+                        <TextBlock Text="{Binding RecipeName}" FontSize="18" FontWeight="DemiBold" Foreground="#444C66"/>
                         <TextBlock x:Name="tb_RecipeCount" Text="{Binding RecipeCount}" FontSize="15" Foreground="#757A89" Margin="5 10"/>
                     </StackPanel>
                 </Border>
@@ -121,7 +121,7 @@
                 <!--Subtitle Section-->
                 <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
                         Margin="25 10">
-                    <TextBlock Text="Interlock in the last 1 month" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                    <TextBlock Text="{Binding RecentInterlockTitle}" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
                 </Border>
 
                 <!--Content Section-->
@@ -138,7 +138,7 @@
                                 <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="발생 횟수"></lvc:Axis>
+                                <lvc:Axis Title="Count"></lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                         </lvc:CartesianChart>
                         
@@ -152,7 +152,7 @@
                 <!--Subtitle Section-->
                 <Border Background="#6EA3FF" Panel.ZIndex="1" Height="50" CornerRadius="5" VerticalAlignment="Top"
                         Margin="25 10">
-                    <TextBlock Text="Smart Search" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
+                    <TextBlock Text="{Binding SmartSearchTitle}" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0"/>
                 </Border>
 
                 <!--Content Section-->
@@ -183,7 +183,7 @@
 
                                         <materialDesign:PackIcon Grid.Column="0" Kind="Announcement" Height="30" Width="30" HorizontalAlignment="Center" Foreground="#908eff" Margin="20"/>
 
-                                        <TextBlock Name="tb_question" Grid.Column="1" FontSize="15" Margin="20" FontWeight="DemiBold" Foreground="#908eff" TextWrapping="Wrap" Text="무엇이든 검색하세요.&#10;예시) '현재 사용 중인 설비 정보들 알려줘'"/>
+                                        <TextBlock Name="tb_question" Grid.Column="1" FontSize="15" Margin="20" FontWeight="DemiBold" Foreground="#908eff" TextWrapping="Wrap" Text="{Binding SmartSearchExplain}"/>
                                     </Grid>
                                 </Border>
 
@@ -228,7 +228,7 @@
                         <!--Search Bar-->
                         <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="10">
                             <TextBox  materialDesign:TextFieldAssist.HasOutlinedTextField="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="3" x:Name="tb_questionText"
-                                 MaxWidth="700" Padding="10 10 50 10" FontSize="15" materialDesign:HintAssist.Hint="쉽고 빠르게 찾고자 하는 데이터를 검색해보세요." BorderBrush="#757A89"
+                                 MaxWidth="700" Padding="10 10 50 10" FontSize="15" materialDesign:HintAssist.Hint="{Binding SendTextHint}" BorderBrush="#757A89"
                                      TextWrapping="Wrap" Text="{Binding SendText, UpdateSourceTrigger=PropertyChanged}"/>
                             <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="40" Height="40" Padding="0" Margin="10"
                                     Command="{Binding SendCommand}">

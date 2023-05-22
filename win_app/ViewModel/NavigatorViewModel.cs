@@ -211,12 +211,12 @@ namespace SOM.ViewModel
                 RecipeMenu = "Recipe";
                 DataMenu = "Data";
                 InterlockMenu = "Interlock";
-                AutoRangeMenu = "Auto Range";
+                AutoRangeMenu = "AutoRange";
                 FullPatternMenu = "Full Pattern";
                 ProfileMenu = "Profile";
                 UsersMenu = "Users";
                 LogoutMenu = "Logout";
-                ChangeLanguage = "Korean";
+                ChangeLanguage = "한국어";
             }
             else if (Settings.Default.Language == "Kor")
             {
@@ -227,12 +227,12 @@ namespace SOM.ViewModel
                 RecipeMenu = "레시피";
                 DataMenu = "데이터";
                 InterlockMenu = "인터락";
-                AutoRangeMenu = "자동 범위 선정";
+                AutoRangeMenu = "AutoRange 선정";
                 FullPatternMenu = "풀 패턴";
                 ProfileMenu = "프로필";
                 UsersMenu = "유저 관리";
                 LogoutMenu = "로그아웃";
-                ChangeLanguage = "영어";
+                ChangeLanguage = "English";
             }
         }
 
@@ -241,12 +241,13 @@ namespace SOM.ViewModel
             if (Settings.Default.Language == "Eng")
             {
                 Settings.Default.Language = "Kor";
-                App.Language = "Kor";
+                Settings.Default.Save();
+                Settings.Default.Save();
             }
             else if (Settings.Default.Language == "Kor")
             {
                 Settings.Default.Language = "Eng";
-                App.Language = "Eng";
+                Settings.Default.Save();
             }
             SetLanguage();
         }

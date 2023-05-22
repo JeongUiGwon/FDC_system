@@ -157,8 +157,8 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Margin="10">
-                    <Button Background="#799EFB" Command="{Binding ChangeLanguageCommand}">
-                        <TextBlock Text="{Binding ChangeLanguage, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}" TextAlignment="Center"/>
+                    <Button Background="#2579ed" BorderThickness="0"  Command="{Binding ChangeLanguageCommand}">
+                        <TextBlock Text="{Binding ChangeLanguage, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}" TextAlignment="Center" Foreground="#ffffff"/>
                     </Button>
                 </StackPanel>
             </Grid>

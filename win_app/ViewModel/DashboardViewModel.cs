@@ -27,7 +27,9 @@ namespace SOM.ViewModel
             GetRecipeData();
             GetInterlockData();
             setLanguage();
-            
+
+            Settings.Default.PropertyChanged += Default_Settings_PropertyChanged;
+
             ChatCollection = new ObservableCollection<ChatModel>();
             SendCommand = new RelayCommand(GetChatbotData);
             EnterPressedCommand = new RelayCommand(GetChatbotData);
@@ -35,17 +37,6 @@ namespace SOM.ViewModel
 
         public ICommand SendCommand { get; private set; }
         public ICommand EnterPressedCommand { get; private set; }
-
-        public string Language
-        {
-            get { return App.Language; }
-            set
-            {
-                App.Language = value;
-                OnPropertyChanged(nameof(Language));
-                setLanguage();
-            }
-        }
 
         private string _title;
         public string Title
@@ -55,6 +46,17 @@ namespace SOM.ViewModel
             {
                 _title = value;
                 OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        private string _equipmentName;
+        public string EquipmentName
+        {
+            get { return _equipmentName; }
+            set
+            {
+                _equipmentName = value;
+                OnPropertyChanged(nameof(EquipmentName));
             }
         }
 
@@ -69,6 +71,17 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _paramsName;
+        public string ParamsName
+        {
+            get { return _paramsName; }
+            set
+            {
+                _paramsName = value;
+                OnPropertyChanged(nameof(ParamsName));
+            }
+        }
+
         private int _paramsCount;
         public int ParamsCount
         {
@@ -77,6 +90,17 @@ namespace SOM.ViewModel
             {
                 _paramsCount = value;
                 OnPropertyChanged(nameof(ParamsCount));
+            }
+        }
+
+        private string _recipeName;
+        public string RecipeName
+        {
+            get { return _recipeName; }
+            set
+            {
+                _recipeName = value;
+                OnPropertyChanged(nameof(RecipeName));
             }
         }
 
@@ -91,6 +115,39 @@ namespace SOM.ViewModel
             }
         }
 
+        private string _recentInterlockTitle;
+        public string RecentInterlockTitle
+        {
+            get { return _recentInterlockTitle; }
+            set
+            {
+                _recentInterlockTitle = value;
+                OnPropertyChanged(nameof(RecentInterlockTitle));
+            }
+        }
+
+        private string _smartSearchTitle;
+        public string SmartSearchTitle
+        {
+            get { return _smartSearchTitle; }
+            set
+            {
+                _smartSearchTitle = value;
+                OnPropertyChanged(nameof(SmartSearchTitle));
+            }
+        }
+
+        private string _smartSearchExplain;
+        public string SmartSearchExplain
+        {
+            get { return _smartSearchExplain; }
+            set
+            {
+                _smartSearchExplain = value;
+                OnPropertyChanged(nameof(SmartSearchExplain));
+            }
+        }
+
         private string _sendText;
         public string SendText
         {
@@ -99,6 +156,17 @@ namespace SOM.ViewModel
             {
                 _sendText = value;
                 OnPropertyChanged(nameof(SendText));
+            }
+        }
+
+        private string _sendTextHint;
+        public string SendTextHint
+        {
+            get { return _sendTextHint; }
+            set
+            {
+                _sendTextHint = value;
+                OnPropertyChanged(nameof(SendTextHint));
             }
         }
 
@@ -144,6 +212,11 @@ namespace SOM.ViewModel
                 _formatter = value;
                 OnPropertyChanged(nameof(Formatter));
             }
+        }
+
+        private void Default_Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            setLanguage();
         }
 
         private async void GetEquipmentsData()
@@ -285,13 +358,27 @@ namespace SOM.ViewModel
 
         private void setLanguage()
         {
-            if (Language == "Eng")
-            {
-                Title = "DashBoard";
-            }
-            else if (Language == "Kor")
+            if (Settings.Default.Language == "Kor")
             {
                 Title = "대쉬보드";
+                EquipmentName = "등록된 설비";
+                ParamsName = "등록된 항목";
+                RecipeName = "등록된 레시피";
+                RecentInterlockTitle = "최근 1개월간 인터락 발생현황";
+                SmartSearchTitle = "스마트 서치";
+                SmartSearchExplain = "원하는 데이터를 빠르게 검색해보세요.\n예시) 현재 사용 중인 설비 알려줘";
+                SendTextHint = "찾고자 하는 데이터를 검색";
+            }
+            else if (Settings.Default.Language == "Eng")
+            {
+                Title = "DashBoard";
+                EquipmentName = "Equipments";
+                ParamsName = "Params";
+                RecipeName = "Recipes";
+                RecentInterlockTitle = "Interlock for the last 1 month";
+                SmartSearchTitle = "Smart Search";
+                SmartSearchExplain = "Search for the data you want quickly.\nex) Tell me about the equipments currently in use at the factory";
+                SendTextHint = "Search for the data you want to find";
             }
         }
 

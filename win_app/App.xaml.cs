@@ -21,7 +21,6 @@ namespace SOM
     public partial class App : Application
     {
         public static UsersModel CurrentUser { get; set; }
-        public static string Language { get; set; }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
