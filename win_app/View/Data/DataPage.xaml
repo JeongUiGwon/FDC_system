@@ -254,7 +254,7 @@
                                         <ItemsControl x:Name="ChartItems" ItemsSource="{Binding ChartSeriesCollection}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Border Background="#ffffff" CornerRadius="10" Margin="0 10">
+                                                    <Border Background="#ffffff" CornerRadius="10" Margin="5 10">
 
                                                         <Border.Effect>
                                                             <DropShadowEffect ShadowDepth="2" Color="Gray" Opacity="0.5"/>

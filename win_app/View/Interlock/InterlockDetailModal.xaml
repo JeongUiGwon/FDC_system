@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:SOM.View.Interlock"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
@@ -153,11 +154,14 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0">
-                                    <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignOutlinedButton}" Click="Btn_ShowTable_Click">
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Table"/>
-                                            <TextBlock Text="표"/>
-                                        </StackPanel>
+                                    <!--Table Button-->
+                                    <Button x:Name="Btn_Table" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_ShowTable_Click" Grid.Row="0" HorizontalAlignment="Right">
+                                        <Border CornerRadius="10 10 10 10" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Icon:PackIconMaterial Kind="Table" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                                <TextBlock Text="표" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                            </StackPanel>
+                                        </Border>
                                     </Button>
                                 </Grid>
 
@@ -200,11 +204,14 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0">
-                                    <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignOutlinedButton}" Click="Btn_ShowChart_Click">
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="ChartBar"/>
-                                            <TextBlock Text="Chart"/>
-                                        </StackPanel>
+                                    <!--Chart Button-->
+                                    <Button x:Name="Btn_Chart" BorderBrush="#2f49cf" Background="#ffffff" Click="Btn_ShowChart_Click" Grid.Row="0" HorizontalAlignment="Right">
+                                        <Border CornerRadius="10 10 10 10" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Icon:PackIconMaterial Kind="ChartBar" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
+                                                <TextBlock Text="차트" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                            </StackPanel>
+                                        </Border>
                                     </Button>
                                 </Grid>
 

@@ -255,13 +255,13 @@ namespace SOM.ViewModel
 
             foreach (ParamLogModel equipmentData_item in content) 
             {
-                if (paramData.ContainsKey($"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"))
+                if (paramData.ContainsKey($"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}\t{equipmentData_item.recipe_name}"))
                 {
-                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"].Add(equipmentData_item);
+                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}\t{equipmentData_item.recipe_name}"].Add(equipmentData_item);
                 }
                 else
                 {
-                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}"] = new List<ParamLogModel> { equipmentData_item };
+                    paramData[$"{equipmentData_item.equipment_name}\n{equipmentData_item.param_name}\t{equipmentData_item.recipe_name}"] = new List<ParamLogModel> { equipmentData_item };
                 }
             }
 
@@ -275,6 +275,8 @@ namespace SOM.ViewModel
                 List<ParamLogModel> paramLogs = kvp.Value;
                 string recipe_id = paramLogs[0].recipe;
                 ChartValues<float> ChartData = new ChartValues<float>();
+                ChartValues<float> UslData = new ChartValues<float>();
+                ChartValues<float> LslData = new ChartValues<float>();
                 List<string> ChartLabels = new List<string>();
 
                 HttpResponseMessage response_getRecipe = await GetRecipeID.GetRecipeIDAsync(recipe_id);
@@ -282,21 +284,15 @@ namespace SOM.ViewModel
                 RecipeModel recipeData = JsonConvert.DeserializeObject<RecipeModel>(str_content);
 
                 SeriesCollection ChartSeries2 = new SeriesCollection();
-                List<long> interlockTime = new List<long>();
-                List<double> interlockValue = new List<double>();
 
                 foreach (var paramLog in paramLogs)
                 {
                     long timestamp = new DateTimeOffset(paramLog.created_at.ToUniversalTime()).ToUnixTimeSeconds();
 
                     ChartData.Add(paramLog.param_value);
+                    UslData.Add(recipeData.usl);
+                    LslData.Add(recipeData.lsl);
                     ChartLabels.Add(paramLog.created_at.ToString());
-
-                    if (paramLog.is_interlock)
-                    {
-                        interlockTime.Add(timestamp);
-                        interlockValue.Add(paramLog.param_value);
-                    }
                 }
 
                 SeriesCollection ChartSeries = new SeriesCollection
@@ -305,6 +301,22 @@ namespace SOM.ViewModel
                     {
                     Title = title,
                     Values = ChartData
+                    },
+                    new LineSeries
+                    {
+                        Title = "USL",
+                        Values = UslData,
+                        PointGeometry = null,
+                        Stroke = Brushes.Red,
+                        Fill = Brushes.Transparent
+                    },
+                    new LineSeries
+                    {
+                        Title = "LSL",
+                        Values = LslData,
+                        PointGeometry = null,
+                        Stroke = Brushes.Red,
+                        Fill = Brushes.Transparent
                     }
                 };
 
