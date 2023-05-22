@@ -14,5 +14,8 @@
     <Setting Name="BackendAPIaddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://k8a201.p.ssafy.io:8000</Value>
     </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Eng</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

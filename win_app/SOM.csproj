@@ -537,6 +537,7 @@
     <Compile Include="ViewModel\EquipmentsViewModel.cs" />
     <Compile Include="ViewModel\InterlockDetailViewModel.cs" />
     <Compile Include="ViewModel\InterlockViewModel.cs" />
+    <Compile Include="ViewModel\NavigatorViewModel.cs" />
     <Compile Include="ViewModel\ParamHistoryViewModel.cs" />
     <Compile Include="ViewModel\ParamsViewModel.cs" />
     <Compile Include="ViewModel\RecipeHistoryViewModel.cs" />

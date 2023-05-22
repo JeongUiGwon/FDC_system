@@ -2,6 +2,7 @@
 using LiveCharts.Wpf;
 using Newtonsoft.Json;
 using SOM.Model;
+using SOM.Properties;
 using SOM.Services;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace SOM.ViewModel
             GetParamsData();
             GetRecipeData();
             GetInterlockData();
-
+            setLanguage();
+            
             ChatCollection = new ObservableCollection<ChatModel>();
             SendCommand = new RelayCommand(GetChatbotData);
             EnterPressedCommand = new RelayCommand(GetChatbotData);
@@ -33,6 +35,28 @@ namespace SOM.ViewModel
 
         public ICommand SendCommand { get; private set; }
         public ICommand EnterPressedCommand { get; private set; }
+
+        public string Language
+        {
+            get { return App.Language; }
+            set
+            {
+                App.Language = value;
+                OnPropertyChanged(nameof(Language));
+                setLanguage();
+            }
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
 
         private int _equipmentCount;
         public int EquipmentCount
@@ -257,6 +281,18 @@ namespace SOM.ViewModel
 
             ChatCollection.RemoveAt(ChatCollection.Count - 1);
             ChatCollection.Add(new ChatModel(questionText, answerText));
+        }
+
+        private void setLanguage()
+        {
+            if (Language == "Eng")
+            {
+                Title = "DashBoard";
+            }
+            else if (Language == "Kor")
+            {
+                Title = "대쉬보드";
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

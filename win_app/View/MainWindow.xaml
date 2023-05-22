@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:view="clr-namespace:SOM.View"
+        xmlns:viewmodel="clr-namespace:SOM.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
@@ -15,6 +15,11 @@
         WindowStartupLocation="CenterScreen"
         Background="#f0f2f5"
         WindowState="Maximized">
+
+    <Window.DataContext>
+        <viewmodel:NavigatorViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -30,123 +35,138 @@
                 </LinearGradientBrush>
             </Border.Background>
 
-            <StackPanel>
-                <!--UserName-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0" Width="180">
-                    <Border CornerRadius="10" Width="40" Height="40">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
-                                <GradientStop Color="#799EFB" Offset="0"/>
-                                <GradientStop Color="#799EFB" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+            <Grid>
 
-                        <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff" Width="30" Height="30"/>
-                    </Border>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0">
+                    <!--UserName-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0" Width="180">
 
-                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding UserName}" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
-                        <TextBlock Text="{Binding Role}" FontSize="11" Foreground="#ffffff"/>
+                        <Border CornerRadius="10" Width="40" Height="40">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 2">
+                                    <GradientStop Color="#799EFB" Offset="0"/>
+                                    <GradientStop Color="#799EFB" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff" Width="30" Height="30"/>
+                        </Border>
+
+                        <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding UserName}" FontSize="15" Margin="0 0 0 5" Foreground="#ffffff"/>
+                            <TextBlock Text="{Binding Role}" FontSize="11" Foreground="#ffffff"/>
+                        </StackPanel>
                     </StackPanel>
+
+                    <Separator Height="0.8" Margin="20 20" Background="#ffffff"/>
+
+                    <!--Menu Buttons-->
+                    <Button Name="Btn_Dashboard" Style="{StaticResource menuButtonActive}" Click="Btn_Dashboard_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding DashBoardMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Equipments" Style="{StaticResource menuButton}" Click="Btn_Equipments_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding EquipmentMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_EquipmentState" Style="{StaticResource menuButton}" Click="Btn_EquipmentState_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding EquipmentStateMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding ParamMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding RecipeMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Datas" Style="{StaticResource menuButton}" Click="Btn_Data_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding DataMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding InterlockMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Height="0.8" Margin="20 10" Background="#ffffff"/>
+
+                    <Button Name="Btn_AutoRange" Style="{StaticResource menuButton}" Click="Btn_AutoRange_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Autoprefixer" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding AutoRangeMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_AIAnalysis" Style="{StaticResource menuButton}" Click="Btn_AIAnalysis_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ChartLine" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding FullPatternMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Height="0.8" Margin="20 10" Background="#ffffff"/>
+
+                    <Button Name="Btn_Profile" Style="{StaticResource menuButton}" Click="Btn_Profile_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding ProfileMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding UsersMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" Click="Btn_Logout_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding LogoutMenu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
 
-                <Separator Height="0.8" Margin="20 20" Background="#ffffff"/>
-                
-                <!--Menu Buttons-->
-                <Button Name="Btn_Dashboard" Style="{StaticResource menuButtonActive}" Click="Btn_Dashboard_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="대쉬보드" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Equipments" Style="{StaticResource menuButton}" Click="Btn_Equipments_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Industry" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="설비" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_EquipmentState" Style="{StaticResource menuButton}" Click="Btn_EquipmentState_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="설비 상태" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Params" Style="{StaticResource menuButton}" Click="Btn_Params_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Inbox" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="항목" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Recipe" Style="{StaticResource menuButton}" Click="Btn_Recipe_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="list" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="레시피" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Datas" Style="{StaticResource menuButton}" Click="Btn_Data_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="BarChart" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="데이터" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Interlock" Style="{StaticResource menuButton}" Click="Btn_Interlock_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Warning" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="인터락" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Separator Height="0.8" Margin="20 10" Background="#ffffff"/>
-                
-                <Button Name="Btn_AutoRange" Style="{StaticResource menuButton}" Click="Btn_AutoRange_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Autoprefixer" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Auto Range" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_AIAnalysis" Style="{StaticResource menuButton}" Click="Btn_AIAnalysis_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Computer" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="AI 분석" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Separator Height="0.8" Margin="20 10" Background="#ffffff"/>
-
-                <Button Name="Btn_Profile" Style="{StaticResource menuButton}" Click="Btn_Profile_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="프로필" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Name="Btn_Users" Style="{StaticResource menuButton}" Click="Btn_Users_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="유저 관리" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Style="{StaticResource menuButton}" Click="Btn_Logout_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="로그아웃" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-            </StackPanel>
+                <StackPanel Grid.Row="1" Margin="10">
+                    <Button Background="#799EFB" Command="{Binding ChangeLanguageCommand}">
+                        <TextBlock Text="{Binding ChangeLanguage, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource menuButtonText}" TextAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </Border>
         
         <!--Main Section-->
         <Border Grid.Column="1" MouseDown="Border_MouseDown">
-            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="/View/Dashboard/DashboardPage.xaml"/>
+            <Frame Name="frame" NavigationUIVisibility="Hidden" Source="{Binding FrameSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Border>        
     </Grid>
 </Window>

@@ -16,8 +16,6 @@ namespace SOM
         {
             InitializeComponent();
 
-            DataContext = App.CurrentUser;
-
             // 유저 권한별 UI 세팅
             if (App.CurrentUser.Role == "User")
             {

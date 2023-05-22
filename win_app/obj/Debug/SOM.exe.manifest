@@ -955,14 +955,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="787936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SOM.exe" size="793568">
       <assemblyIdentity name="SOM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>flQRv3VJMfWMZWAj5/CckvV+WxoID8/VZ0f7qQSk75M=</dsig:DigestValue>
+        <dsig:DigestValue>sGtuuiF7iiaRfnwIX0cG4N+SgGdhB2Lc7G4iDpBnLn8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1119,13 +1119,13 @@
       <dsig:DigestValue>sb93cON/Vj3SJhX9BSLeC2fHSyhtrLczyXSeInJklM8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SOM.exe.config" size="5923">
+  <file name="SOM.exe.config" size="6023">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7F0d4xSe+smEps1ebBpqNGniO9kGFgCFrGWD1K8o/vE=</dsig:DigestValue>
+      <dsig:DigestValue>LdqXNo9f4Du6kjK9m8YPIs1S5XTELqL4zvJLRBk868c=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
