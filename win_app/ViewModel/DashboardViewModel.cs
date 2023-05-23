@@ -366,7 +366,7 @@ namespace SOM.ViewModel
                 RecipeName = "등록된 레시피";
                 RecentInterlockTitle = "최근 1개월간 인터락 발생현황";
                 SmartSearchTitle = "스마트 서치";
-                SmartSearchExplain = "원하는 데이터를 빠르게 검색해보세요.\n예시) 현재 사용 중인 설비 알려줘";
+                SmartSearchExplain = "원하는 데이터를 빠르게 검색해보세요.\n예시) 현재 사용 중인 설비 정보를 알려줘";
                 SendTextHint = "찾고자 하는 데이터를 검색";
             }
             else if (Settings.Default.Language == "Eng")

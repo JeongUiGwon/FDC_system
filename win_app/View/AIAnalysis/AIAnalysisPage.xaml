@@ -32,7 +32,7 @@
 
             <!--Title-->
             <Border Background="#2f49cf" Height="74" Margin="20 10" CornerRadius="10 10 10 10" Grid.Row="0" Panel.ZIndex="1">
-                <TextBlock Text="AI 예측 (현재 개발 중 / UI만 구현)" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                <TextBlock Text="Full Pattern 설정" FontSize="15" FontWeight="DemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="20 0 0 0"/>
             </Border>
 
             <!--Contents-->
@@ -94,7 +94,7 @@
                             <Border CornerRadius="10 10 10 10" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Plus" Height="13" Width="13" VerticalAlignment="Center" Foreground="#2f49cf"/>
-                                    <TextBlock Text="AI 예측 등록" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
+                                    <TextBlock Text="Full Pattern 등록" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2f49cf"/>
                                 </StackPanel>
                             </Border>
                         </Button>
@@ -110,10 +110,10 @@
                             <DataGridTextColumn Header="항목 ID" Width="auto" Binding="{Binding param}"/>
                             <DataGridTextColumn Header="오차 범위 % (-)" Width="*" Binding="{Binding min_error}"/>
                             <DataGridTextColumn Header="오차 범위 % (+)" Width="*" Binding="{Binding max_error}"/>
-                            <DataGridTextColumn Header="Auto Range Type" Width="*" Binding="{Binding type}"/>
+                            <DataGridTextColumn Header="타입" Width="*" Binding="{Binding type}"/>
                             <DataGridTextColumn Header="패턴 범위(h)" Width="*" Binding="{Binding pattern_range}"/>
-                            <DataGridTextColumn Header="Min Range (-)" Width="*" Binding="{Binding min_range}"/>
-                            <DataGridTextColumn Header="Max Range (+)" Width="*" Binding="{Binding max_range}"/>
+                            <DataGridTextColumn Header="최소 범위 (-)" Width="*" Binding="{Binding min_range}"/>
+                            <DataGridTextColumn Header="최대 범위 (+)" Width="*" Binding="{Binding max_range}"/>
                             <DataGridTextColumn Header="사용 유무" Width="*" Binding="{Binding is_active}"/>
 
                             <DataGridTemplateColumn x:Name="Dg_Action" IsReadOnly="True" Width="*">

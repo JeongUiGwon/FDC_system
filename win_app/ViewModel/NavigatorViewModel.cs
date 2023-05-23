@@ -221,14 +221,14 @@ namespace SOM.ViewModel
             else if (Settings.Default.Language == "Kor")
             {
                 DashBoardMenu = "대쉬보드";
-                EquipmentMenu = "장비";
-                EquipmentStateMenu = "장비 상태";
+                EquipmentMenu = "설비";
+                EquipmentStateMenu = "설비 상태";
                 ParamMenu = "항목";
                 RecipeMenu = "레시피";
                 DataMenu = "데이터";
                 InterlockMenu = "인터락";
-                AutoRangeMenu = "AutoRange 설정";
-                FullPatternMenu = "풀 패턴";
+                AutoRangeMenu = "AutoRange";
+                FullPatternMenu = "Full Pattern";
                 ProfileMenu = "프로필";
                 UsersMenu = "유저 관리";
                 LogoutMenu = "로그아웃";

@@ -202,8 +202,8 @@
                             <DataGridTextColumn Header="LSL" Width="auto" Binding="{Binding lower_limit}"/>
                             <DataGridTextColumn Header="USL" Width="auto" Binding="{Binding upper_limit}"/>
                             <DataGridTextColumn Header="아웃 수" Width="auto" Binding="{Binding out_count}"/>
-                            <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding recipe}"/>
-                            <DataGridTextColumn Header="Recipe ID" Width="auto" Binding="{Binding recipe_name}"/>
+                            <DataGridTextColumn Header="레시피 ID" Width="auto" Binding="{Binding recipe}"/>
+                            <DataGridTextColumn Header="레시피명" Width="auto" Binding="{Binding recipe_name}"/>
                             <DataGridTextColumn Header="CCTV 주소" Width="auto" Binding="{Binding cctv_video_url}"/>
                         </DataGrid.Columns>
                     </DataGrid>

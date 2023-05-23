@@ -213,7 +213,7 @@
                                   CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyleData}">
 
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding created_at}"/>
+                                        <DataGridTextColumn Header="시간" Width="auto" Binding="{Binding created_at}"/>
                                         <DataGridTextColumn Header="공장 ID" Width="*" Binding="{Binding factory_id}"/>
                                         <DataGridTextColumn Header="설비 ID" Width="*" Binding="{Binding equipment}"/>
                                         <DataGridTextColumn Header="설비명" Width="*" Binding="{Binding equipment_name}"/>

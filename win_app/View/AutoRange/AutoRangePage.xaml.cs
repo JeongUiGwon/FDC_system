@@ -96,6 +96,12 @@ namespace SOM.View.AutoRange
                 paramLog_content = JsonConvert.DeserializeObject<ObservableCollection<ParamLogModel>>(str_content);
             }
 
+            if (paramLog_content.Count == 0)
+            {
+                modal.Show();
+                return;
+            }
+
             HttpResponseMessage response_getRecipe = await GetRecipeID.GetRecipeIDAsync(paramLog_content[0].recipe);
             RecipeModel recipe_content = new RecipeModel();
 

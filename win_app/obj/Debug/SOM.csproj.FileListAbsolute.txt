@@ -891,3 +891,5 @@ C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\AIAnalysis\AI
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\obj\Debug\View\AIAnalysis\AIAnalysisPage.baml
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\bin\Debug\SOM.exe.CodeAnalysisLog.xml
 C:\Users\jek94\Desktop\SSAFY_PJT\S08P31A201\win_app\bin\Debug\SOM.exe.lastcodeanalysissucceeded
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.exe.CodeAnalysisLog.xml
+C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\bin\Debug\SOM.exe.lastcodeanalysissucceeded

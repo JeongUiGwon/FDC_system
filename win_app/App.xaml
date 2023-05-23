@@ -342,11 +342,11 @@
                     </Trigger>
 
                     <DataTrigger Binding="{Binding interlock_type}" Value="WARNING">
-                        <Setter Property="Foreground" Value="#fdb84d" />
+                        <Setter Property="Foreground" Value="#edb601" />
                     </DataTrigger>
 
                     <DataTrigger Binding="{Binding interlock_type}" Value="INTERLOCK">
-                        <Setter Property="Foreground" Value="#fe8963" />
+                        <Setter Property="Foreground" Value="Red" />
                     </DataTrigger>
 
                     <MultiTrigger>
