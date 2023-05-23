@@ -386,6 +386,14 @@
                     <DataTrigger Binding="{Binding is_interlock}" Value="True">
                         <Setter Property="Foreground" Value="Red" />
                     </DataTrigger>
+
+                    <DataTrigger Binding="{Binding interlock_type}" Value="WARNING">
+                        <Setter Property="Foreground" Value="#edb601" />
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding interlock_type}" Value="INTERLOCK">
+                        <Setter Property="Foreground" Value="Red" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
                     

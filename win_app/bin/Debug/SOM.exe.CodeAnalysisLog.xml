@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:24:16Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:41:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\ViewModel" File="AIAnalysisViewModel.cs" Line="17">클래스에서 정의한 가상 메서드를 호출하는 호출 체인이 'AIAnalysisViewModel.AIAnalysisViewModel()'에 있습니다. &#xD;&#xA;&#xD;&#xA;AIAnalysisViewModel..ctor()&#xD;&#xA;AIAnalysisViewModel.FilterAIAnalysis():Void&#xD;&#xA;AIAnalysisViewModel.set_FilteredFullPattern(ObservableCollection&lt;FullPatternModel&gt;):Void&#xD;&#xA;AIAnalysisViewModel.OnPropertyChanged(String):Void 호출 스택을 검토하여 의도하지 않은 결과는 없는지 확인하십시오.</Issue>
             </Message>
            </Messages>
@@ -23,7 +23,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:24:16Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:41:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\ViewModel" File="DashboardViewModel.cs" Line="23">클래스에서 정의한 가상 메서드를 호출하는 호출 체인이 'DashboardViewModel.DashboardViewModel()'에 있습니다. &#xD;&#xA;&#xD;&#xA;DashboardViewModel..ctor()&#xD;&#xA;DashboardViewModel.setLanguage():Void&#xD;&#xA;DashboardViewModel.set_Title(String):Void&#xD;&#xA;DashboardViewModel.OnPropertyChanged(String):Void 호출 스택을 검토하여 의도하지 않은 결과는 없는지 확인하십시오.</Issue>
             </Message>
            </Messages>
@@ -34,7 +34,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:24:16Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:41:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\ViewModel" File="DataViewModel.cs" Line="159">클래스에서 정의한 가상 메서드를 호출하는 호출 체인이 'DataViewModel.DataViewModel()'에 있습니다. &#xD;&#xA;&#xD;&#xA;DataViewModel..ctor()&#xD;&#xA;DataViewModel.set_StartTime(DateTime):Void&#xD;&#xA;DataViewModel.OnPropertyChanged(String):Void 호출 스택을 검토하여 의도하지 않은 결과는 없는지 확인하십시오.</Issue>
             </Message>
            </Messages>
@@ -45,7 +45,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:24:16Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2023-05-23 04:41:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\SSAFY\Desktop\A201\S08P31A201\win_app\ViewModel" File="NavigatorViewModel.cs" Line="26">클래스에서 정의한 가상 메서드를 호출하는 호출 체인이 'NavigatorViewModel.NavigatorViewModel()'에 있습니다. &#xD;&#xA;&#xD;&#xA;NavigatorViewModel..ctor()&#xD;&#xA;NavigatorViewModel.SetLanguage():Void&#xD;&#xA;NavigatorViewModel.set_DashBoardMenu(String):Void&#xD;&#xA;NavigatorViewModel.OnPropertyChanged(String):Void 호출 스택을 검토하여 의도하지 않은 결과는 없는지 확인하십시오.</Issue>
             </Message>
            </Messages>
